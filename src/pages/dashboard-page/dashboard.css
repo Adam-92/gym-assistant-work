@@ -1,0 +1,62 @@
+.center-container-dashboard{
+    position: relative;
+    top:50%;
+    transform: translateY(-50%);
+}
+.container-dashboard{
+    display: flex;
+    margin: 0 auto;
+    min-height: 85vh;
+    width: 90%;
+    border-radius: 2rem;
+    outline: 3px solid white;
+}
+.sidebar-dashboard{
+    width: 10%;
+    min-width: 180px;
+}
+.content-dashboard{
+    background: linear-gradient(145deg, rgb(248,247,247) 0%, rgb(241,241,243) 120%);
+    width: 75%;
+    padding: 1rem;
+}
+.header-dashboard{
+    height: 24%;
+    margin: var(--dash-margin-headers) 0;
+    background-color: white;
+    padding: 20px;
+    border-radius: 2rem;
+}
+
+.header-dashboard h1 {
+    color: var(--dash-font-color);
+    font-weight: 700;
+    font-size: var(--dash-main-font-size);
+    font-family: var(--dash-font-family);
+}
+
+.chart-steps-dashboard{
+    border-radius: 2rem;
+    padding: 20px;
+    background-color: white;
+    min-width: 580px;
+    min-height: 250px;
+    height: 32%;
+    width: 46%;
+    margin-top: var(--dash-margin-components);
+    margin-bottom: var(--dash-margin-components);
+}
+.chart-calories-dashboard{
+    position: relative;
+    min-width: 600px;
+    min-height: 210px;
+    height: 26%;
+    margin-top: 1rem;
+    width: 23%;
+}
+.profile-dashboard{
+    flex: 1;
+    background-color: rgb(158, 150, 142);
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+}
