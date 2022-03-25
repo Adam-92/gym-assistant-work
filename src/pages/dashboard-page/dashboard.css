@@ -21,10 +21,11 @@
     padding: 1rem;
 }
 .header-dashboard{
+    display: flex;
     height: 24%;
     margin: var(--dash-margin-headers) 0;
     background-color: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 2rem;
 }
 
@@ -59,4 +60,7 @@
     background-color: rgb(158, 150, 142);
     border-top-right-radius: 2em;
     border-bottom-right-radius: 2em;
+}
+.tile-dashboard{
+    flex: 1;
 }

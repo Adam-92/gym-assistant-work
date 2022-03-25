@@ -1,4 +1,4 @@
-import './loginPanel.css'
+import './LoginPanel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDumbbell, faUser, faKey } from '@fortawesome/free-solid-svg-icons'
 

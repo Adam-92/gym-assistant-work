@@ -1,0 +1,30 @@
+[
+    {
+        "day": "Mon",
+        "steps": 6400
+    },
+    {
+        "day": "Tue",
+        "steps": 5300
+    },
+    {
+        "day": "Wed",
+        "steps": 12400
+    },
+    {
+        "day": "Thu",
+        "steps": 8845
+    },
+    {
+        "day": "Fri",
+        "steps": 9400
+    },
+    {
+        "day": "Sat",
+        "steps": 1200
+    },
+    {
+        "day": "Sun",
+        "steps": 400
+    }
+]

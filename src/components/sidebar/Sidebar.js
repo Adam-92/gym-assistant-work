@@ -1,4 +1,4 @@
-import "./sidebar.css";
+import "./Sidebar.css";
 import logo from "../../img/logo.png";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

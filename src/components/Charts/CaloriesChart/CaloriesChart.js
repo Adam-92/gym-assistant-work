@@ -1,4 +1,4 @@
-import { addDataToConfig } from './utils/utils'
+import { addDataToConfig } from '../../../utils/Utils'
 import { config } from './config/config';
 import Chart from 'chart.js/auto';
 import { useEffect, useRef, useState } from 'react';

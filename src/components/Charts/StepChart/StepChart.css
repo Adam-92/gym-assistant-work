@@ -15,7 +15,7 @@ article.container-step-chart{
     font-size: var(--dash-font-size);
     color: var(--dash-font-color);
 }
-.options-step-chart{
+.switch-step-chart{
     position: relative;
     display: flex;
     background-color: rgb(226, 226, 226);
@@ -24,7 +24,7 @@ article.container-step-chart{
     padding: 2px;
     border-radius: 0.8rem;
 }
-.options-step-chart button {
+.switch-step-chart button {
     flex: 1;
     border: none;
     border-radius: 0.8rem;
@@ -104,5 +104,10 @@ article.container-step-chart{
     height: 15%;
     color: var(--dash-color-secondary);
     opacity: 0.7;
+}
+.error-step-chart{
+    font-size: 0.8rem;
+    text-align: center;
+    color:rgb(235, 96, 140);
 }
 
