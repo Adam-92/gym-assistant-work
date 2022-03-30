@@ -7,6 +7,7 @@
     display: flex;
     margin: 0 auto;
     min-height: 85vh;
+    min-width: 1700px;
     width: 90%;
     border-radius: 2rem;
     outline: 3px solid white;
@@ -17,24 +18,17 @@
 }
 .content-dashboard{
     background: linear-gradient(145deg, rgb(248,247,247) 0%, rgb(241,241,243) 120%);
-    width: 75%;
+    flex: 4;
     padding: 1rem;
 }
 .header-dashboard{
-    display: flex;
-    height: 24%;
+    height: 28%;
     margin: var(--dash-margin-headers) 0;
     background-color: white;
     padding: 10px;
     border-radius: 2rem;
 }
 
-.header-dashboard h1 {
-    color: var(--dash-font-color);
-    font-weight: 700;
-    font-size: var(--dash-main-font-size);
-    font-family: var(--dash-font-family);
-}
 
 .chart-steps-dashboard{
     border-radius: 2rem;
@@ -60,7 +54,4 @@
     background-color: rgb(158, 150, 142);
     border-top-right-radius: 2em;
     border-bottom-right-radius: 2em;
-}
-.tile-dashboard{
-    flex: 1;
 }

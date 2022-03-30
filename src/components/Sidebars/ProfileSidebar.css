@@ -1,0 +1,14 @@
+.container-profile-sidebar{
+    height: 100%;
+    background-color: rgb(255,255,255);
+}
+.img-profile-sidebar{
+    height: 170px;
+    width: 200px;
+    border-radius: 50%;
+}
+.img-profile-sidebar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}

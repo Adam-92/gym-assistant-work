@@ -9,7 +9,7 @@ const StepChart = () => {
     const containerRef = useRef([])
     containerRef.current = []
 
-    const [switchTime, setSwitchTime] = useState(false)
+    const [changePeriod, setChangePeriod] = useState(false)
     const [target, setTarget] = useState(12000)
     const [data, setData] = useState([])
     const [error, setError] = useState(false)
@@ -40,13 +40,13 @@ const StepChart = () => {
             }
         })
 
-    },[data, switchTime, target])
+    },[data, changePeriod, target])
     
     return(
         <article className='container-step-chart'>
             <header className='header-step-chart'>
-                <h2>Steps</h2>
-                <Switch switchTime={switchTime} setSwitchTime={setSwitchTime}/>
+                <h2>Steps: {target} / day</h2>
+                <Switch changePeriod={changePeriod} setChangePeriod={setChangePeriod}/>
             </header> 
               <div className='content-step-chart'>
                 {data.map( ({ day,steps }) => {

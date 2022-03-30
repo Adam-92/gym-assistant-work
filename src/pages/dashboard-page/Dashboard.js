@@ -1,8 +1,9 @@
 import './Dashboard.css'
-import Sidebar from '../../components/Sidebar/Sidebar'
+import Sidebar from '../../components/Sidebars/Sidebar'
 import StepChart from '../../components/Charts/StepChart/StepChart'
 import CaloriesChart from '../../components/Charts/CaloriesChart/CaloriesChart'
-import Tile from '../../components/Tile/Tile'
+import ContainerTiles from '../../components/Tile/ContainerTiles'
+import ProfileSidebar from '../../components/Sidebars/ProfileSidebar'
 const Dashboard = () => {
 
     return(
@@ -13,10 +14,7 @@ const Dashboard = () => {
                 </section>
                 <section className='content-dashboard'>
                     <header className='header-dashboard'>
-                        <h1>Dashboard</h1>
-                         <div className='tile-dashboard'>
-                            <Tile />
-                         </div>
+                        <ContainerTiles />
                     </header>
                     <div className='chart-steps-dashboard'>
                         <StepChart/>
@@ -26,7 +24,7 @@ const Dashboard = () => {
                     </div>
                 </section>
                 <section className='profile-dashboard'>
-
+                    <ProfileSidebar />
                 </section>
             </div>
         </main>
