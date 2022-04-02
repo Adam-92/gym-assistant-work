@@ -6,6 +6,12 @@ import ContainerTiles from '../../components/tile/ContainerTiles'
 import ProfileSidebar from '../../components/Sidebars/ProfileSidebar'
 const Dashboard = () => {
 
+    /* 
+      if the customer has logged in and has visited the dashboard for the
+      first time then show WelcomeBoard
+    */
+
+
     return(
         <main className="center-container-dashboard">
             <div className="container-dashboard">
@@ -24,7 +30,7 @@ const Dashboard = () => {
                     </div>
                 </section>
                 <section className='profile-dashboard'>
-                    <ProfileSidebar />
+                    {/* <ProfileSidebar /> */}
                 </section>
             </div>
         </main>
