@@ -1,0 +1,25 @@
+.position-welcome-board{
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    background-color: rgba(207, 199, 199, 0.8);
+    height: 54%;
+    width: 50%;
+}
+.content-welcome-board{
+    font-family: var(--dash-font-family);
+}
+.content-welcome-board h1{
+    text-align: center;
+    margin-top: 3rem;
+}
+.carousel-welcome-board{
+    height: 200px;
+}
+.center-input-welcome-board{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+

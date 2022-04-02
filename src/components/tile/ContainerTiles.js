@@ -4,26 +4,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoePrints, faBurger, faWeightHanging, faDumbbell} from '@fortawesome/free-solid-svg-icons'
 
 const ContainerTiles = () => {
+
+
     const tiles = [
         {   
             name: 'Today Steps',
             icon: <FontAwesomeIcon icon={faShoePrints} className='fa-rotate-270'/>,
             style: {},
             target: 12000,
-            current: '4890'
+            current: 4500
         },
         {   
             name: 'Calories',
             icon: <FontAwesomeIcon icon={faBurger} />,
             style: {},
             target: 2400,
-            current: '2152'
+            current: 1900
         },
         {   
             name: 'Total Training Time',
             icon: <FontAwesomeIcon icon={faDumbbell} />,
             style: {},
-            target: '4h: 45min',
+            target: 1980,
             current: '1h: 45min'
         },
         {   
@@ -51,8 +53,9 @@ const ContainerTiles = () => {
                     name={tile.name} 
                     target={tile.target}
                     current={tile.current}
-                    style={tile.style}
-                    />
+                    style={tile.style} 
+                    type={tile.type}         
+                />
              )
           })}
         </div>
