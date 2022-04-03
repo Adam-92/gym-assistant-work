@@ -1,16 +1,27 @@
-import './Tile.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faShoePrints} from '@fortawesome/free-solid-svg-icons'
-const Tile = () => {
+const Tile = ( {icon, name, target, current, style} )  => {
+    
+    const {
+        backgroundIcon, 
+        backgroundHeader, 
+        backgroundContainer, 
+        borderColor,
+        opacity} = style
+    
     return(
-        <article className="container-tile">
-            <div className='content-tile'>
-                <div className='icon-tile'>
-                    <FontAwesomeIcon icon={faShoePrints} />
+        <article className="container-tile" style={{backgroundColor: backgroundContainer}}>
+            <div className="header-tile flex-justify-center " style={{backgroundColor: backgroundHeader, borderColor: borderColor}}>
+                <div className="icon-tile flex-justify-center" style={{backgroundColor: backgroundIcon, borderColor: borderColor}}>
+                  { icon }
                 </div>
-                <span>
-                    Steps
-                </span>
+                <div className='name-tile flex-justify-start'>
+                    <span>{ name }</span>
+                </div>
+            </div>
+            <div className="statistics-tile" >
+                <h4 className="total-tile" style={{opacity: opacity}} >Target: </h4>
+                <h4 className="target-tile">{ target }</h4>
+                <h4 className="total-tile" style={{opacity: opacity}}>Total Today: </h4>
+                <h5 className="positive-tile">+ { current }</h5>
             </div>
         </article>
     )

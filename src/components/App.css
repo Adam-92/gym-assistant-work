@@ -6,6 +6,7 @@ Variables
 
 :root {
     --dash-font-family: 'Noto Sans', sans-serif;
+    --dash-secondary-font-family: 'Noto Sans', sans-serif;
     --dash-main-font-size: 25px;
     --dash-font-size: 22px;
     --dash-font-color: rgb(103, 76, 175);
@@ -33,4 +34,14 @@ body,html{
 }
 body{
     background-color: rgb(236 236 236) ;  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.flex-justify-center{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+.flex-justify-start{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
