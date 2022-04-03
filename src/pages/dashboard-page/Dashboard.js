@@ -1,9 +1,8 @@
-import './dashboard.css'
-import Sidebar from '../../components/sidebar/Sidebar'
-import Time from '../../components/time/Time'
-import StepChart from '../../components/charts/step-chart/StepChart'
-import CaloriesChart from '../../components/charts/calories-chart/CaloriesChart'
-import Tile from '../../components/tile/Tile'
+import './Dashboard.css'
+import Sidebar from '../../components/Sidebar/Sidebar'
+import StepChart from '../../components/Charts/StepChart/StepChart'
+import CaloriesChart from '../../components/Charts/CaloriesChart/CaloriesChart'
+import Tile from '../../components/Tile/Tile'
 const Dashboard = () => {
 
     return(
@@ -16,7 +15,7 @@ const Dashboard = () => {
                     <header className='header-dashboard'>
                         <h1>Dashboard</h1>
                          <div className='tile-dashboard'>
-
+                            <Tile />
                          </div>
                     </header>
                     <div className='chart-steps-dashboard'>

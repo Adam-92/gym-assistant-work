@@ -1,7 +1,7 @@
-import '../login/loginPanel.css'
-import './registerPanel.css'
+import '../Login/LoginPanel.css'
+import './RegisterPanel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDumbbell, faUser, faEnvelope, faUnlockKeyhole, faKey } from '@fortawesome/free-solid-svg-icons'
+import { faDumbbell, faUser, faEnvelope,faKey } from '@fortawesome/free-solid-svg-icons'
 
 const RegisterPanel = () => {
     return(
