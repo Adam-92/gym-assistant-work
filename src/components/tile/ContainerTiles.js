@@ -1,5 +1,5 @@
-import './Tile.css'
-import Tile from '../../components/Tile/Tile'
+import './tile.css'
+import Tile from './Tile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoePrints, faBurger, faWeightHanging, faDumbbell} from '@fortawesome/free-solid-svg-icons'
 

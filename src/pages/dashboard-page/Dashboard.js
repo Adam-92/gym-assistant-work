@@ -1,8 +1,8 @@
-import './Dashboard.css'
+import './dashboard.css'
 import Sidebar from '../../components/Sidebars/Sidebar'
 import StepChart from '../../components/Charts/StepChart/StepChart'
 import CaloriesChart from '../../components/Charts/CaloriesChart/CaloriesChart'
-import ContainerTiles from '../../components/Tile/ContainerTiles'
+import ContainerTiles from '../../components/tile/ContainerTiles'
 import ProfileSidebar from '../../components/Sidebars/ProfileSidebar'
 const Dashboard = () => {
 
