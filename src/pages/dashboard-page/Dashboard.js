@@ -1,9 +1,8 @@
-import './Dashboard.css'
+import './dashboard.css'
 import Sidebar from '../../components/Sidebars/Sidebar/Sidebar'
 import StepChart from '../../components/Charts/StepChart/StepChart'
 import CaloriesChart from '../../components/Charts/CaloriesChart/CaloriesChart'
-import ContainerTiles from '../../components/Tile/ContainerTiles'
-
+import ContainerTiles from '../../components/tile/ContainerTiles'
 import WelcomeBoard from '../../components/WelcomeBoard/WelcomeBoard'
 const Dashboard = () => {
 
@@ -11,7 +10,6 @@ const Dashboard = () => {
       if the customer has logged in and has visited the dashboard for the
       first time then show WelcomeBoard
     */
-
 
     return(
         <main className="center-container-dashboard">
@@ -31,7 +29,6 @@ const Dashboard = () => {
                     </div>
                 </section>
                 <section className='profile-dashboard'>
-                    {/* <ProfileSidebar /> */}
                 </section>
             </div>
             <WelcomeBoard/>

@@ -1,61 +1,42 @@
-import './Carousel.css'
-import { useEffect, useState } from 'react'
-import { useRef } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons'
-const Carousel = () => {
-    
-    const items  = [
-        {
-            name: "Heavy",
-            description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, aut.",
-        },
-        {
-            name: "Heavy1",
-            description:"dajsldjalksdjksaljkdlakjsdkjalkld",
-        },
-        {
-            name: "Heavy2",
-            description:"Ldasdakdp[ak[dka[dk]]]",
-        }
-    ]
+import "./Carousel.css"
+import { useRef, useEffect, useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
+import { positionCharacters, goLeft, goRight } from "../../utils/Utils"
+import CarouselItem from "./CarouselItem"
 
-    const [currentIndex, setCurrentIndex] = useState(0)
+const Carousel = ( {characters}) => {
 
-    const goLeft = () => {
-        
-    }
-    const checkCurrentIndex = (currentIndex) =>{
-    
-    }
+  const charactersContainer= useRef(null) 
+  const [currentIndex, setCurrentIndex] = useState(1);
 
-    return(
-        <article className="carousel">
-            <section className='content-carousel flex-justify-center'>
-                <FontAwesomeIcon icon={faArrowLeft} size='5x' />
-                <div className='items-carousel'>
-                    <div className='flex-justify-around'>
-                        <div className='left-item-carousel bg'>
-                            <p>MAREK</p>
-                        </div>  
-                        <div className={`middle-item-carousel bg `}>
-                            <p>ADAM</p>
-                        </div>  
-                        <div className='right-item-carousel bg'>
-                            <p>FILIP</p>
-                        </div>
-                    </div>
-                </div>
-                <FontAwesomeIcon icon={faArrowRight} size='5x' />
-            </section>
-            <section className='description-carousel'>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                    Minima laboriosam distinctio sunt necessitatibus dolore.
-                    Lorem ipsum, dol
-                </p>
-            </section>
-        </article>
-    )
-}
-export default Carousel
+  useEffect(() => {
+        const all = charactersContainer.current.children
+        const runner = all[0]
+        const builder = all[1]
+        const athlete = all[2]
+        positionCharacters(runner, builder,athlete, currentIndex)
+  }, [currentIndex])
+
+  return (
+    <article className="carousel">
+      <FontAwesomeIcon icon={faArrowLeft} size="5x" onClick={()=>goLeft(setCurrentIndex, currentIndex)} />
+        <div className="items-carousel">
+          {characters.length > 0 ? (
+            <div className="flex-justify-around" ref={charactersContainer}>
+              {characters.map( (character,index) => {
+                const name  = character.name
+                const description = character.description
+                const img = character.img
+                return(
+                  <CarouselItem name={name} description={description} img={img} key={index}/>
+                )
+              })}
+            </div>
+          ) : null}
+        </div>
+        <FontAwesomeIcon icon={faArrowRight} size="5x" onClick={()=>goRight(setCurrentIndex, currentIndex)} />
+    </article>
+  );
+};
+export default Carousel;
