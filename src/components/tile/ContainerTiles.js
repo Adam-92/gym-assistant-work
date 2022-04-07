@@ -1,7 +1,10 @@
 import './tile.css'
+<<<<<<< HEAD
 import { useEffect, useState } from 'react'
 import { getTilesData } from '../../services/Activity'
-import Tile from '../../components/tile/Tile'
+=======
+import Tile from './Tile'
+>>>>>>> 48d55838c6f59275a8e28f4f78ecc99a1ced2281
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoePrints, faBurger, faWeightHanging, faDumbbell} from '@fortawesome/free-solid-svg-icons'
 
