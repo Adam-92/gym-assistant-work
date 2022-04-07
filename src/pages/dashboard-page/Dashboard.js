@@ -3,11 +3,8 @@ import Sidebar from '../../components/Sidebars/Sidebar/Sidebar'
 import StepChart from '../../components/Charts/StepChart/StepChart'
 import CaloriesChart from '../../components/Charts/CaloriesChart/CaloriesChart'
 import ContainerTiles from '../../components/tile/ContainerTiles'
-<<<<<<< HEAD
 import WelcomeBoard from '../../components/WelcomeBoard/WelcomeBoard'
-=======
 
->>>>>>> 48d55838c6f59275a8e28f4f78ecc99a1ced2281
 const Dashboard = () => {
     return(
         <main className="center-container-dashboard">
@@ -29,6 +26,7 @@ const Dashboard = () => {
                 <section className='profile-dashboard'>
                 </section>
             </div>
+            <WelcomeBoard />
         </main>
     )
 }
