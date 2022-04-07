@@ -5,8 +5,8 @@ const CarouselItem = ({name, img, description}) => {
     return(
       <div className={`${ addCharacterClass(name) }`} onClick={()=>console.log('MyPICK')}>
         <p>{name}</p>
-        <div className="img-carousel"><img src={img} /></div>
-        <p className="description-carousel">
+        <div className="img-carousel"><img src={img} alt={name} /></div>
+        <p className={`description-carousel ${name === "Bodybuilder" && "show-description-carousel"}`}>
           "{description}"
         </p>
       </div>

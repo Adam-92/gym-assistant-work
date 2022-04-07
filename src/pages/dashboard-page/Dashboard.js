@@ -5,12 +5,6 @@ import CaloriesChart from '../../components/Charts/CaloriesChart/CaloriesChart'
 import ContainerTiles from '../../components/tile/ContainerTiles'
 import WelcomeBoard from '../../components/WelcomeBoard/WelcomeBoard'
 const Dashboard = () => {
-
-    /* 
-      if the customer has logged in and has visited the dashboard for the
-      first time then show WelcomeBoard
-    */
-
     return(
         <main className="center-container-dashboard">
             <div className="container-dashboard">

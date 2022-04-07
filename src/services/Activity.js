@@ -2,6 +2,14 @@ export const getActivityData = async () => {
         const response = await fetch('http://localhost:3000/data/stepsActivity.json')
         return response.json()
 }
+export const getCarouselCharacters = async () => {
+        const response = await fetch('http://localhost:3000/data/charactersCarousel.json')
+        return response.json()
+}
+export const getTilesData = async () => {
+        const response = await fetch('http://localhost:3000/data/tiles.json')
+        return response.json()
+}
 export const setExampleData = () => {
     return [
         {

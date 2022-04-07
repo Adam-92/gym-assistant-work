@@ -11,16 +11,22 @@ const Carousel = ( {characters}) => {
   const [currentIndex, setCurrentIndex] = useState(1);
 
   useEffect(() => {
-        const all = charactersContainer.current.children
-        const runner = all[0]
-        const builder = all[1]
-        const athlete = all[2]
-        positionCharacters(runner, builder,athlete, currentIndex)
+    if(characters.length > 0) {
+      const all = charactersContainer.current.children
+      const runner = all[0]
+      const builder = all[1]
+      const athlete = all[2]
+      positionCharacters(runner, builder, athlete, currentIndex)
+    }
   }, [currentIndex])
-
+ 
   return (
     <article className="carousel">
-      <FontAwesomeIcon icon={faArrowLeft} size="5x" onClick={()=>goLeft(setCurrentIndex, currentIndex)} />
+      <FontAwesomeIcon 
+          icon={faArrowLeft} 
+          size="5x" 
+          onClick={()=>goLeft(setCurrentIndex, currentIndex)} 
+      />
         <div className="items-carousel">
           {characters.length > 0 ? (
             <div className="flex-justify-around" ref={charactersContainer}>
@@ -29,13 +35,21 @@ const Carousel = ( {characters}) => {
                 const description = character.description
                 const img = character.img
                 return(
-                  <CarouselItem name={name} description={description} img={img} key={index}/>
+                  <CarouselItem 
+                    name={name} 
+                    description={description} 
+                    img={img} 
+                    key={index}/>
                 )
               })}
             </div>
           ) : null}
         </div>
-        <FontAwesomeIcon icon={faArrowRight} size="5x" onClick={()=>goRight(setCurrentIndex, currentIndex)} />
+        <FontAwesomeIcon 
+            icon={faArrowRight} 
+            size="5x" 
+            onClick={()=>goRight(setCurrentIndex, currentIndex)} 
+        />
     </article>
   );
 };
