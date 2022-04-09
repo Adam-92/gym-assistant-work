@@ -5,7 +5,8 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { positionCharacters, goLeft, goRight } from "../../utils/Utils"
 import CarouselItem from "./CarouselItem"
 
-const Carousel = ({characters}) => {
+const Carousel = ( {characters, setWelcomeModal} ) => {
+  
   const charactersContainer= useRef(null) 
   const [currentIndex, setCurrentIndex] = useState(1);
 
@@ -38,6 +39,7 @@ const Carousel = ({characters}) => {
                   name={name} 
                   description={description} 
                   img={img} 
+                  setWelcomeModal={setWelcomeModal}
                   key={index}
                 />
               )

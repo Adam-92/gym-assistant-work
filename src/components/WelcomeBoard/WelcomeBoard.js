@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { getCarouselCharacters } from '../../services/Activity'
 import Carousel from '../Carousel/Carousel'
 
-const WelcomeBoard = () => {
+const WelcomeBoard = ( { setWelcomeModal } ) => {
 
     const [characters, setCharacters] = useState([])
 
@@ -19,7 +19,7 @@ const WelcomeBoard = () => {
                     <p>Let us know what shape you are interested in.</p>
                     <p>Dont worry in any time, you can change your targets in the settings tab. </p>
                 </div>
-                <Carousel characters={characters}/>
+                <Carousel characters={characters} setWelcomeModal={setWelcomeModal}/>
             </article>
         )
 

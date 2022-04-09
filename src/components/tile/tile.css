@@ -6,7 +6,7 @@
 }
 .container-tile{
     height: 100%;
-    min-width: 150px;
+    min-width: 200px;
     width: 20%;
     background-color: rgb(82,69,147);
     border-radius: 1.5rem;
@@ -49,21 +49,18 @@
 .total-statistics{
     color: rgba(255, 253, 253);
     opacity: 0.6;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 300;
 }
 .total-statistics h4{
-    margin-left: 1.2rem;
+    margin-left: 1.4rem;
 }
-
 .positive-statistics{
     color: rgb(65, 236, 65);
-    font-size: 1.4rem;
-    line-height: 110%;
+    font-size: 1.2rem;
 }
 .negative-statistics{
     color: rgb(231, 9, 9);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 110%;
 }
