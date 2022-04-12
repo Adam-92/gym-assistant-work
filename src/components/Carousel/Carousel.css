@@ -2,28 +2,18 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding-top: 15%;
-    padding-bottom: 5%; 
-    background-color: rgb(255,255,255);
+    padding-top: 20%;
 }
-
 .fa-arrow-left,
 .fa-arrow-right{
     cursor: pointer;
 }
-.items-carousel{
-    flex-basis: 55%;
-    margin: 0 2rem;
-}
-
 .img-carousel{
     position: relative;
-    height: 150px;
-    width: 220px;
 }
 .img-carousel img{
-    width: 100%;
-    height: 100%;
+    height: 200px;
+    width: 250px;
 }
 .img-carousel::after{   
    content: '';
@@ -38,31 +28,30 @@
    box-shadow: 0px 15px 7px 0px rgba(66, 68, 90, 1);
    opacity: 0.6;
 }
-
 .left-item-carousel,
 .right-item-carousel,
 .middle-item-carousel{
+    height: 306px;
+    width: 250px;
     cursor: pointer;
     text-align: center;
     transition: all ease 0.5s;
 }
 .description-carousel{
+    font-size: 1.15rem;
     margin-top: 30%;
-    color: transparent;
 }
-.show-description-carousel{
-    color: black;
+.left-item-carousel .description-carousel,
+.right-item-carousel .description-carousel{
+    display: none;
 }
-.left-item-carousel{
-    transform: translate(4%, -59%) scale(0.8);
-    pointer-events: none;
-}
+.left-item-carousel,
 .right-item-carousel{
-    transform: translate(-4%, -65%) scale(0.8);
+    transform: translate(0%, -70%) scale(0.7);
     pointer-events: none;
 }
 .middle-item-carousel{
-    transform: translate(0%, -5%) scale(1.25);   
+    transform: translate(0%, -22%) scale(1.1); 
 }
 .left-item-carousel:hover > .img-carousel::after{
     background-color: rgba(230, 161, 34, 0.5);
@@ -71,5 +60,37 @@
     background-color: rgba(230, 161, 34, 0.5);
 }
 .right-item-carousel:hover > .img-carousel::after{
-    background-color: rgba(230, 161, 34, 0.5)
+    background-color: rgba(230, 161, 34, 0.5);
+}
+.move-right-carousel{
+    transform: translate(100%, -70%) scale(0.7);
+    pointer-events: none;
+}
+.move-right-long-carousel{
+    transform: translate(200%, -70%) scale(0.7);
+}
+.move-left-long-carousel{
+    transform: translate(-200%, -70%) scale(0.7);
+}
+.move-down-carousel{
+    transform: translate(0%, -22%) scale(1.1);
+    pointer-events: auto;
+}
+.move-down-right-carousel{
+    transform: translate(100%, -22%) scale(1.1);
+    pointer-events: auto;
+}
+.move-down-left-carousel{
+    transform: translate(-100%, -22%) scale(1.1);
+    pointer-events: auto;
+}
+.move-left-carousel{
+    transform: translate(-100%, -70%) scale(0.7);
+    pointer-events: none;
+}
+.description-show-carousel{
+    display: block !important;
+}
+.description-hide-carousel{
+    display:none !important;
 }

@@ -1,7 +1,8 @@
 const Bar = ( {addToRefContainer, day, ratio, containerRef} ) => {
+
     return (
         <div className='bar-container-step-chart'
-            ref={el => addToRefContainer(el, containerRef)}
+            ref={el =>addToRefContainer(el, containerRef)}
         >
             <div className="bar-step-chart ">
                 <div className={`${ratio >= 80 && 'position-static'} progress-step-chart`}>

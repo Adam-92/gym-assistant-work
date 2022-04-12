@@ -1,5 +1,5 @@
 import "./dashboard.css";
-import { useState } from 'react'
+import { useGlobalContext } from "../../components/Context/GlobalContext";
 import Sidebar from "../../components/Sidebars/Sidebar/Sidebar";
 import StepChart from "../../components/Charts/StepChart/StepChart";
 import CaloriesChart from "../../components/Charts/CaloriesChart/CaloriesChart";
@@ -8,7 +8,7 @@ import WelcomeBoard from "../../components/WelcomeBoard/WelcomeBoard";
 
 const Dashboard = () => {
 
-    const [welcomeModal, setWelcomeModal] = useState(true)
+    const { openModal } = useGlobalContext()
 
     return (
         <main className="dashboard">
@@ -31,10 +31,10 @@ const Dashboard = () => {
                     <section className="profile-dashboard"></section>
                 </div>
             </article>
-            {welcomeModal ?
-                <>
+            {openModal ?
+                <>  
                     <article className="new-bg-dashboard"></article>
-                    <WelcomeBoard setWelcomeModal={setWelcomeModal} />
+                    <WelcomeBoard />
                 </>
                 : null}
         </main>
