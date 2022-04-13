@@ -23,8 +23,8 @@
 }
 .content-dashboard{
     background: linear-gradient(145deg, rgb(248,247,247) 0%, rgb(241,241,243) 120%);
-    flex: 4;
     padding: 1rem;
+    width: 100%;
 }
 .header-dashboard{
     height: 28%;
@@ -33,27 +33,33 @@
     padding: 10px;
     border-radius: 2rem;
 }
+.charts-dashboard{
+    height: 72%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "chart-steps chart-results"
+    "chart-calories chart-results"
+}
 .chart-steps-dashboard{
+    grid-area: chart-steps; 
     border-radius: 2rem;
     padding: 20px;
     background-color: white;
     min-width: 580px;
     min-height: 250px;
-    height: 32%;
-    width: 46%;
     margin-top: var(--dash-margin-components);
     margin-bottom: var(--dash-margin-components);
 }
 .chart-calories-dashboard{
-    position: relative;
-    min-width: 600px;
-    min-height: 210px;
-    height: 26%;
-    margin-top: 1rem;
-    width: 23%;
+    grid-area: chart-calories; 
+}
+.chart-results-dashboard{
+    grid-area: chart-results;
 }
 .profile-dashboard{
-    flex: 1;
+    flex: 1 25%;
     background-color: rgb(158, 150, 142);
     border-top-right-radius: 2em;
     border-bottom-right-radius: 2em;

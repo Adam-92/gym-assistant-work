@@ -6,7 +6,7 @@ const AppProvider = ( { children } ) => {
     
     const [ openModal, setOpenModal ] = useState(true)
     const [ choosenFigure, setChoosenFigure ] = useState(null)
-
+    
     const value = {
         openModal,
         choosenFigure,

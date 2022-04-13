@@ -1,4 +1,4 @@
-.position-welcome-board{
+.position-welcome-modal{
     position: fixed;
     top: 10%;
     left: 50%;
@@ -11,7 +11,7 @@
     z-index: 3;
     background-color: rgb(255,255,255);
 }
-.message-welcome-board{
+.message-welcome-modal{
     text-align: center;
     font-family: var(--dash-font-family);
     padding: 1rem;
@@ -19,12 +19,12 @@
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
 }
-.message-welcome-board h1{   
+.message-welcome-modal h1{   
     color: var(--dash-main-color);
     margin: 0.5rem 0;
     font-size: 2rem;
 }
-.message-welcome-board p{
+.message-welcome-modal p{
     color: rgb(10, 8, 9);
     font-weight: var(--dash-font-weight);
 }

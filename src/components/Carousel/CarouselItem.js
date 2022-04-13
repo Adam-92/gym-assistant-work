@@ -1,5 +1,5 @@
 import "./Carousel.css"
-import { useGlobalContext } from "../Context/GlobalContext"
+import { useGlobalContext } from "../../contexts/GlobalContext"
 import { addToRefContainer, containerClass } from "../../utils/Utils"
 
 const CarouselItem = ({ name, img, description, containerRef }) => {

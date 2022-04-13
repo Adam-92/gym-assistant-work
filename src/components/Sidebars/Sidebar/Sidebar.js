@@ -37,7 +37,7 @@ const Sidebar = () => {
             icon: faRightFromBracket
       }
     ])
-    /* Changing radius for the tabs */
+  
     const changeCSSRadius = (e) => {
         const tabId = parseInt(e.target.id);
         setTabs(tabs => tabs.filter(
