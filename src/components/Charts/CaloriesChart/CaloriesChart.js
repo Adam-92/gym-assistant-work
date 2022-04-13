@@ -26,6 +26,7 @@ const CaloriesChart = () => {
              id="myChart"
              aria-label="Hello ARIA World" 
              role="img"
+             style={{height: '100%', width: '100%'}}
              >
             Chart not supported by your browser.
         </canvas>

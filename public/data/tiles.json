@@ -1,0 +1,31 @@
+[
+    {   
+        "name": "Today Steps",
+        "style": {},
+        "target": 12000,
+        "current": 4500
+    },
+    {   
+        "name": "Calories",
+        "style": {},
+        "target": 2400,
+        "current": 1900
+    },
+    {   
+        "name": "Total Training Time",
+        "style": {},
+        "target": 1980,
+        "current": 2500
+    },
+    {   
+        "name": "Weight",
+        "style": {
+            "backgroundIcon": "rgb(254,174,199)",
+            "backgroundHeader": "rgb(253,145, 179)",
+            "backgroundContainer": "rgb(233, 95, 139)",
+            "borderColor": "rgb(239, 231, 234)"
+          },
+        "target": 82,
+        "current": 89
+    }
+]

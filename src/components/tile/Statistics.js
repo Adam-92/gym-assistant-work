@@ -1,20 +1,19 @@
 import {minToHours} from '../../utils/Utils'
 
 const Statistics = ( {target, current, name} ) =>{
+    if(name === 'Total Training Time') {
+        current = minToHours(current)
+        target = minToHours(target)
+    }
     return(
         <div className="stats-statistics">
-            <div className="target-statistics">
-              {name.includes('Time') ?
-                 <h4>Target: { minToHours(target) }</h4>
-              :  <h4>Target: {target}</h4>
-              }
+            <div className="total-statistics">
+                <h3>Target: </h3>
+                <h4>{ target }</h4>
             </div>
-            <div className="target-statistics">
-                <h4>Today:</h4>
-             {name.includes('Time') ? 
-                <h2>{minToHours(current)}</h2>
-              : <h2>{current}</h2> 
-             }
+            <div className="total-statistics">
+                <h3>Today:</h3>
+                <h4 className='positive-statistics'>+{ current }</h4> 
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import logo from "../../img/logo.png";
+import logo from "../../../img/logo.png";
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindows } from '@fortawesome/free-brands-svg-icons'
@@ -37,7 +37,7 @@ const Sidebar = () => {
             icon: faRightFromBracket
       }
     ])
-    /* Changing radius for the tabs */
+  
     const changeCSSRadius = (e) => {
         const tabId = parseInt(e.target.id);
         setTabs(tabs => tabs.filter(

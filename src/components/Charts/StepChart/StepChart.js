@@ -25,7 +25,7 @@ const StepChart = () => {
     },[])
 
     useEffect( () => {
-        /* --- Set the new progress height --- */
+
         containerRef.current.forEach( (bar, index) => {
             const steps = data[index].steps
             const ratio = changeToPercent(steps, target)
