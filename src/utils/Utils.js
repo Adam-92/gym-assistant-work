@@ -93,3 +93,125 @@ export const goLeft = (setState,index) => {
 export const goRight = (setState,index) => {
   return index === 2 ? setState(0) : setState(prev=>prev + 1) 
 }
+
+export const viewHistory = (e, data, setLastTraining) => {
+  const item = e.target 
+  const exerciseName = item.children[1].children[0].innerText;
+  const partName = item.parentElement.previousSibling.innerText;
+
+  const selectedBodyPart = data.find(bodyPart => bodyPart.part === partName)
+  const selectedExercise = selectedBodyPart.exercises.find(exercise => exercise.name === exerciseName)
+  const training = selectedExercise.lastTraining
+
+  setLastTraining({
+    exerciseName: exerciseName,
+    training: training,
+  })
+}
+
+export const getItemCoordinates = (e, setItemCoordinates) => { 
+  const item = e.target
+  const coordinates = item.getBoundingClientRect()
+  setItemCoordinates(coordinates)
+}
+
+export const calculatePopoverCoordinates = (itemCoordinates, popoverCoordinates) => {
+  const newTopCoordinatesPopover = Math.abs(itemCoordinates.top - 68 - (popoverCoordinates.height / 2) + (itemCoordinates.height /2 )) 
+  const newLeftCoordinatesPopover = Math.abs(itemCoordinates.left + (itemCoordinates.width / 3))
+  
+  return{
+    top: newTopCoordinatesPopover,
+    left: newLeftCoordinatesPopover
+  }
+}
+export const exampleDays = () => {
+  return [
+      {
+          day: "Mon",
+          steps: 1000
+      },
+      {
+          day: "Tue",
+          steps: 1000
+      },
+      {
+          day: "Wed",
+          steps: 1000
+      },
+      {
+          day: "Thu",
+          steps: 1000
+      },
+      {
+          day: "Fri",
+          steps: 1000
+      },
+      {
+          day: "Sat",
+          steps: 1000
+      },
+      {
+          day: "Sun",
+          steps: 1000
+      }
+  ]
+}
+
+export const exampleMonths = () =>{
+  return [
+      {
+          day: "Mon",
+          steps: 1000
+      },
+      {
+          day: "Tue",
+          steps: 1000
+      },
+      {
+          day: "Wed",
+          steps: 1000
+      },
+      {
+          day: "Thu",
+          steps: 1000
+      },
+      {
+          day: "Fri",
+          steps: 1000
+      },
+      {
+          day: "Sat",
+          steps: 1000
+      },
+      {
+          day: "Sun",
+          steps: 1000
+      }
+  ]
+}
+export const monthsDate = 
+[
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+
+export const daysDate = 
+[
+  'Sun',
+  'Mon',
+  'Tue',
+  'Wed',
+  'Thu',
+  'Fri',
+  'Sat'
+]

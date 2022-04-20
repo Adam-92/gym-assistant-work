@@ -4,7 +4,7 @@ const AppContext = createContext()
 
 const AppProvider = ( { children } ) => {
     
-    const [ openModal, setOpenModal ] = useState(true)
+    const [ openModal, setOpenModal ] = useState(false)
     const [ choosenFigure, setChoosenFigure ] = useState(null)
     
     const value = {

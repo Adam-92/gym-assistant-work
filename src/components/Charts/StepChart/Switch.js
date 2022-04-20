@@ -1,16 +1,16 @@
-const Switch = ( {changePeriod, setChangePeriod}) => {
+const Switch = ( { changePeriod, setChangePeriod }) => {
   
   return(
     <div className='switch-step-chart'>
       <button 
         className={`${changePeriod && 'active-step-chart'}`}
-        onClick={()=>setChangePeriod(prev => !prev)}
-    >
+        onClick={() => { setChangePeriod(true) }}
+      >
         Daily
       </button>
       <button 
         className={`${!changePeriod && 'active-step-chart'}`}
-        onClick={()=>setChangePeriod(prev => !prev)}
+        onClick={() => { setChangePeriod(false) }}
       >
         Monthly
       </button>

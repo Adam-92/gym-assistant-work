@@ -1,0 +1,60 @@
+.container-next-training{
+  top:0;
+  left:0;
+  height: 100%;
+  padding: 1rem;
+}
+.container-next-training header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255,255,255);
+  background-color: var(--dash-main-color);
+  border-radius: 1.5rem;
+  padding: 1rem;
+  font-size: 2rem;
+}
+.container-next-training section{
+  height: 80%;
+  overflow: auto;
+}
+.part-next-training{
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: rgba(113,99,186,0.1);
+  border-radius: 1.5rem;
+  margin: 1rem 0;
+}
+.part-next-training h3{
+  color: var(--dash-main-color);
+  width: 20%;
+  text-align: center;
+  margin: 0 auto;
+}
+.exercises-next-training{
+  flex: 1;
+  color: var(--dash-main-color);
+}
+.exercise-next-training{
+  display: flex;
+  cursor: pointer;
+}
+.exercise-next-training span{
+  width: 5%;
+  pointer-events: none;
+}
+.exercise-next-training div{
+  flex: 1;
+  margin: 2px 0;
+  pointer-events: none;
+}
+.exercise-next-training div span{
+  white-space: nowrap;
+  margin-left: 5px;
+  pointer-events: none;
+}
+.exercise-next-training:hover{
+  font-weight: bold;
+}

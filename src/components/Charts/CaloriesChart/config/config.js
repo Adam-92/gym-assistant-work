@@ -10,19 +10,6 @@
     ]
     /* --- Animation --- */
     let delayed;
-
-    /* ---- Plugins --- */
-    const plugin = {
-        id: 'custom_canvas_background_color',
-        beforeDraw: (chart) => {
-            const ctx = chart.canvas.getContext('2d');
-            ctx.save();
-            ctx.globalCompositeOperation = 'destination-over';
-            ctx.fillStyle = 'lightGreen';
-            ctx.fillRect(0, 0, chart.width, chart.height);
-            ctx.restore();
-  }
-};
     
     /* --- Data --- */
     const data = {
@@ -67,6 +54,7 @@ export const config = {
                 },
               },  
           responsive: true,
+          maintainAspectRatio: false,
           plugins: {
             legend: {
               position: 'top',
@@ -78,11 +66,9 @@ export const config = {
                   size: 22,
                   weight: 'bold',
                   family: "'Noto Sans', sans-serif",
-
               },
               align: 'start',
               color: 'rgb(103, 76, 175)',
-
             }
           }
         },

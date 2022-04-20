@@ -16,6 +16,7 @@
     border-radius: 2rem;
     outline: 3px solid white;
     z-index: 1;
+    overflow: hidden;
 }
 .sidebar-dashboard{
     width: 10%;
@@ -25,38 +26,49 @@
     background: linear-gradient(145deg, rgb(248,247,247) 0%, rgb(241,241,243) 120%);
     padding: 1rem;
     width: 100%;
+    overflow: auto;
 }
 .header-dashboard{
     height: 28%;
-    margin: var(--dash-margin-headers) 0;
-    background-color: white;
-    padding: 10px;
     border-radius: 2rem;
-}
-.charts-dashboard{
-    height: 72%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-    "chart-steps chart-results"
-    "chart-calories chart-results"
-}
-.chart-steps-dashboard{
-    grid-area: chart-steps; 
-    border-radius: 2rem;
-    padding: 20px;
+    padding: 1rem;
+    margin-bottom: 1rem;
     background-color: white;
-    min-width: 580px;
-    min-height: 250px;
-    margin-top: var(--dash-margin-components);
-    margin-bottom: var(--dash-margin-components);
+}
+.statistics-dashboard{
+    display: flex;
+    flex-wrap: wrap;
+    height: calc(72% - 1rem);
+}
+.charts-old-container-dashboard{
+    width: auto;
+    margin-right: 1rem;
+}
+.charts-new-container-dashboard{
+    max-width: 505px;
+}
+.chart-steps-dashboard{ 
+    height: calc(50% - 1rem);
+    border-radius: 2rem;
+    padding: 1rem;
+    background-color: white;
+    margin-bottom: 1rem;;
+    min-height: 251px;
 }
 .chart-calories-dashboard{
-    grid-area: chart-calories; 
+    position: relative;
+    height: 50%;
+    background-color: rgb(255,255,255);
+    border-radius: 2rem;
+    padding: 1rem;
+    min-height: 240px;
 }
-.chart-results-dashboard{
-    grid-area: chart-results;
+.next-training-dashboard{
+    flex: 1;
+    background-color: rgb(255,255,255);
+    border-radius: 2rem;
+    height: 100%;
+    margin-left: 1rem;
 }
 .profile-dashboard{
     flex: 1 25%;
