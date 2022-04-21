@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import Sidebar from "../../components/Sidebars/Sidebar/Sidebar";
 import StepChart from "../../components/Charts/StepChart/StepChart";

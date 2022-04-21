@@ -63,7 +63,7 @@ const StepChart = () => {
                   setChangePeriod={setChangePeriod}
                 />
             </header> 
-              <div className="content-step-chart">
+              <div className={`content-step-chart ${!changePeriod && "padding-step-chart"}`}>
                 {data.map( ({ day,steps }) => {
                    const ratio  =  changeToPercent(steps, target)
                     return(

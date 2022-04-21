@@ -23,7 +23,7 @@ const ContainerTiles = () => {
 
 
     return(
-        <div className='tiles'>
+        <div className='tile'>
             {tiles.map( (tile,index)=>{
               return(
                 <Tile 
