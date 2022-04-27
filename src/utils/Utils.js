@@ -1,5 +1,4 @@
 export  const changeToPercent = (steps, target) => {
-
   const calculate = Math.round(steps * 100 / target)
   return  calculate > 100 ? 100 : calculate
 }    
@@ -81,9 +80,9 @@ export const carouselMovement = (ref1, ref2, ref3, containerRef, currentIndex) =
 
 export const containerClass = (name) => {
 
-  if(name === 'Bodybuilder') return  "middle-item-carousel"
-  if(name === 'Runner') return  "left-item-carousel" 
-  if(name === "Athlete") return  "right-item-carousel"
+  if(name === 'bodybuilder') return  "middle-item-carousel"
+  if(name === 'runner') return  "left-item-carousel" 
+  if(name === "athlete") return  "right-item-carousel"
 }
 
 export const goLeft = (setState,index) => {
@@ -124,6 +123,13 @@ export const calculatePopoverCoordinates = (itemCoordinates, popoverCoordinates)
     left: newLeftCoordinatesPopover
   }
 }
+
+export const calculateProgress = (current, target) => {
+  const percent = changeToPercent(current, target) 
+  const angle = ( (180 * percent) /100 ) + 135 
+  return angle
+}
+
 export const exampleDays = () => {
   return [
       {

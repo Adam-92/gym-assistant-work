@@ -1,81 +1,96 @@
-.dashboard{
-    position: relative;
-    height: 100vh;
+.dashboard {
+  position: relative;
+  height: 100vh;
 }
-.center-container-dashboard{
-    position: relative;
-    top:50%;
-    transform: translateY(-50%);
-    z-index: 2;
+
+.center-container-dashboard {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
 }
-.container-dashboard{
-    display: flex;
-    margin: 0 auto;
-    height: 85vh;
-    width: 90%;
-    border-radius: 2rem;
-    outline: 3px solid white;
-    z-index: 1;
-    overflow: hidden;
+
+.container-dashboard {
+  display: flex;
+  margin: 0 auto;
+  height: 85vh;
+  width: 90%;
+  border-radius: 2rem;
+  outline: 3px solid white;
+  z-index: 1;
+  overflow: hidden;
 }
-.sidebar-dashboard{
-    width: 10%;
-    min-width: 180px;
+
+.sidebar-dashboard {
+  width: 10%;
+  min-width: 180px;
 }
-.content-dashboard{
-    background: linear-gradient(145deg, rgb(248,247,247) 0%, rgb(241,241,243) 120%);
-    padding: 1rem;
-    width: 100%;
-    overflow: auto;
+
+.content-dashboard {
+  background: linear-gradient(
+    145deg,
+    rgb(248, 247, 247) 0%,
+    rgb(241, 241, 243) 120%
+  );
+  padding: 1rem;
+  width: 100%;
+  overflow: auto;
 }
-.header-dashboard{
-    min-height: 28%;
-    border-radius: 2rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    background-color: white;
+
+.header-dashboard {
+  display: flex;
+  padding: 1rem 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  flex-wrap: wrap;
 }
-.statistics-dashboard{
-    display: flex;
-    flex-wrap: wrap;
+
+.statistics-dashboard {
+  display: flex;
+  flex-wrap: wrap;
 }
-.chart-steps-dashboard{ 
-    height: calc(50% - 1rem);
-    border-radius: 2rem;
-    padding: 1rem;
-    background-color: white;
-    margin-bottom: 1rem;;
-    min-height: 251px;
+
+.chart-steps-dashboard {
+  height: calc(50% - 1rem);
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: white;
+  margin-bottom: 1rem;
+  min-height: 251px;
+  max-width: 514px;
 }
-.charts-container-dashboard{
-   max-width: 514px; 
+
+.chart-calories-dashboard {
+  position: relative;
+  height: 50%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2rem;
+  padding: 1rem;
+  min-height: 240px;
 }
-.chart-calories-dashboard{
-    position: relative;
-    height: 50%;
-    background-color: rgb(255,255,255);
-    border-radius: 2rem;
-    padding: 1rem;
-    min-height: 240px;
+
+.next-training-dashboard {
+  flex: 1;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2rem;
+  margin-left: 1rem;
+  min-width: 570px;
 }
-.next-training-dashboard{
-    flex: 1;
-    background-color: rgb(255,255,255);
-    border-radius: 2rem;
-    margin-left: 1rem;
+
+.profile-dashboard {
+  flex: 1 26%;
+  background-color: rgb(158, 150, 142);
+  border-top-right-radius: 2em;
+  border-bottom-right-radius: 2em;
 }
-.profile-dashboard{
-    flex: 1 26%;
-    background-color: rgb(158, 150, 142);
-    border-top-right-radius: 2em;
-    border-bottom-right-radius: 2em;
-}
-.new-bg-dashboard{
-    position: fixed;
-    top:0;
-    left:0;
-    background-color: rgba(0, 0, 0, 0.85);
-    height: 100%;
-    width: 100%;
-    z-index: 2;
+
+.new-bg-dashboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  height: 100%;
+  width: 100%;
+  z-index: 2;
 }

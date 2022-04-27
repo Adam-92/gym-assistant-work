@@ -5,6 +5,8 @@ import CaloriesChart from "../../components/Charts/CaloriesChart/CaloriesChart";
 import ContainerTiles from "../../components/tile/ContainerTiles";
 import WelcomeModal from "../../components/Modals/WelcomeModal/WelcomeModal";
 import NextTraining from "../../components/NextTraining/NextTraining";
+import ContainerGuages from "../../components/Guage/ContainerGuages";
+import ProfileSidebar from "../../components/Sidebars/ProfileSidebar/ProfileSidebar"
 import "./dashboard.css";
 
 const Dashboard = () => {
@@ -19,7 +21,8 @@ const Dashboard = () => {
           </section>
           <section className="content-dashboard">
             <header className="header-dashboard">
-              <ContainerTiles />
+             <ContainerGuages />
+             <ContainerTiles />
             </header>
             <div className="statistics-dashboard">
               <div className="charts-container-dashboard">
@@ -27,7 +30,7 @@ const Dashboard = () => {
                   <StepChart />
                 </div>
                 <div className="chart-calories-dashboard">
-                 { <CaloriesChart />}
+                  <CaloriesChart />
                 </div>
               </div>
               <div className="next-training-dashboard">
@@ -35,7 +38,9 @@ const Dashboard = () => {
               </div>
             </div>
           </section>
-          <section className="profile-dashboard"></section>
+          <section className="profile-dashboard">
+            <ProfileSidebar />
+          </section>
         </div>
       </article>
       {openModal ? (
@@ -43,8 +48,7 @@ const Dashboard = () => {
           <article className="new-bg-dashboard"></article>
           <WelcomeModal />
         </>
-        ) 
-      : null}
+      ) : null}
     </main>
   );
 };

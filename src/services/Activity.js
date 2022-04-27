@@ -18,3 +18,7 @@ export const getNextTraining = async () => {
         const response = await fetch('http://localhost:3000/data/nextTraining.json')
         return response.json()
 }
+export const getGauges = async () => {
+        const response = await fetch('http://localhost:3000/data/guages.json')
+        return response.json()
+}

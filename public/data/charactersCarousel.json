@@ -1,17 +1,17 @@
 [
     {
-        "name": "Runner",
+        "name": "runner",
         "description":"Speed and Time that is what I like",
         "img": "assets/runner.png"
     },
     {
-        "name": "Bodybuilder",
+        "name": "bodybuilder",
         "description":"Never too little muscle",
-        "img": "assets/heavy.png"
+        "img": "assets/bodybuilder.png"
     },
     {
-        "name": "Athlete",
+        "name": "athlete",
         "description":"Cought and Cry, but never die",
-        "img": "assets/crossfit.png"
+        "img": "assets/athlete.png"
     }
 ]

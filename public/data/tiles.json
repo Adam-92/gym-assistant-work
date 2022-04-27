@@ -1,17 +1,5 @@
 [
     {   
-        "name": "Today Steps",
-        "style": {},
-        "target": 12000,
-        "current": 4500
-    },
-    {   
-        "name": "Calories",
-        "style": {},
-        "target": 2400,
-        "current": 1900
-    },
-    {   
         "name": "Training Time",
         "style": {},
         "target": 1980,
