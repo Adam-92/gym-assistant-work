@@ -25,7 +25,7 @@
 }
 .target-gauge{
     margin-top: 1rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 .icon-target-gauge{
     position: absolute;
@@ -36,8 +36,8 @@
     font-size: 1.3rem;
 }
 .current-gauge{
-    margin-top: 0.4rem;
-    font-size: 1.6rem;
+    margin-top: 2px;
+    font-size: 1.2rem;
 }
 .icon-current-gauge{
     position: absolute;

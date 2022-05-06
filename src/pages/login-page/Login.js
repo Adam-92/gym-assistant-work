@@ -1,9 +1,9 @@
-import './login.css'
-import LoginPanel from '../../components/login/LoginPanel'
+import LoginPanel from '../../components/Forms/Login/LoginPanel'
+import './Login.css'
 
 const Login = () => {
     return(
-      <main className="main-container">
+      <main className="container-login">
         <LoginPanel />
       </main> 
     )

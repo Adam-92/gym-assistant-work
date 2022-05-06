@@ -1,37 +1,79 @@
-import './LoginPanel.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDumbbell, faUser, faKey } from '@fortawesome/free-solid-svg-icons'
+import { useState } from "react";
+import { handleChange } from "../../../services/Auth";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDumbbell, faUser, faKey } from "@fortawesome/free-solid-svg-icons";
+import { handleSubmit, signInUser } from "../../../services/Auth";
+import "./LoginPanel.css";
 
 const LoginPanel = () => {
-    return(
-      <article className='center-Login'>
-        <div className='container-Login'>
-          <section className='center-icon-Login'>
-                <FontAwesomeIcon icon={faDumbbell} color='white' size='8x'/>
-          </section>
-          <section className='center-form-Login'>
-            <form>
-              <div className='position-Login'>
-                <FontAwesomeIcon icon={faUser} color='white' className='positon-absolute-Login'/>
-                <input type="text" name="login" className='input-Login' placeholder='Username'></input>
-              </div>
-              <div className='position-Login'>
-                <FontAwesomeIcon icon={faKey} color='white'  className='positon-absolute-Login'/>
-                <input type="text" name="password" className='input-Login' placeholder='Password'></input>
-              </div>
-              <div className='checkbox-Login'>
-                <label className='remember-Login'><input type="checkbox"></input>Remember Me</label>
-              </div>
-              <button type="submit" className='submit-Login'>Log In</button>
-            </form>
-          </section>
-          <div className='container-links-Login'>
-            <p className='link-Login'> Create new account </p>
-            <p className='link-Login'> Forgot your password ?</p>
-          </div>
-        </div>
-      </article>
-    )
-}
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [error, setError] = useState({
+    status: false,
+    msg: "",
+  });
+  
+  return (
+    <article className="center-login-panel">
+      <div className="container-login-panel">
+        <section className="icon-login-panel">
+          <FontAwesomeIcon icon={faDumbbell} color="white" size="8x" />
+        </section>
+        <section className="form-login-panel">
+          <form onSubmit={(e) => handleSubmit(e, values, signInUser, setError)}>
+            <div className="relative-login-panel">
+              <FontAwesomeIcon
+                icon={faUser}
+                color="white"
+                className="absolute-login-panel"
+              />
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                onChange={(e) => handleChange(e, values, setValues)}
+              ></input>
+            </div>
+            <div className="relative-login-panel">
+              <FontAwesomeIcon
+                icon={faKey}
+                color="white"
+                className="absolute-login-panel"
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={(e) => handleChange(e, values, setValues)}
+              ></input>
+            </div>
+            <div className="checkbox-login-panel">
+              <label className="remember-login-panel">
+                <input type="checkbox"></input>
+                Remember Me
+              </label>
+            </div>
+            <button type="submit" className="submit-login-panel">
+              Log In
+            </button>
+          </form>
+        </section>
+        {error.status && <h4 className="error-login-panel">{error.msg}</h4>}
+        <section className="links-login-panel">
+          <Link to="/register" className="link-login-panel">
+            Create new account
+          </Link>
+          <Link to="" className="link-login-panel">
+            Forgot your password ?
+          </Link>
+        </section>
+      </div>
+    </article>
+  );
+};
 
 export default LoginPanel;

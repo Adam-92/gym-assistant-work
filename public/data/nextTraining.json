@@ -2,8 +2,8 @@
   {
     "part": "Chest",
     "exercises": [
-      { 
-        "id": 1, 
+      {
+        "id": 1,
         "name": "Flat Bench Press",
         "reps": 5,
         "sets": 5,
@@ -14,19 +14,19 @@
         "lastTraining": {
           "date": "18.05.22",
           "sets": [
-            { 
+            {
               "reps": 10,
               "weight": 101
             },
             {
               "reps": 8,
               "weight": 105
-            }  
+            }
           ]
         }
       },
       {
-        "id": 2, 
+        "id": 2,
         "name": "Declined Press",
         "reps": 5,
         "sets": 5,
@@ -40,12 +40,12 @@
             {
               "reps": 5,
               "weight": 110
-            } 
+            }
           ]
         }
       },
       {
-        "id": 3, 
+        "id": 3,
         "name": "Chest Dipps",
         "reps": 10,
         "sets": 3,
@@ -77,7 +77,7 @@
     "part": "Legs",
     "exercises": [
       {
-        "id": 1, 
+        "id": 1,
         "name": "Squats",
         "reps": 5,
         "sets": 3,
@@ -88,7 +88,7 @@
         "lastTraining": null
       },
       {
-        "id": 2, 
+        "id": 2,
         "name": "Romanian Deadlifts",
         "reps": 8,
         "sets": 3,
@@ -99,7 +99,7 @@
         "lastTraining": null
       },
       {
-        "id": 3, 
+        "id": 3,
         "name": "Front Squats",
         "reps": 10,
         "sets": 4,
@@ -121,12 +121,12 @@
             {
               "reps": 6,
               "weight": 110
-            }  
+            }
           ]
         }
       },
       {
-        "id": 4, 
+        "id": 4,
         "name": "Leg Curls",
         "reps": 10,
         "sets": 4,
@@ -148,7 +148,7 @@
             {
               "reps": 5,
               "weight": 22
-            }    
+            }
           ]
         }
       }
@@ -158,7 +158,7 @@
     "part": "Biceps",
     "exercises": [
       {
-        "id": 1, 
+        "id": 1,
         "name": "Incline Dumbell Curl",
         "reps": 10,
         "sets": 4,
@@ -169,7 +169,7 @@
         "lastTraining": null
       },
       {
-        "id": 2, 
+        "id": 2,
         "name": "Dumbell Hammer Curl",
         "reps": 12,
         "sets": 3,
@@ -180,7 +180,7 @@
         "lastTraining": null
       },
       {
-        "id": 3, 
+        "id": 3,
         "name": "Barbell Curl",
         "reps": 8,
         "sets": 4,

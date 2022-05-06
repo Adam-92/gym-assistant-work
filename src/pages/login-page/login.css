@@ -1,9 +1,5 @@
-.main-container{
-    /*    margin: 0 auto ;
-       max-width: 1600px; */
-       background: rgba(0, 0, 0, 0) url(../../img/hero.jpg) no-repeat center / cover;
-       height: 100vh; 
-       box-shadow: 0 0 20px 3px;
-    }
-    
-    
+.container-login {
+   background: rgba(0, 0, 0, 0) url(../../img/hero.jpg) no-repeat center / cover;
+   height: 100vh;
+   box-shadow: 0 0 20px 3px;
+}

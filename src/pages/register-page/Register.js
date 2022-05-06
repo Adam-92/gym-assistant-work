@@ -1,8 +1,9 @@
-import RegisterPanel from '../../components/register/RegisterPanel'
+import RegisterPanel from '../../components/Forms/Register/RegisterPanel'
+import "./Register.css"
 
 const Register = () => {
     return(
-      <main className="main-container">
+      <main className="container-register">
         <RegisterPanel />
       </main> 
     )

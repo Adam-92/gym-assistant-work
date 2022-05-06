@@ -1,11 +1,51 @@
-.center-icon-Register{
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Heebo:wght@500&display=swap');
+
+.center-register-panel {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-register-panel {
+    padding: 10px;
+}
+
+.form-register-panel form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.relative-register-panel {
+    position: relative;
+}
+
+.relative-register-panel input {
+    font-size: 1rem;
+    margin: 10px auto;
+    padding: 1rem 4.5rem 1rem 3.8rem;
+    border-radius: 30px;
+}
+
+.absolute-register-panel {
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    transform: translateY(-50%);
+    color: rgb(204, 199, 199);
+    font-size: 1.5rem;
+}
+
+.icon-register-panel {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 35px auto;
 }
 
-.submit-Register{
+.submit-register-panel {
     margin-top: 13px;
     font-size: 1.7rem;
     font-family: 'Barlow Semi Condensed', sans-serif;
@@ -13,9 +53,37 @@
     color: white;
     border: none;
     border-radius: 30px;
-    background: #bc4e9c;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #f80759, #bc4e9c);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f80759, #bc4e9c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #bc4e9c;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f80759, #bc4e9c);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f80759, #bc4e9c);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 0.7rem 8.5rem;
     cursor: pointer;
+}
+
+.error-register-panel {
+    margin-top: 0.5rem;
+    text-align: center;
+    color: red;
+}
+
+.links-register-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.link-register-panel {
+    margin-top: 4px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.link-register-panel:hover {
+    color: rgb(109, 225, 233);
 }

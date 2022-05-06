@@ -1,20 +1,36 @@
-const Bar = ( {addToRefContainer, day, ratio, containerRef} ) => {
+import { changeToPercent } from "../../../utils/Utils";
+const Bar = ({ day, steps, target }) => {
+  const ratio = changeToPercent(steps, target);
+  let height;
+  let left;
 
-    return (
-        <div className='bar-container-step-chart'
-            ref={el =>addToRefContainer(el, containerRef)}
+  if (ratio >= 100) {
+    height = 100;
+    left = 13;
+  }
+  if (ratio < 100 && ratio > 0) {
+    height = ratio;
+    left = 21;
+  }
+  return (
+    <div className="bar-container-step-chart">
+      <div className="bar-step-chart ">
+        <div
+          className={`${ratio >= 80 && "position-static"} progress-step-chart`}
+          style={{ height: `${height}%` }}
         >
-            <div className="bar-step-chart ">
-                <div className={`${ratio >= 80 && 'position-static'} progress-step-chart`}>
-                    <span className={`${ratio >= 80 && 'position-flat'} percent-step-chart`}>
-                        {ratio}%
-                    </span>
-                </div>
-            </div>
-            <div className='day-month-step-chart'>
-                <span>{day}</span>
-            </div>
+          <span
+            className={`${ratio >= 80 && "position-flat"} percent-step-chart`}
+            style={{ left: `${left}%` }}
+          >
+            {ratio}%
+          </span>
         </div>
-    )
-}
-export default Bar
+      </div>
+      <div className="day-month-step-chart">
+        <span>{day}</span>
+      </div>
+    </div>
+  );
+};
+export default Bar;
