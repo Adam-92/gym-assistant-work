@@ -8,7 +8,7 @@ import Settings from "../pages/settings-page/Settings"
 import NotFound from "../pages/not-found-page/NotFound"
 import "./App.css";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
       <Routes>

@@ -78,7 +78,6 @@ const Sidebar = () => {
                     ${active && "active-sidebar"}
                     ${id === 4 && "margin-sidebar"}
                     `}
-                  id={id}
                 >
                   <FontAwesomeIcon
                     icon={icon}

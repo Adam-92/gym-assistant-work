@@ -4,15 +4,14 @@ import Chart from 'chart.js/auto';
 import { useEffect, useRef, useState } from 'react';
 
 const CaloriesChart = () => {
-    /* --- Chart Ref --- */
+   
     const chartRef = useRef(null)
-    /* --- Data --- */
+    
     const [data, setData] = useState({
         0 : [2000, 2000, 2000, 2000, 2000, 2000, 2000],
         1 : [1500, 3200, 2000, 1200, 3500, 800, 2900]
     })
 
-    /* --- Implement Data --- */
     const configWithData = addDataToConfig(data,config)
 
     useEffect( () => {   

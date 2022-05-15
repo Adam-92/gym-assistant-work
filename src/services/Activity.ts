@@ -1,4 +1,4 @@
-const host = "http://localhost:3000/data"
+const host = "http://localhost:3000/data";
 export const getDailySteps = async () => {
   const response = await fetch(`${host}/dailySteps.json`);
   return response.json();
@@ -23,6 +23,7 @@ export const getGauges = async () => {
   const response = await fetch(`${host}/guages.json`);
   return response.json();
 };
+
 export const exampleDays = () => {
   return [
     {
@@ -59,33 +60,54 @@ export const exampleDays = () => {
 export const exampleMonths = () => {
   return [
     {
-      day: "Mon",
-      steps: 1000,
+      day: "Jun",
+      steps: 6400
     },
     {
-      day: "Tue",
-      steps: 1000,
+      day: "Feb",
+      steps: 5300
     },
     {
-      day: "Wed",
-      steps: 1000,
+      day: "Mar",
+      steps: 12400
     },
     {
-      day: "Thu",
-      steps: 1000,
+      day: "Apr",
+      steps: 8845
     },
     {
-      day: "Fri",
-      steps: 1000,
+      day: "May",
+      steps: 9400
     },
     {
-      day: "Sat",
-      steps: 1000,
+      day: "June",
+      steps: 1200
     },
     {
-      day: "Sun",
-      steps: 1000,
+      day: "July",
+      steps: 9000
     },
+    {
+      day: "Aug",
+      steps: 12400
+    },
+    {
+      day: "Sep",
+      steps: 8845
+    },
+    {
+      day: "Oct",
+      steps: 9400
+    },
+    {
+      day: "Nov",
+      steps: 1200
+    },
+    {
+      day: "Dec",
+      steps: 9000
+    }
   ];
 };
+
 

@@ -158,7 +158,14 @@ export const calculateProgress = (current, target) => {
   return angle;
 };
 
-export const requestData = (getData, example, setData, setError) => {
+export const handleChange = (e, inputValues, setInputValues) => {
+  setInputValues({
+    ...inputValues,
+    [e.target.name]: e.target.value,
+  });
+};
+
+export const requestData = async (getData, example, setData, setError) => {
   getData()
     .then((res) => setData(res))
     .catch((e) => {

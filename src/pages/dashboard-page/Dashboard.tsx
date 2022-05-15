@@ -6,7 +6,6 @@ import ContainerTiles from "../../components/tile/ContainerTiles";
 import WelcomeModal from "../../components/Modals/WelcomeModal/WelcomeModal";
 import NextTraining from "../../components/NextTraining/NextTraining";
 import ContainerGuages from "../../components/Guage/ContainerGuages";
-import ProfileSidebar from "../../components/Sidebars/ProfileSidebar/ProfileSidebar";
 import "./dashboard.css";
 
 const Dashboard = () => {

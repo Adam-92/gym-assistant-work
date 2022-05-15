@@ -1,10 +1,10 @@
 import { useContext, createContext, useState } from "react";
 
-const AppContext = createContext();
+const AppContext = createContext({});
 
-const AppProvider = ({ children }) => {
-  const [openModal, setOpenModal] = useState(false);
-  const [choosenFigure, setChoosenFigure] = useState(null);
+const AppProvider: React.FC = ({ children }) => {
+  const [openModal, setOpenModal] = useState<boolean>(true);
+  const [choosenFigure, setChoosenFigure] = useState<boolean>(false);
 
   const value = {
     openModal,
@@ -13,11 +13,11 @@ const AppProvider = ({ children }) => {
     setChoosenFigure,
   };
 
-  return(
+  return (
     <AppContext.Provider value={value}>
-        {children}
+      {children}
     </AppContext.Provider>
-  );
+  )
 };
 
 const useGlobalContext = () => {
