@@ -1,10 +1,23 @@
 import { useContext, createContext, useState } from "react";
 
-const AppContext = createContext({});
+interface AppContext {
+  openModal: boolean,
+  choosenFigure: string,
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>,
+  setChoosenFigure: React.Dispatch<React.SetStateAction<string>>
+}
 
-const AppProvider: React.FC = ({ children }) => {
+const AppContext = createContext<AppContext>({
+  openModal: true,
+  choosenFigure: "",
+  setOpenModal: () => {},
+  setChoosenFigure: () => {}
+});
+
+
+const AppProvider: React.FC<{}> = ({ children }) => {
   const [openModal, setOpenModal] = useState<boolean>(true);
-  const [choosenFigure, setChoosenFigure] = useState<boolean>(false);
+  const [choosenFigure, setChoosenFigure] = useState<string>("");
 
   const value = {
     openModal,

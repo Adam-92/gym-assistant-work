@@ -1,4 +1,4 @@
-const days = [
+const days: string[] = [
   "Monday",
   "Tuesday",
   "Wednesday",
@@ -8,10 +8,10 @@ const days = [
   "Sunday",
 ];
 /* --- Animation --- */
-let delayed;
+let delayed: boolean;
 
 /* --- Data --- */
-const data = {
+const data: any = {
   labels: days,
   datasets: [
     {
@@ -44,7 +44,7 @@ export const config = {
       onComplete: () => {
         delayed = true;
       },
-      delay: (context) => {
+      delay: (context: any) => {
         let delay = 0;
         if (context.type === "data" && context.mode === "default" && !delayed) {
           delay = context.dataIndex * 300 + context.datasetIndex * 100;

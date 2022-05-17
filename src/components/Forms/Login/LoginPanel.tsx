@@ -1,18 +1,26 @@
 import { useState } from "react";
-import { handleChange } from "../../../services/Auth";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDumbbell, faUser, faKey } from "@fortawesome/free-solid-svg-icons";
-import { handleSubmit, signInUser } from "../../../services/Auth";
 import "./LoginPanel.css";
 
+interface ValuesInterface {
+  email: string,
+  password: string
+}
+
+interface ErrorInterface {
+  status: boolean,
+  msg: string
+}
+
 const LoginPanel = () => {
-  const [values, setValues] = useState({
+  const [values, setValues] = useState<ValuesInterface>({
     email: "",
     password: "",
   });
 
-  const [error, setError] = useState({
+  const [error, setError] = useState<ErrorInterface>({
     status: false,
     msg: "",
   });
@@ -24,7 +32,7 @@ const LoginPanel = () => {
           <FontAwesomeIcon icon={faDumbbell} color="white" size="8x" />
         </section>
         <section className="form-login-panel">
-          <form onSubmit={(e) => handleSubmit(e, values, signInUser, setError)}>
+          <form onSubmit={()=>{}}>
             <div className="relative-login-panel">
               <FontAwesomeIcon
                 icon={faUser}
@@ -35,7 +43,6 @@ const LoginPanel = () => {
                 type="text"
                 name="email"
                 placeholder="Email"
-                onChange={(e) => handleChange(e, values, setValues)}
               ></input>
             </div>
             <div className="relative-login-panel">
@@ -48,7 +55,6 @@ const LoginPanel = () => {
                 type="password"
                 name="password"
                 placeholder="Password"
-                onChange={(e) => handleChange(e, values, setValues)}
               ></input>
             </div>
             <div className="checkbox-login-panel">

@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { handleChange } from "../../../services/Auth";
-import { createUser, handleSubmit } from "../../../services/Auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDumbbell,
@@ -31,9 +29,7 @@ const RegisterPanel = () => {
         </section>
         <section className="form-register-panel">
           <form
-            onSubmit={(e) => {
-              handleSubmit(e, values, createUser, setError);
-            }}
+            onSubmit={() => {}}
           >
             <div className="relative-register-panel">
               <FontAwesomeIcon
@@ -46,7 +42,6 @@ const RegisterPanel = () => {
                 name="username"
                 value={values.username}
                 placeholder="Username"
-                onChange={(e) => handleChange(e, values, setValues)}
               ></input>
             </div>
             <div className="relative-register-panel">
@@ -60,7 +55,6 @@ const RegisterPanel = () => {
                 name="email"
                 value={values.email}
                 placeholder="Email Adress"
-                onChange={(e) => handleChange(e, values, setValues)}
               ></input>
             </div>
             <div className="relative-register-panel">
@@ -74,7 +68,6 @@ const RegisterPanel = () => {
                 name="password"
                 value={values.password}
                 placeholder="Password"
-                onChange={(e) => handleChange(e, values, setValues)}
               ></input>
             </div>
             <div className="relative-register-panel">
@@ -88,7 +81,6 @@ const RegisterPanel = () => {
                 name="confirm_password"
                 value={values.confirm_password}
                 placeholder="Re - Password"
-                onChange={(e) => handleChange(e, values, setValues)}
               ></input>
             </div>
             <button className="submit-register-panel">Register</button>

@@ -3,7 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBullseye, faTurnUp } from "@fortawesome/free-solid-svg-icons";
 import "./Guage.css";
 
-const Guage = ({ target, current, units }) => {
+interface Props {
+  target: number,
+  current: number,
+  units: string
+}
+
+const Guage: React.FC<Props> = ({ target, current, units }) => {
   const angle = calculateProgress(current, target);
 
   return (

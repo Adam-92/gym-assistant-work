@@ -1,5 +1,12 @@
 import { changeToPercent } from "../../../utils/Utils";
-const Bar = ({ day, steps, target }) => {
+
+interface IProps {
+  day: string,
+  steps: number,
+  target: number
+}
+
+const Bar: React.FC<IProps> = ({ day, steps, target }) => {
   const ratio = changeToPercent(steps, target);
   let height;
   let left;

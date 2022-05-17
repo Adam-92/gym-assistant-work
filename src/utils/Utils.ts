@@ -95,7 +95,7 @@ export const carouselMovement = (
   }
 };
 
-export const containerClass = (name) => {
+export const containerClass = (name: string): string => {
   if (name === "bodybuilder") return "middle-item-carousel";
   if (name === "runner") return "left-item-carousel";
   if (name === "athlete") return "right-item-carousel";
@@ -156,13 +156,6 @@ export const calculateProgress = (current, target) => {
   const percent = changeToPercent(current, target);
   const angle = (180 * percent) / 100 + 135;
   return angle;
-};
-
-export const handleChange = (e, inputValues, setInputValues) => {
-  setInputValues({
-    ...inputValues,
-    [e.target.name]: e.target.value,
-  });
 };
 
 export const requestData = async (getData, example, setData, setError) => {

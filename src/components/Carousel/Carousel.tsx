@@ -14,7 +14,7 @@ export interface IProps {
 }
 
 const Carousel: React.FC<IProps> = ({ characters }) => {
-  const [currentIndex, setCurrentIndex] = useState<number>(1);
+  const [currentIndex, setCurrentIndex] = useState(1);
   const containerRef = useRef([]);
 
   containerRef.current = [];

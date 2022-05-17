@@ -1,4 +1,9 @@
-const Switch = ( { changePeriod, setChangePeriod }) => {
+interface IProps {
+  changePeriod: boolean,
+  setChangePeriod: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Switch: React.FC<IProps> = ( { changePeriod, setChangePeriod }) => {
   
   return(
     <div className='switch-step-chart'>

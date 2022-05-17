@@ -4,10 +4,64 @@ import { useEffect, useState } from "react";
 import { getNextTraining } from "../../services/Activity";
 import "./NextTraining.css";
 
+export interface Maximum {
+  repsMax: number,
+  wieghtMax: number
+}
+
+export interface LastTraining {
+  date: string,
+  sets: SetsLastTraining[]
+}
+
+export interface SetsLastTraining {
+  sets: {
+    reps: string,
+    weight: number
+  }
+}
+
+export interface Exercises {
+  exercises: {
+    id: number,
+    name: string,
+    reps: number,
+    sets: number,
+    maximum: Maximum
+    lastTraining: LastTraining | null 
+  }[]
+} 
+
+export interface DataState {
+  bodyPart: {
+    part: string,
+    exercises: Exercises[]
+  }[]
+}
+
+export interface CoordinatesDOM {
+  bottom: number,
+  height: number,
+  left: number,
+  right: number,
+  top: number,
+  width: number,
+  x: number,
+  y: number
+}
+
+export interface LastTraining {
+  exerciseName: string,
+  training: LastTraining
+} 
+
 const NextTraining = () => {
-  const [data, setData] = useState([]);
-  const [lastTraining, setLastTraining] = useState(null);
-  const [coordinatesDOM, setCoordinatesDOM] = useState({});
+  const [data, setData] = useState<DataState["bodyPart"]>([]);
+  const [lastTraining, setLastTraining] = useState({
+    exerciseName: "",
+    training: 
+  });
+  const [coordinatesDOM, setCoordinatesDOM] = useState<CoordinatesDOM | {}>({});
   const [showHistoryPopover, setShowHistoryPopover] = useState(false);
 
   useEffect(() => {
