@@ -17,7 +17,8 @@ interface DataInterface {
   }[];
 }
 
-const StepChart = () => {
+
+const StepChart: React.FC  = () => {
   const [changePeriod, setChangePeriod] = useState(true);
   const [target, setTarget] = useState(12000);
   const [data, setData] = useState<DataInterface["data"]>([

@@ -1,5 +1,5 @@
 import Statistics from "./Statistics"
-const Tile = ( {icon, name, target, current, style})  => {
+const Tile = ( {icon, name, target, current, style}: any)  => {
     
     const {
         backgroundIcon, 

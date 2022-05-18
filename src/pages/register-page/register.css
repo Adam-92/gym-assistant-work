@@ -1,5 +1,5 @@
 .container-register{
-       background: rgba(0, 0, 0, 0) url(../../img/hero.jpg) no-repeat center / cover;
+       background: rgba(0, 0, 0, 0) url(http://localhost:3000/assets/hero.jpg) no-repeat center / cover;
        height: 100vh; 
        box-shadow: 0 0 20px 3px;
     }

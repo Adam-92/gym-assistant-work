@@ -1,6 +1,6 @@
 import {minToHours} from '../../utils/Utils'
 
-const Statistics = ( {target, current, name} ) =>{
+const Statistics = ( {target, current, name}: any ) =>{
     if(name === 'Training Time') {
         current = minToHours(current)
         target = minToHours(target)

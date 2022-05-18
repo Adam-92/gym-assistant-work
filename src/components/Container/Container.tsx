@@ -2,11 +2,11 @@ import React from "react";
 import Sidebar from "../Sidebars/Sidebar/Sidebar"
 import "./Container.css";
 
-interface IProps {
-  children: JSX.Element
+interface ContainerInterface {
+  children: React.ReactNode
 }
 
-const Container: React.FC<IProps> = ({ children }) => {
+const Container:React.FC<ContainerInterface> = ({ children }) => {
   return (
     <main className="container">
       <article className="center-container">

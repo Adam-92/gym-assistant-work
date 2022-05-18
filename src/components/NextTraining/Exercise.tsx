@@ -1,4 +1,11 @@
-const Exercise = ({ id, name, reps, sets, repsMax, weightMax }) => { 
+const Exercise = ({
+  id,
+  name,
+  reps,
+  sets,
+  repsMax,
+  weightMax,
+}: any) => {
   return (
     <div className="exercise-next-training">
       <span>{id}</span>
@@ -9,15 +16,16 @@ const Exercise = ({ id, name, reps, sets, repsMax, weightMax }) => {
         </span>
       </div>
       <div>
-        {(repsMax && weightMax) ? (
+        {repsMax && weightMax ? (
           <span>
             BEST RECORD: {repsMax} x {weightMax}
-          </span> 
-        )        
-        : <span>NOT REGISTERED</span>}
+          </span>
+        ) : (
+          <span>NOT REGISTERED</span>
+        )}
       </div>
     </div>
   );
 };
 
-export default Exercise
+export default Exercise;

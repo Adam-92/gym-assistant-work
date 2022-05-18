@@ -5,7 +5,7 @@ import Tile from './Tile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoePrints, faBurger, faWeightHanging, faDumbbell} from '@fortawesome/free-solid-svg-icons'
 
-const ContainerTiles = () => {
+const ContainerTiles: React.FC = () => {
 
     const [tiles, setTiles] = useState([])
  
@@ -24,7 +24,7 @@ const ContainerTiles = () => {
 
     return(
         <div className='tile'>
-            {tiles.map( (tile,index)=>{
+            {tiles.map( (tile: any, index: number)=>{
               return(
                 <Tile 
                     key={index}

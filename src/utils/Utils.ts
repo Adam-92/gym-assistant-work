@@ -1,30 +1,14 @@
-export const changeToPercent = (steps, target) => {
+export const changeToPercent = (steps: number, target: number): number => {
   const calculate = Math.round((steps * 100) / target);
   return calculate > 100 ? 100 : calculate;
 };
 
-export const changeCSSRadius = (e, setTabs) => {
-  const tabId = parseInt(e.target.id);
-  console.log(e.target);
-  setTabs((tabs) =>
-    tabs.filter((tab) => {
-      if (tab.id === tabId) {
-        tab.active = true;
-      }
-      if (tab.id !== tabId) {
-        tab.active = false;
-      }
-      return tab;
-    })
-  );
-};
-
-export const addToRefContainer = (el, containerRef) => {
+export const addToRefContainer = (el: any, containerRef: any): void => {
   if (el && !containerRef.current.includes(el)) {
     containerRef.current.push(el);
   }
 };
-export const minToHours = (min) => {
+export const minToHours = (min: any): string => {
   const hours = min / 60;
   const rhours = Math.floor(hours);
   const minutes = (hours - rhours) * 60;
@@ -32,9 +16,9 @@ export const minToHours = (min) => {
   return `${rhours}h : ${rminutes}m`;
 };
 
-export const addDataToConfig = (apiData, config) => {
+export const addDataToConfig = (apiData: any, config: any): any => {
   const { data } = config;
-  const newDataset = data.datasets.map((item, index) => {
+  const newDataset = data.datasets.map((item: any, index: number) => {
     item.data = [...apiData[index]];
     return item;
   });
@@ -45,7 +29,11 @@ export const addDataToConfig = (apiData, config) => {
   };
   return { ...config, data: newData };
 };
-export const handleDescription = (container, methodName, className) => {
+export const handleDescription = (
+  container: any,
+  methodName: any,
+  className: string
+): any => {
   if (methodName === "add") {
     return container.children[2].classList.add(className);
   }
@@ -55,12 +43,12 @@ export const handleDescription = (container, methodName, className) => {
 };
 
 export const carouselMovement = (
-  ref1,
-  ref2,
-  ref3,
-  containerRef,
-  currentIndex
-) => {
+  ref1: any,
+  ref2: any,
+  ref3: any,
+  containerRef: any,
+  currentIndex: any
+): any => {
   if (currentIndex === 0) {
     ref1.classList.remove("move-down-right-carousel");
     ref1.classList.add("move-right-long-carousel");
@@ -95,28 +83,35 @@ export const carouselMovement = (
   }
 };
 
-export const containerClass = (name: string): string => {
+export const containerClass = (name: string): any => {
   if (name === "bodybuilder") return "middle-item-carousel";
   if (name === "runner") return "left-item-carousel";
   if (name === "athlete") return "right-item-carousel";
 };
 
-export const goLeft = (setState, index) => {
-  return index === 0 ? setState(2) : setState((prev) => prev - 1);
+export const goLeft = (setState: any, index: number): any => {
+  return index === 0 ? setState(2) : setState((prev: number) => prev - 1);
 };
 
-export const goRight = (setState, index) => {
-  return index === 2 ? setState(0) : setState((prev) => prev + 1);
+export const goRight = (setState: any, index: number): any => {
+  return index === 2 ? setState(0) : setState((prev: number) => prev + 1);
 };
 
-export const viewHistory = (e, data, setLastTraining) => {
-  const item = e.target;
-  const exerciseName = item.children[1].children[0].innerText;
-  const partName = item.parentElement.previousSibling.innerText;
+export const viewHistory = (
+  e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  data: any,
+  setLastTraining: any
+): any => {
+  const item = e.target as HTMLElement;
+  const exerciseName = (item.children[1].children[0] as HTMLElement).innerText;
+  const partName = (item.parentElement!.previousSibling as HTMLElement)
+    .innerText;
 
-  const selectedBodyPart = data.find((bodyPart) => bodyPart.part === partName);
+  const selectedBodyPart = data.find(
+    (bodyPart: any) => bodyPart.part === partName
+  );
   const selectedExercise = selectedBodyPart.exercises.find(
-    (exercise) => exercise.name === exerciseName
+    (exercise: any) => exercise.name === exerciseName
   );
   const training = selectedExercise.lastTraining;
 
@@ -126,15 +121,18 @@ export const viewHistory = (e, data, setLastTraining) => {
   });
 };
 
-export const getItemCoordinates = (e, setItemCoordinates) => {
-  const item = e.target;
+export const getItemCoordinates = (
+  e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  setItemCoordinates: any
+) => {
+  const item = (e.target as HTMLElement);
   const coordinates = item.getBoundingClientRect();
   setItemCoordinates(coordinates);
 };
 
 export const calculatePopoverCoordinates = (
-  itemCoordinates,
-  popoverCoordinates
+  itemCoordinates: any,
+  popoverCoordinates: any
 ) => {
   const newTopCoordinatesPopover = Math.abs(
     itemCoordinates.top -
@@ -152,18 +150,20 @@ export const calculatePopoverCoordinates = (
   };
 };
 
-export const calculateProgress = (current, target) => {
+export const calculateProgress = (current: number, target: number) => {
   const percent = changeToPercent(current, target);
   const angle = (180 * percent) / 100 + 135;
   return angle;
 };
 
-export const requestData = async (getData, example, setData, setError) => {
+
+export const requestData = async (getData: any, example: any, setData: any, setError: any) => {
   getData()
-    .then((res) => setData(res))
-    .catch((e) => {
+    .then((res: any) => setData(res))
+    .catch((e:any) => {
       const data = example();
       setData(data);
       setError(true);
     });
 };
+

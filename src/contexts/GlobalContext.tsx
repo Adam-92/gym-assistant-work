@@ -1,36 +1,23 @@
-import { useContext, createContext, useState } from "react";
+import React, { useContext, createContext } from "react";
 
-interface AppContext {
-  openModal: boolean,
-  choosenFigure: string,
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>,
-  setChoosenFigure: React.Dispatch<React.SetStateAction<string>>
+interface AppContextInterface {
+  openModal: boolean;
+  choosenFigure: string;
+  setOpenModal: any;
+  setChoosenFigure: any;
 }
 
-const AppContext = createContext<AppContext>({
-  openModal: true,
-  choosenFigure: "",
-  setOpenModal: () => {},
-  setChoosenFigure: () => {}
-});
+const AppContext = createContext<any | null>(null);
 
-
-const AppProvider: React.FC<{}> = ({ children }) => {
-  const [openModal, setOpenModal] = useState<boolean>(true);
-  const [choosenFigure, setChoosenFigure] = useState<string>("");
-
-  const value = {
-    openModal,
-    choosenFigure,
-    setOpenModal,
-    setChoosenFigure,
+const AppProvider: React.FC = ({ children }) => {
+  const value: AppContextInterface = {
+    openModal: false,
+    choosenFigure: "",
+    setOpenModal: () => {},
+    setChoosenFigure: () => {},
   };
 
-  return (
-    <AppContext.Provider value={value}>
-      {children}
-    </AppContext.Provider>
-  )
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
 const useGlobalContext = () => {

@@ -4,13 +4,13 @@ import Chart from "chart.js/auto";
 import { useEffect, useRef, useState } from "react";
 
 interface CaloriesInterface {
-    0: number[],
-    1: number[]
+  0: number[];
+  1: number[];
 }
 
 const CaloriesChart: React.FC = () => {
   let chartRef = useRef<null | HTMLCanvasElement>(null);
-  
+
   const [data, setData] = useState<CaloriesInterface>({
     0: [2000, 2000, 2000, 2000, 2000, 2000, 2000],
     1: [1500, 3200, 2000, 1200, 3500, 800, 2900],
@@ -19,12 +19,11 @@ const CaloriesChart: React.FC = () => {
   const configWithData = addDataToConfig(data, config);
 
   useEffect(() => {
-    if(chartRef.current !== null){
-      let ctx = chartRef.current.getContext("2d")
-      if(ctx){
-        new Chart(ctx, configWithData);        
-      }
-    }
+    const ctx =
+      chartRef.current != null
+        ? (chartRef.current as HTMLCanvasElement).getContext("2d")
+        : ((<></>) as any);
+    new Chart(ctx, configWithData);
   }, [data]);
 
   return (

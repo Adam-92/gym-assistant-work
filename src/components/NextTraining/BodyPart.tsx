@@ -1,34 +1,31 @@
-import Exercise from "./Exercise"
-import { viewHistory, getItemCoordinates } from "../../utils/Utils"
-import { DataState as PropsData} from "./NextTraining"
-import { CoordinatesDOM as PropsCoordinates} from "./NextTraining"
+import Exercise from "./Exercise";
+import { viewHistory, getItemCoordinates } from "../../utils/Utils";
 
-interface Props {
-  part: string,
-  exercises: string,
-  data: PropsData,
-  setLastTraining: boolean,
-  setCoordinatesDOM: PropsCoordinates
-  setShowHistoryPopover: boolean 
-}
+const BodyPart = ({
+  part,
+  exercises,
+  data,
+  setLastTraining,
+  setCoordinatesDOM,
+  setShowHistoryPopover,
+}: any) => {
 
-const BodyPart: React.FC<Props> = ({ part, exercises, data, setLastTraining, setCoordinatesDOM, setShowHistoryPopover }) => {
-  return(
+  return (
     <div className="part-next-training">
       <h3>{part}</h3>
-        <div 
-          className="exercises-next-training" 
-          onClick={(e) => {
-            viewHistory(e, data, setLastTraining)
-            getItemCoordinates(e, setCoordinatesDOM)
-            setShowHistoryPopover(true)
-          }}
-        >
-        {exercises.map( (exercise, index) => {
-          const {id, name, reps, sets} = exercise
-          const {repsMax, weightMax} = exercise.maximum
-          return(
-            <Exercise 
+      <div
+        className="exercises-next-training"
+        onClick={(e) => {
+          viewHistory(e, data, setLastTraining);
+          getItemCoordinates(e, setCoordinatesDOM);
+          setShowHistoryPopover(true);
+        }}
+      >
+        {exercises.map((exercise: any, index: number) => {
+          const { id, name, reps, sets } = exercise;
+          const { repsMax, weightMax } = exercise.maximum;
+          return (
+            <Exercise
               id={id}
               name={name}
               reps={reps}
@@ -37,10 +34,10 @@ const BodyPart: React.FC<Props> = ({ part, exercises, data, setLastTraining, set
               weightMax={weightMax}
               key={index}
             />
-            )
-          })}
-        </div>
+          );
+        })}
       </div>
-    )
-}
-export default BodyPart
+    </div>
+  );
+};
+export default BodyPart;

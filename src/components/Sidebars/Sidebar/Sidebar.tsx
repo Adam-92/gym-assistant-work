@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindows } from "@fortawesome/free-brands-svg-icons";
 import {
   faDumbbell,
@@ -8,16 +6,23 @@ import {
   faRightFromBracket,
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
-import logo from "../../../img/logo.png";
-import { changeCSSRadius } from "../../../utils/Utils";
+import Tab from "../../Tab/Tab";
 import "./Sidebar.css";
 
+interface Tabs {
+  id: number;
+  name: string;
+  active: boolean;
+  icon: any;
+  link: string;
+}
+
 const Sidebar = () => {
-  const [tabs, setTabs] = useState([
+  const [tabs, setTabs] = useState<Tabs[]>([
     {
       id: 1,
       name: "Dashboard",
-      active: true,
+      active: false,
       icon: faWindows,
       link: "/dashboard",
     },
@@ -55,40 +60,14 @@ const Sidebar = () => {
     <aside className="container-sidebar">
       <header>
         <div className="img-container-sidebar">
-          <img src={logo} alt="logo" />
+          <img src={"http://localhost:3000/assets/logo.png"} alt="logo" />
         </div>
       </header>
       <nav className="nav-sidebar">
-        <ul
-          onClick={(e) => {
-            changeCSSRadius(e, setTabs);
-          }}
-        >
-          {tabs.map((tab, index) => {
+        <ul>
+          {tabs.map((tab: any , index: number) => {
             const { link, active, id, name, icon } = tab;
-
-            return (
-              <Link 
-                to={link} 
-                className="link-sidebar" 
-                key={index}
-              >
-                <li
-                  className={`
-                    ${active && "active-sidebar"}
-                    ${id === 4 && "margin-sidebar"}
-                    `}
-                >
-                  <FontAwesomeIcon
-                    icon={icon}
-                    color="white"
-                    size="lg"
-                    className={`icon-sidebar ${active && "focus-sidebar"}`}
-                  />
-                  {name}
-                </li>
-              </Link>
-            );
+            return <Tab link={link} />;
           })}
         </ul>
       </nav>

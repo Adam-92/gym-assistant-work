@@ -5,15 +5,18 @@ import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import ContentPopover from "./ContentPopover";
 import "./HistoryPopover.css";
 
-const HistoryPopover = ({ lastTraining, coordinatesDOM }) => {
+const HistoryPopover = ({ lastTraining, coordinatesDOM }: any) => {
   const [position, setPosition] = useState({
     top: 400,
     left: 1160,
   });
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const coordinatesPopover = containerRef.current.getBoundingClientRect();
+    const coordinatesPopover =
+      containerRef.current !== null
+        ? containerRef.current.getBoundingClientRect()
+        : null;
     const positionTopLeft = calculatePopoverCoordinates(
       coordinatesDOM,
       coordinatesPopover

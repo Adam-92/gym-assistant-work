@@ -12,13 +12,13 @@ interface IProps {
 const CarouselItem: React.FC<IProps> = ({ name, img, description, containerRef }) => {
   const { setOpenModal, setChoosenFigure } = useGlobalContext();
   const container = containerClass(name);
-
+  
   return (
     <div
       ref={(el) => addToRefContainer(el, containerRef)}
       className={`${container}`}
       onClick={() => {
-        setOpenModal(false);
+        setOpenModal(true);
         setChoosenFigure(name);
       }}
     >

@@ -1,4 +1,4 @@
-const ContentPopover = ({ lastTraining }) => {
+const ContentPopover = ({ lastTraining }: any) => {
     const { exerciseName, training } = lastTraining
     const { date } = training
 
@@ -6,7 +6,7 @@ const ContentPopover = ({ lastTraining }) => {
       <ul className="header-history-popover">
         {exerciseName}
         <li> Date: {date} </li>
-        {training.sets.map((set, index) => {
+        {training.sets.map((set: any, index: number) => {
           const weight = set.weight
           const reps = set.reps  
           return (
