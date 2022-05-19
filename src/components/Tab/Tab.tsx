@@ -1,20 +1,12 @@
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import type { LinkProps } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SidebarTabs } from '../Sidebars/Sidebar/Sidebar'
 
-interface BrandLinkProps extends Omit<LinkProps, "to"> {
-  id: number,
-  link: string;
-  active: boolean,
-  icon: any,
-  name: string
-}
-
-const Tab = ({name, link, active, id, icon }: BrandLinkProps) => {
+const Tab = ({name, to, active, id, icon }: SidebarTabs) => {
   return (
     <Link 
-      to={link} 
+      to={to} 
       className="link-tab" 
       key={id}
     >

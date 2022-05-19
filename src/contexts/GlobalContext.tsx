@@ -11,7 +11,7 @@ const AppContext = createContext<any | null>(null);
 
 const AppProvider: React.FC = ({ children }) => {
   const value: AppContextInterface = {
-    openModal: false,
+    openModal: true,
     choosenFigure: "",
     setOpenModal: () => {},
     setChoosenFigure: () => {},

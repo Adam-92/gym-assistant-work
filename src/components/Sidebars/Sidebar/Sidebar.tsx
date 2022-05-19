@@ -9,50 +9,50 @@ import {
 import Tab from "../../Tab/Tab";
 import "./Sidebar.css";
 
-interface Tabs {
-  id: number;
-  name: string;
-  active: boolean;
-  icon: any;
-  link: string;
+export interface SidebarTabs {
+  id: number,
+  name: string,
+  active: boolean,
+  icon: any,
+  to: string
 }
 
 const Sidebar = () => {
-  const [tabs, setTabs] = useState<Tabs[]>([
+  const [tabs, setTabs] = useState<SidebarTabs[]>([
     {
       id: 1,
       name: "Dashboard",
       active: false,
       icon: faWindows,
-      link: "/dashboard",
+      to: "/dashboard",
     },
     {
       id: 2,
       name: "Exercises",
       active: false,
       icon: faDumbbell,
-      link: "/exercises",
+      to: "/exercises",
     },
     {
       id: 3,
       name: "Plan",
       active: false,
       icon: faCalendarDays,
-      link: "/plan",
+      to: "/plan",
     },
     {
       id: 4,
       name: "Settings",
       active: false,
       icon: faGear,
-      link: "/settings",
+      to: "/settings",
     },
     {
       id: 5,
       name: "Logout",
       active: false,
       icon: faRightFromBracket,
-      link: "/logout",
+      to: "/logout",
     },
   ]);
 
@@ -66,8 +66,8 @@ const Sidebar = () => {
       <nav className="nav-sidebar">
         <ul>
           {tabs.map((tab: any , index: number) => {
-            const { link, active, id, name, icon } = tab;
-            return <Tab link={link} />;
+            const { to, active, id, name, icon } = tab;
+            return <Tab icon={icon} active={active} id={id} to={to} name={name} />;
           })}
         </ul>
       </nav>

@@ -6,7 +6,13 @@ import "./NextTraining.css";
 
 
 const NextTraining: React.FC = () => {
-  const [data, setData] = useState<any[]>([]);
+  
+  interface Data {
+    name: string,
+    data: number
+  }
+
+  const [data, setData] = useState<Data[]>([]);
   const [lastTraining, setLastTraining] = useState({})
   const [coordinatesDOM, setCoordinatesDOM] = useState({});
   const [showHistoryPopover, setShowHistoryPopover] = useState(false);
@@ -29,7 +35,7 @@ const NextTraining: React.FC = () => {
           return (
             <BodyPart
               part={body!.part}
-              exercises={body!.exercises}
+              exercises={body.exercises}
               setShowHistoryPopover={setShowHistoryPopover}
               setCoordinatesDOM={setCoordinatesDOM}
               setLastTraining={setLastTraining}
