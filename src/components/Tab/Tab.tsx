@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { SidebarTabs } from '../Sidebars/Sidebar/Sidebar'
+import { SidebarTabs } from "../../model/Model";
 
 const Tab = ({name, to, active, id, icon }: SidebarTabs) => {
   return (

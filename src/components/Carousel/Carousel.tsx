@@ -3,17 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { carouselMovement, goLeft, goRight } from "../../utils/Utils";
 import CarouselItem from "./CarouselItem";
+import { CarouselInterface } from "./Carousel.model"
 import "./Carousel.css";
 
-export interface IProps {
-  characters: {
-    name: string,
-    description: string,
-    img: string
-  }[]
-}
-
-const Carousel: React.FC<IProps> = ({ characters }) => {
+const Carousel: React.FC<CarouselInterface> = ({ characters }) => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const containerRef = useRef([]);
 

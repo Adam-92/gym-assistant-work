@@ -1,15 +1,11 @@
 import { addDataToConfig } from "../../../utils/Utils";
 import { config } from "./config/config";
-import Chart, { ChartItem } from "chart.js/auto";
+import Chart from "chart.js/auto";
 import { useEffect, useRef, useState } from "react";
-
-interface CaloriesInterface {
-  0: number[];
-  1: number[];
-}
+import { CaloriesInterface } from "./CaloriesChart.model"
 
 const CaloriesChart: React.FC = () => {
-  let chartRef = useRef<null | HTMLCanvasElement>(null);
+  let chartRef = useRef(null);
 
   const [data, setData] = useState<CaloriesInterface>({
     0: [2000, 2000, 2000, 2000, 2000, 2000, 2000],

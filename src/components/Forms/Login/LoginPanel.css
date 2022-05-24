@@ -101,9 +101,9 @@
 }
 
 .error-login-panel {
-    margin-top: 0.5rem;
+    font-family: var(--dash-font-family);
     text-align: center;
-    color: red;
+    color: rgb(240, 64, 64);
 }
 
 @media (max-width: 576px) {

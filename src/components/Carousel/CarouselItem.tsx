@@ -1,15 +1,9 @@
 import "./Carousel.css";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import { addToRefContainer, containerClass } from "../../utils/Utils";
+import { CarouselItemInterface } from "./Carousel.model";
 
-interface IProps {
-  name: string,
-  img: string,
-  description: string,
-  containerRef: any
-}
-
-const CarouselItem: React.FC<IProps> = ({ name, img, description, containerRef }) => {
+const CarouselItem: React.FC<CarouselItemInterface> = ({ name, img, description, containerRef }) => {
   const { setOpenModal, setChoosenFigure } = useGlobalContext();
   const container = containerClass(name);
   

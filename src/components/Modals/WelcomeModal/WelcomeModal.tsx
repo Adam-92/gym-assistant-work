@@ -1,24 +1,14 @@
-import "./WelcomeModal.css";
 import { useEffect, useState } from "react";
 import { getCarouselCharacters } from "../../../services/Activity";
 import Carousel from "../../Carousel/Carousel";
-
-interface IState {
-  characters: {
-    name: string;
-    description: string;
-    img: string;
-  }[]
-}
+import { WelcomeModalInterface } from "./WelcomeModal.model";
+import "./WelcomeModal.css";
 
 const WelcomeModal = () => {
-  const [characters, setCharacters] = useState<
-    IState["characters"]
-  >([]);
+  const [characters, setCharacters] = useState<WelcomeModalInterface[]>([]);
 
   useEffect(() => {
-    getCarouselCharacters()
-    .then((data) => setCharacters(data));
+    getCarouselCharacters().then((data) => setCharacters(data));
   }, []);
 
   return (

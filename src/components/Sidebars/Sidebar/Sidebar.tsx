@@ -7,15 +7,8 @@ import {
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
 import Tab from "../../Tab/Tab";
+import { SidebarTabs } from "../../../model/Model";
 import "./Sidebar.css";
-
-export interface SidebarTabs {
-  id: number,
-  name: string,
-  active: boolean,
-  icon: any,
-  to: string
-}
 
 const Sidebar = () => {
   const [tabs, setTabs] = useState<SidebarTabs[]>([
@@ -67,7 +60,15 @@ const Sidebar = () => {
         <ul>
           {tabs.map((tab: any , index: number) => {
             const { to, active, id, name, icon } = tab;
-            return <Tab icon={icon} active={active} id={id} to={to} name={name} />;
+            return (
+              <Tab 
+                icon={icon} 
+                active={active} 
+                id={id} to={to} 
+                name={name} 
+                key={index}
+              />
+            )
           })}
         </ul>
       </nav>

@@ -1,18 +1,11 @@
 import { useEffect, useState } from "react";
 import { getGauges } from "../../services/Activity";
 import Guage from "./Guage";
+import { GuageInterface } from "./Guage.model" 
 import "./Guage.css";
 
-interface DataState {
-  data: {
-    units: string;
-    target: number;
-    current: number;
-  }[];
-}
-
 const ContainerGuages = () => {
-  const [data, setData] = useState<DataState["data"]>([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     getGauges()
@@ -21,7 +14,7 @@ const ContainerGuages = () => {
 
   return (
     <article className="container-guages">
-      {data.map((guage, index) => {
+      {data.map((guage: GuageInterface, index: number) => {
         const { target, current, units } = guage;
         return (
           <Guage 

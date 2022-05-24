@@ -1,10 +1,8 @@
 import React from "react";
 import Sidebar from "../Sidebars/Sidebar/Sidebar"
+import { ContainerInterface } from "./Container.model";
 import "./Container.css";
 
-interface ContainerInterface {
-  children: React.ReactNode
-}
 
 const Container:React.FC<ContainerInterface> = ({ children }) => {
   return (
