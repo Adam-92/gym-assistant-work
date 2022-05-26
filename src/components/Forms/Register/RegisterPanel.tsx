@@ -10,10 +10,12 @@ import {
 import { signUp } from "../../../services/Auth";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { RegisterInputs } from "./RegisterPanel.model";
+import { registerValidation } from "../Validation/ValidationRules";
+import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./RegisterPanel.css";
 
 const RegisterPanel = () => {
-  const [firebaseError, setFirebaseError] = useState("");
+  const { firebaseError, setFirebaseError} = useGlobalContext()
   const navigate = useNavigate();
 
   const {
@@ -23,21 +25,8 @@ const RegisterPanel = () => {
     formState: { errors },
   } = useForm<RegisterInputs>({
     mode: "onSubmit",
-    reValidateMode: "onChange", //onSubmit
+    reValidateMode: "onChange"
   });
-
-  const validation = {
-    required: "Please fill out this field",
-    maxLength: {
-      value: 26,
-      message: "This field must have 8-26 characters",
-    },
-    minLength: {
-      value: 8,
-      message: "This field must have 8-26 characters",
-    },
-    setValueAs: (value: string) => value.split(" ").join(""),
-  };
 
   const onSubmit: SubmitHandler<RegisterInputs> = (data) => {
     signUp(data.password, data.email, setFirebaseError, navigate);
@@ -59,7 +48,7 @@ const RegisterPanel = () => {
               />
               <input
                 type="text"
-                {...register("username", validation)}
+                {...register("username", registerValidation)}
                 placeholder="Username"
               ></input>
             </div>
@@ -73,8 +62,10 @@ const RegisterPanel = () => {
               <input
                 type="email"
                 placeholder="Email Adress"
-                required
-                {...register("email")}
+                {...register("email",{
+                  required: "Please fill out this field",
+                  setValueAs: (value: string) => value.split(" ").join(""),
+                })}
               ></input>
             </div>
             <h5 className="error-register-panel">{errors.email?.message}</h5>
@@ -86,7 +77,7 @@ const RegisterPanel = () => {
               />
               <input
                 type="password"
-                {...register("password", validation)}
+                {...register("password", registerValidation)}
                 placeholder="Password"
               ></input>
             </div>

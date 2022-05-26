@@ -15,37 +15,32 @@ const Sidebar = () => {
     {
       id: 1,
       name: "Dashboard",
-      active: false,
       icon: faWindows,
-      to: "/dashboard",
+      to: "/dashboard"
     },
     {
       id: 2,
       name: "Exercises",
-      active: false,
       icon: faDumbbell,
-      to: "/exercises",
+      to: "/exercises"
     },
     {
       id: 3,
       name: "Plan",
-      active: false,
       icon: faCalendarDays,
-      to: "/plan",
+      to: "/plan"
     },
     {
       id: 4,
       name: "Settings",
-      active: false,
       icon: faGear,
-      to: "/settings",
+      to: "/settings"
     },
     {
       id: 5,
       name: "Logout",
-      active: false,
       icon: faRightFromBracket,
-      to: "/logout",
+      to: "/logout"
     },
   ]);
 
@@ -58,12 +53,11 @@ const Sidebar = () => {
       </header>
       <nav className="nav-sidebar">
         <ul>
-          {tabs.map((tab: any , index: number) => {
-            const { to, active, id, name, icon } = tab;
+          {tabs.map((tab: SidebarTabs , index: number) => {
+            const { to, id, name, icon } = tab;
             return (
               <Tab 
                 icon={icon} 
-                active={active} 
                 id={id} to={to} 
                 name={name} 
                 key={index}

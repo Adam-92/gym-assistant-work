@@ -19,7 +19,6 @@ const App: React.FC = () => {
         <Route path="/exercises" element={<Exercises />} />
         <Route path="/plan" element={<Plan />} />
         <Route path="/settings" element={<Settings />} />
-        <Route path="/logout" element={<Navigate to="/login"/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

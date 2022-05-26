@@ -1,29 +1,38 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SidebarTabs } from "../../model/Model";
+import { useResolvedPath, useMatch, useNavigate } from "react-router";
+import { signOutUser } from "../../services/Auth";
+import { useGlobalContext } from "../../contexts/GlobalContext";
+import "./Tab.css";
 
-const Tab = ({name, to, active, id, icon }: SidebarTabs) => {
+const Tab = ({ name, to, id, icon }: SidebarTabs) => {
+  const { setFirebaseError } = useGlobalContext();
+  let resolved = useResolvedPath(to);
+  let match = useMatch({ path: resolved.pathname, end: true });
+  const navigate = useNavigate();
+
   return (
-    <Link 
-      to={to} 
-      className="link-tab" 
-      key={id}
-    >
-      <li
-        className={`
-        ${active && "active-tab"}
-        ${id === 4 && "margin-tab"}
-        `}
+    <li className={`${match && "active-tab focus-tab"}`}>
+      <Link
+        to={to}
+        className="link-tab"
+        key={id}
+        onClick={() => {
+          return name === "Logout"
+            ? signOutUser(setFirebaseError, navigate)
+            : null;
+        }}
       >
         <FontAwesomeIcon
           icon={icon}
           color="white"
           size="lg"
-          className={`icon-tab ${active && "focus-tab"}`}
+          className={`icon-tab ${match && "focus-tab"}`}
         />
-        {name}
-      </li>
-    </Link>
+        <h4 className={`margin-tab ${match && "focus-tab"}`}>{name}</h4>
+      </Link>
+    </li>
   );
 };
 

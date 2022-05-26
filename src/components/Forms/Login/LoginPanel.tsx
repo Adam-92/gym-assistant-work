@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDumbbell, faUser, faKey } from "@fortawesome/free-solid-svg-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormLogin } from "./LoginPanel.model";
-import "./LoginPanel.css";
 import { signIn } from "../../../services/Auth";
+import { loginValidation } from "../Validation/ValidationRules";
+import { useGlobalContext } from "../../../contexts/GlobalContext";
+import "./LoginPanel.css";
 
 const LoginPanel = () => {
-  const [firebaseError, setFirebaseError] = useState("");
+  const { firebaseError, setFirebaseError} = useGlobalContext()
   const navigate = useNavigate();
   
   const {
@@ -17,18 +19,13 @@ const LoginPanel = () => {
     formState: { errors },
   } = useForm<FormLogin>({
     mode: "onSubmit",
-    reValidateMode: "onChange", //onSubmit
+    reValidateMode: "onChange"
   });
-
-  const validation = {
-    required: "Please fill out this field",
-    setValueAs: (value: string) => value.split(" ").join(""),
-  };
 
   const onSubmit: SubmitHandler<FormLogin> = (data) => {
     signIn(data.password, data.email, setFirebaseError, navigate);
   };
-
+  console.log(firebaseError)
   return (
     <article className="center-login-panel">
       <div className="container-login-panel">
@@ -45,7 +42,7 @@ const LoginPanel = () => {
               />
               <input
                 type="email"
-                {...register("email", validation)}
+                {...register("email", loginValidation)}
                 placeholder="Email"
               ></input>
             </div>
@@ -58,7 +55,7 @@ const LoginPanel = () => {
               />
               <input
                 type="password"
-                {...register("password", validation)}
+                {...register("password", loginValidation)}
                 placeholder="Password"
               ></input>
             </div>
