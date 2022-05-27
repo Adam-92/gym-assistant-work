@@ -25,7 +25,7 @@ const LoginPanel = () => {
   const onSubmit: SubmitHandler<FormLogin> = (data) => {
     signIn(data.password, data.email, setFirebaseError, navigate);
   };
-  console.log(firebaseError)
+
   return (
     <article className="center-login-panel">
       <div className="container-login-panel">

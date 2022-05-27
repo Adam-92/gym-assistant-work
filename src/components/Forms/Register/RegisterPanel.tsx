@@ -15,7 +15,7 @@ import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./RegisterPanel.css";
 
 const RegisterPanel = () => {
-  const { firebaseError, setFirebaseError} = useGlobalContext()
+  const { firebaseError, setFirebaseError } = useGlobalContext();
   const navigate = useNavigate();
 
   const {
@@ -25,11 +25,17 @@ const RegisterPanel = () => {
     formState: { errors },
   } = useForm<RegisterInputs>({
     mode: "onSubmit",
-    reValidateMode: "onChange"
+    reValidateMode: "onChange",
   });
 
   const onSubmit: SubmitHandler<RegisterInputs> = (data) => {
-    signUp(data.password, data.email, setFirebaseError, navigate);
+    signUp(
+      data.username,
+      data.password,
+      data.email,
+      setFirebaseError,
+      navigate
+    );
   };
 
   return (
@@ -62,7 +68,7 @@ const RegisterPanel = () => {
               <input
                 type="email"
                 placeholder="Email Adress"
-                {...register("email",{
+                {...register("email", {
                   required: "Please fill out this field",
                   setValueAs: (value: string) => value.split(" ").join(""),
                 })}

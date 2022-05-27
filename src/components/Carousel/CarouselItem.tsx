@@ -12,7 +12,7 @@ const CarouselItem: React.FC<CarouselItemInterface> = ({ name, img, description,
       ref={(el) => addToRefContainer(el, containerRef)}
       className={`${container}`}
       onClick={() => {
-        setOpenModal(true);
+        setOpenModal(false);
         setChoosenFigure(name);
       }}
     >

@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   User,
   signOut,
+  updateProfile
 } from "firebase/auth";
 import { NavigateFunction } from "react-router-dom"
 
@@ -29,6 +30,7 @@ export const signIn = async (
 };
 
 export const signUp = async (
+  name: string,
   password: string,
   email: string,
   setFirebaseError: React.Dispatch<React.SetStateAction<string>>,
@@ -38,6 +40,9 @@ export const signUp = async (
     .then((userCredential) => {
       const user = userCredential.user;
       if (user) {
+        updateProfile(user,{
+          displayName: name
+        })
         navigate("/dashboard");
       }
     })
@@ -61,7 +66,7 @@ export const signOutUser = async (
   signOut(auth)
     .then(() => {
       setFirebaseError("Thanks! See you later...");
-      navigate("/login")
+      navigate("/")
     })
     .catch((error) => {
       setFirebaseError(

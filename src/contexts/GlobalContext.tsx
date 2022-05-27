@@ -14,12 +14,14 @@ interface AppContextInterface {
 
 const AppContext = createContext<any | null>(null);
 
-const AppProvider: React.FC = ({ children }) => {
+const AppProvider = ({ children }: {children: JSX.Element}) => {
   const [firebaseError, setFirebaseError] = useState<string | null>("");
-  const [openModal, setOpenModal] = useState(false);
-  const [choosenFigure, setChoosenFigure] = useState("");
+  const [openModal, setOpenModal] = useState<boolean>(true);
+  const [choosenFigure, setChoosenFigure] = useState<string>("");
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   console.log("Am I logged in ? - ", currentUser)
+  console.log(openModal);
+  
   useEffect(() => {
     userAuthState(setCurrentUser);
   }, []);
