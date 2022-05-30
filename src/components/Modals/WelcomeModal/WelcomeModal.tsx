@@ -17,7 +17,7 @@ const WelcomeModal = () => {
     <article className="position-welcome-modal">
       <div className="message-welcome-modal">
         <h1>Welcome, {currentUser?.displayName}</h1>
-        <p>Let us know what shape you are interested in.</p>
+        <p>Let us know what shape are you interested in.</p>
         <p>
           Don't worry at any time, you can change your targets in the settings
           tab.

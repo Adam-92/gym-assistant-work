@@ -1,6 +1,6 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import { userAuthState } from "../services/Auth";
-import { User } from "firebase/auth";
+import { auth } from "../config/firebase";
+import { User  } from "firebase/auth";
 
 interface AppContextInterface {
   firebaseError: string | null,
@@ -19,14 +19,16 @@ const AppProvider = ({ children }: {children: JSX.Element}) => {
   const [openModal, setOpenModal] = useState<boolean>(true);
   const [choosenFigure, setChoosenFigure] = useState<string>("");
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-  console.log("Am I logged in ? - ", currentUser)
-  console.log(openModal);
-  
+  const [pending, setPending] = useState<boolean>(false)
+
   useEffect(() => {
-    userAuthState(setCurrentUser);
+      const unsubscribe = auth.onAuthStateChanged( (user: User | null) => {
+        setCurrentUser(user)
+        setPending(true)
+      })
+      return unsubscribe
   }, []);
-  
-  
+ 
   const value: AppContextInterface = {
     firebaseError,
     setFirebaseError,
@@ -37,7 +39,11 @@ const AppProvider = ({ children }: {children: JSX.Element}) => {
     currentUser,
   };
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  return ( 
+    <AppContext.Provider value={value}>
+      {pending ? children : null}
+    </AppContext.Provider>
+  )
 };
 
 const useGlobalContext = () => {

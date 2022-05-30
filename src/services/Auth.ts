@@ -1,15 +1,11 @@
-import { app } from "../config/firebase";
+import { auth } from "../config/firebase";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  User,
   signOut,
-  updateProfile
+  updateProfile,
 } from "firebase/auth";
-import { NavigateFunction } from "react-router-dom"
-
-const auth = getAuth(app);
+import { NavigateFunction } from "react-router-dom";
 
 export const signIn = async (
   password: string,
@@ -40,9 +36,9 @@ export const signUp = async (
     .then((userCredential) => {
       const user = userCredential.user;
       if (user) {
-        updateProfile(user,{
-          displayName: name
-        })
+        updateProfile(user, {
+          displayName: name,
+        });
         navigate("/dashboard");
       }
     })
@@ -51,13 +47,15 @@ export const signUp = async (
     });
 };
 
-export const userAuthState = async (
-  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>
-): Promise<void> => {
+/* export const userAuthState = async (
+  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>,
+  setPending: React.Dispatch<React.SetStateAction<boolean>>
+): Promise<any> => {
   auth.onAuthStateChanged((user: User | null) => {
     setCurrentUser(user);
+    setPending(true);
   });
-};
+}; */
 
 export const signOutUser = async (
   setFirebaseError: React.Dispatch<React.SetStateAction<string | null>>,
@@ -66,11 +64,11 @@ export const signOutUser = async (
   signOut(auth)
     .then(() => {
       setFirebaseError("Thanks! See you later...");
-      navigate("/")
+      navigate("/");
     })
     .catch((error) => {
       setFirebaseError(
-        "We have been having a problem with loggin you out. Please try again.."
+        "We had a problem with loggin you out. Please try again.."
       );
     });
 };

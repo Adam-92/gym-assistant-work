@@ -40,7 +40,7 @@ const Sidebar = () => {
       id: 5,
       name: "Logout",
       icon: faRightFromBracket,
-      to: "/logout"
+      to: "/"
     },
   ]);
 
