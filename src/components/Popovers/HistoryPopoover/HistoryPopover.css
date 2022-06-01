@@ -1,0 +1,28 @@
+.container-history-popover{
+    position: absolute;
+    left: 64%;
+    top: 50%;
+    padding: 1rem;
+    background-color: var(--dash-main-color);
+    color: rgb(255,255,255);
+    border-radius: 1rem;
+    transition: ease all 0.5s;
+}
+.header-history-popover{
+    font-size: 1.1rem;
+    list-style: none;
+}
+ul.header-history-popover li{
+    margin: 5px 0;
+    font-size: 1rem;
+}
+.arrow-history-popover{
+    position: relative;
+}
+.position-arrow{
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    color: var(--dash-main-color);
+}

@@ -1,17 +1,17 @@
 [
-    {
-        "name": "Runner",
-        "description":"Speed and Time that is what I like",
-        "img": "assets/runner.png"
-    },
-    {
-        "name": "Bodybuilder",
-        "description":"Never too little muscle",
-        "img": "assets/heavy.png"
-    },
-    {
-        "name": "Athlete",
-        "description":"Cought and Cry, but never die",
-        "img": "assets/crossfit.png"
-    }
+  {
+    "name": "runner",
+    "description": "Speed and Time that is what I like",
+    "img": "assets/runner.png"
+  },
+  {
+    "name": "bodybuilder",
+    "description": "Never too little muscle",
+    "img": "assets/bodybuilder.png"
+  },
+  {
+    "name": "athlete",
+    "description": "Cought and Cry, but never die",
+    "img": "assets/athlete.png"
+  }
 ]

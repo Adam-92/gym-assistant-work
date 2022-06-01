@@ -1,6 +1,7 @@
-article.container-step-chart{
+.container-step-chart{
     height: 100%;
     font-family: 'Roboto', sans-serif;
+    width: auto;
 }
 .header-step-chart{
     display: flex;
@@ -36,25 +37,26 @@ article.container-step-chart{
     background-color: var(--dash-main-color) !important;
     color: white;
 }
-
 .content-step-chart{
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 80%;
+    min-height: 80%;
     padding: 1rem;
     border: 1px solid rgb(204 204 210);
     border-radius: 1.5rem;
+    flex-wrap: wrap;
 }
 .bar-container-step-chart{
     width: 10%;
+    min-width: 48px;
+    max-width: 50px;
+    max-height: 120px;
+    min-height: 120px;
     height: 100%;
-    cursor: pointer;
+    margin: 3px 8px;
 }
-.bar-container-step-chart:hover > .bar-step-chart{
-    border: 1px solid purple
-} 
-
 .bar-step-chart{
     display: flex;
     flex-direction: column;
@@ -65,7 +67,6 @@ article.container-step-chart{
     border-radius: 1rem;
     padding: 7px 6px;
 }
-
 .bar-step-chart::after{
     content: '';
     position: absolute;
@@ -83,7 +84,6 @@ article.container-step-chart{
     background-color: var(--dash-main-color);
     border-radius: 1rem;
 }
-
 .percent-step-chart{
     position: absolute;
     font-weight: 700;
@@ -110,5 +110,8 @@ article.container-step-chart{
     font-size: 0.8rem;
     text-align: center;
     color:rgb(235, 96, 140);
+}
+.padding-step-chart{
+    padding: 1.1rem
 }
 

@@ -1,75 +1,52 @@
-.dashboard{
-    position: relative;
-    height: 100vh;
+.header-dashboard {
+  display: flex;
+  padding: 1rem 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  flex-wrap: wrap;
+  width: 82%;
 }
-.center-container-dashboard{
-    position: relative;
-    top:50%;
-    transform: translateY(-50%);
-    z-index: 2;
+
+.statistics-dashboard {
+  display: flex;
+  flex-wrap: wrap;
 }
-.container-dashboard{
-    display: flex;
-    margin: 0 auto;
-    height: 85vh;
-    width: 90%;
-    border-radius: 2rem;
-    outline: 3px solid white;
-    z-index: 1;
+
+.chart-steps-dashboard {
+  height: calc(50% - 1rem);
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: white;
+  margin-bottom: 1rem;
+  min-height: 251px;
+  max-width: 514px;
 }
-.sidebar-dashboard{
-    width: 10%;
-    min-width: 180px;
+
+.chart-calories-dashboard {
+  position: relative;
+  height: 50%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2rem;
+  padding: 1rem;
+  min-height: 240px;
 }
-.content-dashboard{
-    background: linear-gradient(145deg, rgb(248,247,247) 0%, rgb(241,241,243) 120%);
-    padding: 1rem;
-    width: 100%;
+
+.next-training-dashboard {
+  flex: 1;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2rem;
+  margin-left: 1rem;
+  max-width: 46%;
 }
-.header-dashboard{
-    height: 28%;
-    margin: var(--dash-margin-headers) 0;
-    background-color: white;
-    padding: 10px;
-    border-radius: 2rem;
-}
-.charts-dashboard{
-    height: 72%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-    "chart-steps chart-results"
-    "chart-calories chart-results"
-}
-.chart-steps-dashboard{
-    grid-area: chart-steps; 
-    border-radius: 2rem;
-    padding: 20px;
-    background-color: white;
-    min-width: 580px;
-    min-height: 250px;
-    margin-top: var(--dash-margin-components);
-    margin-bottom: var(--dash-margin-components);
-}
-.chart-calories-dashboard{
-    grid-area: chart-calories; 
-}
-.chart-results-dashboard{
-    grid-area: chart-results;
-}
-.profile-dashboard{
-    flex: 1 25%;
-    background-color: rgb(158, 150, 142);
-    border-top-right-radius: 2em;
-    border-bottom-right-radius: 2em;
-}
-.new-bg-dashboard{
-    position: fixed;
-    top:0;
-    left:0;
-    background-color: rgba(0, 0, 0, 0.85);
-    height: 100%;
-    width: 100%;
-    z-index: 2;
+
+
+.new-bg-dashboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  height: 100%;
+  width: 100%;
+  z-index: 2;
 }
