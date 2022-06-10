@@ -1,27 +1,61 @@
+import axios from "axios";
 const host = "http://localhost:3000/data";
+
 export const getDailySteps = async () => {
-  const response = await fetch(`${host}/dailySteps.json`);
-  return response.json();
+  try {
+    const { data } = await axios.get(`${host}/dailySteps.json`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getMonthlySteps = async () => {
-  const response = await fetch(`${host}/monthlySteps.json`);
-  return response.json();
+  try {
+    const { data } = await axios.get(`${host}/monthlySteps.json`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getCarouselCharacters = async () => {
-  const response = await fetch(`${host}/charactersCarousel.json`);
-  return response.json();
+  try {
+    const { data } = await axios.get(`${host}/charactersCarousel.json`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getTilesData = async () => {
-  const response = await fetch(`${host}/tiles.json`);
-  return response.json();
+  try {
+    const { data } = await axios.get(`${host}/tiles.json`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getNextTraining = async () => {
-  const response = await fetch(`${host}/nextTraining.json`);
-  return response.json();
+  try {
+    const { data } = await axios.get(`${host}/nextTraining.json`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getGauges = async () => {
-  const response = await fetch(`${host}/guages.json`);
-  return response.json();
+  try {
+    const { data } = await axios.get(`${host}/guages.json`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getExerciseCards = async () => {
+  try {
+    const { data } = await axios.get(`${host}/exerciseCards.json`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const exampleDays = () => {
@@ -61,53 +95,51 @@ export const exampleMonths = () => {
   return [
     {
       day: "Jun",
-      steps: 6400
+      steps: 6400,
     },
     {
       day: "Feb",
-      steps: 5300
+      steps: 5300,
     },
     {
       day: "Mar",
-      steps: 12400
+      steps: 12400,
     },
     {
       day: "Apr",
-      steps: 8845
+      steps: 8845,
     },
     {
       day: "May",
-      steps: 9400
+      steps: 9400,
     },
     {
       day: "June",
-      steps: 1200
+      steps: 1200,
     },
     {
       day: "July",
-      steps: 9000
+      steps: 9000,
     },
     {
       day: "Aug",
-      steps: 12400
+      steps: 12400,
     },
     {
       day: "Sep",
-      steps: 8845
+      steps: 8845,
     },
     {
       day: "Oct",
-      steps: 9400
+      steps: 9400,
     },
     {
       day: "Nov",
-      steps: 1200
+      steps: 1200,
     },
     {
       day: "Dec",
-      steps: 9000
-    }
+      steps: 9000,
+    },
   ];
 };
-
-

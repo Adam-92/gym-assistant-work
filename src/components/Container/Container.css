@@ -19,6 +19,7 @@
   outline: 3px solid white;
   z-index: 1;
   overflow: hidden;
+  max-width: 1750px;
 }
 
 .sidebar-container {

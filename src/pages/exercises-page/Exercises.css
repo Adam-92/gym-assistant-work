@@ -1,0 +1,25 @@
+.bg-exercises {
+    min-height: 100%;
+    border-radius: 2rem;
+    background-color: white;
+    padding: 2rem;
+    /*  background: url("./../../../public/assets/layered-waves-haikei.svg") no-repeat center / cover; */
+}
+
+.bg-exercises section {
+    height: 55%;
+    margin-bottom: 2rem;
+}
+
+.header-exercises {
+    height: 10%;
+    font-size: 2.5rem;
+    color: var(--dash-main-color);
+    font-family: var(--dash-font-family);
+    margin-bottom: 1rem;
+}
+.cards-exercises{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 320px));
+}
+
