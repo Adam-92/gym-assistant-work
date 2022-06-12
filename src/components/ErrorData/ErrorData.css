@@ -1,0 +1,20 @@
+.icon-error-data{
+    font-size: 13rem;
+    color: var(--dash-main-color);
+}
+.text-error-data{
+    font-size: 2rem
+}
+.container-error-data{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.underline-error-data{
+    margin-top: 4rem;
+    width: 25%;
+    height: 3px;
+    background: linear-gradient(to right, var(--dash-main-color), white);
+}

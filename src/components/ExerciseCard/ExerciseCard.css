@@ -1,9 +1,4 @@
 .container-exercise-card {
-/*     height: 80%;
-    border: 1px solid black;
-    border-radius: 1rem;
-    min-width: 245px;
-    min-height: 294px; */
     height: 290px;
     max-height: 290px;
     margin-bottom: 0.8rem;

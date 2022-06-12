@@ -3,7 +3,6 @@
     border-radius: 2rem;
     background-color: white;
     padding: 2rem;
-    /*  background: url("./../../../public/assets/layered-waves-haikei.svg") no-repeat center / cover; */
 }
 
 .bg-exercises section {
@@ -20,6 +19,6 @@
 }
 .cards-exercises{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 385px));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 420px));
 }
 

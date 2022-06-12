@@ -20,7 +20,7 @@ const AppProvider = ({ children }: {children: JSX.Element}) => {
   const [choosenFigure, setChoosenFigure] = useState<string>("");
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [pending, setPending] = useState<boolean>(false)
-
+  
   useEffect(() => {
       const unsubscribe = auth.onAuthStateChanged( (user: User | null) => {
         setCurrentUser(user)
