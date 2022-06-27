@@ -57,6 +57,15 @@ export const getExerciseCards = async () => {
     console.log(error);
   }
 };
+export const getBodyParts = async () => {
+  try {
+    const { data } = await axios.get(`${host}/bodyParts.json`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 export const exampleDays = () => {
   return [

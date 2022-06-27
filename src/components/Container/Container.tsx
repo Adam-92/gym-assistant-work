@@ -1,10 +1,9 @@
 import React from "react";
-import Sidebar from "../Sidebars/Sidebar/Sidebar"
+import Sidebar from "../Sidebars/Sidebar/Sidebar";
 import { ContainerInterface } from "./Container.model";
 import "./Container.css";
 
-
-const Container:React.FC<ContainerInterface> = ({ children }) => {
+const Container: React.FC<ContainerInterface> = ({ children }) => {
   return (
     <main className="container">
       <article className="center-container">
@@ -12,9 +11,7 @@ const Container:React.FC<ContainerInterface> = ({ children }) => {
           <section className="sidebar-container">
             <Sidebar />
           </section>
-          <section className="content-container">
-            {children}
-          </section>
+          <section className="content-container">{children}</section>
         </div>
       </article>
     </main>

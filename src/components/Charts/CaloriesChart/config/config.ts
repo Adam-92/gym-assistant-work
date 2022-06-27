@@ -1,5 +1,3 @@
-import Chart, { ChartItem } from "chart.js/auto";
-
 const days: string[] = [
   "Monday",
   "Tuesday",
