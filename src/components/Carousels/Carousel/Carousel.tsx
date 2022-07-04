@@ -1,12 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { carouselMovement, goLeft, goRight } from "../../utils/Utils";
+import { carouselMovement, goLeft, goRight } from "../../../utils/Utils";
 import CarouselItem from "./CarouselItem";
-import { CarouselInterface } from "./Carousel.model"
+import { CharactersCarousel } from "../../../model/Model";
 import "./Carousel.css";
 
-const Carousel: React.FC<CarouselInterface> = ({ characters }) => {
+const Carousel = ({ characters }:{characters: CharactersCarousel[]}) => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const containerRef = useRef([]);
 
@@ -33,8 +33,8 @@ const Carousel: React.FC<CarouselInterface> = ({ characters }) => {
         size="5x"
         onClick={() => goLeft(setCurrentIndex, currentIndex)}
       />
-      {characters.length > 0
-        ? characters.map((character, index) => {
+      {(characters && characters.length > 0)
+        ? characters.map((character: CharactersCarousel, index: number) => {
             const name = character.name;
             const description = character.description;
             const img = character.img;

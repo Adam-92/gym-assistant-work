@@ -10,15 +10,8 @@
     margin-bottom: 2rem;
 }
 
-.header-exercises {
-    height: 10%;
-    font-size: 2.5rem;
-    color: var(--dash-main-color);
-    font-family: var(--dash-font-family);
-    margin-bottom: 1rem;
-}
-.cards-exercises{
+
+.cards-exercises {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 420px));
 }
-

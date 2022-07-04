@@ -4,11 +4,9 @@ export interface BarInterface {
     target: number
   }
 export interface StepChartInterface {
-    data: {
       day: string;
       steps: number;
-    }[];
-  }
+}
 
 export interface SwitchInterface {
     changePeriod: boolean,

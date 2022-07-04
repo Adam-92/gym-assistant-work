@@ -2,31 +2,23 @@ import { useEffect, useState } from "react";
 import { requestData } from "../../../utils/Utils";
 import {
   getDailySteps,
-  getMonthlySteps,
-  exampleDays,
-  exampleMonths,
+  getMonthlySteps
 } from "../../../services/Activity";
 import Bar from "./Bar";
 import Switch from "./Switch";
 import { StepChartInterface } from "./StepChart.model";
 import "./StepChart.css";
 
-const StepChart: React.FC = () => {
+const StepChart = () => {
   const [changePeriod, setChangePeriod] = useState(true);
   const [target, setTarget] = useState(12000);
-  const [data, setData] = useState<StepChartInterface["data"]>([
-    {
-      day: "",
-      steps: 0,
-    },
-  ]);
-  const [error, setError] = useState(false);
+  const [data, setData] = useState([])
 
   useEffect(() => {
     if (changePeriod) {
-      requestData(getDailySteps, exampleDays, setData, setError);
+      requestData(getDailySteps, setData);
     } else {
-      requestData(getMonthlySteps, exampleMonths, setData, setError);
+      requestData(getMonthlySteps, setData);
     }
   }, [changePeriod]);
 
@@ -41,13 +33,10 @@ const StepChart: React.FC = () => {
           !changePeriod && "padding-step-chart"
         }`}
       >
-        {data.map(({ day, steps }) => {
+        {data && data.map(({ day, steps }: StepChartInterface) => {
           return <Bar key={day} day={day} steps={steps} target={target} />;
         })}
       </div>
-      {error && (
-        <div className="error-step-chart">Unable to download the data...</div>
-      )}
     </article>
   );
 };

@@ -5,7 +5,7 @@ import { GuageInterface } from "./Guage.model"
 import "./Guage.css";
 
 const ContainerGuages = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<GuageInterface[]>([]);
 
   useEffect(() => {
     getGauges()
@@ -14,7 +14,7 @@ const ContainerGuages = () => {
 
   return (
     <article className="container-guages">
-      {data.map((guage: GuageInterface, index: number) => {
+      {data && data.map((guage: GuageInterface, index: number) => {
         const { target, current, units } = guage;
         return (
           <Guage 

@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SidebarTabs } from "../../model/Model";
-import { useResolvedPath, useMatch, useNavigate } from "react-router";
+import {
+  useResolvedPath,
+  useMatch,
+  useNavigate
+} from "react-router";
 import { signOutUser } from "../../services/Auth";
 import { useGlobalContext } from "../../contexts/GlobalContext";
 import "./Tab.css";
 
 const Tab = ({ name, to, id, icon }: SidebarTabs) => {
   const { setFirebaseError } = useGlobalContext();
+
   let resolved = useResolvedPath(to);
-  let match = useMatch({ path: resolved.pathname, end: true });
+  let match = useMatch({ path: resolved.pathname, end: false });
   const navigate = useNavigate();
 
   return (

@@ -1,7 +1,7 @@
 import { Exercise } from "../../model/Model";
 import "./ExerciseCard.css";
 
-const ExerciseCard = ( { exercises }: any)  => {
+const ExerciseCard = ({ exercises }: { exercises: Exercise[] }) => {
   return (
     <>
       {exercises &&

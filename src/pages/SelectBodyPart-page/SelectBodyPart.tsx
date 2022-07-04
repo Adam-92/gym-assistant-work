@@ -31,7 +31,7 @@ const SelectBodyPart = () => {
                 );
               })
             ) : (
-              <ErrorData />
+              <ErrorData text={"Reload the page or try please later"} />
             )}
           </ul>
         ) : (

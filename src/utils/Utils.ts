@@ -89,14 +89,30 @@ export const containerClass = (name: string): any => {
   if (name === "athlete") return "right-item-carousel";
 };
 
-export const goLeft = (setState: any, index: number): any => {
+export const goLeft = (setState: React.Dispatch<React.SetStateAction<number>>, index: number) => {
   return index === 0 ? setState(2) : setState((prev: number) => prev - 1);
 };
 
-export const goRight = (setState: any, index: number): any => {
+export const goRight = (setState: React.Dispatch<React.SetStateAction<number>>, index: number) => {
   return index === 2 ? setState(0) : setState((prev: number) => prev + 1);
 };
 
+export const goLeftRoute = (
+  index: number,
+  setRoute: React.Dispatch<React.SetStateAction<number>>
+) => {
+  index--;
+  console.log(index, " --- Utils");
+  return index === -1 ? setRoute(5) : setRoute((prev: number) => prev - 1);
+};
+
+export const goRightRoute = (
+  index: number,
+  setRoute: React.Dispatch<React.SetStateAction<number>>
+) => {
+  index++;
+  return index === 6 ? setRoute(0) : setRoute((prev: number) => prev + 1);
+};
 export const viewHistory = (
   e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   data: any,
@@ -125,7 +141,7 @@ export const getItemCoordinates = (
   e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   setItemCoordinates: any
 ) => {
-  const item = (e.target as HTMLElement);
+  const item = e.target as HTMLElement;
   const coordinates = item.getBoundingClientRect();
   setItemCoordinates(coordinates);
 };
@@ -156,14 +172,10 @@ export const calculateProgress = (current: number, target: number) => {
   return angle;
 };
 
-
-export const requestData = async (getData: any, example: any, setData: any, setError: any) => {
-  getData()
-    .then((res: any) => setData(res))
-    .catch((e:any) => {
-      const data = example();
-      setData(data);
-      setError(true);
-    });
+export const requestData = async (getData: any, setData: any) => {
+  getData().then((res: any) => setData(res));
 };
 
+export const capitalizeFirst = (word: string | undefined) => {
+  return word ? word[0].toUpperCase() + word.slice(1) : null;
+};

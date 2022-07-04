@@ -1,42 +1,51 @@
 import { useEffect, useState } from "react";
-import Container from "../../components/Container/Container";
-import ErrorData from "../../components/ErrorData/ErrorData";
 import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import { getExerciseCards } from "../../services/Activity";
 import { ExerciseCardsInterface, Exercise } from "../../model/Model";
-import { useParams } from "react-router";
+import { useParams, useLocation } from "react-router-dom";
+import CarouselRoute from "../../components/Carousels/CarouselRoute/CarouselRoute";
+import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
 import "./Exercises.css";
 
 const Exercises = () => {
-  const [data, setData] = useState<ExerciseCardsInterface[]>([]);
+  const [data, setData] = useState<Exercise[]>([]);
+  const [routeIndex, setRouteIndex] = useState(0);
 
   let { bodyPart } = useParams();
-  console.log(bodyPart);
+  const location = useLocation();
 
   useEffect(() => {
     getExerciseCards().then((res) => {
       const selectedExercises = res
         ? res.find((part: ExerciseCardsInterface) => part.bodyPart === bodyPart)
-        : [];
-      setData(selectedExercises.exercises);
+        : null;
+      setData(selectedExercises?.exercises);
     });
-  }, []);
+  }, [location.pathname]);
+
 
   return (
     <>
       {data ? (
         <article className="bg-exercises">
           <section>
-            <header className="header-exercises">
-              <h1>{bodyPart}</h1>
-            </header>
+            <CarouselRoute
+              bodyPart={bodyPart}
+              routeIndex={routeIndex}
+              setRouteIndex={setRouteIndex}
+            />
             <div className="cards-exercises">
               <ExerciseCard exercises={data} />
             </div>
           </section>
         </article>
       ) : (
-        <ErrorData />
+        <NoDataMessage
+          text={"No Exercises in the Database"}
+          bodyPart={bodyPart}
+          routeIndex={routeIndex}
+          setRouteIndex={setRouteIndex}
+        />
       )}
     </>
   );

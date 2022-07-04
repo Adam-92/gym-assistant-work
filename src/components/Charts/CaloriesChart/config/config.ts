@@ -11,7 +11,7 @@ const days: string[] = [
 let delayed: boolean;
 
 /* --- Data --- */
-const data: any = {
+const data = {
   labels: days,
   datasets: [
     {
