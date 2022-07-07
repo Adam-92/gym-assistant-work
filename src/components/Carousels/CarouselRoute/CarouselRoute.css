@@ -7,11 +7,11 @@
     color: var(--dash-main-color);
     font-family: var(--dash-font-family);
     margin: 0 15% 1.5rem 15%;
+    overflow: hidden;
 }
 
 .header-carousel-route h1 {
     font-size: 2.6rem;
-
 }
 
 .icon-carousel-route {

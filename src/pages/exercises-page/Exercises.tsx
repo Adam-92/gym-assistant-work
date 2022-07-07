@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import { getExerciseCards } from "../../services/Activity";
 import { ExerciseCardsInterface, Exercise } from "../../model/Model";
 import { useParams, useLocation } from "react-router-dom";
 import CarouselRoute from "../../components/Carousels/CarouselRoute/CarouselRoute";
+import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
 import "./Exercises.css";
 
 const Exercises = () => {
   const [data, setData] = useState<Exercise[]>([]);
   const [routeIndex, setRouteIndex] = useState(0);
-
+  
   let { bodyPart } = useParams();
   const location = useLocation();
 
@@ -23,7 +23,7 @@ const Exercises = () => {
     });
   }, [location.pathname]);
 
-
+  
   return (
     <>
       {data ? (

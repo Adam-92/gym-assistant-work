@@ -10,6 +10,7 @@ import {
   capitalizeFirst,
 } from "../../../utils/Utils";
 import "./CarouselRoute.css";
+import { useRef, useEffect, useState } from "react";
 
 const CarouselRoute = ({
   bodyPart,
@@ -21,7 +22,7 @@ const CarouselRoute = ({
   setRouteIndex: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   const navigate = useNavigate();
-
+  const firstRender = useRef(true);
   const arrayPaths: string[] = [
     "chest",
     "biceps",
@@ -29,16 +30,24 @@ const CarouselRoute = ({
     "back",
     "abs",
     "legs",
+    "shoulders",
   ];
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    navigate(`../${arrayPaths[routeIndex]}`);
+  }, [routeIndex]);
+
   return (
     <header className="header-carousel-route noSelect">
       <FontAwesomeIcon
         icon={faCircleArrowLeft}
         className="icon-carousel-route"
         onClick={() => {
-          console.log(arrayPaths[routeIndex]);
           goLeftRoute(routeIndex, setRouteIndex);
-          navigate(`../${arrayPaths[routeIndex]}`);
         }}
       />
       <h1>{capitalizeFirst(bodyPart)}</h1>
@@ -47,7 +56,6 @@ const CarouselRoute = ({
         className="icon-carousel-route"
         onClick={() => {
           goRightRoute(routeIndex, setRouteIndex);
-          navigate(`../${arrayPaths[routeIndex]}`);
         }}
       />
     </header>

@@ -1,42 +1,63 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "../pages/login-page/Login";
-import Register from "../pages/register-page/Register";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { ProtectedRoutes, RouteInterface } from "../model/Model";
+import { protectedRoutes, unprotectedRoutes } from "../routes/routes";
+import { AnimatePresence } from "framer-motion";
 import NotFound from "../pages/not-found-page/NotFound";
+import UnprotectedRoutes from "./AuthElements/UnprotectedRoutes";
 import ProtectedRoute from "./AuthElements/ProtectedRoute";
-import { ProtectedRoutes } from "../model/Model";
-import { protectedRoutes } from "../routes/routes";
 import "./App.css";
 
 const App: React.FC = () => {
+  const location = useLocation();
+
   return (
-    <Router>
-      <Routes>
-        {protectedRoutes.map((route: ProtectedRoutes, index: number) => {
-          return (
-            <Route
-              path={route.path}
-              key={index}
-              element={
-                <ProtectedRoute>
-                  <route.element />
-                </ProtectedRoute>
-              }
-            >
+    <Routes>
+      {protectedRoutes.map((route: ProtectedRoutes, index: number) => {
+        return (
+          <Route
+            path={route.path}
+            key={index}
+            element={
+              <ProtectedRoute>
+                <route.element />
+              </ProtectedRoute>
+            }
+          >
+            <AnimatePresence>
               {route.children && (
-                <Route
-                  path={route.children.path}
-                  element={<route.children.element />}
-                />
+                <Routes location={location} key={location.pathname}>
+                  {route.children.map(
+                    (route: RouteInterface, index: number) => {
+                      return (
+                        <Route
+                          path={route.path}
+                          key={index}
+                          element={<route.element />}
+                        />
+                      );
+                    }
+                  )}
+                </Routes>
               )}
-            </Route>
-          );
-        })}
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+            </AnimatePresence>
+          </Route>
+        );
+      })}
+      {unprotectedRoutes.map((route: RouteInterface, index: number) => {
+        return (
+          <Route
+            path={route.path}
+            key={index}
+            element={
+              <UnprotectedRoutes>
+                <route.element />
+              </UnprotectedRoutes>
+            }
+          />
+        );
+      })}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 

@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { requestData } from "../../../utils/Utils";
-import {
-  getDailySteps,
-  getMonthlySteps
-} from "../../../services/Activity";
+import { getDailySteps, getMonthlySteps } from "../../../services/Activity";
 import Bar from "./Bar";
 import Switch from "./Switch";
 import { StepChartInterface } from "./StepChart.model";
@@ -12,7 +9,7 @@ import "./StepChart.css";
 const StepChart = () => {
   const [changePeriod, setChangePeriod] = useState(true);
   const [target, setTarget] = useState(12000);
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     if (changePeriod) {
@@ -33,9 +30,10 @@ const StepChart = () => {
           !changePeriod && "padding-step-chart"
         }`}
       >
-        {data && data.map(({ day, steps }: StepChartInterface) => {
-          return <Bar key={day} day={day} steps={steps} target={target} />;
-        })}
+        {data &&
+          data.map(({ day, steps }: StepChartInterface) => {
+            return <Bar key={day} day={day} steps={steps} target={target} />;
+          })}
       </div>
     </article>
   );

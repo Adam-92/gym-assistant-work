@@ -27,7 +27,7 @@ export interface ArrangeMuslces {
   secondary: string[];
 }
 
-export interface ChildrenRoute {
+export interface RouteInterface {
   path: string;
   element: () => JSX.Element;
 }
@@ -35,7 +35,12 @@ export interface ChildrenRoute {
 export interface ProtectedRoutes {
   path: string;
   element: () => JSX.Element;
-  children?: ChildrenRoute | null;
+  children?: RouteInterface[] | null;
+}
+
+export interface UnprotectedRoutes {
+  path: string,
+  element: () => JSX.Element
 }
 
 export interface CharactersCarousel{
