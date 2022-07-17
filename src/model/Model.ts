@@ -37,13 +37,6 @@ export interface RouteInterface {
   element: () => JSX.Element;
 }
 
-export interface CarouselRouteInterface {
-  routeIndex: number;
-  setRouteIndex: React.Dispatch<React.SetStateAction<number>>;
-  goLeftRoute: (index: number, setRouteIndex: React.Dispatch<React.SetStateAction<number>> ) => void;
-  goRightRoute: (index: number, setRouteIndex: React.Dispatch<React.SetStateAction<number>> ) => void;
-}
-
 export interface ProtectedRoutes {
   path: string;
   element: () => JSX.Element;

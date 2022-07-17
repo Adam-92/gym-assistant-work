@@ -6,17 +6,14 @@ import {
 import { useNavigate, useLocation } from "react-router-dom";
 import { nameOfPart } from "../../../utils/Utils";
 import { useRef, useEffect } from "react";
-import { CarouselRouteInterface } from "src/model/Model";
+import useRouteCarousel from "../../CustomHooks/useRouteCarousel";
 import "./CarouselRoute.css";
 
-const CarouselRoute = ({
-  routeIndex,
-  goLeftRoute,
-  goRightRoute,
-  setRouteIndex,
-}: CarouselRouteInterface) => {
+const CarouselRoute = () => {
   const navigate = useNavigate();
   const urlPath = useLocation().pathname;
+  const { routeIndex, setRouteIndex, goLeftRoute, goRightRoute } =
+    useRouteCarousel();
 
   const firstRender = useRef(true);
   const arrayPaths: string[] = [
