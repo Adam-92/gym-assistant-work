@@ -14,7 +14,7 @@ export const protectedRoutes: ProtectedRoutes[] = [
     children: null,
   },
   {
-    path: "/exercises",
+    path: "/select-body-part",
     element: SelectBodyPart,
     children: [
       {

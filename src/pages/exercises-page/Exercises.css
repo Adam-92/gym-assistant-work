@@ -1,16 +1,3 @@
-.bg-exercises {
-    min-height: 100%;
-    border-radius: 2rem;
-    background-color: white;
-    padding: 2rem;
-}
-
-.bg-exercises section {
-    height: 55%;
-    margin-bottom: 2rem;
-}
-
-
 .cards-exercises {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 420px));

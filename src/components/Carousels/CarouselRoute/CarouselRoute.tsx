@@ -3,25 +3,21 @@ import {
   faCircleArrowLeft,
   faCircleArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-import {
-  goRightRoute,
-  goLeftRoute,
-  capitalizeFirst,
-} from "../../../utils/Utils";
+import { useNavigate, useLocation } from "react-router-dom";
+import { nameOfPart } from "../../../utils/Utils";
+import { useRef, useEffect } from "react";
+import { CarouselRouteInterface } from "src/model/Model";
 import "./CarouselRoute.css";
-import { useRef, useEffect, useState } from "react";
 
 const CarouselRoute = ({
-  bodyPart,
   routeIndex,
+  goLeftRoute,
+  goRightRoute,
   setRouteIndex,
-}: {
-  bodyPart: string | undefined;
-  routeIndex: number;
-  setRouteIndex: React.Dispatch<React.SetStateAction<number>>;
-}) => {
+}: CarouselRouteInterface) => {
   const navigate = useNavigate();
+  const urlPath = useLocation().pathname;
+
   const firstRender = useRef(true);
   const arrayPaths: string[] = [
     "chest",
@@ -38,7 +34,7 @@ const CarouselRoute = ({
       firstRender.current = false;
       return;
     }
-    navigate(`../${arrayPaths[routeIndex]}`);
+    navigate(`./${arrayPaths[routeIndex]}`);
   }, [routeIndex]);
 
   return (
@@ -50,7 +46,7 @@ const CarouselRoute = ({
           goLeftRoute(routeIndex, setRouteIndex);
         }}
       />
-      <h1>{capitalizeFirst(bodyPart)}</h1>
+      <h1>{nameOfPart(urlPath)}</h1>
       <FontAwesomeIcon
         icon={faCircleArrowRight}
         className="icon-carousel-route"

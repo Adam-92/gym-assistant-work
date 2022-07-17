@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import { getExerciseCards } from "../../services/Activity";
 import { ExerciseCardsInterface, Exercise } from "../../model/Model";
 import { useParams, useLocation } from "react-router-dom";
-import CarouselRoute from "../../components/Carousels/CarouselRoute/CarouselRoute";
 import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
 import "./Exercises.css";
 
 const Exercises = () => {
   const [data, setData] = useState<Exercise[]>([]);
-  const [routeIndex, setRouteIndex] = useState(0);
-  
+
   let { bodyPart } = useParams();
   const location = useLocation();
 
@@ -23,29 +21,14 @@ const Exercises = () => {
     });
   }, [location.pathname]);
 
-  
   return (
     <>
       {data ? (
-        <article className="bg-exercises">
-          <section>
-            <CarouselRoute
-              bodyPart={bodyPart}
-              routeIndex={routeIndex}
-              setRouteIndex={setRouteIndex}
-            />
-            <div className="cards-exercises">
-              <ExerciseCard exercises={data} />
-            </div>
-          </section>
-        </article>
+        <div className="cards-exercises">
+          <ExerciseCard exercises={data} />
+        </div>
       ) : (
-        <NoDataMessage
-          text={"No Exercises in the Database"}
-          bodyPart={bodyPart}
-          routeIndex={routeIndex}
-          setRouteIndex={setRouteIndex}
-        />
+        <NoDataMessage text={"No Exercises in the Database"} />
       )}
     </>
   );

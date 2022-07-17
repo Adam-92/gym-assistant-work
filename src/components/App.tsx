@@ -1,15 +1,12 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ProtectedRoutes, RouteInterface } from "../model/Model";
 import { protectedRoutes, unprotectedRoutes } from "../routes/routes";
-import { AnimatePresence } from "framer-motion";
 import NotFound from "../pages/not-found-page/NotFound";
 import UnprotectedRoutes from "./AuthElements/UnprotectedRoutes";
 import ProtectedRoute from "./AuthElements/ProtectedRoute";
 import "./App.css";
 
-const App: React.FC = () => {
-  const location = useLocation();
-
+const App = () => {
   return (
     <Routes>
       {protectedRoutes.map((route: ProtectedRoutes, index: number) => {
@@ -23,23 +20,17 @@ const App: React.FC = () => {
               </ProtectedRoute>
             }
           >
-            <AnimatePresence>
-              {route.children && (
-                <Routes location={location} key={location.pathname}>
-                  {route.children.map(
-                    (route: RouteInterface, index: number) => {
-                      return (
-                        <Route
-                          path={route.path}
-                          key={index}
-                          element={<route.element />}
-                        />
-                      );
-                    }
-                  )}
-                </Routes>
-              )}
-            </AnimatePresence>
+            {route.children &&
+              route.children.map((route: RouteInterface, index: number) => {
+                return (
+                  <Route
+                    path={route.path}
+                    key={index}
+                    element={<route.element />}
+                  />
+                );
+              })}
+            )
           </Route>
         );
       })}
@@ -60,5 +51,4 @@ const App: React.FC = () => {
     </Routes>
   );
 };
-
 export default App;

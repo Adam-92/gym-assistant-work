@@ -22,7 +22,7 @@ const Sidebar = () => {
       id: 2,
       name: "Exercises",
       icon: faDumbbell,
-      to: "/exercises"
+      to: "/select-body-part"
     },
     {
       id: 3,

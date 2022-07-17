@@ -158,28 +158,14 @@ export const calculatePopoverCoordinates = (
 
 export const calculateProgress = (current: number, target: number) => {
   const percent = changeToPercent(current, target);
-  const angle = (180 * percent) / 100 + 135;
-  return angle;
+  return (180 * percent) / 100 + 135;
 };
 
 export const requestData = async (getData: any, setData: any) => {
   getData().then((res: any) => setData(res));
 };
 
-export const capitalizeFirst = (word: string | undefined) => {
-  return word ? word[0].toUpperCase() + word.slice(1) : null;
-};
-
-export const goLeftRoute = (
-  index: number,
-  setRoute: React.Dispatch<React.SetStateAction<number>>,
-) => {
-  return index === 0 ? setRoute(6) : setRoute((prev: number) => prev - 1);
-};
-
-export const goRightRoute = (
-  index: number,
-  setRoute: React.Dispatch<React.SetStateAction<number>>
-) => {
-  return index === 6 ? setRoute(0) : setRoute((prev: number) => prev + 1);
+export const nameOfPart = (url: string): string => {
+  let part = url.replace("/select-body-part/", "");
+  return part[0].toUpperCase() + part.slice(1);
 };
