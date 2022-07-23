@@ -6,8 +6,33 @@
     color: white;
 }
 
-.margin-tab{
+.link-nested-tab {
+    color: rgb(73, 73, 204);
+    text-decoration: none;
+}
+
+.margin-tab {
     margin-left: 5px;
+}
+
+.children-tab {
+    height: 0;
+    overflow: hidden;
+    transition: all ease 1s;
+}
+
+.show-tab {
+    height: auto;
+}
+
+.children-tab li {
+    list-style: circle !important;
+    padding: 20px 8px 10px 10px !important;
+    margin-left: 2.2rem !important;
+}
+
+.active-children-tab {
+    border-bottom: 1px solid rgb(73, 73, 204);
 }
 
 .active-tab {

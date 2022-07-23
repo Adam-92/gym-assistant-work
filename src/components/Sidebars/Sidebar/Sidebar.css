@@ -22,7 +22,7 @@ nav.nav-sidebar {
     margin-top: 32px;
 }
 
-nav.nav-sidebar ul li {
+.parent-sidebar li{
     position: relative;
     padding: 17px 15px 17px 24px;
     list-style: none;

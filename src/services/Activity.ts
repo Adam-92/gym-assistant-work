@@ -65,3 +65,12 @@ export const getBodyParts = async () => {
     console.log(error);
   }
 };
+
+export const getViewExercise = async () => {
+  try{
+    const { data } = await axios.get(`${host}/viewExercise.json`)
+    return data
+  } catch (error){
+    console.log(error)
+  }
+}

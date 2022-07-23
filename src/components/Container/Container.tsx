@@ -1,4 +1,3 @@
-import React from "react";
 import Sidebar from "../Sidebars/Sidebar/Sidebar";
 import { ContainerInterface } from "./Container.model";
 import "./Container.css";

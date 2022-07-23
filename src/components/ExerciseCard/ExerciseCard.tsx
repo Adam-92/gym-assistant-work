@@ -1,13 +1,25 @@
 import { Exercise } from "../../model/Model";
+import { useModal } from "src/contexts/OutletContext";
 import "./ExerciseCard.css";
 
 const ExerciseCard = ({ exercises }: { exercises: Exercise[] }) => {
+  const { openModal, pickExercise, closeModal } = useModal();
+
   return (
     <>
       {exercises &&
         exercises.map(({ name, arrangeMuscles, img, id }: Exercise) => {
           return (
-            <article className="container-exercise-card" key={id}>
+            <article
+              className="container-exercise-card"
+              key={id}
+              tabIndex={0}
+              onBlur={closeModal}
+              onClick={() => {
+                openModal();
+                pickExercise(name);
+              }}
+            >
               <div className="img-exercise-card">
                 <img src={img} alt="exercise" />
               </div>

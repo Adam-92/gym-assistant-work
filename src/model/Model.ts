@@ -1,7 +1,42 @@
+import { User } from "firebase/auth";
+
+export interface AppContextInterface {
+  firebaseError: string | null;
+  openModal: boolean;
+  choosenFigure: string;
+  setFirebaseError: React.Dispatch<React.SetStateAction<string | null>>;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setChoosenFigure: React.Dispatch<React.SetStateAction<string>>;
+  currentUser: User | null;
+}
+export interface RouteInterface {
+  path: string;
+  element: () => JSX.Element;
+}
+
+export interface ProtectedRoutes {
+  path: string;
+  element: () => JSX.Element;
+  children?: RouteInterface[] | null;
+}
+
+export interface UnprotectedRoutes {
+  path: string;
+  element: () => JSX.Element;
+}
+export interface ViewExerciseIterface {
+  name: null | string;
+}
 export interface SidebarTabs {
   id: number;
   name: string;
   icon: any;
+  to: string;
+  children?: SidebarTabsChildren[];
+}
+
+export interface SidebarTabsChildren {
+  name: string;
   to: string;
 }
 
@@ -32,22 +67,6 @@ export interface ArrangeMuslces {
   secondary: string[];
 }
 
-export interface RouteInterface {
-  path: string;
-  element: () => JSX.Element;
-}
-
-export interface ProtectedRoutes {
-  path: string;
-  element: () => JSX.Element;
-  children?: RouteInterface[] | null;
-}
-
-export interface UnprotectedRoutes {
-  path: string;
-  element: () => JSX.Element;
-}
-
 export interface CharactersCarousel {
   name: string;
   description: string;
@@ -72,4 +91,11 @@ export interface TileInterface {
   target: number | string;
   current: number | string;
   style: StyleTile;
+}
+
+export interface OutletExerciseCards {
+  isOpenModal: boolean;
+  openModal: () => void;
+  closeModal: () => void;
+  pickExercise: (exercise: string) => void;
 }

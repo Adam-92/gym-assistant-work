@@ -1,49 +1,9 @@
-import { useState } from "react";
-import { faWindows } from "@fortawesome/free-brands-svg-icons";
-import {
-  faDumbbell,
-  faGear,
-  faRightFromBracket,
-  faCalendarDays,
-} from "@fortawesome/free-solid-svg-icons";
 import Tab from "../../Tab/Tab";
+import { tabs } from "../../Tab/Tabs";
 import { SidebarTabs } from "../../../model/Model";
 import "./Sidebar.css";
 
 const Sidebar = () => {
-  const [tabs, setTabs] = useState<SidebarTabs[]>([
-    {
-      id: 1,
-      name: "Dashboard",
-      icon: faWindows,
-      to: "/dashboard"
-    },
-    {
-      id: 2,
-      name: "Exercises",
-      icon: faDumbbell,
-      to: "/select-body-part"
-    },
-    {
-      id: 3,
-      name: "Plan",
-      icon: faCalendarDays,
-      to: "/plan"
-    },
-    {
-      id: 4,
-      name: "Settings",
-      icon: faGear,
-      to: "/settings"
-    },
-    {
-      id: 5,
-      name: "Logout",
-      icon: faRightFromBracket,
-      to: "/logout"
-    },
-  ]);
-
   return (
     <aside className="container-sidebar">
       <header>
@@ -52,17 +12,18 @@ const Sidebar = () => {
         </div>
       </header>
       <nav className="nav-sidebar">
-        <ul>
-          {tabs.map((tab: SidebarTabs , index: number) => {
-            const { to, id, name, icon } = tab;
+        <ul className="parent-sidebar">
+          {tabs.map(({ to, id, name, icon, children }: SidebarTabs) => {
             return (
-              <Tab 
-                icon={icon} 
-                id={id} to={to} 
-                name={name} 
-                key={index}
+              <Tab
+                icon={icon}
+                id={id}
+                to={to}
+                name={name}
+                children={children}
+                key={name}
               />
-            )
+            );
           })}
         </ul>
       </nav>

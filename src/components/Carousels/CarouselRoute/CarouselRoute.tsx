@@ -12,8 +12,9 @@ import "./CarouselRoute.css";
 const CarouselRoute = () => {
   const navigate = useNavigate();
   const urlPath = useLocation().pathname;
-  const { routeIndex, setRouteIndex, goLeftRoute, goRightRoute } =
-    useRouteCarousel();
+  console.log("🚀 ~ urlPath ", urlPath )
+
+  const { routeIndex, goLeftRoute, goRightRoute } = useRouteCarousel();
 
   const firstRender = useRef(true);
   const arrayPaths: string[] = [
@@ -40,7 +41,7 @@ const CarouselRoute = () => {
         icon={faCircleArrowLeft}
         className="icon-carousel-route"
         onClick={() => {
-          goLeftRoute(routeIndex, setRouteIndex);
+          goLeftRoute(routeIndex);
         }}
       />
       <h1>{nameOfPart(urlPath)}</h1>
@@ -48,7 +49,7 @@ const CarouselRoute = () => {
         icon={faCircleArrowRight}
         className="icon-carousel-route"
         onClick={() => {
-          goRightRoute(routeIndex, setRouteIndex);
+          goRightRoute(routeIndex);
         }}
       />
     </header>

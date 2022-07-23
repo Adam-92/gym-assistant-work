@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { getExerciseCards } from "../../services/Activity";
-import { ExerciseCardsInterface, Exercise } from "../../model/Model";
+import { ExerciseCardsInterface} from "../../model/Model";
 import { useParams, useLocation } from "react-router-dom";
 import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
 import "./Exercises.css";
 
 const Exercises = () => {
-  const [data, setData] = useState<Exercise[]>([]);
+  const [data, setData] = useState<[] | null>([]);
 
   let { bodyPart } = useParams();
   const location = useLocation();
