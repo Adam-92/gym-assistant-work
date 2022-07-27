@@ -1,27 +1,34 @@
-import { ProtectedRoutes, UnprotectedRoutes } from "../model/Model";
-import Exercises from "../pages/exercises-page/Exercises";
-import SelectBodyPart from "../pages/SelectBodyPart-page/SelectBodyPart";
+import { RouteInterface } from "../model/Routes.model";
+import Exercises from "src/pages/exercises-page/Exercises";
 import Plan from "../pages/plan-page/Plan";
 import Settings from "../pages/settings-page/Settings";
 import Dashboard from "../pages/dashboard-page/Dashboard";
 import Login from "../pages/login-page/Login";
 import Register from "../pages/register-page/Register";
+import AddNewExercise from "../pages/addNewExercise-page/AddNewExercise";
+import Catalogue from "../pages/catalogue-page/Catalogue";
 
-export const protectedRoutes: ProtectedRoutes[] = [
+export const protectedRoutes: RouteInterface[] = [
   {
     path: "/dashboard",
     element: Dashboard,
     children: null,
   },
   {
-    path: "/select-body-part",
-    element: SelectBodyPart,
+    path: "/catalogue",
+    element: Catalogue,
     children: [
       {
         path: ":bodyPart",
         element: Exercises,
-      }
-    ]
+        children: null,
+      },
+      {
+        path: "add-new",
+        element: AddNewExercise,
+        children: null,
+      },
+    ],
   },
   {
     path: "/plan",
@@ -35,7 +42,7 @@ export const protectedRoutes: ProtectedRoutes[] = [
   },
 ];
 
-export const unprotectedRoutes: UnprotectedRoutes[] = [
+export const unprotectedRoutes: RouteInterface[] = [
   {
     path: "/",
     element: Login,

@@ -1,3 +1,16 @@
+.container-exercises {
+    height: 100%;
+}
+
+.content-exercises{
+    background-color: white;
+    border-radius: 2rem;
+    padding: 2rem;
+    min-height: 100%;
+}
+.pointer-none{
+    pointer-events: none;
+}
 .cards-exercises {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 420px));

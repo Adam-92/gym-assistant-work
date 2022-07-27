@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getCarouselCharacters } from "../../../services/Activity";
-import Carousel from "../../Carousels/Carousel/Carousel";
-import { CharactersCarousel } from "../../../model/Model";
+import { CharactersCarousel } from "src/model/Carousels.model";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
+import Carousel from "../../Carousels/Carousel/Carousel";
 import "./WelcomeModal.css";
 
 const WelcomeModal = () => {

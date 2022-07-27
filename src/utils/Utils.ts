@@ -166,6 +166,6 @@ export const requestData = async (getData: any, setData: any) => {
 };
 
 export const nameOfPart = (url: string): string => {
-  let part = url.replace("/select-body-part/", "");
+  let part = url.replace("/catalogue/", "");
   return part[0].toUpperCase() + part.slice(1);
 };

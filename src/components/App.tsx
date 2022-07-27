@@ -1,7 +1,11 @@
-import { Routes, Route } from "react-router-dom";
-import { ProtectedRoutes, RouteInterface } from "../model/Model";
+import { Routes, Route} from "react-router-dom";
+import {
+  PrimaryChildren,
+  SecondaryChildren,
+  RouteInterface,
+} from "src/model/Routes.model";
 import { protectedRoutes, unprotectedRoutes } from "../routes/routes";
-import NotFound from "../pages/not-found-page/NotFound";
+import NotFound from "../pages/notFound-page/NotFound";
 import UnprotectedRoutes from "./AuthElements/UnprotectedRoutes";
 import ProtectedRoute from "./AuthElements/ProtectedRoute";
 import "./App.css";
@@ -9,7 +13,7 @@ import "./App.css";
 const App = () => {
   return (
     <Routes>
-      {protectedRoutes.map((route: ProtectedRoutes, index: number) => {
+      {protectedRoutes.map((route: RouteInterface, index: number) => {
         return (
           <Route
             path={route.path}
@@ -20,16 +24,29 @@ const App = () => {
               </ProtectedRoute>
             }
           >
-            {route.children &&
-              route.children.map((route: RouteInterface, index: number) => {
+            {route?.children?.map(
+              (primaryChild: PrimaryChildren, index: number) => {
                 return (
                   <Route
-                    path={route.path}
+                    path={primaryChild.path}
                     key={index}
-                    element={<route.element />}
-                  />
+                    element={<primaryChild.element />}
+                  >
+                    {primaryChild?.children?.map(
+                      (secondaryChildren: SecondaryChildren, index: number) => {
+                        return (
+                          <Route
+                            path={secondaryChildren.path}
+                            element={secondaryChildren.element}
+                            key={index}
+                          ></Route>
+                        );
+                      }
+                    )}
+                  </Route>
                 );
-              })}
+              }
+            )}
             )
           </Route>
         );

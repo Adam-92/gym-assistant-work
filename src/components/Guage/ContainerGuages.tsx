@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { GuageInterface } from "src/model/Guage.model";
 import { getGauges } from "../../services/Activity";
 import Guage from "./Guage";
-import { GuageInterface } from "./Guage.model" 
 import "./Guage.css";
 
 const ContainerGuages = () => {

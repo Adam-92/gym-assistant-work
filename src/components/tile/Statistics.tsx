@@ -1,5 +1,5 @@
 import { minToHours } from "../../utils/Utils";
-import { StatisticsTile } from "src/model/Model";
+import { StatisticsTile } from "src/model/Tile.model";
 
 const Statistics = ({ target, current, name }: StatisticsTile) => {
   if (name === "Training Time") {

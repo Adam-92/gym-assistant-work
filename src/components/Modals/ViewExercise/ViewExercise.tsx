@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DataViewExercise, ViewExerciseIterface } from "./ViewExercise.model";
+import { DataViewExercise, ViewExerciseIterface } from "src/model/Modals.model";
 import { getViewExercise } from "src/services/Activity";
 import "./ViewExercise.css";
 
@@ -37,7 +37,6 @@ const ViewExercise: React.FC<ViewExerciseIterface> = ({ name }) => {
               })}
           </ol>
         </section>
-        <section></section>
       </div>
     </article>
   );

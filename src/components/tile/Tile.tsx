@@ -1,5 +1,5 @@
 import Statistics from "./Statistics";
-import { TileInterface } from "src/model/Model";
+import { TileInterface } from "src/model/Tile.model";
 const Tile = ({ icon, name, target, current, style }: TileInterface) => {
   const { 
     backgroundIcon, 

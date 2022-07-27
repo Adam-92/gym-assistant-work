@@ -12,7 +12,6 @@ import "./CarouselRoute.css";
 const CarouselRoute = () => {
   const navigate = useNavigate();
   const urlPath = useLocation().pathname;
-  console.log("🚀 ~ urlPath ", urlPath )
 
   const { routeIndex, goLeftRoute, goRightRoute } = useRouteCarousel();
 
@@ -32,7 +31,7 @@ const CarouselRoute = () => {
       firstRender.current = false;
       return;
     }
-    navigate(`./${arrayPaths[routeIndex]}`);
+    navigate(`../${arrayPaths[routeIndex]}`);
   }, [routeIndex]);
 
   return (
@@ -40,17 +39,13 @@ const CarouselRoute = () => {
       <FontAwesomeIcon
         icon={faCircleArrowLeft}
         className="icon-carousel-route"
-        onClick={() => {
-          goLeftRoute(routeIndex);
-        }}
+        onClick={goLeftRoute}
       />
       <h1>{nameOfPart(urlPath)}</h1>
       <FontAwesomeIcon
         icon={faCircleArrowRight}
         className="icon-carousel-route"
-        onClick={() => {
-          goRightRoute(routeIndex);
-        }}
+        onClick={goRightRoute}
       />
     </header>
   );

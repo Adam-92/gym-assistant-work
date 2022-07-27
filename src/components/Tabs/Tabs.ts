@@ -5,29 +5,30 @@ import {
   faRightFromBracket,
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
-import { SidebarTabs } from "../../model/Model";
+import { TabInterface } from "src/model/Tabs.model";
 
-export const tabs: SidebarTabs[] = [
+export const tabs: TabInterface[] = [
   {
     id: 1,
     name: "Dashboard",
     icon: faWindows,
     to: "/dashboard",
+    children: null
   },
   {
     id: 2,
-    name: "Exercises",
+    name: "Catalogue",
     icon: faDumbbell,
-    to: "",
+    to: "/catalogue",
     children: [
       {
-        name: "Catalogue",
-        to: "/select-body-part",
+        name: "Exercises",
+        to: "../catalogue"
       },
       {
         name: "Add New",
-        to: "/add-new",
-      },
+        to: "add-new",
+      }
     ],
   },
   {
@@ -35,17 +36,20 @@ export const tabs: SidebarTabs[] = [
     name: "Plan",
     icon: faCalendarDays,
     to: "/plan",
+    children: null
   },
   {
     id: 4,
     name: "Settings",
     icon: faGear,
     to: "/settings",
+    children: null
   },
   {
     id: 5,
     name: "Logout",
     icon: faRightFromBracket,
     to: "/logout",
+    children: null
   },
 ];

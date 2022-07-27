@@ -2,12 +2,11 @@ import { addDataToConfig } from "../../../utils/Utils";
 import { config } from "./config/config";
 import Chart from "chart.js/auto";
 import { useEffect, useRef, useState } from "react";
-import { CaloriesInterface } from "./CaloriesChart.model"
 
-const CaloriesChart: React.FC = () => {
+const CaloriesChart = () => {
   let chartRef = useRef(null);
 
-  const [data, setData] = useState<CaloriesInterface>({
+  const [data, setData] = useState({
     0: [2000, 2000, 2000, 2000, 2000, 2000, 2000],
     1: [1500, 3200, 2000, 1200, 3500, 800, 2900],
   });

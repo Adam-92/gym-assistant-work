@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { requestData } from "../../../utils/Utils";
 import { getDailySteps, getMonthlySteps } from "../../../services/Activity";
+import { StepChartInterface } from "src/model/StepChart.model";
 import Bar from "./Bar";
 import Switch from "./Switch";
-import { StepChartInterface } from "./StepChart.model";
 import "./StepChart.css";
 
 const StepChart = () => {

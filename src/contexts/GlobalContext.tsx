@@ -1,6 +1,6 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { auth } from "../config/firebase";
-import { AppContextInterface } from "src/model/Model";
+import { AppContextInterface } from "src/model/Contexts.model";
 import { User } from "firebase/auth";
 
 

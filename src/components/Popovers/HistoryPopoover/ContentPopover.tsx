@@ -1,4 +1,4 @@
-import { TrainingSet } from "src/model/Model";
+import { TrainingSet } from "src/model/Popovers.model";
 
 const ContentPopover = ({ lastTraining }: any) => {
   const { exerciseName, training } = lastTraining;

@@ -1,5 +1,5 @@
 import Tile from "./Tile";
-import { TileInterface } from "../../model/Model"
+import { TileInterface } from "../../model/Tile.model"
 import { useEffect, useState } from "react";
 import { getTilesData } from "../../services/Activity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

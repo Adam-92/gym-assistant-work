@@ -1,4 +1,4 @@
-import { SwitchInterface } from "./StepChart.model";
+import { SwitchInterface } from "src/model/StepChart.model";
 
 const Switch: React.FC<SwitchInterface> = ({
   changePeriod,

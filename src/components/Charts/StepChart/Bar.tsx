@@ -1,5 +1,5 @@
 import { changeToPercent } from "../../../utils/Utils";
-import { BarInterface } from "./StepChart.model";
+import { BarInterface } from "src/model/StepChart.model";
 
 const Bar: React.FC<BarInterface> = ({ day, steps, target }) => {
   const ratio = changeToPercent(steps, target);

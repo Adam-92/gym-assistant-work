@@ -1,8 +1,7 @@
-import Sidebar from "../Sidebars/Sidebar/Sidebar";
-import { ContainerInterface } from "./Container.model";
+import Sidebar from "../Sidebar/Sidebar";
 import "./Container.css";
 
-const Container: React.FC<ContainerInterface> = ({ children }) => {
+const Container = ({ children }: { children: React.ReactNode }) => {
   return (
     <main className="container">
       <article className="center-container">
