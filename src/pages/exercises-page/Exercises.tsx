@@ -23,7 +23,7 @@ const Exercises = () => {
         : null;
       setData(selectedExercises?.exercises);
     });
-  }, [location.pathname]);
+  }, [location.pathname, bodyPart]);
 
   const pickExercise = (exercise: string) => {
     setPickedExercise(exercise);

@@ -8,23 +8,24 @@ const ContainerGuages = () => {
   const [data, setData] = useState<GuageInterface[]>([]);
 
   useEffect(() => {
-    getGauges()
-    .then((res) => setData(res));
+    getGauges().then((res) => setData(res));
   }, []);
 
   return (
     <article className="container-guages">
-      {data && data.map((guage: GuageInterface, index: number) => {
-        const { target, current, units } = guage;
-        return (
-          <Guage 
-            target={target}
-            current={current} 
-            units={units} 
-            key={index}
-          />
-        );
-      })}
+      {data &&
+        data.map(
+          ({ target, current, units }: GuageInterface, index: number) => {
+            return (
+              <Guage
+                target={target}
+                current={current}
+                units={units}
+                key={index}
+              />
+            );
+          }
+        )}
     </article>
   );
 };

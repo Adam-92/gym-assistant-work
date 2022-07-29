@@ -1,7 +1,5 @@
 const AddNewExercise = () => {
-  return (
-    <h1>ADD NEW EXERCISE</h1>
-  )
-}
+  return <article>ADD NEW EXERCISE</article>;
+};
 
-export default AddNewExercise
+export default AddNewExercise;

@@ -6,7 +6,7 @@ import CarouselItem from "./CarouselItem";
 import { CharactersCarousel } from "../../../model/Carousels.model";
 import "./Carousel.css";
 
-const Carousel = ({ characters }:{characters: CharactersCarousel[]}) => {
+const Carousel = ({ characters }:{characters: CharactersCarousel[] | undefined}) => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const containerRef = useRef([]);
 

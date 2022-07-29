@@ -1,16 +1,14 @@
-export interface BarInterface {
-    day: string,
-    steps: number,
-    target: number
-  }
-export interface StepChartInterface {
-      day: string;
-      steps: number;
+export interface StepsValues {
+  day: string;
+  steps: number;
 }
-
+export interface BarStepsValues {
+  day: string;
+  steps: number;
+  target: number;
+}
 export interface SwitchInterface {
-    changePeriod: boolean,
-    setChangePeriod: React.Dispatch<React.SetStateAction<boolean>>
-  }
-  
-  
+  period: boolean;
+  monthlyPeriod: () => void;
+  weeklyPeriod: () => void;
+}

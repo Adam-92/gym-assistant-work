@@ -1,9 +1,5 @@
-import { Routes, Route} from "react-router-dom";
-import {
-  PrimaryChildren,
-  SecondaryChildren,
-  RouteInterface,
-} from "src/model/Routes.model";
+import { Routes, Route } from "react-router-dom";
+import { RouteInterface, ChildrenRoute } from "src/model/Routes.model";
 import { protectedRoutes, unprotectedRoutes } from "../routes/routes";
 import NotFound from "../pages/notFound-page/NotFound";
 import UnprotectedRoutes from "./AuthElements/UnprotectedRoutes";
@@ -24,29 +20,15 @@ const App = () => {
               </ProtectedRoute>
             }
           >
-            {route?.children?.map(
-              (primaryChild: PrimaryChildren, index: number) => {
-                return (
-                  <Route
-                    path={primaryChild.path}
-                    key={index}
-                    element={<primaryChild.element />}
-                  >
-                    {primaryChild?.children?.map(
-                      (secondaryChildren: SecondaryChildren, index: number) => {
-                        return (
-                          <Route
-                            path={secondaryChildren.path}
-                            element={secondaryChildren.element}
-                            key={index}
-                          ></Route>
-                        );
-                      }
-                    )}
-                  </Route>
-                );
-              }
-            )}
+            {route?.children?.map((child: ChildrenRoute, index: number) => {
+              return (
+                <Route
+                  path={child.path}
+                  key={index}
+                  element={<child.element />}
+                ></Route>
+              );
+            })}
             )
           </Route>
         );

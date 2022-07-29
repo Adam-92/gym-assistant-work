@@ -1,8 +1,6 @@
 import Tab from "../Tabs/Tab/Tab";
-import NestedTab from "../Tabs/NestedTab/NestedTab";
-import { useState } from "react";
 import { tabs } from "../Tabs/Tabs";
-import { ChildrenTabInterface, TabInterface } from "src/model/Tabs.model";
+import { TabInterface } from "src/model/Tabs.model";
 import "./Sidebar.css";
 
 const Sidebar = () => {

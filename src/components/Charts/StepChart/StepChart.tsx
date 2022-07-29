@@ -1,37 +1,45 @@
 import { useEffect, useState } from "react";
-import { requestData } from "../../../utils/Utils";
 import { getDailySteps, getMonthlySteps } from "../../../services/Activity";
-import { StepChartInterface } from "src/model/StepChart.model";
+import { StepsValues } from "src/model/StepChart.model";
 import Bar from "./Bar";
 import Switch from "./Switch";
 import "./StepChart.css";
 
 const StepChart = () => {
-  const [changePeriod, setChangePeriod] = useState(true);
+  const [period, setPeriod] = useState(true);
   const [target, setTarget] = useState(12000);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<StepsValues[] | undefined>([]);
+
+  const requestData = async (
+    getData: () => Promise<StepsValues[] | undefined>
+  ) => {
+    return getData().then((res: StepsValues[] | undefined) => setData(res));
+  };
 
   useEffect(() => {
-    if (changePeriod) {
-      requestData(getDailySteps, setData);
+    if (period) {
+      requestData(getDailySteps);
     } else {
-      requestData(getMonthlySteps, setData);
+      requestData(getMonthlySteps);
     }
-  }, [changePeriod]);
+  }, [period]);
+
+  const monthlyPeriod = () => setPeriod(false);
+  const weeklyPeriod = () => setPeriod(true);
 
   return (
     <article className="container-step-chart">
       <header className="header-step-chart">
         <h2>Steps: {target} / day</h2>
-        <Switch changePeriod={changePeriod} setChangePeriod={setChangePeriod} />
+        <Switch
+          period={period}
+          monthlyPeriod={monthlyPeriod}
+          weeklyPeriod={weeklyPeriod}
+        />
       </header>
-      <div
-        className={`content-step-chart ${
-          !changePeriod && "padding-step-chart"
-        }`}
-      >
+      <div className={`content-step-chart ${!period && "padding-step-chart"}`}>
         {data &&
-          data.map(({ day, steps }: StepChartInterface) => {
+          data.map(({ day, steps }: StepsValues) => {
             return <Bar key={day} day={day} steps={steps} target={target} />;
           })}
       </div>

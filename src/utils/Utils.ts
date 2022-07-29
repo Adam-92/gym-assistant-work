@@ -3,11 +3,6 @@ export const changeToPercent = (steps: number, target: number): number => {
   return calculate > 100 ? 100 : calculate;
 };
 
-export const addToRefContainer = (el: any, containerRef: any): void => {
-  if (el && !containerRef.current.includes(el)) {
-    containerRef.current.push(el);
-  }
-};
 export const minToHours = (min: any): string => {
   const hours = min / 60;
   const rhours = Math.floor(hours);
@@ -15,6 +10,7 @@ export const minToHours = (min: any): string => {
   const rminutes = Math.round(minutes);
   return `${rhours}h : ${rminutes}m`;
 };
+
 
 export const addDataToConfig = (apiData: any, config: any): any => {
   const { data } = config;
@@ -29,6 +25,8 @@ export const addDataToConfig = (apiData: any, config: any): any => {
   };
   return { ...config, data: newData };
 };
+
+/* ---START---DO PRZEMEBLOWANIA WRAZ Z KOMPONENTAMI----- */
 export const handleDescription = (
   container: any,
   methodName: any,
@@ -41,6 +39,13 @@ export const handleDescription = (
     return container.children[2].classList.remove(className);
   }
 };
+
+export const addToRefContainer = (el: any, containerRef: any): void => {
+  if (el && !containerRef.current.includes(el)) {
+    containerRef.current.push(el);
+  }
+};
+
 
 export const carouselMovement = (
   ref1: any,
@@ -155,17 +160,13 @@ export const calculatePopoverCoordinates = (
     left: newLeftCoordinatesPopover,
   };
 };
+/* ---KONIEC---DO PRZEMEBLOWANIA WRAZ Z KOMPONENTAMI----- */
 
 export const calculateProgress = (current: number, target: number) => {
   const percent = changeToPercent(current, target);
   return (180 * percent) / 100 + 135;
 };
 
-export const requestData = async (getData: any, setData: any) => {
-  getData().then((res: any) => setData(res));
-};
-
-export const nameOfPart = (url: string): string => {
-  let part = url.replace("/catalogue/", "");
-  return part[0].toUpperCase() + part.slice(1);
+export const firstBigLetter = (name: string): string => {
+  return name[0].toUpperCase() + name.slice(1);
 };

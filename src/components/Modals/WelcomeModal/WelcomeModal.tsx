@@ -6,11 +6,11 @@ import Carousel from "../../Carousels/Carousel/Carousel";
 import "./WelcomeModal.css";
 
 const WelcomeModal = () => {
-  const [characters, setCharacters] = useState<CharactersCarousel[]>([]);
+  const [characters, setCharacters] = useState([]);
   const { currentUser } = useGlobalContext();
 
   useEffect(() => {
-    getCarouselCharacters().then((data) => setCharacters(data));
+    getCarouselCharacters().then((data) => setCharacters(data))
   }, []);
 
   return (

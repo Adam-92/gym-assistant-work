@@ -1,17 +1,11 @@
 export interface RouteInterface {
   path: string;
   element: () => JSX.Element
-  children?: PrimaryChildren[] | null;
+  children?: ChildrenRoute[] | null;
 }
 
-export interface PrimaryChildren {
+export interface ChildrenRoute {
   path: string,
   element: () => JSX.Element;
-  children?: SecondaryChildren[] | null
-}
-
-export interface SecondaryChildren {
-  path: string,
-  element: () => JSX.Element
 }
 

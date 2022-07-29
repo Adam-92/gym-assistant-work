@@ -20,13 +20,11 @@ export const protectedRoutes: RouteInterface[] = [
     children: [
       {
         path: ":bodyPart",
-        element: Exercises,
-        children: null,
+        element: Exercises
       },
       {
         path: "add-new",
-        element: AddNewExercise,
-        children: null,
+        element: AddNewExercise
       },
     ],
   },

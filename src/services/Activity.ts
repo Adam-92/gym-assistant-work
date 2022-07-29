@@ -1,76 +1,91 @@
 import axios from "axios";
-const host = "http://localhost:3000/data";
+import { StepsValues } from "src/model/StepChart.model";
 
-export const getDailySteps = async () => {
+const instance = axios.create({
+  baseURL: "http://localhost:3000/data/",
+  timeout: 1000,
+  headers: { "X-Custom-Header": "foobar" },
+});
+
+export const getDailySteps = async (): Promise<StepsValues[] | undefined> => {
   try {
-    const { data } = await axios.get(`${host}/dailySteps.json`);
-    return data;
+    return await (
+      await instance.get(`dailySteps.json`)
+    ).data;
   } catch (error) {
     console.log(error);
   }
 };
-export const getMonthlySteps = async () => {
+export const getMonthlySteps = async (): Promise<StepsValues[] | undefined> => {
   try {
-    const { data } = await axios.get(`${host}/monthlySteps.json`);
-    return data;
+    return await (
+      await instance.get(`monthlySteps.json`)
+    ).data;
   } catch (error) {
     console.log(error);
   }
 };
 export const getCarouselCharacters = async () => {
   try {
-    const { data } = await axios.get(`${host}/charactersCarousel.json`);
-    return data;
+    return await (
+      await instance.get(`charactersCarousel.json`)
+    ).data;
   } catch (error) {
     console.log(error);
   }
 };
 export const getTilesData = async () => {
   try {
-    const { data } = await axios.get(`${host}/tiles.json`);
-    return data;
+    return await (
+      await instance.get(`tiles.json`)
+    ).data;
   } catch (error) {
     console.log(error);
   }
 };
 export const getNextTraining = async () => {
   try {
-    const { data } = await axios.get(`${host}/nextTraining.json`);
-    return data;
+    return await (
+      await instance.get(`nextTraining.json`)
+    ).data;
   } catch (error) {
     console.log(error);
   }
 };
 export const getGauges = async () => {
   try {
-    const { data } = await axios.get(`${host}/guages.json`);
-    return data;
+    return await (
+      await instance.get(`guages.json`)
+    ).data;
   } catch (error) {
     console.log(error);
   }
 };
 export const getExerciseCards = async () => {
   try {
-    const { data } = await axios.get(`${host}/exerciseCards.json`);
-    return data;
+    return await (
+      await instance.get(`exerciseCards.json`)
+    ).data;
   } catch (error) {
     console.log(error);
   }
 };
 export const getCatalogue = async () => {
   try {
-    const { data } = await axios.get(`${host}/bodyParts.json`);
-    return data;
+    return await (
+      await instance.get(`bodyParts.json`)
+    ).data;
   } catch (error) {
     console.log(error);
   }
 };
 
 export const getViewExercise = async () => {
-  try{
-    const { data } = await axios.get(`${host}/viewExercise.json`)
-    return data
-  } catch (error){
-    console.log(error)
+  try {
+    return await (
+      await instance.get(`viewExercise.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
   }
-}
+};
