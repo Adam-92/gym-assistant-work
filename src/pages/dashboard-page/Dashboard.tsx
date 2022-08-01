@@ -10,7 +10,7 @@ import "./dashboard.css";
 
 const Dashboard = () => {
   const { openModal } = useGlobalContext();
-
+  
   return (
     <Container>
       <header className="header-dashboard">

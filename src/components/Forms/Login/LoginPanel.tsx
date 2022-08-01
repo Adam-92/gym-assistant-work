@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDumbbell, faUser, faKey } from "@fortawesome/free-solid-svg-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormLogin } from "./LoginPanel.model";
+import { FormLogin } from "src/model/Forms.model";
 import { signIn } from "../../../services/Auth";
 import { loginValidation } from "../Validation/ValidationRules";
 import { useGlobalContext } from "../../../contexts/GlobalContext";

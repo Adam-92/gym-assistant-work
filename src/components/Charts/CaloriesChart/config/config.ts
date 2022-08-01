@@ -1,5 +1,3 @@
-import Chart, { ChartItem } from "chart.js/auto";
-
 const days: string[] = [
   "Monday",
   "Tuesday",
@@ -13,7 +11,7 @@ const days: string[] = [
 let delayed: boolean;
 
 /* --- Data --- */
-const data: any = {
+const data = {
   labels: days,
   datasets: [
     {

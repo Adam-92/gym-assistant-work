@@ -3,11 +3,6 @@ export const changeToPercent = (steps: number, target: number): number => {
   return calculate > 100 ? 100 : calculate;
 };
 
-export const addToRefContainer = (el: any, containerRef: any): void => {
-  if (el && !containerRef.current.includes(el)) {
-    containerRef.current.push(el);
-  }
-};
 export const minToHours = (min: any): string => {
   const hours = min / 60;
   const rhours = Math.floor(hours);
@@ -15,6 +10,7 @@ export const minToHours = (min: any): string => {
   const rminutes = Math.round(minutes);
   return `${rhours}h : ${rminutes}m`;
 };
+
 
 export const addDataToConfig = (apiData: any, config: any): any => {
   const { data } = config;
@@ -29,6 +25,8 @@ export const addDataToConfig = (apiData: any, config: any): any => {
   };
   return { ...config, data: newData };
 };
+
+/* ---START---DO PRZEMEBLOWANIA WRAZ Z KOMPONENTAMI----- */
 export const handleDescription = (
   container: any,
   methodName: any,
@@ -41,6 +39,13 @@ export const handleDescription = (
     return container.children[2].classList.remove(className);
   }
 };
+
+export const addToRefContainer = (el: any, containerRef: any): void => {
+  if (el && !containerRef.current.includes(el)) {
+    containerRef.current.push(el);
+  }
+};
+
 
 export const carouselMovement = (
   ref1: any,
@@ -89,11 +94,17 @@ export const containerClass = (name: string): any => {
   if (name === "athlete") return "right-item-carousel";
 };
 
-export const goLeft = (setState: any, index: number): any => {
+export const goLeft = (
+  setState: React.Dispatch<React.SetStateAction<number>>,
+  index: number
+) => {
   return index === 0 ? setState(2) : setState((prev: number) => prev - 1);
 };
 
-export const goRight = (setState: any, index: number): any => {
+export const goRight = (
+  setState: React.Dispatch<React.SetStateAction<number>>,
+  index: number
+) => {
   return index === 2 ? setState(0) : setState((prev: number) => prev + 1);
 };
 
@@ -125,7 +136,7 @@ export const getItemCoordinates = (
   e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   setItemCoordinates: any
 ) => {
-  const item = (e.target as HTMLElement);
+  const item = e.target as HTMLElement;
   const coordinates = item.getBoundingClientRect();
   setItemCoordinates(coordinates);
 };
@@ -149,21 +160,13 @@ export const calculatePopoverCoordinates = (
     left: newLeftCoordinatesPopover,
   };
 };
+/* ---KONIEC---DO PRZEMEBLOWANIA WRAZ Z KOMPONENTAMI----- */
 
 export const calculateProgress = (current: number, target: number) => {
   const percent = changeToPercent(current, target);
-  const angle = (180 * percent) / 100 + 135;
-  return angle;
+  return (180 * percent) / 100 + 135;
 };
 
-
-export const requestData = async (getData: any, example: any, setData: any, setError: any) => {
-  getData()
-    .then((res: any) => setData(res))
-    .catch((e:any) => {
-      const data = example();
-      setData(data);
-      setError(true);
-    });
+export const firstBigLetter = (name: string): string => {
+  return name[0].toUpperCase() + name.slice(1);
 };
-

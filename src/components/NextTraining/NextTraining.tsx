@@ -4,22 +4,14 @@ import { useEffect, useState } from "react";
 import { getNextTraining } from "../../services/Activity";
 import "./NextTraining.css";
 
-
-const NextTraining: React.FC = () => {
-  
-  interface Data {
-    name: string,
-    data: number
-  }
-
-  const [data, setData] = useState<Data[]>([]);
-  const [lastTraining, setLastTraining] = useState({})
+const NextTraining = () => {
+  const [data, setData] = useState([]);
+  const [lastTraining, setLastTraining] = useState({});
   const [coordinatesDOM, setCoordinatesDOM] = useState({});
   const [showHistoryPopover, setShowHistoryPopover] = useState(false);
 
   useEffect(() => {
-    getNextTraining()
-    .then((res) => setData(res));
+    getNextTraining().then((res) => setData(res));
   }, []);
 
   return (

@@ -1,0 +1,156 @@
+[
+  {
+    "bodyPart": "chest",
+    "exercises": [
+      { 
+        "id": 1,
+        "name": "Bench Press",
+        "img": "https://www.muscleandfitness.com/wp-content/uploads/2019/04/10-Exercises-Build-Muscle-Bench-Press.jpg?quality=86&strip=all",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps", "Arms"]
+        }
+      },
+      {
+        "id": 2,
+        "name": "Incline Dumbell Press",
+        "img": "https://phantom-marca.unidadeditorial.es/ba44964da554ac143d37696b4984c2f6/crop/17x0/800x441/resize/1320/f/jpg/assets/multimedia/imagenes/2022/05/27/16536599068607.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 3,
+        "name": "Incline Bench Press",
+        "img": "https://blogscdn.thehut.net/app/uploads/sites/419/2021/07/shutterstock_68880238opt_featured_1625232235_1200x672_acf_cropped.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 4,
+        "name": "Decline Bench Press",
+        "img": "https://www.muscleandfitness.com/wp-content/uploads/2016/11/decine-chest-press.jpg?quality=86&strip=all",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 5,
+        "name": "Chest Dip",
+        "img": "https://cdn.muscleandstrength.com/sites/default/files/chest-dip.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 6,
+        "name": "Dumbbel Flys",
+        "img": "https://i.ytimg.com/vi/u7qKtYIgsUY/maxresdefault.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 7,
+        "name": "Chest Fly",
+        "img": "https://www.newbodyplan.co.uk/wp-content/uploads/2020/10/Screenshot-2020-10-22-at-19.47.21-940x680.png",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 8,
+        "name": "Dumbell Pullover",
+        "img": "https://i.ytimg.com/vi/KQOBt5gjkSI/maxresdefault.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      }
+    ]
+  },
+  {
+    "bodyPart": "legs",
+    "exercises": [
+      {
+        "id": 1,
+        "name": "Front Squat",
+        "img": "https://www.muscleandfitness.com/wp-content/uploads/2014/12/front-squat-safer-squat.jpg?quality=86&strip=all",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 2,
+        "name": "Romanian Deadlift",
+        "img": "https://i.ytimg.com/vi/AK3y1boSFwc/maxresdefault.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 3,
+        "name": "Leg Curls",
+        "img": "https://www.bodybuilding.com/images/2017/july/the-other-curl-get-the-most-out-of-your-hamstring-training-header-600x338.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 4,
+        "name": "Back Squats",
+        "img": "https://d3h9ln6psucegz.cloudfront.net/wp-content/uploads/2021/01/Strong-Legs-No-Back-Squats.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 5,
+        "name": "Dumbell Walkings",
+        "img": "https://cdn.muscleandstrength.com/sites/default/files/dumbbell-walking-lunge.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": null
+        }
+      },
+      {
+        "id": 6,
+        "name": "Goblet Squat",
+        "img": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/woman-doing-squats-with-a-kettlebell-royalty-free-image-879709092-1548341000.jpg?crop=1.00xw:0.860xh;0,0.121xh&resize=480:*",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 7,
+        "name": "Glute Bridge",
+        "img": "https://fitnessvolt.com/wp-content/uploads/2022/03/glute-bridge-exercise-750x422.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      },
+      {
+        "id": 8,
+        "name": "Step Up",
+        "img": "https://t4.ftcdn.net/jpg/01/92/52/91/360_F_192529176_SQnDyQ9bkij6zjlV17ABaGSfpmNFJr1b.jpg",
+        "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps"]
+        }
+      }
+    ]
+  }
+]

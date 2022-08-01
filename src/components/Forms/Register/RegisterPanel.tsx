@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { signUp } from "../../../services/Auth";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { RegisterInputs } from "./RegisterPanel.model";
+import { RegisterInputs } from "src/model/Forms.model";
 import { registerValidation } from "../Validation/ValidationRules";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./RegisterPanel.css";

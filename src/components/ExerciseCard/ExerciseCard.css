@@ -1,0 +1,56 @@
+.container-exercise-card {
+    height: 290px;
+    max-height: 290px;
+    margin-bottom: 0.8rem;
+}
+
+.img-exercise-card {
+    max-height: 60%;
+    width: 100%;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.img-exercise-card img {
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    height: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    object-fit: fill;
+    transition: all ease .5s;
+    transform: translate3d(0px, 0px, 0px);
+}
+.img-exercise-card img:hover{
+    transform: scale(1.15);
+}
+
+.information-exercise-card {
+    padding: 0.8rem;
+}
+
+.information-exercise-card h2 {
+    margin-top: 0.5rem;
+}
+
+.part-exercise-card {
+    background: linear-gradient(to right, rgb(211, 93, 166), purple);
+    padding: 3px 6px;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+    margin-right: 5px;
+}
+
+.underline-exercise-card {
+    margin-top: 2.1rem;
+    height: 3px;
+    background: linear-gradient(to right, rgb(211, 93, 166), purple, white);
+}
+.cards-exercises{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}

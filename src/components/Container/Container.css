@@ -16,9 +16,10 @@
   height: 85vh;
   width: 90%;
   border-radius: 2rem;
-  outline: 3px solid white;
+  outline: 9px solid white;
   z-index: 1;
   overflow: hidden;
+  max-width: 1750px;
 }
 
 .sidebar-container {

@@ -47,16 +47,6 @@ export const signUp = async (
     });
 };
 
-/* export const userAuthState = async (
-  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>,
-  setPending: React.Dispatch<React.SetStateAction<boolean>>
-): Promise<any> => {
-  auth.onAuthStateChanged((user: User | null) => {
-    setCurrentUser(user);
-    setPending(true);
-  });
-}; */
-
 export const signOutUser = async (
   setFirebaseError: React.Dispatch<React.SetStateAction<string | null>>,
   navigate: NavigateFunction

@@ -1,113 +1,91 @@
-const host = "http://localhost:3000/data";
-export const getDailySteps = async () => {
-  const response = await fetch(`${host}/dailySteps.json`);
-  return response.json();
+import axios from "axios";
+import { StepsValues } from "src/model/StepChart.model";
+
+const instance = axios.create({
+  baseURL: "http://localhost:3000/data/",
+  timeout: 1000,
+  headers: { "X-Custom-Header": "foobar" },
+});
+
+export const getDailySteps = async (): Promise<StepsValues[] | undefined> => {
+  try {
+    return await (
+      await instance.get(`dailySteps.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
+  }
 };
-export const getMonthlySteps = async () => {
-  const response = await fetch(`${host}/monthlySteps.json`);
-  return response.json();
+export const getMonthlySteps = async (): Promise<StepsValues[] | undefined> => {
+  try {
+    return await (
+      await instance.get(`monthlySteps.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getCarouselCharacters = async () => {
-  const response = await fetch(`${host}/charactersCarousel.json`);
-  return response.json();
+  try {
+    return await (
+      await instance.get(`charactersCarousel.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getTilesData = async () => {
-  const response = await fetch(`${host}/tiles.json`);
-  return response.json();
+  try {
+    return await (
+      await instance.get(`tiles.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getNextTraining = async () => {
-  const response = await fetch(`${host}/nextTraining.json`);
-  return response.json();
+  try {
+    return await (
+      await instance.get(`nextTraining.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getGauges = async () => {
-  const response = await fetch(`${host}/guages.json`);
-  return response.json();
+  try {
+    return await (
+      await instance.get(`guages.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getExerciseCards = async () => {
+  try {
+    return await (
+      await instance.get(`exerciseCards.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getCatalogue = async () => {
+  try {
+    return await (
+      await instance.get(`bodyParts.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-export const exampleDays = () => {
-  return [
-    {
-      day: "Mon",
-      steps: 1000,
-    },
-    {
-      day: "Tue",
-      steps: 1000,
-    },
-    {
-      day: "Wed",
-      steps: 1000,
-    },
-    {
-      day: "Thu",
-      steps: 1000,
-    },
-    {
-      day: "Fri",
-      steps: 1000,
-    },
-    {
-      day: "Sat",
-      steps: 1000,
-    },
-    {
-      day: "Sun",
-      steps: 1000,
-    },
-  ];
+export const getViewExercise = async () => {
+  try {
+    return await (
+      await instance.get(`viewExercise.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
+  }
 };
-
-export const exampleMonths = () => {
-  return [
-    {
-      day: "Jun",
-      steps: 6400
-    },
-    {
-      day: "Feb",
-      steps: 5300
-    },
-    {
-      day: "Mar",
-      steps: 12400
-    },
-    {
-      day: "Apr",
-      steps: 8845
-    },
-    {
-      day: "May",
-      steps: 9400
-    },
-    {
-      day: "June",
-      steps: 1200
-    },
-    {
-      day: "July",
-      steps: 9000
-    },
-    {
-      day: "Aug",
-      steps: 12400
-    },
-    {
-      day: "Sep",
-      steps: 8845
-    },
-    {
-      day: "Oct",
-      steps: 9400
-    },
-    {
-      day: "Nov",
-      steps: 1200
-    },
-    {
-      day: "Dec",
-      steps: 9000
-    }
-  ];
-};
-
-
