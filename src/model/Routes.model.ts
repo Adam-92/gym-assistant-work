@@ -1,7 +1,7 @@
 export interface RouteInterface {
   path: string;
   element: () => JSX.Element
-  children?: ChildrenRoute[] | null;
+  children?: ChildrenRoute[];
 }
 
 export interface ChildrenRoute {

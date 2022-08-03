@@ -6,7 +6,7 @@ import CarouselItem from "./CarouselItem";
 import { CharactersCarousel } from "../../../model/Carousels.model";
 import "./Carousel.css";
 
-const Carousel = ({ characters }:{characters: CharactersCarousel[] | undefined}) => {
+const Carousel = ({ characters }:{characters: CharactersCarousel[]}) => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const containerRef = useRef([]);
 
@@ -48,7 +48,7 @@ const Carousel = ({ characters }:{characters: CharactersCarousel[] | undefined})
               />
             );
           })
-        : null}
+        : <></>}
       <FontAwesomeIcon
         icon={faArrowRight}
         size="5x"

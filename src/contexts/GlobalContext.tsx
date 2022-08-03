@@ -8,10 +8,10 @@ const AppContext = createContext<any | null>(null);
 
 const AppProvider = ({ children }: { children: JSX.Element }) => {
   const [firebaseError, setFirebaseError] = useState<string | null>("");
-  const [openModal, setOpenModal] = useState<boolean>(false);
-  const [choosenFigure, setChoosenFigure] = useState<string>("");
+  const [openModal, setOpenModal] = useState(false);
+  const [choosenFigure, setChoosenFigure] = useState("");
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [pending, setPending] = useState<boolean>(false);
+  const [pending, setPending] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user: User | null) => {

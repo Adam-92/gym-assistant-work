@@ -1,0 +1,44 @@
+.container-exercise-form {
+    height: 100%;
+    width: 60%;
+    background-color: white;
+    border: 1px solid brown;
+    min-width: 380px;
+}
+
+.question-exercise-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.choose-exercise-form {
+    height: 30%;
+    width: 50%;
+    border: 1px solid blue;
+    padding: 1.5rem;
+    margin-right: auto;
+}
+
+.choose-exercise-form h1 {
+    text-align: center;
+}
+
+.icons-exercise-form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+    height: calc(100% - 3rem);
+}
+
+@media screen and (max-width:992px) {
+    .container-exercise-form {
+        width: 100%;
+        min-width: 100%;
+    }
+    .choose-exercise-form{
+        width: 100%;
+    }
+}

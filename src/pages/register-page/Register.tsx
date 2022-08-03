@@ -1,4 +1,4 @@
-import RegisterPanel from '../../components/Forms/Register/RegisterPanel'
+import RegisterPanel from '../../components/Forms/RegisterPanel/RegisterPanel'
 import "./Register.css"
 
 const Register = () => {

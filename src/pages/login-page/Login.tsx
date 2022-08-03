@@ -1,4 +1,4 @@
-import LoginPanel from '../../components/Forms/Login/LoginPanel'
+import LoginPanel from '../../components/Forms/LoginPanel/LoginPanel'
 import './Login.css'
 
 const Login = () => {

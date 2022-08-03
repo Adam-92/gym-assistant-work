@@ -1,17 +1,9 @@
-import axios from "axios";
+import { instance } from "./AxiosInstances"
 import { StepsValues } from "src/model/StepChart.model";
-
-const instance = axios.create({
-  baseURL: "http://localhost:3000/data/",
-  timeout: 1000,
-  headers: { "X-Custom-Header": "foobar" },
-});
 
 export const getDailySteps = async (): Promise<StepsValues[] | undefined> => {
   try {
-    return await (
-      await instance.get(`dailySteps.json`)
-    ).data;
+    return await (await instance.get(`dailySteps.json`)).data
   } catch (error) {
     console.log(error);
   }
@@ -28,7 +20,7 @@ export const getMonthlySteps = async (): Promise<StepsValues[] | undefined> => {
 export const getCarouselCharacters = async () => {
   try {
     return await (
-      await instance.get(`charactersCarousel.json`)
+      await instance.get(`charactersCaroussel.json`)
     ).data;
   } catch (error) {
     console.log(error);

@@ -6,7 +6,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useRef, useEffect } from "react";
 import { firstBigLetter } from "src/utils/Utils";
-import useRouteCarousel from "../../CustomHooks/useRouteCarousel";
+import useRouteCarousel from "../../../hooks/useRouteCarousel";
 import "./CarouselRoute.css";
 
 const CarouselRoute = () => {

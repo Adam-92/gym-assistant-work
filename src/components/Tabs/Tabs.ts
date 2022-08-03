@@ -12,8 +12,7 @@ export const tabs: TabInterface[] = [
     id: 1,
     name: "Dashboard",
     icon: faWindows,
-    to: "/dashboard",
-    children: null
+    to: "/dashboard"
   },
   {
     id: 2,
@@ -26,8 +25,8 @@ export const tabs: TabInterface[] = [
         to: "../catalogue"
       },
       {
-        name: "Add New",
-        to: "add-new",
+        name: "Modify",
+        to: "modify"
       }
     ],
   },
@@ -35,21 +34,18 @@ export const tabs: TabInterface[] = [
     id: 3,
     name: "Plan",
     icon: faCalendarDays,
-    to: "/plan",
-    children: null
+    to: "/plan"
   },
   {
     id: 4,
     name: "Settings",
     icon: faGear,
-    to: "/settings",
-    children: null
+    to: "/settings"
   },
   {
     id: 5,
     name: "Logout",
     icon: faRightFromBracket,
-    to: "/logout",
-    children: null
-  },
+    to: "/logout"
+  }
 ];

@@ -3,7 +3,7 @@ export interface TabInterface {
   name: string;
   icon: any;
   to: string;
-  children: ChildrenTabInterface[] | null;
+  children?: ChildrenTabInterface[] ;
 }
 
 export interface ChildrenTabInterface {

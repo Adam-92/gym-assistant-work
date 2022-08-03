@@ -1,0 +1,12 @@
+.container-ilustration-selection{
+    height: 100%;
+    width: 40%;
+    border: 1px solid greenyellow;    
+}
+
+@media screen and (max-width:992px) {
+    .container-ilustration-selection {
+        width: 100%;
+        min-width: 100%;
+    }
+}

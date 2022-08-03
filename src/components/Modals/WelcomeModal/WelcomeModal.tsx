@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { getCarouselCharacters } from "../../../services/Activity";
-import { CharactersCarousel } from "src/model/Carousels.model";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import Carousel from "../../Carousels/Carousel/Carousel";
 import "./WelcomeModal.css";
 
 const WelcomeModal = () => {
   const [characters, setCharacters] = useState([]);
+  console.log("🚀 ~ characters", characters)
   const { currentUser } = useGlobalContext();
 
   useEffect(() => {
