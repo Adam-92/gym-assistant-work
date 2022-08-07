@@ -1,0 +1,50 @@
+.container-tips{
+    padding: 1rem;
+}
+.enter-tips{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+.enter-tips input{
+    padding-left: 12%;
+    font-size: 1.1rem;
+    width: calc(70% - 2rem);
+}
+.enter-tips button{
+    border: 1px solid ;
+    border-left: none;
+    padding: 0.25rem 1rem;
+    background-color: transparent;
+    cursor: pointer;
+    background-color: rgba(113, 99, 186, 0.8);
+    color: white;
+}
+.enter-tips button:hover{
+    background-color: rgba(113, 99, 186,1);
+    color: white;
+    font-weight: bold;
+}
+
+.header-exercise-form input {
+    margin-left: 5px;
+    font-size: 1.1rem;
+    width: 47%;
+}
+.add-tips{
+    margin-left: calc(12%);
+    margin-top: 0.5rem;
+    font-size: .875em;
+}
+.added-tips li {
+    margin-left: 10%;
+    margin-bottom: 5px;
+}
+.example-tips{
+    color: #6c757d;
+}
+.example-tips li{
+    margin: 1px 0;
+}

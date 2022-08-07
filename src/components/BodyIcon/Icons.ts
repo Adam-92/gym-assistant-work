@@ -3,7 +3,7 @@ export const icons = [
   {
     icon: faAngellist,
     title: "Chest",
-    active: true
+    active: false
 },
   {
     icon: faAmazon,

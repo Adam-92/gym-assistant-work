@@ -5,7 +5,7 @@ import "./NestedTab.css";
 const NestedTab = ({ name, to }: ChildrenTabInterface) => {
   
   const location = useLocation()
-  const matchEnd = (location.pathname === "/catalogue" || location.pathname === "/catalogue/modify" ) ? true : false 
+  const matchEnd = (location.pathname === "/catalogue" || location.pathname === "/catalogue/add-new" ) ? true : false 
   
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: matchEnd });

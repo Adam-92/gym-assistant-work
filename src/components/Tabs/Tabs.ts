@@ -25,8 +25,8 @@ export const tabs: TabInterface[] = [
         to: "../catalogue"
       },
       {
-        name: "Modify",
-        to: "modify"
+        name: "Add New",
+        to: "add-new"
       }
     ],
   },

@@ -1,24 +1,41 @@
 .container-exercise-form {
+    display: flex;
     height: 100%;
-    width: 60%;
-    background-color: white;
-    border: 1px solid brown;
     min-width: 380px;
+    padding: 1rem;
+    width: 55%;
+}
+
+.header-exercise-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .question-exercise-form {
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.question-exercise-form label {
+    margin-bottom: 1.3rem;
+}
+
+.question-exercise-form input {
+    padding-left: 12%;
+    font-size: 1.1rem;
+    width: 70%;
 }
 
 .choose-exercise-form {
-    height: 30%;
-    width: 50%;
-    border: 1px solid blue;
-    padding: 1.5rem;
     margin-right: auto;
+    margin-bottom: 1rem;
 }
 
 .choose-exercise-form h1 {
@@ -28,9 +45,37 @@
 .icons-exercise-form {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
-    margin-top: 0.8rem;
     height: calc(100% - 3rem);
+
+}
+
+.name-exercise-form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    text-align: center;
+}
+
+.label-exercise-form {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.btn-exercise-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: none;
+    padding: 10px 40px;
+    cursor: pointer;
+    background-color: rgb(231, 17, 85);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
 }
 
 @media screen and (max-width:992px) {
@@ -38,7 +83,8 @@
         width: 100%;
         min-width: 100%;
     }
-    .choose-exercise-form{
+
+    .choose-exercise-form {
         width: 100%;
     }
 }

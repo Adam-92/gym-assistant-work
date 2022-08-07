@@ -6,7 +6,7 @@ import Dashboard from "../pages/dashboard-page/Dashboard";
 import Login from "../pages/login-page/Login";
 import Register from "../pages/register-page/Register";
 import Catalogue from "../pages/catalogue-page/Catalogue";
-import Modify from "../pages/modify-page/Modify";
+import AddNew from "../pages/add-new-page/AddNew";
 
 export const protectedRoutes: RouteInterface[] = [
   {
@@ -22,8 +22,8 @@ export const protectedRoutes: RouteInterface[] = [
         element: Exercises
       },
       {
-        path: "modify",
-        element: Modify
+        path: "add-new",
+        element: AddNew
       },
     ],
   },

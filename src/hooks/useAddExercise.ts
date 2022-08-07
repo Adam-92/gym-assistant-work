@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { UserSelectedData } from "../model/useAddCatalogue.model";
+import { UserSelectedData } from "../model/useAddExercise.model";
 import { icons } from "../components/BodyIcon/Icons";
 import { IconProps } from "src/model/BodyIcon.model";
 
-const useAddCatalogue = () => {
+const useAddExercise = () => {
   const [userSelectedData, setUserSelectedData] = useState<UserSelectedData>({
     choosenIcon: false,
   });
@@ -25,4 +25,4 @@ const useAddCatalogue = () => {
   };
 };
 
-export default useAddCatalogue;
+export default useAddExercise;
