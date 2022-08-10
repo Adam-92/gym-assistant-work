@@ -9,8 +9,7 @@ const Tips = () => {
 
   
 
-  const addTip = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const addTip = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setTips([...tips, inputValue]);
     setInputValue("");
   };
@@ -20,7 +19,7 @@ const Tips = () => {
 
   return (
     <div className="container-tips">
-      <form onSubmit={addTip}>
+      <div>
         <header className="header-exercise-form">
           Enter tips - optional:
         </header>
@@ -30,9 +29,9 @@ const Tips = () => {
             value={inputValue}
             onChange={(e) => changeValue(e)}
           />
-          <button type="submit">ADD</button>
+          <button type="submit" onClick={addTip} >ADD</button>
         </div>
-      </form>
+      </div>
       <ul className="add-tips">
         {tips.map((tip: string, index: number) => {
           return <li key={index}>{tip}</li>;

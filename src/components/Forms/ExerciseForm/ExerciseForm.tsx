@@ -1,61 +1,78 @@
-import BodyIcon from "src/components/BodyIcon/BodyIcon";
-import useAddExercise from "src/hooks/useAddExercise";
-import Tips from "../../Tips/Tips";
 import { loginValidation as nameValidation } from "../Validation/ValidationRules";
-import { IconProps } from "src/model/BodyIcon.model";
 import { FormValues } from "src/model/ExerciseForm.model";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { icons } from "../../BodyIcon/Icons";
+import { icons } from "./Icons";
+import { Icon } from "../../../model/ExerciseForm.model";
+import Tips from "src/components/Tips/Tips";
 import "./ExerciseForm.css";
 
 const ExerciseForm = () => {
-  const { selectIcon, userSelectedData } = useAddExercise();
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {};
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+  };
 
   return (
     <article className="container-exercise-form">
-      <div className="section-exercise-form">
-        <div className="choose-exercise-form">
-          <div className="header-exercise-form">
-            <header>Choose the body part</header>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <section className="col-exercise-form">
+          <div className="field-exercise-form">
+            <h1>Choose the body part:</h1>
+            <div className="icons-exercise-form">
+              {icons.map(({ icon, title }: Icon, index: number) => {
+                return (
+                  <div className="icon-exercise-form" key={index}>
+                    <img src={icon} alt={title}></img>
+                    <label htmlFor="part">{title}</label>
+                    <input
+                      type="radio"
+                      key={index}
+                      value={title}
+                      {...register("part", { required: true })}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+            {errors.part?.type === "required" && (
+              <p className="error-login-panel">
+                Choose please the body part
+              </p>
+            )}
           </div>
-        </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="icons-exercise-form">
-            {icons.map(({ icon, title, active }: IconProps, index: number) => {
+          <div className="field-exercise-form">
+            <h1>Name:</h1>
+            <div>
+              <label htmlFor="name">
+                <input {...register("name", nameValidation)} />
+              </label>
+            </div>
+            {errors.name?.message && (
+              <p className="error-login-panel">{errors.name.message}</p>
+            )}
+          </div>
+          <div className="field-exercise-form">
+            <h1>Secondary arrange muscles :</h1>
+            {icons.map(({ title }: Icon, index: number) => {
               return (
-                <BodyIcon
-                  key={index}
-                  icon={icon}
-                  title={title}
-                  active={active}
-                  selectIcon={selectIcon}
-                />
+                <div className="checkbox-exercise-form" key={index}>
+                  <label htmlFor={"secondaryMuscle"}>{title}</label>
+                  <input type="checkbox" {...register("secondaryMuscle")} />
+                </div>
               );
             })}
           </div>
-          <div className="question-exercise-form">
-            <label>Name of the exercise : </label>
-            <input type="text" {...register("name", nameValidation)} />
-            <h5 className="error-login-panel">{errors.name?.message}</h5>
-          </div>
-          <div className="question-exercise-form">
-            <label>Secondary arrange muscles : </label>
-            <input type="text" {...register("name", nameValidation)} />
-            <h5 className="error-login-panel">{errors.name?.message}</h5>
-          </div>
-          <button className="btn-exercise-form"> ADD </button>
-        </form>
-        <Tips />
-      </div>
-      <div></div>
+        </section>
+        <section>
+          <Tips />
+        </section>
+        <button className="btn-exercise-form"> ADD </button>
+      </form>
     </article>
   );
 };
