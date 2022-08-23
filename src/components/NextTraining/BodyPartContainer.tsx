@@ -1,7 +1,7 @@
 import Exercise from "./Exercise";
 import { viewHistory, getItemCoordinates } from "../../utils/Utils";
 
-const BodyPart = ({
+const BodyPartContainer = ({
   part,
   exercises,
   data,
@@ -40,4 +40,4 @@ const BodyPart = ({
     </div>
   );
 };
-export default BodyPart;
+export default BodyPartContainer;

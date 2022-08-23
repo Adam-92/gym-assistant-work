@@ -1,4 +1,4 @@
-import BodyPart from "./BodyPart";
+import BodyPart from "./BodyPartContainer";
 import HistoryPopover from "../Popovers/HistoryPopoover/HistoryPopover";
 import { useEffect, useState } from "react";
 import { getNextTraining } from "../../services/Activity";
@@ -20,7 +20,7 @@ const NextTraining = () => {
       onMouseLeave={() => setShowHistoryPopover(false)}
     >
       <header>
-        <h1>Next Training:</h1>
+        <h2>Next Training:</h2>
       </header>
       <section>
         {data.map((body: any, index: number) => {

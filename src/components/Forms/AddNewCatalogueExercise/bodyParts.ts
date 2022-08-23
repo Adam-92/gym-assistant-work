@@ -1,31 +1,39 @@
-export const icons = [
-  {
-    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    title: "Chest"
-},
-  {
-    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    title: "Legs"
-},
-  {
-    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    title: "Shoulders"
-},
-  {
-    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    title: "ABS",
-},
-  {
-    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    title: "Biceps",
+import { BodyParts } from "src/model/Forms.model";
 
-},
+export const bodyParts: BodyParts[] = [
   {
+    id: 1,
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    title: "Triceps"
-},
+    name: "Chest",
+  },
   {
+    id: 2,
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    title: "Back"
-},
+    name: "Legs",
+  },
+  {
+    id: 3,
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
+    name: "Shoulders",
+  },
+  {
+    id: 4,
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
+    name: "ABS",
+  },
+  {
+    id: 5,
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
+    name: "Biceps",
+  },
+  {
+    id: 6,
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
+    name: "Triceps",
+  },
+  {
+    id: 7,
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
+    name: "Back",
+  },
 ];

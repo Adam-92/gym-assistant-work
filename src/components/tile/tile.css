@@ -63,11 +63,11 @@
     font-size: 1.1rem;
 }
 
-.stats-statistics {
+.stats-tile {
     padding: 4px 20px;
 }
 
-.total-statistics {
+.total-tile {
     display: flex;
     align-items: center;
     color: rgba(255, 253, 253);
@@ -76,13 +76,13 @@
     font-weight: 300;
 }
 
-.positive-statistics {
+.positive-tile {
     color: rgb(65, 236, 65);
     font-size: 1.2rem;
     margin-left: 1rem;
 }
 
-.negative-statistics {
+.negative-tile {
     color: rgb(231, 9, 9);
     font-size: 1.2rem;
     line-height: 110%;

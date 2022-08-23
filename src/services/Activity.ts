@@ -1,9 +1,11 @@
-import { instance } from "./AxiosInstances"
+import { instance } from "./AxiosInstances";
 import { StepsValues } from "src/model/StepChart.model";
 
 export const getDailySteps = async (): Promise<StepsValues[] | undefined> => {
   try {
-    return await (await instance.get(`dailySteps.json`)).data
+    return await (
+      await instance.get(`dailySteps.json`)
+    ).data;
   } catch (error) {
     console.log(error);
   }
@@ -77,6 +79,24 @@ export const getViewExercise = async () => {
     return await (
       await instance.get(`viewExercise.json`)
     ).data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getSecondaryArrangeMuscles = async () => {
+  try {
+    return await (
+      await instance.get(`secondaryArrangeMuscles.json`)
+    ).data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getExamplePicturesAddNew = async () => {
+  try {
+    return (await instance.get(`examplePicturesAddCatalogue.json`)).data;
   } catch (error) {
     console.log(error);
   }

@@ -4,6 +4,7 @@ import { protectedRoutes, unprotectedRoutes } from "../routes/routes";
 import NotFound from "../pages/notFound-page/NotFound";
 import UnprotectedRoutes from "./AuthElements/UnprotectedRoutes";
 import ProtectedRoute from "./AuthElements/ProtectedRoute";
+import Container from "./Container/Container";
 import "./App.css";
 
 const App = () => {
@@ -15,9 +16,11 @@ const App = () => {
             path={route.path}
             key={index}
             element={
-              <ProtectedRoute>
-                <route.element />
-              </ProtectedRoute>
+              <Container>
+                <ProtectedRoute>
+                  <route.element />
+                </ProtectedRoute>
+              </Container>
             }
           >
             {route?.children?.map((child: ChildrenRoute, index: number) => {

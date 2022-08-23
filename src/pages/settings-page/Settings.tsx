@@ -1,12 +1,7 @@
-import Container from "../../components/Container/Container"
-import "./Settings.css"
+import "./Settings.css";
 
 const Settings = () => {
-  return (
-    <Container>
-      <div>Settings</div>
-    </Container>
-  )
-}
+  return <div>Settings</div>;
+};
 
-export default Settings
+export default Settings;

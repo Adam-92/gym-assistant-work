@@ -1,0 +1,214 @@
+.container-add-new-catalogue {
+    height: 100%;
+}
+
+.container-add-new-catalogue form {
+    height: 100%;
+}
+
+.row-add-new-catalogue {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.col-add-new-catalogue {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.field-add-new-catalogue {
+    background-color: white;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    margin: 0.5rem;
+}
+
+.field-add-new-catalogue h2 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.field-add-new-catalogue input {
+    font-size: 1.1rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 16px -4px rgba(66, 68, 90, 1);
+}
+
+.icons-add-new-catalogue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.icon-add-new-catalogue {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    margin: 1rem;
+    min-width: 95px;
+}
+
+.icon-add-new-catalogue label {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.icon-add-new-catalogue input {
+    margin: 5px auto 0 auto;
+    width: 100%;
+}
+
+.icon-add-new-catalogue img {
+    width: 100%;
+}
+
+.secondary-add-new-catalogue {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.secondary-add-new-catalogue div label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 120px;
+    margin: 0.5rem 1rem;
+}
+
+.btn-add-new-catalogue {
+    border: none;
+    padding: 10px 100px;
+    cursor: pointer;
+    background-color: var(--add-new-btn);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+}
+
+
+.enter-add-new-catalogue {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.enter-add-new-catalogue input {
+    padding-left: 12%;
+    font-size: 1.1rem;
+    width: calc(80% - 2rem);
+}
+
+.enter-add-new-catalogue button {
+    border: 1px solid;
+    border-left: none;
+    padding: 0.25rem 1rem;
+    background-color: transparent;
+    cursor: pointer;
+    background-color: rgba(113, 99, 186, 0.8);
+    color: white;
+}
+
+.enter-add-new-catalogue button:hover {
+    background-color: rgba(113, 99, 186, 1);
+    color: white;
+    font-weight: bold;
+}
+
+.header-exercise-form input {
+    margin-left: 5px;
+    font-size: 1.1rem;
+    width: 47%;
+}
+
+
+.added-add-new-catalogue li {
+    margin-left: 1rem;
+    margin-bottom: 5px;
+}
+
+.example-add-new-catalogue {
+    color: #6c757d;
+    font-size: .875em;
+}
+
+.center-add-new-catalogue{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+ul.example-add-new-catalogue {
+    margin-left: 1rem;
+}
+
+.example-add-new-catalogue li {
+    margin: 1px 0;
+}
+
+.name-add-new-catalogue {
+    margin-bottom: 1.5rem;
+}
+
+.upload-files-add-new-catalogue {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.file-add-new-catalogue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: dashed 2px black;
+    width: 150px;
+    height: 100px;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.file-add-new-catalogue svg {
+    font-size: 1.5rem;
+}
+
+.file-add-new-catalogue p {
+    margin-top: 5px;
+}
+
+.picture-files-add-new-catalogue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    height: 140px;
+    width: 180px;
+    cursor: pointer;
+}
+
+.picture-files-add-new-catalogue img {
+    max-width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+.picture-files-add-new-catalogue img:hover{
+    border: 2px solid var(--add-new-btn)
+}
+
+@media screen and (max-width:992px) {
+    .container-add-new-catalogue {
+        width: 100%;
+        min-width: 100%;
+    }
+}

@@ -1,12 +1,6 @@
-import ExerciseForm from "../../components/Forms/ExerciseForm/ExerciseForm";
-import "./AddNew.css";
-
-const Modify = () => {
-  return (
-    <article className="container-add-new">
-      <ExerciseForm />
-    </article>
-  );
+import AddNewCatalogueExercise from "../../components/Forms/AddNewCatalogueExercise/AddNewCatalogueExercise";
+const AddNew = () => {
+  return <AddNewCatalogueExercise />;
 };
 
-export default Modify;
+export default AddNew;

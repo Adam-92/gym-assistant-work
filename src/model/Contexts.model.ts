@@ -10,9 +10,3 @@ export interface AppContextInterface {
   currentUser: User | null;
 }
 
-export interface OutletExerciseCards {
-  isOpenModal: boolean;
-  openModal: () => void;
-  closeModal: () => void;
-  pickExercise: (exercise: string) => void;
-}

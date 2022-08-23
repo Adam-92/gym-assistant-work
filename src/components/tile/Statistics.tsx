@@ -1,5 +1,6 @@
 import { minToHours } from "../../utils/Utils";
 import { StatisticsTile } from "src/model/Tile.model";
+import "./Tile.css"
 
 const Statistics = ({ target, current, name }: StatisticsTile) => {
   if (name === "Training Time") {
@@ -8,13 +9,13 @@ const Statistics = ({ target, current, name }: StatisticsTile) => {
   }
 
   return (
-    <div className="stats-statistics">
-      <div className="total-statistics">
+    <div className="stats-tile">
+      <div className="total-tile">
         <h3>Target: {target} </h3>
       </div>
-      <div className="total-statistics">
+      <div className="total-tile">
         <h3>Today:</h3>
-        <span className="positive-statistics">{current}</span>
+        <span className="positive-tile">{current}</span>
       </div>
     </div>
   );

@@ -1,9 +1,0 @@
-.container-add-new {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    background-color: white;
-    border-radius: 2rem;
-    overflow: auto;
-}
-

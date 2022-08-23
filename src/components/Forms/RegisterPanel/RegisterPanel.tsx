@@ -9,7 +9,7 @@ import {
 import { signUp } from "../../../services/Auth";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { RegisterInputs } from "src/model/Forms.model";
-import { registerValidation } from "../Validation/ValidationRules";
+import { advancedValidation } from "../Validation/ValidationRules";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./RegisterPanel.css";
 
@@ -53,7 +53,7 @@ const RegisterPanel = () => {
               />
               <input
                 type="text"
-                {...register("username", registerValidation)}
+                {...register("username", advancedValidation)}
                 placeholder="Username"
               ></input>
             </div>
@@ -67,10 +67,7 @@ const RegisterPanel = () => {
               <input
                 type="email"
                 placeholder="Email Adress"
-                {...register("email", {
-                  required: "Please fill out this field",
-                  setValueAs: (value: string) => value.split(" ").join(""),
-                })}
+                {...register("email", advancedValidation)}
               ></input>
             </div>
             <h5 className="error-register-panel">{errors.email?.message}</h5>
@@ -82,7 +79,7 @@ const RegisterPanel = () => {
               />
               <input
                 type="password"
-                {...register("password", registerValidation)}
+                {...register("password", advancedValidation)}
                 placeholder="Password"
               ></input>
             </div>

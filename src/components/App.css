@@ -17,6 +17,7 @@ Variables
     --dash-main-color: rgb(113, 99, 186);
     --dash-margin-components: 1rem;
     --dash-margin-headers: 0.5rem;
+    --add-new-btn: rgb(231, 17, 85);
 }
 
 
@@ -74,8 +75,17 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    cursor: pointer;
 }
 
 .noSelect:focus {
     outline: none !important;
+}
+
+.hover-label {
+    transform: scale(1);
+}
+
+.hover-label:hover {
+    transform: scale(1.05)
 }

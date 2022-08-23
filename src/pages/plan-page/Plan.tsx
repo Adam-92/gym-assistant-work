@@ -1,12 +1,7 @@
-import Container from "../../components/Container/Container"
-import "./Plan.css"
+import "./Plan.css";
 
 const Plan = () => {
-  return (
-    <Container>
-      <h1>Plan</h1>
-    </Container>
-  )
-}
+  return <h1>Plan</h1>;
+};
 
-export default Plan
+export default Plan;

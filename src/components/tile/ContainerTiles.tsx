@@ -1,5 +1,4 @@
-import Tile from "./Tile";
-import { TileInterface } from "../../model/Tile.model"
+import { TileInterface } from "../../model/Tile.model";
 import { useEffect, useState } from "react";
 import { getTilesData } from "../../services/Activity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +8,7 @@ import {
   faWeightHanging,
   faDumbbell,
 } from "@fortawesome/free-solid-svg-icons";
-import "./tile.css";
+import Tile from "./Tile";
 
 const ContainerTiles = () => {
   const [tiles, setTiles] = useState([]);
@@ -27,7 +26,7 @@ const ContainerTiles = () => {
 
   return (
     <div className="tile">
-      {tiles.map((tile: TileInterface, index: number) => {
+      {tiles?.map((tile: TileInterface, index: number) => {
         return (
           <Tile
             key={index}

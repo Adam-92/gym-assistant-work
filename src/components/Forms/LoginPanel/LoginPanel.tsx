@@ -4,7 +4,7 @@ import { faDumbbell, faUser, faKey } from "@fortawesome/free-solid-svg-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormLogin } from "src/model/Forms.model";
 import { signIn } from "../../../services/Auth";
-import { loginValidation } from "../Validation/ValidationRules";
+import { advancedValidation } from "../Validation/ValidationRules";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./LoginPanel.css";
 
@@ -41,7 +41,7 @@ const LoginPanel = () => {
               />
               <input
                 type="email"
-                {...register("email", loginValidation)}
+                {...register("email", advancedValidation)}
                 placeholder="Email"
               ></input>
             </div>
@@ -54,7 +54,7 @@ const LoginPanel = () => {
               />
               <input
                 type="password"
-                {...register("password", loginValidation)}
+                {...register("password", advancedValidation)}
                 placeholder="Password"
               ></input>
             </div>
