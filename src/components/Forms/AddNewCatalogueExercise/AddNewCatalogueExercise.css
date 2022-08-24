@@ -192,6 +192,7 @@ ul.example-add-new-catalogue {
     height: 140px;
     width: 180px;
     cursor: pointer;
+    opacity: 1;
 }
 
 .picture-files-add-new-catalogue img {
@@ -204,6 +205,12 @@ ul.example-add-new-catalogue {
 }
 .picture-files-add-new-catalogue img:hover{
     border: 2px solid var(--add-new-btn)
+}
+.off-add-new-catalogue{
+    cursor: none;
+    pointer-events: none;
+    opacity: 0.5;
+    transition: 1s all ease;
 }
 
 @media screen and (max-width:992px) {

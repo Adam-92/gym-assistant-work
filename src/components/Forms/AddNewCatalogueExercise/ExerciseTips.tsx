@@ -14,7 +14,6 @@ const ExerciseTips = () => {
   } = useFormContext();
 
   const inputValue = watch("tips", "");
-  console.log("🚀 ~ inputValue", Boolean(inputValue))
 
   const triggerSubmit = () => {
     if (!inputValue || inputValue.length === 0) {
