@@ -1,26 +1,23 @@
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-
 export type FormLogin = {
   email: string;
   password: string;
 };
 
-export type RegisterInputs = {
+export type FormRegister = {
   username: string;
   email: string;
   password: string;
   re_password: string;
 };
 
-export interface CatalogueNewExerciseFormValues {
+export type CatalogueNewExerciseFormValues = {
   name: string;
   part: boolean;
   secondaryMuscle: boolean;
-  tips: string;
+  description: string;
   exampleImage: boolean;
   cataloguePicture: any;
-  detailsPicture: any;
-}
+};
 
 export interface BodyParts {
   id: number;
@@ -41,11 +38,4 @@ export interface ExamplePicturesAddCatalogue {
   id: number;
   img: string;
   name: string;
-}
-
-export interface PictureSelection {
-  id: number;
-  name: string;
-  icon: IconDefinition;
-  text: string;
 }

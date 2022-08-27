@@ -1,4 +1,4 @@
-import { nameValidation } from "../Validation/ValidationRules";
+import { validation } from "../Validation/ValidationRules";
 import { useFormContext } from "react-hook-form";
 
 const ExerciseName = () => {
@@ -12,7 +12,11 @@ const ExerciseName = () => {
       <h2>Name:</h2>
       <div className="name-add-new-catalogue">
         <label htmlFor="newExerciseName">
-          <input id="newExerciseName" {...register("name", nameValidation)} />
+          <input
+            className={errors.name?.message ? "error-add-new-catalogue" : ""}
+            id="newExerciseName"
+            {...register("name", validation(5, 26))}
+          />
         </label>
       </div>
       <p className="error-login-panel">{errors.name?.message}</p>

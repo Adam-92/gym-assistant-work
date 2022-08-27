@@ -1,28 +1,31 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDumbbell, faUser, faKey } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDumbbell,
+  faEnvelope,
+  faKey,
+} from "@fortawesome/free-solid-svg-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormLogin } from "src/model/Forms.model";
 import { signIn } from "../../../services/Auth";
-import { advancedValidation } from "../Validation/ValidationRules";
+import { validation } from "../Validation/ValidationRules";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./LoginPanel.css";
 
 const LoginPanel = () => {
-  const { firebaseError, setFirebaseError} = useGlobalContext()
+  const { firebaseError, setFirebaseError } = useGlobalContext();
   const navigate = useNavigate();
-  
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormLogin>({
-    mode: "onSubmit",
-    reValidateMode: "onChange"
+    mode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<FormLogin> = (data) => {
-    signIn(data.password, data.email, setFirebaseError, navigate);
+  const onSubmit: SubmitHandler<FormLogin> = ({ password, email }) => {
+    signIn(password, email, setFirebaseError, navigate);
   };
 
   return (
@@ -35,13 +38,16 @@ const LoginPanel = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="relative-login-panel">
               <FontAwesomeIcon
-                icon={faUser}
+                icon={faEnvelope}
                 color="white"
                 className="absolute-login-panel"
               />
               <input
                 type="email"
-                {...register("email", advancedValidation)}
+                {...register("email", {
+                  required: "Please fill out this field",
+                  setValueAs: (value: string) => value.split(" ").join(""),
+                })}
                 placeholder="Email"
               ></input>
             </div>
@@ -54,7 +60,7 @@ const LoginPanel = () => {
               />
               <input
                 type="password"
-                {...register("password", advancedValidation)}
+                {...register("password", validation(8, 26))}
                 placeholder="Password"
               ></input>
             </div>

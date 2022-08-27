@@ -15,11 +15,11 @@ const ChooseTheBodyPart = () => {
         {bodyParts.map(({ id, icon, name }: BodyParts, index: number) => {
           return (
             <div className="icon-add-new-catalogue" key={index}>
-              <label htmlFor={`${id + name}`} className="noSelect">
+              <label htmlFor={id + name} className="noSelect">
                 <img src={icon} alt={name} />
                 {name}
                 <input
-                  id={`${id + name}`}
+                  id={id + name}
                   type="radio"
                   value={name}
                   {...register("part", {

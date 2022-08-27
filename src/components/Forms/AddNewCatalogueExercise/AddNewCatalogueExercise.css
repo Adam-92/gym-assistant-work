@@ -23,6 +23,7 @@
     border-radius: 2rem;
     padding: 1.5rem;
     margin: 0.5rem;
+
 }
 
 .field-add-new-catalogue h2 {
@@ -34,6 +35,13 @@
     font-size: 1.1rem;
     border-radius: 5px;
     box-shadow: 0px 0px 16px -4px rgba(66, 68, 90, 1);
+}
+
+.field-add-new-catalogue textarea {
+    font-size: 1rem;
+    border-radius: 5px;
+    box-shadow: 0px 0px 16px -4px rgba(66, 68, 90, 1);
+    resize: none;
 }
 
 .icons-add-new-catalogue {
@@ -92,36 +100,6 @@
 }
 
 
-.enter-add-new-catalogue {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-}
-
-.enter-add-new-catalogue input {
-    padding-left: 12%;
-    font-size: 1.1rem;
-    width: calc(80% - 2rem);
-}
-
-.enter-add-new-catalogue button {
-    border: 1px solid;
-    border-left: none;
-    padding: 0.25rem 1rem;
-    background-color: transparent;
-    cursor: pointer;
-    background-color: rgba(113, 99, 186, 0.8);
-    color: white;
-}
-
-.enter-add-new-catalogue button:hover {
-    background-color: rgba(113, 99, 186, 1);
-    color: white;
-    font-weight: bold;
-}
-
 .header-exercise-form input {
     margin-left: 5px;
     font-size: 1.1rem;
@@ -135,25 +113,23 @@
 }
 
 .example-add-new-catalogue {
+    margin-top: 5px;
     color: #6c757d;
     font-size: .875em;
 }
 
-.center-add-new-catalogue{
+.center-add-new-catalogue {
     text-align: center;
     margin-top: 1rem;
 }
 
-ul.example-add-new-catalogue {
-    margin-left: 1rem;
-}
-
-.example-add-new-catalogue li {
-    margin: 1px 0;
-}
-
 .name-add-new-catalogue {
     margin-bottom: 1.5rem;
+}
+
+.error-add-new-catalogue {
+    border-left: 25px solid#ec5990;
+    transition: 0.6s all;
 }
 
 .upload-files-add-new-catalogue {
@@ -203,10 +179,12 @@ ul.example-add-new-catalogue {
     border-radius: 10px;
     margin-bottom: 1rem;
 }
-.picture-files-add-new-catalogue img:hover{
+
+.picture-files-add-new-catalogue img:hover {
     border: 2px solid var(--add-new-btn)
 }
-.off-add-new-catalogue{
+
+.off-add-new-catalogue {
     cursor: none;
     pointer-events: none;
     opacity: 0.5;

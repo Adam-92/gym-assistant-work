@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import {
-  ExamplePicturesAddCatalogue,
-  PictureSelection,
-} from "src/model/Forms.model";
+import { ExamplePicturesAddCatalogue } from "src/model/Forms.model";
 import { getExamplePicturesAddNew } from "../../../services/Activity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { useFormContext } from "react-hook-form";
-import { selectPictureValidation } from "../Validation/ValidationRules";
- 
+import {
+  selectPictureValidation,
+  uplodedPictureValidation,
+} from "../Validation/ValidationRules";
+
 const SelectPicture = () => {
   const [data, setData] = useState<ExamplePicturesAddCatalogue[]>([]);
-  const [isFileExist, setIsFileExist] = useState<boolean | FileList>(false);
-    
+  const [isFileExist, setIsFileExist] = useState(false);
+
   useEffect(() => {
     getExamplePicturesAddNew().then((pictures: ExamplePicturesAddCatalogue[]) =>
       setData(pictures)
@@ -22,57 +22,33 @@ const SelectPicture = () => {
   const {
     register,
     formState: { errors },
-    clearErrors
+    clearErrors,
   } = useFormContext();
+    console.log("🚀 ~ errors", errors)
 
-
-  const uploadFileInputs = [
-    {
-      id: 1,
-      name: "cataloguePicture",
-      icon: faUpload,
-      text: "Details Picture",
-    },
-    {
-      id: 2,
-      name: "detailsPicture",
-      icon: faUpload,
-      text: "Details Picture",
-    },
-  ];
-
-  let validate = selectPictureValidation(isFileExist);
+  let validateProposedPicture = selectPictureValidation(isFileExist);
+  let validateUploadedPicture = uplodedPictureValidation(
+    isFileExist,
+    setIsFileExist,
+    clearErrors
+  );
 
   return (
     <div className="field-add-new-catalogue">
       <h2>Upload pictures:</h2>
       <article>
         <section className="upload-files-add-new-catalogue">
-          {uploadFileInputs.map(
-            ({ id, name, text, icon }: PictureSelection) => {
-              return (
-                <label
-                  key={id + name}
-                  htmlFor={id + name}
-                  className="file-add-new-catalogue"
-                >
-                  <FontAwesomeIcon icon={icon} />
-                  <p>{text}</p>
-                  <input
-                    id={id + name}
-                    type="file"
-                    {...register(`${name}`, {
-                      onChange: (e) => {
-                        setIsFileExist(e.target.files)
-                        clearErrors("exampleImage")
-                      },
-                    })}
-                  />
-                </label>
-              );
-            }
-          )}
+          <label htmlFor="cataloguePicture" className="file-add-new-catalogue">
+            <FontAwesomeIcon icon={faUpload} />
+            <p>Catalogue Picture</p>
+            <input
+              id="cataloguePicture"
+              type="file"
+              {...register("cataloguePicture", validateUploadedPicture)}
+            />
+          </label>
         </section>
+        <p className="error-login-panel">{errors.cataloguePicture?.message}</p>
         <p className="example-add-new-catalogue center-add-new-catalogue">
           Or use one from our example pictures
         </p>
@@ -91,7 +67,7 @@ const SelectPicture = () => {
                   id={id + name}
                   value={name}
                   type="radio"
-                  {...register("exampleImage", validate)}
+                  {...register("exampleImage", validateProposedPicture)}
                 />
               </label>
             );

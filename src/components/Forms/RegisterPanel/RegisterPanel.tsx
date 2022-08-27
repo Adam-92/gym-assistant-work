@@ -8,8 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { signUp } from "../../../services/Auth";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { RegisterInputs } from "src/model/Forms.model";
-import { advancedValidation } from "../Validation/ValidationRules";
+import { FormRegister } from "src/model/Forms.model";
+import { validation } from "../Validation/ValidationRules";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./RegisterPanel.css";
 
@@ -22,19 +22,16 @@ const RegisterPanel = () => {
     register,
     getValues,
     formState: { errors },
-  } = useForm<RegisterInputs>({
-    mode: "onSubmit",
-    reValidateMode: "onChange",
+  } = useForm<FormRegister>({
+    mode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<RegisterInputs> = (data) => {
-    signUp(
-      data.username,
-      data.password,
-      data.email,
-      setFirebaseError,
-      navigate
-    );
+  const onSubmit: SubmitHandler<FormRegister> = ({
+    username,
+    password,
+    email,
+  }) => {
+    signUp(username, password, email, setFirebaseError, navigate);
   };
 
   return (
@@ -53,7 +50,7 @@ const RegisterPanel = () => {
               />
               <input
                 type="text"
-                {...register("username", advancedValidation)}
+                {...register("username", validation(8, 26))}
                 placeholder="Username"
               ></input>
             </div>
@@ -67,7 +64,10 @@ const RegisterPanel = () => {
               <input
                 type="email"
                 placeholder="Email Adress"
-                {...register("email", advancedValidation)}
+                {...register("email", {
+                  required: "Please fill out this field",
+                  setValueAs: (value: string) => value.split(" ").join(""),
+                })}
               ></input>
             </div>
             <h5 className="error-register-panel">{errors.email?.message}</h5>
@@ -79,7 +79,7 @@ const RegisterPanel = () => {
               />
               <input
                 type="password"
-                {...register("password", advancedValidation)}
+                {...register("password", validation(8, 26))}
                 placeholder="Password"
               ></input>
             </div>
@@ -99,6 +99,7 @@ const RegisterPanel = () => {
                       return password === value || "Passwords should match!";
                     },
                   },
+                  setValueAs: (value: string) => value.split(" ").join(""),
                 })}
                 placeholder="Re - Password"
               ></input>

@@ -1,14 +1,16 @@
 import { CatalogueNewExerciseFormValues } from "src/model/Forms.model";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import ChooseTheBodyPart from "src/components/Forms/AddNewCatalogueExercise/ChooseTheBodyPart";
-import ExerciseTips from "./ExerciseTips";
+import ExerciseDescription from "./ExerciseDescription";
 import SecondaryArrangeMuscles from "./SecondaryArrangeMuscles";
 import SelectPicture from "./SelectPicture";
 import ExerciseName from "./ExerciseName";
 import "./AddNewCatalogueExercise.css";
 
 const AddNewCatalogueExercise = () => {
-  const methods = useForm<CatalogueNewExerciseFormValues>();
+  const methods = useForm<CatalogueNewExerciseFormValues>({
+    mode: "onChange"
+  });
 
   const onSubmit: SubmitHandler<CatalogueNewExerciseFormValues> = (data) => {
     console.log(data);
@@ -26,7 +28,7 @@ const AddNewCatalogueExercise = () => {
             <section className="col-add-new-catalogue">
               <div className="field-add-new-catalogue">
                 <ExerciseName />
-                <ExerciseTips />
+                <ExerciseDescription />
               </div>
               <SelectPicture />
             </section>

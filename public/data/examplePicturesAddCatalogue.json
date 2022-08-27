@@ -7,11 +7,11 @@
   {
     "id": 2,
     "img": "../assets/example2.jpg",
-    "name": "examplePicture1"
+    "name": "examplePicture2"
   },
   {
     "id": 3,
     "img": "../assets/example3.jpg",
-    "name": "examplePicture1"
+    "name": "examplePicture3"
   }
 ]
