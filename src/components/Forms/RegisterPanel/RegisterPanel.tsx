@@ -9,7 +9,7 @@ import {
 import { signUp } from "../../../services/Auth";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormRegister } from "src/model/Forms.model";
-import { validation } from "../Validation/ValidationRules";
+import { validationWithoutWhiteSpaces } from "../Validation/ValidationRules";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./RegisterPanel.css";
 
@@ -50,7 +50,7 @@ const RegisterPanel = () => {
               />
               <input
                 type="text"
-                {...register("username", validation(8, 26))}
+                {...register("username", validationWithoutWhiteSpaces(8, 26))}
                 placeholder="Username"
               ></input>
             </div>
@@ -79,7 +79,7 @@ const RegisterPanel = () => {
               />
               <input
                 type="password"
-                {...register("password", validation(8, 26))}
+                {...register("password", validationWithoutWhiteSpaces(8, 26))}
                 placeholder="Password"
               ></input>
             </div>

@@ -14,7 +14,9 @@ export type CatalogueNewExerciseFormValues = {
   name: string;
   part: boolean;
   secondaryMuscle: boolean;
-  description: string;
+  tips: {
+    tip: string
+  }[];
   exampleImage: boolean;
   cataloguePicture: any;
 };

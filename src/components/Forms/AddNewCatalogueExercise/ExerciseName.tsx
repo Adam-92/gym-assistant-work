@@ -1,4 +1,4 @@
-import { validation } from "../Validation/ValidationRules";
+import { validationWithWhiteSpaces } from "../Validation/ValidationRules";
 import { useFormContext } from "react-hook-form";
 
 const ExerciseName = () => {
@@ -15,7 +15,7 @@ const ExerciseName = () => {
           <input
             className={errors.name?.message ? "error-add-new-catalogue" : ""}
             id="newExerciseName"
-            {...register("name", validation(5, 26))}
+            {...register("name", validationWithWhiteSpaces(5, 26))}
           />
         </label>
       </div>

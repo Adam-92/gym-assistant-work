@@ -37,6 +37,47 @@
     box-shadow: 0px 0px 16px -4px rgba(66, 68, 90, 1);
 }
 
+.field-add-new-catalogue input[name="name"] {
+    min-width: 100px;
+    width: 40%;
+}
+
+.tip-add-new-catalogue {
+    width: 60%;
+    padding-left: 5px;
+    margin: 5px 0;
+}
+
+.add-tip-btn-add-new-catalogue {
+    border: none;
+    font-size: 1rem;
+    background-color: var(--green-btn);
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: white;
+    margin: 0 1rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+
+}
+
+.subtract-tip-btn-add-new-catalogue {
+    border: none;
+    font-size: 1rem;
+    background-color: var(--red-btn);
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: white;
+    margin: 0 1rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+ul.example-add-new-catalogue {
+    color: #6c757d;
+    margin-top: 15px;
+}
+
 .field-add-new-catalogue textarea {
     font-size: 1rem;
     border-radius: 5px;
@@ -91,7 +132,7 @@
     border: none;
     padding: 10px 100px;
     cursor: pointer;
-    background-color: var(--add-new-btn);
+    background-color: var(--red-btn);
     color: white;
     font-weight: bold;
     font-size: 1.1rem;

@@ -8,7 +8,7 @@ import {
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormLogin } from "src/model/Forms.model";
 import { signIn } from "../../../services/Auth";
-import { validation } from "../Validation/ValidationRules";
+import {validationWithoutWhiteSpaces } from "../Validation/ValidationRules";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./LoginPanel.css";
 
@@ -60,7 +60,7 @@ const LoginPanel = () => {
               />
               <input
                 type="password"
-                {...register("password", validation(8, 26))}
+                {...register("password", validationWithoutWhiteSpaces(8, 26))}
                 placeholder="Password"
               ></input>
             </div>

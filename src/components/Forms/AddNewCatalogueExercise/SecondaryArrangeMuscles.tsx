@@ -7,7 +7,8 @@ const SecondaryArrangeMuscles = () => {
   const [data, setData] = useState<SecondaryMuscles[]>([]);
 
   const {
-    register
+    register,
+    formState: { errors },
   } = useFormContext();
 
   useEffect(() => {
@@ -29,13 +30,21 @@ const SecondaryArrangeMuscles = () => {
                   id={id + name}
                   value={name}
                   type="checkbox"
-                  {...register("secondaryMuscle")}
+                  {...register("secondaryMuscle", {
+                    validate: {
+                      maxChecked: (value: false | string[]) =>
+                        !value ||
+                        value.length <= 3 ||
+                        "You can mark only 3 secondary muscles",
+                    },
+                  })}
                 />
               </label>
             </div>
           );
         })}
       </div>
+      <p className="error-login-panel">{errors.secondaryMuscle?.message}</p>
     </div>
   );
 };

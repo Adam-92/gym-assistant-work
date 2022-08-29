@@ -1,6 +1,6 @@
 import { ValidationRulesInterface, SelectPicture } from "./Validation.model";
 
-export const validation = (
+export const validationWithoutWhiteSpaces = (
   minLength: number,
   maxLength: number
 ): ValidationRulesInterface => {
@@ -15,6 +15,24 @@ export const validation = (
       message: `This field must have ${minLength}-${maxLength} characters`,
     },
     setValueAs: (value: string) => value.split(" ").join(""),
+  };
+};
+
+export const validationWithWhiteSpaces  = (
+  minLength: number,
+  maxLength: number
+): ValidationRulesInterface => {
+  return {
+    required: "Please fill out this field",
+    maxLength: {
+      value: maxLength,
+      message: `This field must have ${minLength}-${maxLength} characters`,
+    },
+    minLength: {
+      value: minLength,
+      message: `This field must have ${minLength}-${maxLength} characters`,
+    },
+    setValueAs: (value: string) => value.trim(),
   };
 };
 

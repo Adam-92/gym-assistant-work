@@ -24,7 +24,6 @@ const SelectPicture = () => {
     formState: { errors },
     clearErrors,
   } = useFormContext();
-    console.log("🚀 ~ errors", errors)
 
   let validateProposedPicture = selectPictureValidation(isFileExist);
   let validateUploadedPicture = uplodedPictureValidation(

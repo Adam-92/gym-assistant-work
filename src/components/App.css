@@ -17,8 +17,9 @@ Variables
     --dash-main-color: rgb(113, 99, 186);
     --dash-margin-components: 1rem;
     --dash-margin-headers: 0.5rem;
-    --add-new-btn: rgb(231, 17, 85);
-}
+    --red-btn: rgb(231, 17, 85);
+    --green-btn: #45e945;
+}   
 
 
 * {
