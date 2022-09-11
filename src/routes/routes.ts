@@ -11,19 +11,19 @@ import AddNew from "../pages/add-new-page/AddNew";
 export const protectedRoutes: RouteInterface[] = [
   {
     path: "/dashboard",
-    element: Dashboard
+    element: Dashboard,
   },
   {
     path: "/catalogue",
     element: Catalogue,
     children: [
       {
-        path: ":bodyPart",
-        element: Exercises
+        path: ":selectedBodyPart",
+        element: Exercises,
       },
       {
         path: "add-new",
-        element: AddNew
+        element: AddNew,
       },
     ],
   },
@@ -33,7 +33,7 @@ export const protectedRoutes: RouteInterface[] = [
   },
   {
     path: "/settings",
-    element: Settings
+    element: Settings,
   },
 ];
 

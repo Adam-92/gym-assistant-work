@@ -1,9 +1,8 @@
 import { useState } from "react";
 
-const useRouteCarousel = () => {
-  const [routeIndex, setRouteIndex] = useState(0);
-
-  const arrayPaths: string[] = [
+const useRouteCarousel = (selectedBodyPart: string | undefined) => {
+  
+  const arrayPaths = [
     "chest",
     "biceps",
     "triceps",
@@ -13,7 +12,11 @@ const useRouteCarousel = () => {
     "shoulders",
   ];
 
-  const bodyPartName = arrayPaths[routeIndex];
+  const [routeIndex, setRouteIndex] = useState(
+    selectedBodyPart ? arrayPaths.indexOf(selectedBodyPart) : 0
+  );
+
+  const bodyPart = arrayPaths[routeIndex];
 
   const goLeftRoute = () => {
     return routeIndex === 0
@@ -28,7 +31,7 @@ const useRouteCarousel = () => {
   };
 
   return {
-    bodyPartName,
+    bodyPart,
     goLeftRoute,
     goRightRoute,
   };

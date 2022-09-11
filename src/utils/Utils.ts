@@ -11,7 +11,6 @@ export const minToHours = (min: any): string => {
   return `${rhours}h : ${rminutes}m`;
 };
 
-
 export const addDataToConfig = (apiData: any, config: any): any => {
   const { data } = config;
   const newDataset = data.datasets.map((item: any, index: number) => {
@@ -45,7 +44,6 @@ export const addToRefContainer = (el: any, containerRef: any): void => {
     containerRef.current.push(el);
   }
 };
-
 
 export const carouselMovement = (
   ref1: any,
@@ -167,6 +165,8 @@ export const calculateProgress = (current: number, target: number) => {
   return (180 * percent) / 100 + 135;
 };
 
-export const firstBigLetter = (name: string): string => {
-  return name[0].toUpperCase() + name.slice(1);
+export const firstBigLetter = (
+  name: string | undefined
+): string | undefined => {
+  return name ? name[0]?.toUpperCase() + name?.slice(1) : undefined;
 };

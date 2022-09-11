@@ -17,7 +17,7 @@ const ExerciseTips = () => {
 
   return (
     <div>
-      <h2>Tips:</h2>
+      <h2>Exercise Tips:</h2>
       <div>
         {fields.map((field, index) => {
           return (

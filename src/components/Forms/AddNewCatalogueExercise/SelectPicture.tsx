@@ -24,6 +24,7 @@ const SelectPicture = () => {
     formState: { errors },
     clearErrors,
   } = useFormContext();
+    console.log("🚀 ~ errors ", errors )
 
   let validateProposedPicture = selectPictureValidation(isFileExist);
   let validateUploadedPicture = uplodedPictureValidation(
@@ -52,7 +53,7 @@ const SelectPicture = () => {
           Or use one from our example pictures
         </p>
         <section className="upload-files-add-new-catalogue">
-          {data.map(({ id, img, name }: ExamplePicturesAddCatalogue) => {
+          {data?.map(({ id, img, name }: ExamplePicturesAddCatalogue) => {
             return (
               <label
                 htmlFor={id + name}

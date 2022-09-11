@@ -13,17 +13,17 @@ const Exercises = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [pickedExercise, setPickedExercise] = useState("");
 
-  let { bodyPart } = useParams();
+  let { selectedBodyPart } = useParams();
   const location = useLocation();
 
   useEffect(() => {
     getExerciseCards().then((res) => {
       const selectedExercises = res
-        ? res.find((part: ExerciseCardInterface) => part.bodyPart === bodyPart)
+        ? res.find((part: ExerciseCardInterface) => part.bodyPart === selectedBodyPart)
         : null;
       setData(selectedExercises?.exercises);
     });
-  }, [location.pathname, bodyPart]);
+  }, [location.pathname, selectedBodyPart]);
 
   const pickExercise = (exercise: string) => {
     setPickedExercise(exercise);

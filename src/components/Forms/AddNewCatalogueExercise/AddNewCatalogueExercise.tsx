@@ -1,5 +1,7 @@
 import { CatalogueNewExerciseFormValues } from "src/model/Forms.model";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
+import { useGlobalContext } from "src/contexts/GlobalContext";
+import { setNewExercise } from "src/services/Activity";
 import ChooseTheBodyPart from "src/components/Forms/AddNewCatalogueExercise/ChooseTheBodyPart";
 import ExerciseDescription from "./ExerciseTips";
 import SecondaryArrangeMuscles from "./SecondaryArrangeMuscles";
@@ -8,16 +10,17 @@ import ExerciseName from "./ExerciseName";
 import "./AddNewCatalogueExercise.css";
 
 const AddNewCatalogueExercise = () => {
+  const { currentUser, databaseUpdated, setDatabaseUpdated } =
+    useGlobalContext();
   const methods = useForm<CatalogueNewExerciseFormValues>({
     defaultValues: {
-      tips: [{tip: ""}]
+      tips: [{ tip: "" }],
     },
-    mode: "onChange"
+    mode: "onChange",
   });
 
   const onSubmit: SubmitHandler<CatalogueNewExerciseFormValues> = (data) => {
-    console.log(data);
-    alert("WELL DONE - check the console for your data")
+    setNewExercise(data, currentUser);
   };
 
   return (
@@ -42,6 +45,14 @@ const AddNewCatalogueExercise = () => {
           </div>
         </form>
       </FormProvider>
+      {databaseUpdated ? (
+        <>
+          <h1 style={{ color: "red" }}>IT's been updated!</h1>
+          <button onClick={() => setDatabaseUpdated(false)}></button>
+        </>
+      ) : (
+        <></>
+      )}
     </article>
   );
 };

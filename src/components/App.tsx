@@ -32,7 +32,6 @@ const App = () => {
                 ></Route>
               );
             })}
-            )
           </Route>
         );
       })}

@@ -12,13 +12,13 @@ export type FormRegister = {
 
 export type CatalogueNewExerciseFormValues = {
   name: string;
-  part: boolean;
-  secondaryMuscle: boolean;
+  part: string;
+  secondaryMuscle: boolean | string[];
   tips: {
-    tip: string
+    tip: string;
   }[];
-  exampleImage: boolean;
-  cataloguePicture: any;
+  exampleImage: undefined | string;
+  cataloguePicture: string;
 };
 
 export interface BodyParts {

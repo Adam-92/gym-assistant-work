@@ -1,8 +1,9 @@
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "src/config/firebase";
 import { useContext, createContext, useState, useEffect } from "react";
 import { auth } from "../config/firebase";
 import { AppContextInterface } from "src/model/Contexts.model";
 import { User } from "firebase/auth";
-
 
 const AppContext = createContext<any | null>(null);
 
@@ -20,6 +21,13 @@ const AppProvider = ({ children }: { children: JSX.Element }) => {
     });
     return unsubscribe;
   }, []);
+
+  const unsubscribe = onSnapshot(
+    doc(db, `users/${currentUser?.uid}`),
+    (doc) => {
+      console.log("Current data: ", doc.data());
+    }
+  );
 
   const value: AppContextInterface = {
     firebaseError,

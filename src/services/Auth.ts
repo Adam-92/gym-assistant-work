@@ -3,9 +3,10 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  updateProfile,
 } from "firebase/auth";
 import { NavigateFunction } from "react-router-dom";
+import { db } from "../config/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 export const signIn = async (
   password: string,
@@ -29,19 +30,17 @@ export const signUp = async (
   name: string,
   password: string,
   email: string,
-  setFirebaseError: React.Dispatch<React.SetStateAction<string>>,
-  navigate: NavigateFunction
+  setFirebaseError: React.Dispatch<React.SetStateAction<string>>
 ): Promise<void> => {
   createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      if (user) {
-        updateProfile(user, {
-          displayName: name,
-        });
-        navigate("/dashboard");
-      }
-    })
+    .then(({ user }) =>
+      setDoc(doc(db, "users", user.uid), {
+        userInformation: {
+          name: name,
+          email: email,
+        },
+      })
+    )
     .catch((error) => {
       setFirebaseError(error.message);
     });
@@ -57,8 +56,6 @@ export const signOutUser = async (
       navigate("/");
     })
     .catch((error) => {
-      setFirebaseError(
-        "We had a problem with loggin you out. Please try again.."
-      );
+      setFirebaseError(error.message);
     });
 };

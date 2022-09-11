@@ -9,4 +9,3 @@ export interface AppContextInterface {
   setChoosenFigure: React.Dispatch<React.SetStateAction<string>>;
   currentUser: User | null;
 }
-

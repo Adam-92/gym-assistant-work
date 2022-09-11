@@ -23,7 +23,7 @@ const NextTraining = () => {
         <h2>Next Training:</h2>
       </header>
       <section>
-        {data.map((body: any, index: number) => {
+        {data?.map((body: any, index: number) => {
           return (
             <BodyPart
               part={body!.part}

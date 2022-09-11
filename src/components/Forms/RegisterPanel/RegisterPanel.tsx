@@ -31,7 +31,7 @@ const RegisterPanel = () => {
     password,
     email,
   }) => {
-    signUp(username, password, email, setFirebaseError, navigate);
+    signUp(username, password, email, setFirebaseError);
   };
 
   return (

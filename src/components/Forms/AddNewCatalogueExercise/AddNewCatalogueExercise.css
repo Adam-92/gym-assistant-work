@@ -222,7 +222,7 @@ ul.example-add-new-catalogue {
 }
 
 .picture-files-add-new-catalogue img:hover {
-    border: 2px solid var(--add-new-btn)
+    border-color: var(--red-btn);
 }
 
 .off-add-new-catalogue {
