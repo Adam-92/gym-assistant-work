@@ -173,31 +173,20 @@ ul.example-add-new-catalogue {
     transition: 0.6s all;
 }
 
+.url-add-new-catalogue {
+    text-align: center;
+}
+
+.url-add-new-catalogue input{
+    width: 60%;
+}
+
 .upload-files-add-new-catalogue {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.file-add-new-catalogue {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: dashed 2px black;
-    width: 150px;
-    height: 100px;
-    margin-right: 2rem;
-    cursor: pointer;
-}
-
-.file-add-new-catalogue svg {
-    font-size: 1.5rem;
-}
-
-.file-add-new-catalogue p {
-    margin-top: 5px;
-}
 
 .picture-files-add-new-catalogue {
     display: flex;

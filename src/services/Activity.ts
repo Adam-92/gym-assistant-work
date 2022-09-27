@@ -1,10 +1,11 @@
-import { personalUserData, globalDataForAllUsers } from "./AxiosInstances";
+import { personalUserData } from "./AxiosInstances";
 import { CatalogueNewExerciseFormValues } from "src/model/Forms.model";
-import { getDoc, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "src/config/firebase";
 import { StepsValues } from "src/model/StepChart.model";
 import { User } from "firebase/auth";
 import { newExerciseConverter } from "./converters";
+import { bodyPartsSelectionCatalogue } from "src/pages/catalogue-page/bodyPartsSelectionCatalogue";
 
 export const getDailySteps = async (): Promise<StepsValues[] | undefined> => {
   try {
@@ -60,18 +61,35 @@ export const getGauges = async () => {
     console.log(error);
   }
 };
-export const getExerciseCards = async () => {
+
+export const getExerciseCards = async (userId: string) => {
   try {
-    return await (
-      await personalUserData.get(`exerciseCards.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-export const getCatalogue = async () => {
-  try {
-    return await (await getDoc(doc(db, "globalData", "catalogue"))).data();
+    const queries = bodyPartsSelectionCatalogue.map(({ name }) =>
+      getDoc(doc(db, `userExercises/${userId}/${name}/exercises`))
+    );
+
+    const data = await Promise.all(queries).then((doc) =>
+      doc.forEach((snap) => console.log(snap))
+    );
+
+    /*  
+    return [
+     {
+      "bodyPart": "chest",
+      "exercises": [
+        { 
+         "id": 1,
+         "name": "Bench Press",
+         "img": "https://www.muscleandfitness.com/wp-content/uploads/2019/04/10-Exercises-Build-Muscle-Bench-Press.jpg?quality=86&strip=all",
+         "arrangeMuscles": {
+          "main": "Middle Chest",
+          "secondary": ["Triceps", "Arms"]
+      },
+      {
+      "bodyPart": "legs",
+      "exercises": []
+    ] */
+    
   } catch (error) {
     console.log(error);
   }
@@ -112,17 +130,17 @@ export const setNewExercise = async (
 ) => {
   try {
     await setDoc(
-      doc(db, `users/${currentUser.uid}`).withConverter(newExerciseConverter),
+      doc(
+        db,
+        `userExercises/${currentUser.uid}/${data.part}/exercises/`
+      ).withConverter(newExerciseConverter),
       {
-        userAddedExercises: {
-          [`${data.part}`]: [
-            {
-              name: data.name,
-              tips: data.tips,
-              secondaryMuscle: data.secondaryMuscle,
-              exampleImage: data.exampleImage,
-            },
-          ],
+        [`${data.name}`]: {
+          tips: data.tips,
+          secondaryMuscle: data.secondaryMuscle,
+          //exampleImage - jeżeli jest podany url, wtedy exampleImage jest undefined, a tego typu Firebase nie obsługuje
+          exampleImage: data.exampleImage ? data.exampleImage : "",
+          urlImage: data.urlImage,
         },
       },
       { merge: true }

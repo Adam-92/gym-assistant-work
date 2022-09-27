@@ -18,7 +18,7 @@ export type CatalogueNewExerciseFormValues = {
     tip: string;
   }[];
   exampleImage: undefined | string;
-  cataloguePicture: string;
+  urlImage: string;
 };
 
 export interface BodyParts {

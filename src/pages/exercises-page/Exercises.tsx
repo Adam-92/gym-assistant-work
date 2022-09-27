@@ -6,6 +6,7 @@ import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
 import ViewExercise from "../../components/Modals/ViewExercise/ViewExercise";
 import CarouselRoute from "src/components/Carousels/CarouselRoute/CarouselRoute";
+import { useGlobalContext } from "src/contexts/GlobalContext";
 import "./Exercises.css";
 
 const Exercises = () => {
@@ -13,16 +14,13 @@ const Exercises = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [pickedExercise, setPickedExercise] = useState("");
 
+  //Nie wiem dlaczego nie widzi typu currentUser ... ?
+  const { currentUser } = useGlobalContext();
   let { selectedBodyPart } = useParams();
   const location = useLocation();
 
   useEffect(() => {
-    getExerciseCards().then((res) => {
-      const selectedExercises = res
-        ? res.find((part: ExerciseCardInterface) => part.bodyPart === selectedBodyPart)
-        : null;
-      setData(selectedExercises?.exercises);
-    });
+    getExerciseCards(currentUser.uid);
   }, [location.pathname, selectedBodyPart]);
 
   const pickExercise = (exercise: string) => {

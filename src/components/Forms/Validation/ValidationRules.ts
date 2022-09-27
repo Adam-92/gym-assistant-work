@@ -1,3 +1,4 @@
+import React from "react";
 import { ValidationRulesInterface, SelectPicture } from "./Validation.model";
 
 export const validationWithoutWhiteSpaces = (
@@ -18,7 +19,7 @@ export const validationWithoutWhiteSpaces = (
   };
 };
 
-export const validationWithWhiteSpaces  = (
+export const validationWithWhiteSpaces = (
   minLength: number,
   maxLength: number
 ): ValidationRulesInterface => {
@@ -36,38 +37,31 @@ export const validationWithWhiteSpaces  = (
   };
 };
 
-export const selectPictureValidation = (
-  isFileExist: boolean
-): SelectPicture => {
-  return isFileExist
-    ? { required: false, disabled: true }
-    : { required: "Select or upload the image", disabled: false };
-};
-
-export const uplodedPictureValidation = (
-  isFileExist: boolean,
-  setIsFileExist: React.Dispatch<React.SetStateAction<boolean>>,
+export const validateUrl = (
+  setUserNotAddUrl: React.Dispatch<React.SetStateAction<boolean>>,
   clearErrors: (
     name?: string | string[] | readonly string[] | undefined
   ) => void
 ) => {
-  return isFileExist
-    ? {
-        validate: {
-          isTooBig: (value: any) =>
-            (value[0] && value[0].size <= 2000000) ||
-            "Max size of the image is 2mb",
-          supportedTypes: (value: any) =>
-            (value[0] && value[0].type === "image/jpeg") ||
-            value[0].type === "image/png" ||
-            value[0].type === "image/jpg" ||
-            "We support only types .jpeg, .jpg, .png",
-        },
+  return {
+    validate: {
+      isImage: (value: string) =>
+        (value && /^https?:\/\/.+\.(jpg|jpeg|png)$/.test(value)) ||
+        (value && "We support only types .jpeg, .jpg, .png") ||
+        (!value && true),
+    },
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.value) {
+        setUserNotAddUrl(false);
+        clearErrors("exampleImage");
+      } else {
+        setUserNotAddUrl(true);
       }
-    : {
-        onChange: () => {
-          setIsFileExist(true);
-          clearErrors(["exampleImage", "cataloguePicture"]);
-        },
-      };
+    },
+  };
 };
+
+export const validateProposalImage = (userNotAddUrl: boolean): SelectPicture =>
+  userNotAddUrl
+    ? { required: "Select or leave url link", disabled: false }
+    : { required: false, disabled: true };

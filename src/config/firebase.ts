@@ -17,7 +17,8 @@ const firebaseConfig = {
   messagingSenderId: "846002176313",
   appId: "1:846002176313:web:e0d2b514afc5af8c77e8e8",
   measurementId: "G-J0C3JK4DYC",
-  databaseURL: "https://gym-assistant-29736-default-rtdb.europe-west1.firebasedatabase.app/"
+  databaseURL:
+    "https://gym-assistant-29736-default-rtdb.europe-west1.firebasedatabase.app/",
 };
 
 // Initialize Firebase
