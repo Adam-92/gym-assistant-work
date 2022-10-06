@@ -13,10 +13,8 @@ export type FormRegister = {
 export type CatalogueNewExerciseFormValues = {
   name: string;
   part: string;
-  secondaryMuscle: boolean | string[];
-  tips: {
-    tip: string;
-  }[];
+  secondaryMuscle: string[];
+  exerciseDescription: string;
   exampleImage: undefined | string;
   urlImage: string;
 };
@@ -25,10 +23,6 @@ export interface BodyParts {
   id: number;
   icon: string;
   name: string;
-}
-
-export interface Tip {
-  tip: string;
 }
 
 export interface SecondaryMuscles {

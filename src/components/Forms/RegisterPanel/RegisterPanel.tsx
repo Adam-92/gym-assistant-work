@@ -6,9 +6,9 @@ import {
   faEnvelope,
   faKey,
 } from "@fortawesome/free-solid-svg-icons";
-import { signUp } from "../../../services/Auth";
+import { signUp } from "../../../firebase/services/Auth";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormRegister } from "src/model/Forms.model";
+import { FormRegister } from "src/components/Forms/Forms.model";
 import { validationWithoutWhiteSpaces } from "../Validation/ValidationRules";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./RegisterPanel.css";

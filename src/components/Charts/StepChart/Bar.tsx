@@ -1,5 +1,5 @@
 import { changeToPercent } from "../../../utils/Utils";
-import { BarStepsValues } from "src/model/StepChart.model";
+import { BarStepsValues } from "src/components/Charts/Charts.model";
 
 const Bar: React.FC<BarStepsValues> = ({ day, steps, target }) => {
   const ratio = changeToPercent(steps, target);

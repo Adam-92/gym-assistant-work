@@ -1,4 +1,4 @@
-import { BodyParts } from "src/model/Forms.model";
+import { BodyParts } from "src/components/Forms/Forms.model";
 
 export const bodyParts: BodyParts[] = [
   {
@@ -19,7 +19,7 @@ export const bodyParts: BodyParts[] = [
   {
     id: 4,
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    name: "ABS",
+    name: "Abs",
   },
   {
     id: 5,

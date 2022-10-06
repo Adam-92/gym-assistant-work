@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getSecondaryArrangeMuscles } from "../../../services/Activity";
-import { SecondaryMuscles } from "src/model/Forms.model";
+import { getSecondaryArrangeMuscles } from "../../../firebase/services/Activity";
+import { SecondaryMuscles } from "src/components/Forms/Forms.model";
 import { useFormContext } from "react-hook-form";
 
 const SecondaryArrangeMuscles = () => {

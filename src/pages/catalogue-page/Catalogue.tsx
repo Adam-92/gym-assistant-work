@@ -1,27 +1,24 @@
-import { bodyPartsSelectionCatalogue } from "./bodyPartsSelectionCatalogue";
+import { availableBodyParts } from "./availableBodyParts";
 import { Link, Outlet, useOutlet } from "react-router-dom";
-import { BodyPartsSelection } from "src/model/Catalogue.mode";
 
 const Catalogue = () => {
   const outlet = useOutlet();
-  
+
   return (
     <>
       {outlet ? (
         <Outlet />
       ) : (
         <ul>
-          {bodyPartsSelectionCatalogue.map(
-            ({ id, name }: BodyPartsSelection) => {
-              return (
-                <li key={name + id}>
-                  <Link to={name} style={{ marginLeft: "5px" }}>
-                    {name}
-                  </Link>
-                </li>
-              );
-            }
-          )}
+          {availableBodyParts.map((name: string, index: number) => {
+            return (
+              <li key={name + index}>
+                <Link to={name} style={{ marginLeft: "5px" }}>
+                  {name}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       )}
     </>

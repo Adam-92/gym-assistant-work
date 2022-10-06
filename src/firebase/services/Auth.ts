@@ -11,7 +11,7 @@ import { doc, setDoc } from "firebase/firestore";
 export const signIn = async (
   password: string,
   email: string,
-  setFirebaseError: React.Dispatch<React.SetStateAction<string>>,
+  setFirebaseError: React.Dispatch<React.SetStateAction<string | null>>,
   navigate: NavigateFunction
 ): Promise<void> => {
   signInWithEmailAndPassword(auth, email, password)
@@ -30,7 +30,7 @@ export const signUp = async (
   name: string,
   password: string,
   email: string,
-  setFirebaseError: React.Dispatch<React.SetStateAction<string>>
+  setFirebaseError: React.Dispatch<React.SetStateAction<string | null>>
 ): Promise<void> => {
   createUserWithEmailAndPassword(auth, email, password)
     .then(({ user }) =>

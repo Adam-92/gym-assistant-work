@@ -165,8 +165,6 @@ export const calculateProgress = (current: number, target: number) => {
   return (180 * percent) / 100 + 135;
 };
 
-export const firstBigLetter = (
-  name: string | undefined
-): string | undefined => {
-  return name ? name[0]?.toUpperCase() + name?.slice(1) : undefined;
+export const firstBigLetter = (name: string): string => {
+  return name[0]?.toUpperCase() + name?.slice(1);
 };

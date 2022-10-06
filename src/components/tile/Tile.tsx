@@ -1,4 +1,4 @@
-import { TileInterface } from "src/model/Tile.model";
+import { TileInterface } from "src/components/Tile/Tile.model";
 import Statistics from "./Statistics";
 
 const Tile = ({ icon, name, target, current, style }: TileInterface) => {

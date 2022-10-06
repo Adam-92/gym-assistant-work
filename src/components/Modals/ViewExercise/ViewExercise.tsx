@@ -1,20 +1,8 @@
-import { useEffect, useState } from "react";
-import { DataViewExercise, ViewExerciseIterface } from "src/model/Modals.model";
-import { getViewExercise } from "src/services/Activity";
+/* import { RestructuredExerciseData } from "src/model/model";
 import "./ViewExercise.css";
 
-const ViewExercise: React.FC<ViewExerciseIterface> = ({ name }) => {
-  const [data, setData] = useState<DataViewExercise | null>(null);
-
-  useEffect(() => {
-    getViewExercise().then((data) => {
-      const selectedData = data
-        ? data.find((exercise: DataViewExercise) => exercise.name === name)
-        : null;
-      setData(selectedData);
-    });
-  }, [name]);
-
+const ViewExercise = ({selectedExercises} : RestructuredExerciseData[] ) => {
+  
   return (
     <article className="view-exercise">
       <div className="img-view-exercise">
@@ -25,7 +13,7 @@ const ViewExercise: React.FC<ViewExerciseIterface> = ({ name }) => {
           alt={"exercise-selected"}
         />
       </div>
-      <h1 className="title-view-exercise">{name}</h1>
+      <h1 className="title-view-exercise">{""}</h1>
       <div className="information-view-exercise">
         <section>
           <ol className="tips-view-exercise">
@@ -43,3 +31,4 @@ const ViewExercise: React.FC<ViewExerciseIterface> = ({ name }) => {
 };
 
 export default ViewExercise;
+ */

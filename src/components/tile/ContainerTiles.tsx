@@ -1,6 +1,6 @@
-import { TileInterface } from "../../model/Tile.model";
+import { TileInterface } from "./Tile.model";
 import { useEffect, useState } from "react";
-import { getTilesData } from "../../services/Activity";
+import { getTilesData } from "../../firebase/services/Activity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoePrints,

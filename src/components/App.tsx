@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { RouteInterface, ChildrenRoute } from "src/model/Routes.model";
+import { RouteInterface, ChildrenRoute } from "src/routes/Routes.model";
 import { protectedRoutes, unprotectedRoutes } from "../routes/routes";
 import NotFound from "../pages/notFound-page/NotFound";
 import UnprotectedRoutes from "./AuthElements/UnprotectedRoutes";

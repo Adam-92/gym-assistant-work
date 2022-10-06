@@ -19,7 +19,9 @@ const ExerciseName = () => {
           />
         </label>
       </div>
-      <p className="error-login-panel">{errors.name?.message}</p>
+      {errors.name?.message && (
+        <p className="error-login-panel">{errors.name.message}</p>
+      )}
     </div>
   );
 };

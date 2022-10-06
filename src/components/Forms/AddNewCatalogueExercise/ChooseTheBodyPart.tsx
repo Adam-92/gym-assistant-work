@@ -1,6 +1,6 @@
 import { bodyParts } from "./bodyParts";
 import { useFormContext } from "react-hook-form";
-import { BodyParts } from "../../../model/Forms.model";
+import { BodyParts } from "../Forms.model";
 
 const ChooseTheBodyPart = () => {
   const {

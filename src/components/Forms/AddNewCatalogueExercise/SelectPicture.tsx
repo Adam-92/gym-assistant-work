@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { ExamplePicturesAddCatalogue } from "src/model/Forms.model";
-import { getExamplePicturesAddNew } from "../../../services/Activity";
+import { ExamplePicturesAddCatalogue } from "src/components/Forms/Forms.model";
+import { getExamplePicturesAddNew } from "../../../firebase/services/Activity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { useFormContext } from "react-hook-form";
 import {
-  validateUrl,
+  isValidImageUrl,
   validateProposalImage,
 } from "../Validation/ValidationRules";
 
 const SelectPicture = () => {
   const [data, setData] = useState<ExamplePicturesAddCatalogue[]>([]);
-  const [userNotAddUrl, setUserNotAddUrl] = useState(true);
 
   useEffect(() => {
     getExamplePicturesAddNew().then((pictures: ExamplePicturesAddCatalogue[]) =>
@@ -23,10 +22,12 @@ const SelectPicture = () => {
     register,
     formState: { errors },
     clearErrors,
+    watch,
   } = useFormContext();
-  console.log("🚀 ~ errors ", errors);
-  const validationOfUrl = validateUrl(setUserNotAddUrl, clearErrors);
-  const validationOfProposalImage = validateProposalImage(userNotAddUrl);
+
+  const addedImageUrl = watch("urlImage");
+
+  const validationOfProposalImage = validateProposalImage(addedImageUrl);
 
   return (
     <div className="field-add-new-catalogue">
@@ -37,15 +38,22 @@ const SelectPicture = () => {
             <FontAwesomeIcon icon={faImage} size="2x" />
             <input
               id="urlImage"
-              className={
-                errors.urlImage?.message ? "error-add-new-catalogue" : ""
-              }
-              {...register("urlImage", validationOfUrl)}
+              className={errors.urlImage?.message && "error-add-new-catalogue"}
+              {...register("urlImage", {
+                validate: (value: string) => isValidImageUrl(value),
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                  if (e.target.value) {
+                    clearErrors("exampleImage");
+                  }
+                },
+              })}
               placeholder="https://example.com/photo.jpg"
             />
           </label>
         </section>
-        <p className="error-login-panel">{errors.urlImage?.message}</p>
+        {errors.urlImage?.message && (
+          <p className="error-login-panel">{errors.urlImage.message}</p>
+        )}
         <p className="example-add-new-catalogue center-add-new-catalogue">
           Or use one from our example pictures
         </p>
@@ -56,13 +64,13 @@ const SelectPicture = () => {
                 htmlFor={id + name}
                 key={id}
                 className={`${
-                  !userNotAddUrl && "off-add-new-catalogue"
+                  addedImageUrl && "off-add-new-catalogue"
                 } picture-files-add-new-catalogue`}
               >
                 <img src={img} alt={name} />
                 <input
                   id={id + name}
-                  value={name}
+                  value={img}
                   type="radio"
                   {...register("exampleImage", validationOfProposalImage)}
                 />
@@ -71,7 +79,9 @@ const SelectPicture = () => {
           })}
         </section>
       </article>
-      <p className="error-login-panel">{errors.exampleImage?.message}</p>
+      {errors.exampleImage?.message && (
+        <p className="error-login-panel">{errors.exampleImage?.message}</p>
+      )}
     </div>
   );
 };

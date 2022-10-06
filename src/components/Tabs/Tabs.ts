@@ -5,7 +5,7 @@ import {
   faRightFromBracket,
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
-import { TabInterface } from "src/model/Tabs.model";
+import { TabInterface } from "src/components/Tabs/Tabs.model";
 
 export const tabs: TabInterface[] = [
   {

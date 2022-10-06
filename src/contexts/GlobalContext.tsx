@@ -1,10 +1,10 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import { AppContextInterface } from "src/model/Contexts.model";
+import { AppContextInterface } from "src/contexts/Contexts.model";
 
-import { auth } from "../config/firebase";
+import { auth } from "../firebase/config/firebase";
 import { User } from "firebase/auth";
 
-const AppContext = createContext<any | null>(null);
+const AppContext = createContext<AppContextInterface | undefined>(undefined);
 
 const AppProvider = ({ children }: { children: JSX.Element }) => {
   const [firebaseError, setFirebaseError] = useState<string | null>("");
@@ -39,7 +39,11 @@ const AppProvider = ({ children }: { children: JSX.Element }) => {
 };
 
 const useGlobalContext = () => {
-  return useContext(AppContext);
+  const ctx = useContext(AppContext);
+  if (!ctx) {
+    throw new Error("useGlobalContext can only be used inside AppProvider");
+  }
+  return ctx;
 };
 
 export { AppProvider, useGlobalContext, AppContext };

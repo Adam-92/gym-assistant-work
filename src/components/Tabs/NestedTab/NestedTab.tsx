@@ -1,4 +1,4 @@
-import { ChildrenTabInterface } from "src/model/Tabs.model";
+import { ChildrenTabInterface } from "src/components/Tabs/Tabs.model";
 import { Link, useResolvedPath, useMatch, useLocation } from "react-router-dom";
 import "./NestedTab.css";
 

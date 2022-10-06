@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getDailySteps, getMonthlySteps } from "../../../services/Activity";
-import { StepsValues } from "src/model/StepChart.model";
+import { getDailySteps, getMonthlySteps } from "../../../firebase/services/Activity";
+import { StepsValues } from "src/components/Charts/Charts.model";
 import Bar from "./Bar";
 import Switch from "./Switch";
 import "./StepChart.css";

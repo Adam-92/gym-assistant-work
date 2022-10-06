@@ -1,10 +1,9 @@
 export interface NewUserExerciseAdded {
   name: {
-    tips: {
-      tip: string;
-    }[];
-    secondaryMuscle: boolean | string[];
+    exerciseDescription: string;
+    secondaryMuscle: string[];
     exampleImage: string;
     urlImage: string;
+    part: string;
   }[];
 }

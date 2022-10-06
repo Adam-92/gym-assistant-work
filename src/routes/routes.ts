@@ -1,4 +1,4 @@
-import { RouteInterface } from "../model/Routes.model";
+import { RouteInterface } from "./Routes.model";
 import Exercises from "src/pages/exercises-page/Exercises";
 import Plan from "../pages/plan-page/Plan";
 import Settings from "../pages/settings-page/Settings";

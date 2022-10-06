@@ -1,5 +1,5 @@
 import { minToHours } from "../../utils/Utils";
-import { StatisticsTile } from "src/model/Tile.model";
+import { StatisticsTile } from "src/components/Tile/Tile.model";
 import "./Tile.css"
 
 const Statistics = ({ target, current, name }: StatisticsTile) => {

@@ -6,9 +6,9 @@ import {
   faKey,
 } from "@fortawesome/free-solid-svg-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormLogin } from "src/model/Forms.model";
-import { signIn } from "../../../services/Auth";
-import {validationWithoutWhiteSpaces } from "../Validation/ValidationRules";
+import { FormLogin } from "src/components/Forms/Forms.model";
+import { signIn } from "../../../firebase/services/Auth";
+import { validationWithoutWhiteSpaces } from "../Validation/ValidationRules";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import "./LoginPanel.css";
 
@@ -65,9 +65,9 @@ const LoginPanel = () => {
               ></input>
             </div>
             <h5 className="error-login-panel">{errors.password?.message}</h5>
-            <h5 className="error-login-panel">
-              {firebaseError ? firebaseError : null}
-            </h5>
+            {firebaseError && (
+              <h5 className="error-login-panel">{firebaseError}</h5>
+            )}
             <button type="submit" className="submit-login-panel">
               Log In
             </button>

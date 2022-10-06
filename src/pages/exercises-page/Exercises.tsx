@@ -1,57 +1,46 @@
 import { useEffect, useState } from "react";
-import { getExerciseCards } from "../../services/Activity";
-import { ExerciseCardInterface } from "src/model/ExerciseCards.model";
+import { getExerciseCards } from "../../firebase/services/Activity";
 import { useParams, useLocation } from "react-router-dom";
+import { RestructuredExerciseData } from "src/model/model";
+import { useGlobalContext } from "src/contexts/GlobalContext";
 import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
-import ViewExercise from "../../components/Modals/ViewExercise/ViewExercise";
 import CarouselRoute from "src/components/Carousels/CarouselRoute/CarouselRoute";
-import { useGlobalContext } from "src/contexts/GlobalContext";
 import "./Exercises.css";
 
 const Exercises = () => {
-  const [data, setData] = useState<[] | null>([]);
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [pickedExercise, setPickedExercise] = useState("");
+  // Jeżeli usunę undefined, wtedy pojawi się błąd w activity - zobacz proszę, czy tak może zostać?
+  const [data, setData] = useState<RestructuredExerciseData[] | undefined>([]);
 
-  //Nie wiem dlaczego nie widzi typu currentUser ... ?
   const { currentUser } = useGlobalContext();
   let { selectedBodyPart } = useParams();
+
   const location = useLocation();
 
   useEffect(() => {
-    getExerciseCards(currentUser.uid);
-  }, [location.pathname, selectedBodyPart]);
-
-  const pickExercise = (exercise: string) => {
-    setPickedExercise(exercise);
-    setIsOpenModal(true);
-  };
-
-  const closeModal = () => {
-    setIsOpenModal(false);
-  };
+    if (currentUser) {
+      getExerciseCards(currentUser.uid).then((res) => {
+        const selectedExercises = res?.filter(
+          (exercise) => exercise.part === selectedBodyPart
+        );
+        setData(selectedExercises);
+      });
+    }
+  }, [location.pathname, selectedBodyPart, currentUser]);
 
   return (
-    <>
-      <div className="container-exercises">
-        <div className={`content-exercises ${isOpenModal && "pointer-none"}`}>
-          <CarouselRoute />
-          {data ? (
-            <div className="cards-exercises">
-              <ExerciseCard
-                exercises={data}
-                pickExercise={pickExercise}
-                closeModal={closeModal}
-              />
-            </div>
-          ) : (
-            <NoDataMessage text={"No Exercises in the Database"} />
-          )}
-        </div>
-        {isOpenModal && <ViewExercise name={pickedExercise} />}
+    <div className="container-exercises">
+      <div className="content-exercises">
+        <CarouselRoute />
+        {data && data.length > 0 ? (
+          <div className="cards-exercises">
+            <ExerciseCard exercises={data} />
+          </div>
+        ) : (
+          <NoDataMessage text={"No Exercises in the Database"} />
+        )}
       </div>
-    </>
+    </div>
   );
 };
 export default Exercises;

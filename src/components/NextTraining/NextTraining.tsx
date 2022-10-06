@@ -1,7 +1,7 @@
 import BodyPart from "./BodyPartContainer";
 import HistoryPopover from "../Popovers/HistoryPopoover/HistoryPopover";
 import { useEffect, useState } from "react";
-import { getNextTraining } from "../../services/Activity";
+import { getNextTraining } from "../../firebase/services/Activity";
 import "./NextTraining.css";
 
 const NextTraining = () => {

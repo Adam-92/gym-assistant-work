@@ -1,11 +1,12 @@
 import { personalUserData } from "./AxiosInstances";
-import { CatalogueNewExerciseFormValues } from "src/model/Forms.model";
-import { doc, setDoc, getDoc } from "firebase/firestore";
-import { db } from "src/config/firebase";
-import { StepsValues } from "src/model/StepChart.model";
+import { CatalogueNewExerciseFormValues } from "src/components/Forms/Forms.model";
+import { doc, setDoc, getDoc, DocumentData } from "firebase/firestore";
+import { db } from "src/firebase/config/firebase";
+import { StepsValues } from "src/components/Charts/Charts.model";
 import { User } from "firebase/auth";
 import { newExerciseConverter } from "./converters";
-import { bodyPartsSelectionCatalogue } from "src/pages/catalogue-page/bodyPartsSelectionCatalogue";
+import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+import { firstBigLetter } from "src/utils/Utils";
 
 export const getDailySteps = async (): Promise<StepsValues[] | undefined> => {
   try {
@@ -61,45 +62,44 @@ export const getGauges = async () => {
     console.log(error);
   }
 };
+/* Musze korzystac z tej funkcji, gdy partia posiada wiecej niz jedno cwiczenie, w innym przypadku
+jezeli zrobic loop w exerciseResponses to zwraca jedno cwiczenie zamiast dwóch */
+
+/* 
+Problem z typem tutaj - nie mogę użyć 
+NewUserExerciseAdded typu z convertera dla parametru exercise tej funkcji... krzyczy o indeksach ;d
+*/
+const restructureObjectExercises = (exercise: DocumentData | undefined) => {
+  const exercises = [];
+  for (const property in exercise) {
+    exercises.push({
+      name: property,
+      description: exercise[property].exerciseDescription,
+      urlImage: exercise[property].urlImage,
+      secondaryMuscle: exercise[property].secondaryMuscle,
+      exampleImage: exercise[property].exampleImage,
+      part: exercise[property].part,
+    });
+  }
+  return exercises;
+};
 
 export const getExerciseCards = async (userId: string) => {
   try {
-    const queries = bodyPartsSelectionCatalogue.map(({ name }) =>
-      getDoc(doc(db, `userExercises/${userId}/${name}/exercises`))
+    const exerciseRequests = availableBodyParts.map((name: string) =>
+      getDoc(
+        doc(
+          db,
+          `userExercises/${userId}/${firstBigLetter(name)}/exercises`
+        ).withConverter(newExerciseConverter)
+      )
     );
 
-    const data = await Promise.all(queries).then((doc) =>
-      doc.forEach((snap) => console.log(snap))
-    );
+    const exerciseResponses = await (await Promise.all(exerciseRequests))
+      .filter((response) => (response.exists() ? response : false))
+      .map((snap) => restructureObjectExercises(snap.data()));
 
-    /*  
-    return [
-     {
-      "bodyPart": "chest",
-      "exercises": [
-        { 
-         "id": 1,
-         "name": "Bench Press",
-         "img": "https://www.muscleandfitness.com/wp-content/uploads/2019/04/10-Exercises-Build-Muscle-Bench-Press.jpg?quality=86&strip=all",
-         "arrangeMuscles": {
-          "main": "Middle Chest",
-          "secondary": ["Triceps", "Arms"]
-      },
-      {
-      "bodyPart": "legs",
-      "exercises": []
-    ] */
-    
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getViewExercise = async () => {
-  try {
-    return await (
-      await personalUserData.get(`viewExercise.json`)
-    ).data;
+    return exerciseResponses.flat();
   } catch (error) {
     console.log(error);
   }
@@ -126,21 +126,21 @@ export const getExamplePicturesAddNew = async () => {
 
 export const setNewExercise = async (
   data: CatalogueNewExerciseFormValues,
-  currentUser: User
+  currentUser: User | null
 ) => {
   try {
     await setDoc(
       doc(
         db,
-        `userExercises/${currentUser.uid}/${data.part}/exercises/`
+        `userExercises/${currentUser?.uid}/${data.part}/exercises/`
       ).withConverter(newExerciseConverter),
       {
         [`${data.name}`]: {
-          tips: data.tips,
+          exerciseDescription: data.exerciseDescription,
           secondaryMuscle: data.secondaryMuscle,
-          //exampleImage - jeżeli jest podany url, wtedy exampleImage jest undefined, a tego typu Firebase nie obsługuje
-          exampleImage: data.exampleImage ? data.exampleImage : "",
+          exampleImage: data.exampleImage ?? "",
           urlImage: data.urlImage,
+          part: data.part.toLowerCase(),
         },
       },
       { merge: true }

@@ -37,31 +37,15 @@ export const validationWithWhiteSpaces = (
   };
 };
 
-export const validateUrl = (
-  setUserNotAddUrl: React.Dispatch<React.SetStateAction<boolean>>,
-  clearErrors: (
-    name?: string | string[] | readonly string[] | undefined
-  ) => void
-) => {
-  return {
-    validate: {
-      isImage: (value: string) =>
-        (value && /^https?:\/\/.+\.(jpg|jpeg|png)$/.test(value)) ||
-        (value && "We support only types .jpeg, .jpg, .png") ||
-        (!value && true),
-    },
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.value) {
-        setUserNotAddUrl(false);
-        clearErrors("exampleImage");
-      } else {
-        setUserNotAddUrl(true);
-      }
-    },
-  };
+const imageUrlRegex = /^https?:\/\/.+\.(jpg|jpeg|png)$/;
+
+export const isValidImageUrl = (value: string) => {
+  if (!value) return true;
+  if (imageUrlRegex.test(value)) return true;
+  return "We support only types .jpeg, .jpg, .png";
 };
 
-export const validateProposalImage = (userNotAddUrl: boolean): SelectPicture =>
-  userNotAddUrl
-    ? { required: "Select or leave url link", disabled: false }
-    : { required: false, disabled: true };
+export const validateProposalImage = (addedImageUrl: string): SelectPicture =>
+  addedImageUrl
+    ? { required: false, disabled: true }
+    : { required: "Select or leave url link", disabled: false };

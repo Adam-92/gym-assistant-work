@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { TabInterface } from "src/model/Tabs.model";
+import { TabInterface } from "src/components/Tabs/Tabs.model";
 import { useResolvedPath, useMatch, useNavigate } from "react-router";
-import { signOutUser } from "../../../services/Auth";
+import { signOutUser } from "../../../firebase/services/Auth";
 import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ChildrenTabInterface } from "src/model/Tabs.model";
+import { ChildrenTabInterface } from "src/components/Tabs/Tabs.model";
 import NestedTab from "../NestedTab/NestedTab";
 import "./Tab.css";
 
