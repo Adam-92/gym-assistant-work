@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { tabs } from "../Tabs/tabs";
+import { tabs } from "../Tabs/Tabs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { TabInterface } from "src/components/Tabs/Tabs.model";
