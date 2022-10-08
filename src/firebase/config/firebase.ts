@@ -21,12 +21,10 @@ const firebaseConfig = {
     "https://gym-assistant-29736-default-rtdb.europe-west1.firebasedatabase.app/",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
-// Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 
 export { app, analytics, auth, db };

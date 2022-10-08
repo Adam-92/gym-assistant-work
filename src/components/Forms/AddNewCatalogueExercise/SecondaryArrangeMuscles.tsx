@@ -21,9 +21,9 @@ const SecondaryArrangeMuscles = () => {
     <div className="field-add-new-catalogue">
       <h2>Secondary arrange muscles - optional:</h2>
       <div className="secondary-add-new-catalogue">
-        {data?.map(({ id, name }: SecondaryMuscles, index: number) => {
+        {data?.map(({ id, name }: SecondaryMuscles) => {
           return (
-            <div key={index}>
+            <div key={id}>
               <label htmlFor={id + name} className="noSelect hover-label">
                 {name}
                 <input

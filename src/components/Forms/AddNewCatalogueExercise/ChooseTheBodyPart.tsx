@@ -7,19 +7,19 @@ const ChooseTheBodyPart = () => {
     register,
     formState: { errors },
   } = useFormContext();
-  
+
   return (
     <div className="field-add-new-catalogue">
       <h2>Choose the body part:</h2>
       <div className="icons-add-new-catalogue">
-        {bodyParts.map(({ id, icon, name }: BodyParts, index: number) => {
+        {bodyParts.map(({ id, icon, name }: BodyParts) => {
           return (
-            <div className="icon-add-new-catalogue" key={index}>
-              <label htmlFor={id + name} className="noSelect">
+            <div className="icon-add-new-catalogue" key={id}>
+              <label htmlFor={name} className="noSelect">
                 <img src={icon} alt={name} />
                 {name}
                 <input
-                  id={id + name}
+                  id={name}
                   type="radio"
                   value={name}
                   {...register("part", {

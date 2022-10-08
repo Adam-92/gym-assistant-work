@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDumbbell,
@@ -6,16 +6,14 @@ import {
   faEnvelope,
   faKey,
 } from "@fortawesome/free-solid-svg-icons";
-import { signUp } from "../../../firebase/services/Auth";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormRegister } from "src/components/Forms/Forms.model";
 import { validationWithoutWhiteSpaces } from "../Validation/ValidationRules";
-import { useGlobalContext } from "../../../contexts/GlobalContext";
+import useSignUp from "src/hooks/useSignUp";
 import "./RegisterPanel.css";
 
 const RegisterPanel = () => {
-  const { firebaseError, setFirebaseError } = useGlobalContext();
-  const navigate = useNavigate();
+  const { makeRequest, firebaseError } = useSignUp();
 
   const {
     handleSubmit,
@@ -30,9 +28,7 @@ const RegisterPanel = () => {
     username,
     password,
     email,
-  }) => {
-    signUp(username, password, email, setFirebaseError);
-  };
+  }) => makeRequest(username, password, email);
 
   return (
     <article className="center-register-panel">
@@ -107,9 +103,9 @@ const RegisterPanel = () => {
             <h5 className="error-register-panel">
               {errors.re_password?.message}
             </h5>
-            <h5 className="error-login-panel">
-              {firebaseError ? firebaseError : null}
-            </h5>
+            {firebaseError && (
+              <h5 className="error-login-panel">{firebaseError}</h5>
+            )}
             <button className="submit-register-panel">Register</button>
           </form>
         </section>

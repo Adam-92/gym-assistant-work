@@ -145,6 +145,7 @@ export const setNewExercise = async (
       },
       { merge: true }
     );
+
   } catch (error) {
     console.log(error);
   }

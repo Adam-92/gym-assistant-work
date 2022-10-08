@@ -1,19 +1,17 @@
 import { Link } from "react-router-dom";
 import { TabInterface } from "src/components/Tabs/Tabs.model";
-import { useResolvedPath, useMatch, useNavigate } from "react-router";
-import { signOutUser } from "../../../firebase/services/Auth";
-import { useGlobalContext } from "../../../contexts/GlobalContext";
+import { useResolvedPath, useMatch } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ChildrenTabInterface } from "src/components/Tabs/Tabs.model";
 import NestedTab from "../NestedTab/NestedTab";
+import useSignOut from "src/hooks/useSignOut";
 import "./Tab.css";
 
 const Tab = ({ name, to, id, icon, children }: TabInterface) => {
-  const { setFirebaseError } = useGlobalContext();
-
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: false });
-  const navigate = useNavigate();
+
+  const { makeRequest } = useSignOut();
 
   return (
     <li className={`${match && "active-tab focus-tab"}`}>
@@ -22,9 +20,7 @@ const Tab = ({ name, to, id, icon, children }: TabInterface) => {
         className="link-tab"
         key={id}
         onClick={() => {
-          return name === "Logout"
-            ? signOutUser(setFirebaseError, navigate)
-            : null;
+          return name === "Logout" ? makeRequest() : null;
         }}
       >
         <FontAwesomeIcon

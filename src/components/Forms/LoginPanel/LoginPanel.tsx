@@ -7,15 +7,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormLogin } from "src/components/Forms/Forms.model";
-import { signIn } from "../../../firebase/services/Auth";
 import { validationWithoutWhiteSpaces } from "../Validation/ValidationRules";
-import { useGlobalContext } from "../../../contexts/GlobalContext";
+import useSignIn from "src/hooks/useSignIn";
 import "./LoginPanel.css";
 
 const LoginPanel = () => {
-  const { firebaseError, setFirebaseError } = useGlobalContext();
-  const navigate = useNavigate();
-
   const {
     handleSubmit,
     register,
@@ -23,10 +19,10 @@ const LoginPanel = () => {
   } = useForm<FormLogin>({
     mode: "onChange",
   });
+  const { makeRequest, firebaseError } = useSignIn();
 
-  const onSubmit: SubmitHandler<FormLogin> = ({ password, email }) => {
-    signIn(password, email, setFirebaseError, navigate);
-  };
+  const onSubmit: SubmitHandler<FormLogin> = ({ password, email }) =>
+    makeRequest(password, email);
 
   return (
     <article className="center-login-panel">

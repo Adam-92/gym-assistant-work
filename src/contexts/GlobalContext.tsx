@@ -7,9 +7,6 @@ import { User } from "firebase/auth";
 const AppContext = createContext<AppContextInterface | undefined>(undefined);
 
 const AppProvider = ({ children }: { children: JSX.Element }) => {
-  const [firebaseError, setFirebaseError] = useState<string | null>("");
-  const [openModal, setOpenModal] = useState(false);
-  const [choosenFigure, setChoosenFigure] = useState("");
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -22,12 +19,6 @@ const AppProvider = ({ children }: { children: JSX.Element }) => {
   }, []);
 
   const value: AppContextInterface = {
-    firebaseError,
-    setFirebaseError,
-    openModal,
-    choosenFigure,
-    setOpenModal,
-    setChoosenFigure,
     currentUser,
   };
 

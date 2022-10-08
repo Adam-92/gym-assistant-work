@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getExerciseCards } from "../../firebase/services/Activity";
 import { useParams, useLocation } from "react-router-dom";
-import { RestructuredExerciseData } from "src/model/model";
+import { RestructuredExerciseData } from "../../model/model";
 import { useGlobalContext } from "src/contexts/GlobalContext";
 import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
