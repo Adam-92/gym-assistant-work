@@ -7,9 +7,11 @@ const useSignOut = () => {
   const navigate = useNavigate();
 
   const makeRequest = () =>
-    signOutUser(navigate).catch((error) => {
-      setfirebaseError(error.message);
-    });
+    signOutUser()
+      .then(() => navigate("/"))
+      .catch((error) => {
+        setfirebaseError(error.message);
+      });
 
   return {
     makeRequest,

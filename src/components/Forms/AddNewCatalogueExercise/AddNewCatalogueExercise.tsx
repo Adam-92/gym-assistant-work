@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { onSnapshot, doc } from "firebase/firestore";
-import { db } from "src/firebase/config/firebase";
 import { CatalogueNewExerciseFormValues } from "src/components/Forms/Forms.model";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { useGlobalContext } from "src/contexts/GlobalContext";
@@ -27,14 +25,7 @@ const AddNewCatalogueExercise = () => {
   });
 
   const onSubmit: SubmitHandler<CatalogueNewExerciseFormValues> = (data) => {
-    setNewExercise(data, currentUser);
-
-    const unsub = onSnapshot(
-      doc(db, `userExercises/${currentUser?.uid}/${data.part}/exercises`),
-      (doc) => {
-        setSubmittedForm(data.part.toLowerCase());
-      }
-    );
+    setNewExercise(data, currentUser, setSubmittedForm);
   };
 
   return (

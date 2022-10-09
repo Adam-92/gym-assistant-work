@@ -1,4 +1,3 @@
-import React from "react";
 import { ValidationRulesInterface, SelectPicture } from "./Validation.model";
 
 export const validationWithoutWhiteSpaces = (

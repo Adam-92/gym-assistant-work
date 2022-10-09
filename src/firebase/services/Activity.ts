@@ -1,6 +1,12 @@
 import { personalUserData } from "./AxiosInstances";
 import { CatalogueNewExerciseFormValues } from "src/components/Forms/Forms.model";
-import { doc, setDoc, getDoc, DocumentData } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  getDoc,
+  DocumentData,
+  onSnapshot,
+} from "firebase/firestore";
 import { db } from "src/firebase/config/firebase";
 import { StepsValues } from "src/components/Charts/Charts.model";
 import { User } from "firebase/auth";
@@ -84,7 +90,7 @@ const restructureObjectExercises = (exercise: DocumentData | undefined) => {
   return exercises;
 };
 
-export const getExerciseCards = async (userId: string) => {
+export const getUserExerciseCards = async (userId: string) => {
   try {
     const exerciseRequests = availableBodyParts.map((name: string) =>
       getDoc(
@@ -100,6 +106,13 @@ export const getExerciseCards = async (userId: string) => {
       .map((snap) => restructureObjectExercises(snap.data()));
 
     return exerciseResponses.flat();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getExampleExerciseCards = async () => {
+  try {
   } catch (error) {
     console.log(error);
   }
@@ -126,7 +139,8 @@ export const getExamplePicturesAddNew = async () => {
 
 export const setNewExercise = async (
   data: CatalogueNewExerciseFormValues,
-  currentUser: User | null
+  currentUser: User | null,
+  onSuccess: React.Dispatch<React.SetStateAction<string>>
 ) => {
   try {
     await setDoc(
@@ -146,6 +160,10 @@ export const setNewExercise = async (
       { merge: true }
     );
 
+    onSnapshot(
+      doc(db, `userExercises/${currentUser?.uid}/${data.part}/exercises`),
+      (doc) => onSuccess(data.part.toLowerCase())
+    );
   } catch (error) {
     console.log(error);
   }

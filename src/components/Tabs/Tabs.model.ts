@@ -3,10 +3,10 @@ export interface TabInterface {
   name: string;
   icon: any;
   to: string;
-  children?: ChildrenTabInterface[] ;
+  nestedTab?: NestedTabInterface[] ;
 }
 
-export interface ChildrenTabInterface {
+export interface NestedTabInterface {
   name: string;
   to: string;
 }

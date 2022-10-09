@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { TabInterface } from "src/components/Tabs/Tabs.model";
 import { useResolvedPath, useMatch } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ChildrenTabInterface } from "src/components/Tabs/Tabs.model";
+import { NestedTabInterface } from "src/components/Tabs/Tabs.model";
 import NestedTab from "../NestedTab/NestedTab";
 import useSignOut from "src/hooks/useSignOut";
 import "./Tab.css";
 
-const Tab = ({ name, to, id, icon, children }: TabInterface) => {
+const Tab = ({ name, to, id, icon, nestedTab }: TabInterface) => {
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: false });
 
@@ -34,7 +34,7 @@ const Tab = ({ name, to, id, icon, children }: TabInterface) => {
       <ul
         className={`children-tab ${match && "show-tab children-active-tab "}`}
       >
-        {children?.map(({ to, name }: ChildrenTabInterface, index: number) => {
+        {nestedTab?.map(({ to, name }: NestedTabInterface, index: number) => {
           return <NestedTab to={to} name={name} key={index} />;
         })}
       </ul>

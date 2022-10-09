@@ -19,7 +19,7 @@ export const tabs: TabInterface[] = [
     name: "Catalogue",
     icon: faDumbbell,
     to: "/catalogue",
-    children: [
+    nestedTab: [
       {
         name: "Exercises",
         to: "../catalogue"

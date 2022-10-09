@@ -22,7 +22,8 @@
     transition: all ease .5s;
     transform: translate3d(0px, 0px, 0px);
 }
-.img-exercise-card img:hover{
+
+.img-exercise-card img:hover {
     transform: scale(1.15);
 }
 
@@ -49,8 +50,10 @@
     height: 3px;
     background: linear-gradient(to right, rgb(211, 93, 166), purple, white);
 }
-.cards-exercises{
-    display:flex;
+
+.cards-exercises {
+    display: flex;
     align-items: center;
     justify-content: space-around;
 }
+

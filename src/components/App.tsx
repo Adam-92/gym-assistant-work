@@ -1,5 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import { RouteInterface, ChildrenRoute } from "src/routes/Routes.model";
+import {
+  RouteInterface,
+  ChildrenRoute,
+  SubChildren,
+} from "src/routes/Routes.model";
 import { protectedRoutes, unprotectedRoutes } from "../routes/routes";
 import NotFound from "../pages/notFound-page/NotFound";
 import UnprotectedRoutes from "./AuthElements/UnprotectedRoutes";
@@ -23,13 +27,25 @@ const App = () => {
               </Container>
             }
           >
-            {route?.children?.map((child: ChildrenRoute, index: number) => {
+            {route.children?.map((child: ChildrenRoute, index: number) => {
               return (
                 <Route
                   path={child.path}
                   key={index}
                   element={<child.element />}
-                ></Route>
+                >
+                  {child.children?.map(
+                    (subChildren: SubChildren, index: number) => {
+                      return (
+                        <Route
+                          path={subChildren.path}
+                          element={<subChildren.element />}
+                          key={index}
+                        />
+                      );
+                    }
+                  )}
+                </Route>
               );
             })}
           </Route>

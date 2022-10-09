@@ -30,14 +30,14 @@ const Sidebar = () => {
         </header>
         <nav className="nav-sidebar">
           <ul className="parent-sidebar">
-            {tabs.map(({ to, id, name, icon, children }: TabInterface) => {
+            {tabs.map(({ to, id, name, icon, nestedTab }: TabInterface) => {
               return (
                 <Tab
                   name={name}
                   to={to}
                   id={id}
                   icon={icon}
-                  children={children}
+                  nestedTab={nestedTab}
                   key={id}
                 />
               );

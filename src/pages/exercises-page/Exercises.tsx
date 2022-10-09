@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getExerciseCards } from "../../firebase/services/Activity";
+import { getUserExerciseCards } from "../../firebase/services/Activity";
 import { useParams, useLocation } from "react-router-dom";
 import { RestructuredExerciseData } from "../../model/model";
 import { useGlobalContext } from "src/contexts/GlobalContext";
@@ -19,7 +19,7 @@ const Exercises = () => {
 
   useEffect(() => {
     if (currentUser) {
-      getExerciseCards(currentUser.uid).then((res) => {
+      getUserExerciseCards(currentUser.uid).then((res) => {
         const selectedExercises = res?.filter(
           (exercise) => exercise.part === selectedBodyPart
         );

@@ -7,6 +7,7 @@ import Login from "../pages/login-page/Login";
 import Register from "../pages/register-page/Register";
 import Catalogue from "../pages/catalogue-page/Catalogue";
 import AddNew from "../pages/add-new-page/AddNew";
+import SelectedExercise from "src/pages/selectedExercise-page/SelectedExercise";
 
 export const protectedRoutes: RouteInterface[] = [
   {
@@ -20,6 +21,12 @@ export const protectedRoutes: RouteInterface[] = [
       {
         path: ":selectedBodyPart",
         element: Exercises,
+        children: [
+          {
+            path: ":selectedExercise",
+            element: SelectedExercise
+          }
+        ]
       },
       {
         path: "add-new",
