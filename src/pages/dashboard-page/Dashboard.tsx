@@ -2,7 +2,7 @@ import CaloriesChart from "../../components/Charts/CaloriesChart/CaloriesChart";
 import StepChart from "../../components/Charts/StepChart/StepChart";
 import ContainerGuages from "../../components/Guage/ContainerGuages";
 import NextTraining from "../../components/NextTraining/NextTraining";
-import ContainerTiles from "../../components/tile/ContainerTiles";
+import ContainerTiles from "../../components/Tile/ContainerTiles";
 import "./Dashboard.css";
 
 const Dashboard = () => {
