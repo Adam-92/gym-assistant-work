@@ -1,8 +1,8 @@
-import StepChart from "../../components/Charts/StepChart/StepChart";
 import CaloriesChart from "../../components/Charts/CaloriesChart/CaloriesChart";
-import ContainerTiles from "../../components/Tile/ContainerTiles";
-import NextTraining from "../../components/NextTraining/NextTraining";
+import StepChart from "../../components/Charts/StepChart/StepChart";
 import ContainerGuages from "../../components/Guage/ContainerGuages";
+import NextTraining from "../../components/NextTraining/NextTraining";
+import ContainerTiles from "../../components/Tile/ContainerTiles";
 import "./Dashboard.css";
 
 const Dashboard = () => {
