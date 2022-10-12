@@ -6,7 +6,6 @@ import ContainerGuages from "../../components/Guage/ContainerGuages";
 import "./Dashboard.css";
 
 const Dashboard = () => {
-
   return (
     <>
       <header className="header-dashboard">

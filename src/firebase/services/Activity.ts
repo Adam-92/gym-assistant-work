@@ -14,6 +14,15 @@ import { newExerciseConverter } from "./converters";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 import { firstBigLetter } from "src/utils/Utils";
 
+
+export const getCaloriesChartData = async () => {
+  try{
+    return await (await personalUserData.get(`caloriesChartData.json`)).data
+  }catch(error){  
+    console.log(error)
+  }
+}
+
 export const getDailySteps = async (): Promise<StepsValues[] | undefined> => {
   try {
     return await (

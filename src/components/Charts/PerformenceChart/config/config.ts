@@ -1,33 +1,28 @@
-const days: string[] = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+const dates: string[] = [
+  "11.05",
+  "15.05",
+  "21.05",
+  "30.05",
+  "02.06",
+  "10.06",
+  "12.06",
 ];
 
 let delayed: boolean;
 
 export const initialData = {
-  labels: days,
+  labels: dates,
   datasets: [
     {
-      label: "Limit",
-      data: [],
-      borderColor: "rgb(235, 96, 140)",
-    },
-    {
-      label: "Day",
+      label: "Performance",
       data: [],
       borderColor: "rgb(223, 154, 235)",
       tension: 0.3,
       fill: true,
       backgroundColor: "rgba(103,76,175,0.3)",
-      pointRadius: 6,
+      pointRadius: 5,
       pointBorderColor: "rgb(255,255,255)",
-      pointBorderWidth: 3,
+      pointBorderWidth: 2,
       pointBackgroundColor: "rgb(234, 130, 169)",
     },
   ],
@@ -50,20 +45,5 @@ export const options = {
   },
   responsive: true,
   maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      position: "top" as const,
-    },
-    title: {
-      display: true,
-      text: "Caloric balance",
-      font: {
-        size: 22,
-        weight: "bold",
-        family: "'Noto Sans', sans-serif",
-      },
-      align: "start" as const,
-      color: "rgb(103, 76, 175)",
-    },
-  },
+  plugins: {},
 };
