@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CatalogueNewExerciseFormValues } from "src/components/Forms/Forms.model";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
-import { useGlobalContext } from "src/contexts/GlobalContext";
+import { useUserContext } from "src/contexts/UserContext";
 import { setNewExercise } from "src/firebase/services/Activity";
 import ChooseTheBodyPart from "src/components/Forms/AddNewCatalogueExercise/ChooseTheBodyPart";
 import ExerciseDescription from "./ExerciseDescription";
@@ -12,7 +12,7 @@ import SuccesfullyAddedNewCatalogueExercise from "src/components/Modals/Succesfu
 import "./AddNewCatalogueExercise.css";
 
 const AddNewCatalogueExercise = () => {
-  const { currentUser } = useGlobalContext();
+  const { currentUser } = useUserContext();
 
   const [submittedForm, setSubmittedForm] = useState("");
 

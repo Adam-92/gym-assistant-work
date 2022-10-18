@@ -3,6 +3,7 @@ import { Link, Outlet, useOutlet } from "react-router-dom";
 
 const Catalogue = () => {
   const outlet = useOutlet();
+
   return (
     <>
       {outlet ? (

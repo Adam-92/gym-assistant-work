@@ -19,11 +19,11 @@ export const protectedRoutes: RouteInterface[] = [
     element: Catalogue,
     children: [
       {
-        path: ":selectedBodyPart",
+        path: "/catalogue/:selectedBodyPart",
         element: Exercises,
         children: [
           {
-            path: ":selectedExercise",
+            path: "/catalogue/:selectedBodyPart/:selectedExercise",
             element: SelectedExercise
           }
         ]

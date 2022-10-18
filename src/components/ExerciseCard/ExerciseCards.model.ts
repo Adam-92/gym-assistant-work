@@ -1,5 +1,5 @@
-import { RestructuredExerciseData } from "src/model/model";
+import { NewExercise } from "src/firebase/Firebase.model";
 
 export interface ExerciseCardProps {
-  exercises: RestructuredExerciseData[];
+  exercises: NewExercise[];
 }

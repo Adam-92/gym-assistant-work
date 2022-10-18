@@ -1,9 +1,12 @@
-export interface NewUserExerciseAdded {
-  name: {
-    exerciseDescription: string;
-    secondaryMuscle: string[];
-    exampleImage: string;
-    urlImage: string;
-    part: string;
-  }[];
+export interface CreateNewArrayExercises {
+  exercises: NewExercise[];
+}
+
+export interface NewExercise {
+  name: string;
+  exerciseDescription: string;
+  secondaryMuscle: string[];
+  exampleImage: string;
+  urlImage: string;
+  part: string;
 }

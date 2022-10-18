@@ -1,4 +1,4 @@
-import { useGlobalContext } from "../../contexts/GlobalContext";
+import { useUserContext } from "../../contexts/UserContext";
 import { useLocation, Navigate } from "react-router";
 
 const ProtectedRoute = ({
@@ -6,7 +6,7 @@ const ProtectedRoute = ({
 }: {
   children: JSX.Element;
 }): JSX.Element => {
-  let { currentUser } = useGlobalContext();
+  let { currentUser } = useUserContext();
   let location = useLocation();
 
   if (!currentUser) {

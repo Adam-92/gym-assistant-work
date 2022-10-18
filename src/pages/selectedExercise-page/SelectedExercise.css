@@ -1,0 +1,54 @@
+.content-selected-exercises {
+    height: 100%;
+    background-color: white;
+    border-radius: 2rem;
+    padding: 1.7rem 3rem;
+}
+
+.grid-selected-exercise {
+    height: 100%;
+    display: grid;
+    row-gap: 4%;
+    column-gap: 3%;
+    grid-template-areas:
+        "back ."
+        "img  table "
+        "description  stats";
+    grid-template-columns: 40% 57%;
+    grid-template-rows: 4% 50% 42%;
+}
+
+.desc-selected-exercise {
+    grid-area: description;
+}
+
+.img-selected-exercise {
+    grid-area: img;
+}
+
+.img-selected-exercise img {
+    opacity: 0.8;
+    border-radius: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.stats-selected-exercise {
+    grid-area: stats;
+    border-radius: 2rem;
+    padding: 1rem;
+    min-height: 100%;
+}
+
+.back-selected-exercise {
+    grid-area: back;
+}
+
+.arrow-selected-exercise {
+    cursor: pointer;
+    font-size: 3rem;
+}
+
+.table-selected-exercise {
+    grid-area: table;
+}

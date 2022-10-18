@@ -12,8 +12,6 @@ export const minToHours = (min: any): string => {
 };
 
 export const updateChartData = (apiData: any, initialData: any): any => {
-  console.log(apiData);
-  
   const updatedDatasets = initialData.datasets.map(
     (chartData: any, index: number) => {
       chartData.data = [...apiData[index]];

@@ -1,4 +1,5 @@
 .header-carousel-route {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -6,7 +7,7 @@
     font-size: 3rem;
     color: var(--dash-main-color);
     font-family: var(--dash-font-family);
-    margin: 0 15% 1.5rem 15%;
+    margin: 0 25% 1.5rem 25%;
     overflow: hidden;
 }
 
@@ -17,3 +18,4 @@
 .icon-carousel-route {
     cursor: pointer;
 }
+
