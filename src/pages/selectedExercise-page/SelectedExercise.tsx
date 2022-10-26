@@ -2,31 +2,55 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import PerformanceChart from "src/components/Charts/PerformanceChart/PerformanceChart";
 import ExercisePerformanceTable from "src/components/ExercisePerformanceTable/ExercisePerformanceTable";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { takeBodyPartfromUrl } from "src/utils/Utils";
+import {
+  getAllUsersDataSelectedExercise,
+  getUserDataSelectedExercise,
+} from "src/firebase/services/Activity";
+import { useUserContext } from "src/contexts/UserContext/UserContext";
 import { Link } from "react-router-dom";
-import { NewExercise } from "src/firebase/Firebase.model";
+import { useEffect, useState } from "react";
 import "./SelectedExercise.css";
+import { NewExercise } from "src/model/model";
 
 const SelectedExercise = () => {
+  const [data, setData] = useState<NewExercise | undefined>(undefined);
+
+  const { currentUser } = useUserContext();
+
   const navigate = useNavigate();
   const location = useLocation();
+  const pathName = location.pathname;
 
-  /* 
-     Tutaj jest problem z błędem, kiedy wejdziesz głębiej w ćwieczenie w katalogu klikając na wybrane,
-     otworzy się strona "SelectedExercise" i wyświetlą dane (póki co pobiera dane tylko lewej strony tj. zdjęcie, nazwa, opis).
-     Kiedy chcesz cofnąć wyskoczy błąd location.state === null ...
-  */
+  const { selectedExercise } = useParams();
 
-  const { exampleImage, exerciseDescription, urlImage, name } =
-    location.state as NewExercise;
+  const bodyPartName = takeBodyPartfromUrl(pathName);
+
+  useEffect(() => {
+    if (selectedExercise && currentUser) {
+      getUserDataSelectedExercise(
+        selectedExercise,
+        bodyPartName,
+        currentUser.uid
+      ).then((data) => {
+        if (!data) {
+          getAllUsersDataSelectedExercise(selectedExercise, bodyPartName).then(
+            (data) => setData(data)
+          );
+        } else {
+          setData(data);
+        }
+      });
+    }
+  }, [selectedExercise, bodyPartName, currentUser]);
 
   return (
     <>
-      {location.state && (
+      {data && (
         <article className="content-selected-exercises">
           <article className="grid-selected-exercise">
             <header className="back-selected-exercise">
-              {/* Hmm tutaj założe się, że jest lepszy patent na to  */}
               <Link to="" onClick={() => navigate(-1)}>
                 <FontAwesomeIcon
                   icon={faLeftLong}
@@ -35,11 +59,17 @@ const SelectedExercise = () => {
               </Link>
             </header>
             <div className="img-selected-exercise">
-              <img src={`../${exampleImage}`} alt="picked exercise" />
+              {/* Tutaj mógłbym zrobić Ternary u góry, ale też trzeba zadbać o ścieżkę dla img lokalnych. 
+                 Bez "../" w exampleImage nie pójdzie */}
+              {data.exampleImage ? (
+                <img src={`../${data.exampleImage}`} alt="picked exercise" />
+              ) : (
+                <img src={data.urlImage} alt="picked exercise" />
+              )}
             </div>
             <div className="desc-selected-exercise">
-              <h2>{name}</h2>
-              <p>{exerciseDescription}</p>
+              <h2>{data.name}</h2>
+              <p>{data.exerciseDescription}</p>
             </div>
             <div className="stats-selected-exercise">
               <PerformanceChart />

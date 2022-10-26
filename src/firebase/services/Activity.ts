@@ -7,19 +7,71 @@ import {
   onSnapshot,
   updateDoc,
   arrayUnion,
+  DocumentReference,
+  DocumentData,
 } from "firebase/firestore";
 import { db } from "src/firebase/config/firebase";
 import { StepsValues } from "src/components/Charts/Charts.model";
 import { User } from "firebase/auth";
 import { arrayNewExercises } from "./converters";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
-import { firstBigLetter } from "src/utils/Utils";
+import { firstBigLetter, upperCaseAllWords } from "src/utils/Utils";
+import { NewExercise } from "src/model/model";
 
 export const getCaloriesChartData = async () => {
   try {
     return await (
       await personalUserData.get(`caloriesChartData.json`)
     ).data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAllUsersDataSelectedExercise = async (
+  name: string,
+  bodyPart: string
+) => {
+  try {
+    const request = await getDoc(
+      doc(
+        db,
+        `/forAllUsersExercises/${firstBigLetter(bodyPart)}`
+      ).withConverter(arrayNewExercises)
+    );
+
+    if (request.exists()) {
+      const data = request.data();
+      const selectedExercise = data.exercises.find(
+        (exercise: NewExercise) => exercise.name === upperCaseAllWords(name)
+      );
+      return selectedExercise;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getUserDataSelectedExercise = async (
+  name: string,
+  bodyPart: string,
+  userId: string
+) => {
+  try {
+    const request = await getDoc(
+      doc(
+        db,
+        `/userExercises/${userId}/${firstBigLetter(bodyPart)}/exercises`
+      ).withConverter(arrayNewExercises)
+    );
+
+    if (request.exists()) {
+      const data = request.data();
+      const selectedExercise = data.exercises.find(
+        (exercise: NewExercise) => exercise.name === upperCaseAllWords(name)
+      );
+      return selectedExercise;
+    }
   } catch (error) {
     console.log(error);
   }
@@ -79,18 +131,6 @@ export const getGauges = async () => {
     console.log(error);
   }
 };
-/* 
-Scieżka troszkę przeszkadza by zaoszczędzić kodu i nie pisać niemalże tych samych
-funkcji, czyli "getUserExerciseCards" oraz  "getExercisesForAllUsers".
-Stąd to "/exercises" ... no długo by tlumaczyć.. ale musi być parzysta liczba ścieżek 
-w Firestore
-
-Zobacz -> 
-  `userExercises/${userId}/${firstBigLetter(name)}/exercises`
-  `forAllUsersExercises/${firstBigLetter(name)}`
-
-Może masz pomysł?
-*/
 
 export const getUserExerciseCards = async (userId: string) => {
   try {
@@ -103,9 +143,8 @@ export const getUserExerciseCards = async (userId: string) => {
       )
     );
 
-    const exerciseResponses = await (
-      await Promise.all(exerciseRequests)
-    )
+    const exerciseResponses = await Promise.all(exerciseRequests);
+    const allExercises = exerciseResponses
       .filter((response) => (response.exists() ? response : false))
       .map((snap) => {
         const exercisesObject = snap.data();
@@ -115,9 +154,9 @@ export const getUserExerciseCards = async (userId: string) => {
         return [];
       });
 
-    return exerciseResponses.flat();
-  } catch (error) {
-    console.log(error);
+    return allExercises.flat();
+  } catch {
+    return [];
   }
 };
 
@@ -130,12 +169,9 @@ export const getExercisesForAllUsers = async () => {
         )
       )
     );
-    const exerciseResponses = await (
-      await Promise.all(exerciseRequests)
-    )
-      .filter((response) => {
-        return response.exists() ? response : false;
-      })
+    const exerciseResponses = await Promise.all(exerciseRequests);
+    const allExercises = exerciseResponses
+      .filter((response) => (response.exists() ? response : false))
       .map((snap) => {
         const exercisesObject = snap.data();
         if (exercisesObject) {
@@ -144,9 +180,9 @@ export const getExercisesForAllUsers = async () => {
         return [];
       });
 
-    return exerciseResponses.flat();
-  } catch (error) {
-    console.log(error);
+    return allExercises.flat();
+  } catch {
+    return [];
   }
 };
 
@@ -180,32 +216,12 @@ export const setNewExercise = async (
       `userExercises/${currentUser?.uid}/${data.part}/exercises/`
     );
 
-    const checkIfExist = await (await getDoc(ref)).exists();
+    const exerciseDoc = await getDoc(ref);
 
-    if (checkIfExist) {
-      await updateDoc(ref.withConverter(arrayNewExercises), {
-        exercises: arrayUnion({
-          name: data.name,
-          exerciseDescription: data.exerciseDescription,
-          secondaryMuscle: data.secondaryMuscle,
-          exampleImage: data.exampleImage ?? "",
-          urlImage: data.urlImage,
-          part: data.part,
-        }),
-      });
+    if (exerciseDoc.exists()) {
+      await updateNewExercise(ref, data);
     } else {
-      await setDoc(ref.withConverter(arrayNewExercises), {
-        exercises: [
-          {
-            name: data.name,
-            exerciseDescription: data.exerciseDescription,
-            secondaryMuscle: data.secondaryMuscle,
-            exampleImage: data.exampleImage ?? "",
-            urlImage: data.urlImage,
-            part: data.part,
-          },
-        ],
-      });
+      await addNewExercise(ref, data);
     }
 
     onSnapshot(
@@ -217,4 +233,43 @@ export const setNewExercise = async (
   } catch (error) {
     console.log(error);
   }
+};
+
+/* 
+O to chodziło ?  Te funkcje rozumiem, że w ramach hoistingu nie muszą być nad funkcjami, które je wywołują nie ?
+*/
+
+const updateNewExercise = async (
+  ref: DocumentReference<DocumentData>,
+  data: CatalogueNewExerciseFormValues
+) => {
+  updateDoc(ref.withConverter(arrayNewExercises), {
+    exercises: arrayUnion({
+      name: data.name,
+      exerciseDescription: data.exerciseDescription,
+      secondaryMuscle: data.secondaryMuscle,
+      exampleImage: data.exampleImage ?? "",
+      urlImage: data.urlImage,
+      part: data.part,
+    }),
+  });
+};
+
+const addNewExercise = async (
+  ref: DocumentReference<DocumentData>,
+  data: CatalogueNewExerciseFormValues
+) => {
+  setDoc(ref.withConverter(arrayNewExercises), {
+    exercises: [
+      {
+        name: data.name,
+        exerciseDescription: data.exerciseDescription,
+        secondaryMuscle: data.secondaryMuscle,
+        exampleImage: data.exampleImage ?? "",
+        urlImage: data.urlImage,
+        part: data.part,
+        allUsers: false,
+      },
+    ],
+  });
 };

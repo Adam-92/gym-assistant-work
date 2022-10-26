@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { updateChartData } from "src/utils/Utils";
-
+/* Do skończenia jeszcze ... */
 const useLibraryChart = (initialData: any, request: any) => {
   const [data, setData] = useState({
     0: [2000, 2000, 2000, 2000, 2000, 2000, 2000],

@@ -168,3 +168,12 @@ export const calculateProgress = (current: number, target: number) => {
 export const firstBigLetter = (name: string): string => {
   return name[0]?.toUpperCase() + name?.slice(1);
 };
+
+export const takeBodyPartfromUrl = (url: string) => {
+  const deleteCatalogue = url.replace("/catalogue/", "");
+  const indexOfSlash = deleteCatalogue.indexOf("/");
+  return deleteCatalogue.slice(0, indexOfSlash);
+};
+
+export const upperCaseAllWords = (text: string) =>
+  text.replace(/(^\w|\s\w)/g, (m) => m.toUpperCase());

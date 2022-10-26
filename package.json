@@ -11,7 +11,6 @@
     "@fortawesome/free-solid-svg-icons": "^6.0.0",
     "@fortawesome/react-fontawesome": "^0.1.17",
     "@hookform/resolvers": "^2.8.10",
-    "@mui/material": "^5.10.10",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -35,8 +34,7 @@
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
     "typescript": "^4.6.4",
-    "web-vitals": "^2.1.4",
-    "yup": "^0.32.11"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

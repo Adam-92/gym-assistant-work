@@ -1,20 +1,17 @@
 import { createContext, useState, useContext } from "react";
-import { SettingsContextInterface } from "./Contexts.model";
+import { SettingsContextValue } from "./SettingContext.model";
 
-const SettingsContext = createContext<SettingsContextInterface | undefined>(
+const SettingsContext = createContext<SettingsContextValue | undefined>(
   undefined
 );
 
 const SettingsProvider = ({ children }: { children: JSX.Element }) => {
   const [showCatalogueExercises, setShowCatalogueExercises] = useState(true);
 
-  const toggleShowCatalogueExercises = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const toggleShowCatalogueExercises = () =>
     setShowCatalogueExercises((prev: boolean) => !prev);
-  };
 
-  const value: SettingsContextInterface = {
+  const value: SettingsContextValue = {
     showCatalogueExercises,
     toggleShowCatalogueExercises,
   };

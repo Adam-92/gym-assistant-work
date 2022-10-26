@@ -4,12 +4,12 @@ import {
   getExercisesForAllUsers,
 } from "../../firebase/services/Activity";
 import { useParams, useLocation, useOutlet, Outlet } from "react-router-dom";
-import { useUserContext } from "src/contexts/UserContext";
+import { useUserContext } from "src/contexts/UserContext/UserContext";
 import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
 import CarouselRoute from "src/components/Carousels/CarouselRoute/CarouselRoute";
-import { NewExercise } from "src/firebase/Firebase.model";
-import { useSettingsContext } from "src/contexts/SettingsContext";
+import { NewExercise } from "src/model/model";
+import { useSettingsContext } from "src/contexts/SettingsContext/SettingsContext";
 import "./Exercises.css";
 
 const Exercises = () => {
@@ -22,23 +22,19 @@ const Exercises = () => {
 
   const { showCatalogueExercises } = useSettingsContext();
 
-  /* 
-     Nie wiem, czy nie przekobinowałem z "łatwością" czytania tego kodu.
-     To wynika z tego, jak wyglądają te funkcje w activity, bo funkcje są dosyć podobne.
-     Masz może pomysł?
-  */
+  /* Tak się zastnawiam, bo teraz wygląda to spoko w miarę to zmieniać to (po dodaniu [] w catch)? */
+  /* Jedynie myślę o Twojej paczce, i jasne, że to by pomogło tylko potem, jak mnie będą pytać na rozmowie, a co to itd? 
+   To wiesz, będe miał problem obronić ;-) */
 
   useEffect(() => {
     if (currentUser) {
       getUserExerciseCards(currentUser.uid).then((res) => {
-        return res
-          ? setData(
-              res.filter(
-                (exercise: NewExercise) =>
-                  exercise.part.toLowerCase() === selectedBodyPart
-              )
-            )
-          : setData([]);
+        setData(
+          res.filter(
+            (exercise: NewExercise) =>
+              exercise.part.toLowerCase() === selectedBodyPart
+          )
+        );
       });
     }
   }, [location.pathname, selectedBodyPart, currentUser]);
@@ -46,15 +42,13 @@ const Exercises = () => {
   useEffect(() => {
     if (currentUser && showCatalogueExercises) {
       getExercisesForAllUsers().then((res) => {
-        return res
-          ? setData((prev: NewExercise[]) => [
-              ...prev,
-              ...res.filter(
-                (exercise: NewExercise) =>
-                  exercise.part.toLowerCase() === selectedBodyPart
-              ),
-            ])
-          : setData((prev) => prev);
+        setData((prev: NewExercise[]) => [
+          ...prev,
+          ...res.filter(
+            (exercise: NewExercise) =>
+              exercise.part.toLowerCase() === selectedBodyPart
+          ),
+        ]);
       });
     }
   }, [
@@ -73,30 +67,9 @@ const Exercises = () => {
           <div className="content-exercises">
             <CarouselRoute />
             <div className="cards-exercises">
-              {data &&
-                data.length > 0 &&
-                data.map(
-                  ({
-                    name,
-                    exerciseDescription,
-                    secondaryMuscle,
-                    exampleImage,
-                    urlImage,
-                    part,
-                  }: NewExercise) => {
-                    return (
-                      <ExerciseCard
-                        key={name}
-                        name={name}
-                        exerciseDescription={exerciseDescription}
-                        secondaryMuscle={secondaryMuscle}
-                        exampleImage={exampleImage}
-                        urlImage={urlImage}
-                        part={part}
-                      />
-                    );
-                  }
-                )}
+              {data.map((exercise: NewExercise) => {
+                return <ExerciseCard key={exercise.name} exercise={exercise} />;
+              })}
             </div>
             {data && data.length === 0 && (
               <NoDataMessage text={"No Exercises in the Database"} />

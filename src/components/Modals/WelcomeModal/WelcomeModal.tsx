@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCarouselCharacters } from "../../../firebase/services/Activity";
-import { useUserContext } from "../../../contexts/UserContext";
+import { useUserContext } from "../../../contexts/UserContext/UserContext";
 import Carousel from "../../Carousels/Carousel/Carousel";
 import "./WelcomeModal.css";
 

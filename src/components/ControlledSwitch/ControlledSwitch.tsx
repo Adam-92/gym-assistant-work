@@ -1,13 +1,23 @@
-import Switch from "@mui/material/Switch";
-import { ControlledSwitchInteface } from "./ControlledSwitch.model";
+import { ControlledSwitchProps } from "./ControlledSwitch.model";
+import "./ControlledSwitch.css";
 
-const ControlledSwitch = ({ checked, onChange }: ControlledSwitchInteface) => {
+const ControlledSwitch = ({ checked, onChange }: ControlledSwitchProps) => {
   return (
-    <Switch
-      checked={checked}
-      onChange={onChange}
-      inputProps={{ "aria-label": "controlled" }}
-    />
+    <>
+      <input
+        className="react-switch-checkbox"
+        id="seeUserExercise"
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+      />
+      <label
+        className={`${checked && "react-switch-active"} react-switch-label`}
+        htmlFor="seeUserExercise"
+      >
+        <span className="react-switch-button" />
+      </label>
+    </>
   );
 };
 

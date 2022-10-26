@@ -1,4 +1,5 @@
-export interface ControlledSwitchInteface {
+export interface ControlledSwitchProps {
   checked: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: () => void;
 }
+

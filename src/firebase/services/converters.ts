@@ -6,3 +6,4 @@ export const arrayNewExercises = {
   fromFirestore: (snap: QueryDocumentSnapshot) =>
     snap.data() as CreateNewArrayExercises,
 };
+

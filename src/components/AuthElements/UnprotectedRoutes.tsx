@@ -1,4 +1,4 @@
-import { useUserContext } from "../../contexts/UserContext";
+import { useUserContext } from "../../contexts/UserContext/UserContext";
 import { useLocation, Navigate } from "react-router";
 
 const UnprotectedRoutes = ({
@@ -6,10 +6,10 @@ const UnprotectedRoutes = ({
 }: {
   children: JSX.Element;
 }): JSX.Element => {
-  let { currentUser } = useUserContext();
-  let location = useLocation();
+  const { currentUser, pending } = useUserContext();
+  const location = useLocation();
 
-  if (currentUser) {
+  if (currentUser && !pending) {
     return <Navigate to="/dashboard" state={{ from: location }} replace />;
   }
   return children;
