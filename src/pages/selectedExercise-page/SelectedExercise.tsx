@@ -2,48 +2,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import PerformanceChart from "src/components/Charts/PerformanceChart/PerformanceChart";
 import ExercisePerformanceTable from "src/components/ExercisePerformanceTable/ExercisePerformanceTable";
-import { useLocation, useNavigate, useParams } from "react-router";
-import { takeBodyPartfromUrl } from "src/utils/Utils";
-import {
-  getAllUsersDataSelectedExercise,
-  getUserDataSelectedExercise,
-} from "src/firebase/services/Activity";
-import { useUserContext } from "src/contexts/UserContext/UserContext";
+import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import useSelectedExercise from "../../hooks/useSelectedExercise";
 import "./SelectedExercise.css";
-import { NewExercise } from "src/model/model";
 
 const SelectedExercise = () => {
-  const [data, setData] = useState<NewExercise | undefined>(undefined);
-
-  const { currentUser } = useUserContext();
-
   const navigate = useNavigate();
-  const location = useLocation();
-  const pathName = location.pathname;
-
   const { selectedExercise } = useParams();
-
-  const bodyPartName = takeBodyPartfromUrl(pathName);
-
-  useEffect(() => {
-    if (selectedExercise && currentUser) {
-      getUserDataSelectedExercise(
-        selectedExercise,
-        bodyPartName,
-        currentUser.uid
-      ).then((data) => {
-        if (!data) {
-          getAllUsersDataSelectedExercise(selectedExercise, bodyPartName).then(
-            (data) => setData(data)
-          );
-        } else {
-          setData(data);
-        }
-      });
-    }
-  }, [selectedExercise, bodyPartName, currentUser]);
+  const { data, rightDescriptionIcon } = useSelectedExercise(selectedExercise);
 
   return (
     <>
@@ -59,8 +26,6 @@ const SelectedExercise = () => {
               </Link>
             </header>
             <div className="img-selected-exercise">
-              {/* Tutaj mógłbym zrobić Ternary u góry, ale też trzeba zadbać o ścieżkę dla img lokalnych. 
-                 Bez "../" w exampleImage nie pójdzie */}
               {data.exampleImage ? (
                 <img src={`../${data.exampleImage}`} alt="picked exercise" />
               ) : (
@@ -70,6 +35,19 @@ const SelectedExercise = () => {
             <div className="desc-selected-exercise">
               <h2>{data.name}</h2>
               <p>{data.exerciseDescription}</p>
+              <div
+                className="desc-img-selected-exercise"
+                style={{
+                  top: `${rightDescriptionIcon?.style?.topPosition}%`,
+                  left: `${rightDescriptionIcon?.style?.leftPosition}%`,
+                  width: `${rightDescriptionIcon?.style?.width}px`,
+                }}
+              >
+                <img
+                  src={rightDescriptionIcon?.pathImg}
+                  alt={`${rightDescriptionIcon?.name} icon`}
+                />
+              </div>
             </div>
             <div className="stats-selected-exercise">
               <PerformanceChart />

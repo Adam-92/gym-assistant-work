@@ -6,10 +6,10 @@ const UnprotectedRoutes = ({
 }: {
   children: JSX.Element;
 }): JSX.Element => {
-  const { currentUser, pending } = useUserContext();
+  const { currentUser } = useUserContext();
   const location = useLocation();
 
-  if (currentUser && !pending) {
+  if (currentUser ) {
     return <Navigate to="/dashboard" state={{ from: location }} replace />;
   }
   return children;

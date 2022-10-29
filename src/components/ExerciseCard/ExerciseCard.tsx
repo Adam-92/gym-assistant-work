@@ -17,7 +17,9 @@ const ExerciseCard = ({ exercise }: { exercise: NewExercise }) => {
 
   return (
     <Link to={exercise.name} className="container-exercise-card">
-      <div className="img-exercise-card">
+      <div
+        className={`img-exercise-card ${exercise.allUsers && "img-all-user"}`}
+      >
         <img src={imgUrl} alt="exercise" />
       </div>
       <div className="information-exercise-card">

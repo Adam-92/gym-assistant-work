@@ -7,22 +7,26 @@ const UserContext = createContext<UserContextValue | undefined>(undefined);
 
 const UserProvider = ({ children }: { children: JSX.Element }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  console.log("🚀 ~ currentUser", currentUser);
   const [pending, setPending] = useState(true);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user: User | null) => {
-      setCurrentUser(user);
       setPending(false);
+      setCurrentUser(user);
     });
     return unsubscribe;
   }, []);
 
   const value: UserContextValue = {
     currentUser,
-    pending,
   };
 
-  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={value}>
+      {!pending && children}
+    </UserContext.Provider>
+  );
 };
 
 const useUserContext = () => {

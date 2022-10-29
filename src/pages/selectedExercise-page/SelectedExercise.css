@@ -19,7 +19,20 @@
 }
 
 .desc-selected-exercise {
+    position: relative;
     grid-area: description;
+}
+.desc-selected-exercise p{
+    width: 70%;
+}
+.desc-img-selected-exercise{
+    position: absolute;
+    left: 77%;
+    top: 3%;
+    width: 150px;
+}
+.desc-img-selected-exercise img{
+    width: 100%;
 }
 
 .img-selected-exercise {
@@ -51,4 +64,5 @@
 
 .table-selected-exercise {
     grid-area: table;
+    overflow: auto;
 }
