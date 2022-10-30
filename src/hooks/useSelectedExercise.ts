@@ -3,43 +3,39 @@ import {
   getUserDataSelectedExercise,
 } from "src/firebase/services/Activity";
 import { useUserContext } from "src/contexts/UserContext/UserContext";
-import { takeBodyPartfromUrl } from "src/utils/Utils";
-import { useLocation } from "react-router";
+import { useParams } from "react-router";
 import { NewExercise } from "src/model/model";
 import { iconsDescription } from "src/pages/selectedExercise-page/iconsDescription";
 import { IconsDescription } from "src/pages/selectedExercise-page/SelectedExercise.model";
 import { useState, useEffect } from "react";
 
-const useSelectedExercise = (selectedExercise: string | undefined) => {
+const useSelectedExercise = () => {
   const [data, setData] = useState<NewExercise | undefined>(undefined);
   const { currentUser } = useUserContext();
-
-  const location = useLocation();
-  const pathName = location.pathname;
-
-  const bodyPartName = takeBodyPartfromUrl(pathName);
+  const { selectedBodyPart, selectedExercise } = useParams();
 
   const rightDescriptionIcon = iconsDescription.find(
-    ({ name }: IconsDescription) => name === bodyPartName
+    ({ name }: IconsDescription) => name === selectedBodyPart
   );
 
   useEffect(() => {
-    if (selectedExercise && currentUser) {
+    if (selectedExercise && currentUser && selectedBodyPart) {
       getUserDataSelectedExercise(
         selectedExercise,
-        bodyPartName,
+        selectedBodyPart,
         currentUser.uid
       ).then((data) => {
         if (!data) {
-          getAllUsersDataSelectedExercise(selectedExercise, bodyPartName).then(
-            (data) => setData(data)
-          );
+          getAllUsersDataSelectedExercise(
+            selectedExercise,
+            selectedBodyPart
+          ).then((data) => setData(data));
         } else {
           setData(data);
         }
       });
     }
-  }, [selectedExercise, bodyPartName, currentUser]);
+  }, [selectedExercise, selectedBodyPart, currentUser]);
 
   return {
     data,

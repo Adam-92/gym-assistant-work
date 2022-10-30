@@ -4,7 +4,7 @@ import { useResolvedPath, useMatch } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NestedTabInterface } from "src/components/Tabs/Tabs.model";
 import NestedTab from "../NestedTab/NestedTab";
-import useSignOut from "src/hooks/useSignOut";
+import useSignOut from "src/auth/hooks/useSignOut";
 import "./Tab.css";
 
 const Tab = ({ name, to, id, icon, nestedTab }: TabInterface) => {

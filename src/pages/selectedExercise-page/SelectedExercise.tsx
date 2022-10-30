@@ -2,15 +2,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import PerformanceChart from "src/components/Charts/PerformanceChart/PerformanceChart";
 import ExercisePerformanceTable from "src/components/ExercisePerformanceTable/ExercisePerformanceTable";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import useSelectedExercise from "../../hooks/useSelectedExercise";
+import { upperCaseAllWords } from "src/utils/Utils";
 import "./SelectedExercise.css";
 
 const SelectedExercise = () => {
   const navigate = useNavigate();
-  const { selectedExercise } = useParams();
-  const { data, rightDescriptionIcon } = useSelectedExercise(selectedExercise);
+  const { data, rightDescriptionIcon } = useSelectedExercise();
 
   return (
     <>
@@ -33,7 +33,7 @@ const SelectedExercise = () => {
               )}
             </div>
             <div className="desc-selected-exercise">
-              <h2>{data.name}</h2>
+              <h2>{upperCaseAllWords(data.name)}</h2>
               <p>{data.exerciseDescription}</p>
               <div
                 className="desc-img-selected-exercise"

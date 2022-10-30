@@ -1,15 +1,3 @@
-export type FormLogin = {
-  email: string;
-  password: string;
-};
-
-export type FormRegister = {
-  username: string;
-  email: string;
-  password: string;
-  re_password: string;
-};
-
 export type CatalogueNewExerciseFormValues = {
   name: string;
   part: string;

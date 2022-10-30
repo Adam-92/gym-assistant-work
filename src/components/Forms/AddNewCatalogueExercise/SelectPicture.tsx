@@ -7,7 +7,7 @@ import { useFormContext } from "react-hook-form";
 import {
   isValidImageUrl,
   validateProposalImage,
-} from "../Validation/ValidationRules";
+} from "../../../validation/validationRules";
 
 const SelectPicture = () => {
   const [data, setData] = useState<ExamplePicturesAddCatalogue[]>([]);

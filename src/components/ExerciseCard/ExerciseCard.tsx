@@ -1,19 +1,12 @@
 import { Link } from "react-router-dom";
 import { NewExercise } from "src/model/model";
+import { upperCaseAllWords } from "src/utils/Utils";
 import "./ExerciseCard.css";
 
 const ExerciseCard = ({ exercise }: { exercise: NewExercise }) => {
   const imgUrl = exercise.exampleImage
     ? exercise.exampleImage
     : exercise.urlImage;
-
-  /* 
-    Się zastanawiam, czy nie ma problemu by adres URL był z dużą literą po ukośniku..(na zasadzie nazywania zmiennej)
-    http://localhost:3000/catalogue/biceps/BicepsAllUsers
-  
-    Gdy wszystko idzie z małej, wtedy psuje mi wyszukiwanie nazw takich jak powyżej - łączonych wyrazów
-
-  */
 
   return (
     <Link to={exercise.name} className="container-exercise-card">
@@ -32,7 +25,7 @@ const ExerciseCard = ({ exercise }: { exercise: NewExercise }) => {
             );
           })}
         </div>
-        <h2>{exercise.name}</h2>
+        <h2>{upperCaseAllWords(exercise.name)}</h2>
         <div className="underline-exercise-card"></div>
       </div>
     </Link>

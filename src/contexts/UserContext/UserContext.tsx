@@ -7,7 +7,6 @@ const UserContext = createContext<UserContextValue | undefined>(undefined);
 
 const UserProvider = ({ children }: { children: JSX.Element }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-  console.log("🚀 ~ currentUser", currentUser);
   const [pending, setPending] = useState(true);
 
   useEffect(() => {
@@ -20,11 +19,12 @@ const UserProvider = ({ children }: { children: JSX.Element }) => {
 
   const value: UserContextValue = {
     currentUser,
+    pending
   };
 
   return (
     <UserContext.Provider value={value}>
-      {!pending && children}
+      {children}
     </UserContext.Provider>
   );
 };

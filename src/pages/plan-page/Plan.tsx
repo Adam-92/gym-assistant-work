@@ -6,18 +6,19 @@ const Plan = () => {
 
   const registerNewExercise = async () => {
     //Musi iśc duża litera
-    const bodyPart = "Biceps";
+    const bodyPart = "Legs";
     try {
       const ref = doc(db, `forAllUsersExercises/${bodyPart}`);
 
       await setDoc(ref, {
         exercises: [
           {
-            name: `${bodyPart}AllUsers2`,
-            exerciseDescription: `${bodyPart}AllUsersDescription`,
-            secondaryMuscle: [],
-            exampleImage: "../assets/example3.jpg",
-            urlImage: "",
+            name: `back legs muscles`,
+            exerciseDescription: `"Leg day"—the very phrase conjures up images of nausea, days of hobbling, and legs that feel like jello. The feelings may be universal, but bodybuilders looking to annihilate`,
+            secondaryMuscle: ["Abs", "Traps"],
+            exampleImage: "",
+            urlImage:
+              "https://www.bodybuilding.com/images/2016/june/leg-workouts-for-men-7-best-workouts-for-quads-glutes-hams-header-v2-960x540.jpg",
             part: `${bodyPart}`,
             allUsers: true,
           },

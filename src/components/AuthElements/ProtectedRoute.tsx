@@ -6,10 +6,10 @@ const ProtectedRoute = ({
 }: {
   children: JSX.Element;
 }): JSX.Element => {
-  const { currentUser } = useUserContext();
+  const { currentUser, pending } = useUserContext();
   const location = useLocation();
 
-  if (!currentUser) {
+  if (!currentUser && !pending) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
   return children;

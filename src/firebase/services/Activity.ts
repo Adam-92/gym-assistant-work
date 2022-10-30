@@ -15,7 +15,7 @@ import { StepsValues } from "src/components/Charts/Charts.model";
 import { User } from "firebase/auth";
 import { arrayNewExercises } from "./converters";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
-import { firstBigLetter, upperCaseAllWords } from "src/utils/Utils";
+import { firstBigLetter } from "src/utils/Utils";
 import { NewExercise } from "src/model/model";
 
 export const getCaloriesChartData = async () => {
@@ -43,7 +43,7 @@ export const getAllUsersDataSelectedExercise = async (
     if (request.exists()) {
       const data = request.data();
       const selectedExercise = data.exercises.find(
-        (exercise: NewExercise) => exercise.name === upperCaseAllWords(name)
+        (exercise: NewExercise) => exercise.name === name
       );
       return selectedExercise;
     }
@@ -68,7 +68,7 @@ export const getUserDataSelectedExercise = async (
     if (request.exists()) {
       const data = request.data();
       const selectedExercise = data.exercises.find(
-        (exercise: NewExercise) => exercise.name === upperCaseAllWords(name)
+        (exercise: NewExercise) => exercise.name === name
       );
       return selectedExercise;
     }
@@ -235,17 +235,13 @@ export const setNewExercise = async (
   }
 };
 
-/* 
-O to chodziło ?  Te funkcje rozumiem, że w ramach hoistingu nie muszą być nad funkcjami, które je wywołują nie ?
-*/
-
 const updateNewExercise = async (
   ref: DocumentReference<DocumentData>,
   data: CatalogueNewExerciseFormValues
 ) => {
   updateDoc(ref.withConverter(arrayNewExercises), {
     exercises: arrayUnion({
-      name: data.name,
+      name: data.name.toLowerCase(),
       exerciseDescription: data.exerciseDescription,
       secondaryMuscle: data.secondaryMuscle,
       exampleImage: data.exampleImage ?? "",
@@ -262,7 +258,7 @@ const addNewExercise = async (
   setDoc(ref.withConverter(arrayNewExercises), {
     exercises: [
       {
-        name: data.name,
+        name: data.name.toLowerCase(),
         exerciseDescription: data.exerciseDescription,
         secondaryMuscle: data.secondaryMuscle,
         exampleImage: data.exampleImage ?? "",

@@ -1,4 +1,4 @@
-import { ValidationRulesInterface, SelectPicture } from "./Validation.model";
+import { ValidationRulesInterface, SelectPicture } from "./validation.model";
 
 export const validationWithoutWhiteSpaces = (
   minLength: number,

@@ -15,16 +15,12 @@ import "./Exercises.css";
 const Exercises = () => {
   const [data, setData] = useState<NewExercise[]>([]);
   const { currentUser } = useUserContext();
-  let { selectedBodyPart } = useParams();
+  const { selectedBodyPart } = useParams();
 
   const location = useLocation();
   const outlet = useOutlet();
 
   const { showCatalogueExercises } = useSettingsContext();
-
-  /* Tak się zastnawiam, bo teraz wygląda to spoko w miarę to zmieniać to (po dodaniu [] w catch)? */
-  /* Jedynie myślę o Twojej paczce, i jasne, że to by pomogło tylko potem, jak mnie będą pytać na rozmowie, a co to itd? 
-   To wiesz, będe miał problem obronić ;-) */
 
   useEffect(() => {
     if (currentUser) {
