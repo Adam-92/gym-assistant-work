@@ -9,9 +9,8 @@ const useSignOut = () => {
 
   const makeRequest = async () => {
     try {
-      /* Oba await? */
       await signOutUser();
-      await navigate("/");
+      navigate("/");
     } catch (error) {
       setError(parseError(error));
     }

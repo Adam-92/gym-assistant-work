@@ -67,7 +67,7 @@ const Exercises = () => {
                 return <ExerciseCard key={exercise.name} exercise={exercise} />;
               })}
             </div>
-            {data && data.length === 0 && (
+            {data.length === 0 && (
               <NoDataMessage text={"No Exercises in the Database"} />
             )}
           </div>

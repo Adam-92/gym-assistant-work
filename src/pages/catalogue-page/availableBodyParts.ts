@@ -1,4 +1,4 @@
-export const availableBodyParts: string[] = [
+export const availableBodyParts = [
   "chest",
   "biceps",
   "triceps",

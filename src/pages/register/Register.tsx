@@ -93,7 +93,7 @@ const Register = () => {
                 />
                 <input
                   type="password"
-                  {...register("re_password", {
+                  {...register("rePassword", {
                     validate: {
                       matchesPreviousPassword: (value: string) => {
                         const { password } = getValues();
@@ -106,7 +106,7 @@ const Register = () => {
                 ></input>
               </div>
               <h5 className="error-register-panel">
-                {errors.re_password?.message}
+                {errors.rePassword?.message}
               </h5>
               {error && <h5 className="error-login-panel">{error}</h5>}
               <button className="submit-register-panel">Register</button>
@@ -123,4 +123,4 @@ const Register = () => {
   );
 };
 
-export default Register
+export default Register;
