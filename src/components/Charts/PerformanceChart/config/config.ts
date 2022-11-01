@@ -1,0 +1,49 @@
+const dates: string[] = [
+  "11.05",
+  "15.05",
+  "21.05",
+  "30.05",
+  "02.06",
+  "10.06",
+  "12.06",
+];
+
+let delayed: boolean;
+
+export const initialData = {
+  labels: dates,
+  datasets: [
+    {
+      label: "Performance",
+      data: [],
+      borderColor: "rgb(223, 154, 235)",
+      tension: 0.3,
+      fill: true,
+      backgroundColor: "rgba(103,76,175,0.3)",
+      pointRadius: 5,
+      pointBorderColor: "rgb(255,255,255)",
+      pointBorderWidth: 2,
+      pointBackgroundColor: "rgb(234, 130, 169)",
+    },
+  ],
+};
+
+export const options = {
+  radius: 0,
+  hitRadius: 30,
+  animation: {
+    onComplete: () => {
+      delayed = true;
+    },
+    delay: (context: any) => {
+      let delay = 0;
+      if (context.type === "data" && context.mode === "default" && !delayed) {
+        delay = context.dataIndex * 300 + context.datasetIndex * 100;
+      }
+      return delay;
+    },
+  },
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {},
+};

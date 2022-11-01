@@ -1,27 +1,18 @@
-import { useEffect, useState } from "react";
-import { getCatalogue } from "../../services/Activity";
-import { BodyPart } from "src/model/Catalogue.model";
+import { availableBodyParts } from "./availableBodyParts";
 import { Link, Outlet, useOutlet } from "react-router-dom";
-import Container from "../../components/Container/Container";
 
 const Catalogue = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    getCatalogue().then((res) => setData(res));
-  }, []);
-
   const outlet = useOutlet();
 
   return (
-    <Container>
+    <>
       {outlet ? (
         <Outlet />
       ) : (
         <ul>
-          {data.map(({ name, id }: BodyPart) => {
+          {availableBodyParts.map((name: string) => {
             return (
-              <li key={id}>
+              <li key={name}>
                 <Link to={name} style={{ marginLeft: "5px" }}>
                   {name}
                 </Link>
@@ -30,7 +21,7 @@ const Catalogue = () => {
           })}
         </ul>
       )}
-    </Container>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { GuageInterface } from "src/model/Guage.model";
-import { getGauges } from "../../services/Activity";
+import { GuageInterface } from "src/components/Guage/Guage.model";
+import { getGauges } from "../../firebase/services/Activity";
 import Guage from "./Guage";
 import "./Guage.css";
 

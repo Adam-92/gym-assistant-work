@@ -1,5 +1,4 @@
 import "./Carousel.css";
-import { useGlobalContext } from "../../../contexts/GlobalContext";
 import { addToRefContainer, containerClass } from "../../../utils/Utils";
 
 const CarouselItem = ({
@@ -13,7 +12,6 @@ const CarouselItem = ({
   description: string;
   containerRef: React.MutableRefObject<never[]>;
 }) => {
-  const { setOpenModal, setChoosenFigure } = useGlobalContext();
   const container = containerClass(name);
 
   return (
@@ -21,8 +19,8 @@ const CarouselItem = ({
       ref={(el) => addToRefContainer(el, containerRef)}
       className={`${container}`}
       onClick={() => {
-        setOpenModal(false);
-        setChoosenFigure(name);
+        /*         setOpenModal(false);
+        setChoosenFigure(name); */
       }}
     >
       <p>{name}</p>

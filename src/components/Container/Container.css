@@ -1,6 +1,7 @@
 .container {
   position: relative;
   height: 100vh;
+  background: linear-gradient(to right, #fff, #076585);
 }
 
 .center-container {
@@ -20,11 +21,6 @@
   z-index: 1;
   overflow: hidden;
   max-width: 1750px;
-}
-
-.sidebar-container {
-  width: 10%;
-  min-width: 180px;
 }
 
 .content-container {

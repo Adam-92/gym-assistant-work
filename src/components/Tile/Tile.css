@@ -1,0 +1,89 @@
+.tile {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    font-family: var(--dash-font-family);
+    flex-wrap: nowrap;
+}
+
+.container-tile {
+    height: 100%;
+    min-width: 200px;
+    width: 20%;
+    background-color: rgb(82, 69, 147);
+    border-radius: 1.5rem;
+    padding-bottom: 0.5rem;
+    overflow: hidden;
+}
+
+.header-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5rem;
+    padding: 20px;
+    height: 50%;
+    background-color: var(--dash-main-color);
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    border-color: rgb(176, 169, 217);
+    border-width: 2px 0 2px 2px;
+    border-style: solid;
+}
+
+.icon-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    color: white;
+}
+
+.name-tile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 80%;
+    color: white;
+}
+
+.icon-tile {
+    border-radius: 1.5rem;
+    background-color: rgb(141, 130, 200);
+    width: 45%;
+    border: 2px solid rgb(176, 169, 217);
+    font-size: 2.7rem;
+}
+
+.name-tile {
+    width: 55%;
+    margin-left: 1rem;
+    font-weight: var(--dash-font-weight);
+    font-size: 1.1rem;
+}
+
+.stats-tile {
+    padding: 4px 20px;
+}
+
+.total-tile {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 253, 253);
+    opacity: 0.6;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+.positive-tile {
+    color: rgb(65, 236, 65);
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
+.negative-tile {
+    color: rgb(231, 9, 9);
+    font-size: 1.2rem;
+    line-height: 110%;
+}

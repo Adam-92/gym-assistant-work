@@ -11,19 +11,17 @@ export const minToHours = (min: any): string => {
   return `${rhours}h : ${rminutes}m`;
 };
 
-
-export const addDataToConfig = (apiData: any, config: any): any => {
-  const { data } = config;
-  const newDataset = data.datasets.map((item: any, index: number) => {
-    item.data = [...apiData[index]];
-    return item;
-  });
-
-  const newData = {
-    labels: data.labels,
-    datasets: newDataset,
+export const updateChartData = (apiData: any, initialData: any): any => {
+  const updatedDatasets = initialData.datasets.map(
+    (chartData: any, index: number) => {
+      chartData.data = [...apiData[index]];
+      return chartData;
+    }
+  );
+  return {
+    ...initialData,
+    datasets: updatedDatasets,
   };
-  return { ...config, data: newData };
 };
 
 /* ---START---DO PRZEMEBLOWANIA WRAZ Z KOMPONENTAMI----- */
@@ -45,7 +43,6 @@ export const addToRefContainer = (el: any, containerRef: any): void => {
     containerRef.current.push(el);
   }
 };
-
 
 export const carouselMovement = (
   ref1: any,
@@ -89,9 +86,9 @@ export const carouselMovement = (
 };
 
 export const containerClass = (name: string): any => {
-  if (name === "bodybuilder") return "middle-item-carousel";
-  if (name === "runner") return "left-item-carousel";
-  if (name === "athlete") return "right-item-carousel";
+  if (name === "bodybuilder") return "middle-datasets-carousel";
+  if (name === "runner") return "left-datasets-carousel";
+  if (name === "athlete") return "right-datasets-carousel";
 };
 
 export const goLeft = (
@@ -113,9 +110,10 @@ export const viewHistory = (
   data: any,
   setLastTraining: any
 ): any => {
-  const item = e.target as HTMLElement;
-  const exerciseName = (item.children[1].children[0] as HTMLElement).innerText;
-  const partName = (item.parentElement!.previousSibling as HTMLElement)
+  const datasets = e.target as HTMLElement;
+  const exerciseName = (datasets.children[1].children[0] as HTMLElement)
+    .innerText;
+  const partName = (datasets.parentElement!.previousSibling as HTMLElement)
     .innerText;
 
   const selectedBodyPart = data.find(
@@ -134,25 +132,25 @@ export const viewHistory = (
 
 export const getItemCoordinates = (
   e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  setItemCoordinates: any
+  setdatasetsCoordinates: any
 ) => {
-  const item = e.target as HTMLElement;
-  const coordinates = item.getBoundingClientRect();
-  setItemCoordinates(coordinates);
+  const datasets = e.target as HTMLElement;
+  const coordinates = datasets.getBoundingClientRect();
+  setdatasetsCoordinates(coordinates);
 };
 
 export const calculatePopoverCoordinates = (
-  itemCoordinates: any,
+  datasetsCoordinates: any,
   popoverCoordinates: any
 ) => {
   const newTopCoordinatesPopover = Math.abs(
-    itemCoordinates.top -
+    datasetsCoordinates.top -
       68 -
       popoverCoordinates.height / 2 +
-      itemCoordinates.height / 2
+      datasetsCoordinates.height / 2
   );
   const newLeftCoordinatesPopover = Math.abs(
-    itemCoordinates.left + itemCoordinates.width / 3
+    datasetsCoordinates.left + datasetsCoordinates.width / 3
   );
 
   return {
@@ -168,5 +166,8 @@ export const calculateProgress = (current: number, target: number) => {
 };
 
 export const firstBigLetter = (name: string): string => {
-  return name[0].toUpperCase() + name.slice(1);
+  return name[0]?.toUpperCase() + name?.slice(1);
 };
+
+export const upperCaseAllWords = (text: string) =>
+  text.replace(/(^\w|\s\w)/g, (m) => m.toUpperCase());

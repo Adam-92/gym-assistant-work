@@ -1,58 +1,78 @@
 import { useEffect, useState } from "react";
-import { getExerciseCards } from "../../services/Activity";
-import { ExerciseCardInterface } from "src/model/ExerciseCards.model";
-import { useParams, useLocation } from "react-router-dom";
+import {
+  getUserExerciseCards,
+  getExercisesForAllUsers,
+} from "../../firebase/services/Activity";
+import { useParams, useLocation, useOutlet, Outlet } from "react-router-dom";
+import { useUserContext } from "src/contexts/UserContext/UserContext";
 import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
-import ViewExercise from "../../components/Modals/ViewExercise/ViewExercise";
 import CarouselRoute from "src/components/Carousels/CarouselRoute/CarouselRoute";
+import { NewExercise } from "src/model/model";
+import { useSettingsContext } from "src/contexts/SettingsContext/SettingsContext";
 import "./Exercises.css";
 
 const Exercises = () => {
-  const [data, setData] = useState<[] | null>([]);
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [pickedExercise, setPickedExercise] = useState("");
+  const [data, setData] = useState<NewExercise[]>([]);
+  const { currentUser } = useUserContext();
+  const { selectedBodyPart } = useParams();
 
-  let { bodyPart } = useParams();
   const location = useLocation();
+  const outlet = useOutlet();
+
+  const { showCatalogueExercises } = useSettingsContext();
 
   useEffect(() => {
-    getExerciseCards().then((res) => {
-      const selectedExercises = res
-        ? res.find((part: ExerciseCardInterface) => part.bodyPart === bodyPart)
-        : null;
-      setData(selectedExercises?.exercises);
-    });
-  }, [location.pathname, bodyPart]);
+    if (currentUser) {
+      getUserExerciseCards(currentUser.uid).then((res) => {
+        setData(
+          res.filter(
+            (exercise: NewExercise) =>
+              exercise.part.toLowerCase() === selectedBodyPart
+          )
+        );
+      });
+    }
+  }, [location.pathname, selectedBodyPart, currentUser]);
 
-  const pickExercise = (exercise: string) => {
-    setPickedExercise(exercise);
-    setIsOpenModal(true);
-  };
-
-  const closeModal = () => {
-    setIsOpenModal(false);
-  };
+  useEffect(() => {
+    if (currentUser && showCatalogueExercises) {
+      getExercisesForAllUsers().then((res) => {
+        setData((prev: NewExercise[]) => [
+          ...prev,
+          ...res.filter(
+            (exercise: NewExercise) =>
+              exercise.part.toLowerCase() === selectedBodyPart
+          ),
+        ]);
+      });
+    }
+  }, [
+    location.pathname,
+    selectedBodyPart,
+    currentUser,
+    showCatalogueExercises,
+  ]);
 
   return (
     <>
-      <div className="container-exercises">
-        <div className={`content-exercises ${isOpenModal && "pointer-none"}`}>
-          <CarouselRoute />
-          {data ? (
+      {outlet ? (
+        <Outlet />
+      ) : (
+        <div className="container-exercises">
+          <div className="content-exercises">
+            <CarouselRoute />
             <div className="cards-exercises">
-              <ExerciseCard
-                exercises={data}
-                pickExercise={pickExercise}
-                closeModal={closeModal}
-              />
+              {data.map((exercise: NewExercise) => {
+                return <ExerciseCard key={exercise.name} exercise={exercise} />;
+              })}
             </div>
-          ) : (
-            <NoDataMessage text={"No Exercises in the Database"} />
-          )}
+            {data.length === 0 && (
+              <NoDataMessage text={"No Exercises in the Database"} />
+            )}
+          </div>
         </div>
-        {isOpenModal && <ViewExercise name={pickedExercise} />}
-      </div>
+      )}
     </>
   );
 };

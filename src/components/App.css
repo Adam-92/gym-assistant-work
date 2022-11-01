@@ -17,7 +17,11 @@ Variables
     --dash-main-color: rgb(113, 99, 186);
     --dash-margin-components: 1rem;
     --dash-margin-headers: 0.5rem;
-}
+    --red-btn: rgb(231, 17, 85);
+    --green-btn: #45e945;
+    --performance-table: rgba(238, 174, 194, 0.5);
+    --box-shadow: 0px 8px 37px -4px rgba(66, 68, 90, 1);
+}   
 
 
 * {
@@ -74,8 +78,17 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    cursor: pointer;
 }
 
 .noSelect:focus {
     outline: none !important;
+}
+
+.hover-label {
+    transform: scale(1);
+}
+
+.hover-label:hover {
+    transform: scale(1.05)
 }

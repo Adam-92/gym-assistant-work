@@ -1,4 +1,5 @@
 .header-carousel-route {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -6,8 +7,7 @@
     font-size: 3rem;
     color: var(--dash-main-color);
     font-family: var(--dash-font-family);
-    margin: 0 15% 1.5rem 15%;
-    overflow: hidden;
+    margin: 0 30% 1.5rem 30%;
 }
 
 .header-carousel-route h1 {

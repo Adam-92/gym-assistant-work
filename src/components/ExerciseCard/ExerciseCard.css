@@ -1,15 +1,41 @@
 .container-exercise-card {
+    position: relative;
     height: 290px;
     max-height: 290px;
     margin-bottom: 0.8rem;
 }
 
 .img-exercise-card {
-    max-height: 60%;
+    height: 220px;
     width: 100%;
     cursor: pointer;
     overflow: hidden;
 }
+
+.img-all-user::after {
+    content: '';
+    position: absolute;
+    height: 220px;
+    background-color: rgb(255, 221, 221);
+    width: 11%;
+    top: 0;
+    left: 79%;
+    z-index: 5;
+    opacity: 0.8;
+}
+
+.img-all-user::before {
+    content: "";
+    position: absolute;
+    background: url("http://localhost:3000/assets/logo.png") no-repeat center center/cover;
+    height: 45%;
+    width: 45%;
+    top: 5px;
+    left: 62%;
+    z-index: 7;
+    opacity: 0.9;
+}
+
 
 .img-exercise-card img {
     display: block;
@@ -22,7 +48,8 @@
     transition: all ease .5s;
     transform: translate3d(0px, 0px, 0px);
 }
-.img-exercise-card img:hover{
+
+.img-exercise-card img:hover {
     transform: scale(1.15);
 }
 
@@ -49,8 +76,9 @@
     height: 3px;
     background: linear-gradient(to right, rgb(211, 93, 166), purple, white);
 }
-.cards-exercises{
-    display:flex;
+
+.cards-exercises {
+    display: flex;
     align-items: center;
     justify-content: space-around;
 }

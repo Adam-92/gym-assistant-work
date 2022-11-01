@@ -1,12 +1,21 @@
-import Container from "../../components/Container/Container"
-import "./Settings.css"
+import { useSettingsContext } from "src/contexts/SettingsContext/SettingsContext";
+import ControlledSwitch from "src/components/ControlledSwitch/ControlledSwitch";
 
 const Settings = () => {
-  return (
-    <Container>
-      <div>Settings</div>
-    </Container>
-  )
-}
+  const { showCatalogueExercises, toggleShowCatalogueExercises } =
+    useSettingsContext();
 
-export default Settings
+  return (
+    <>
+      <h4>Catalogue:</h4>
+      <br></br>
+      <h5>I want to see only exercises added by me </h5>
+      <ControlledSwitch
+        checked={!showCatalogueExercises}
+        onChange={toggleShowCatalogueExercises}
+      />
+    </>
+  );
+};
+
+export default Settings;

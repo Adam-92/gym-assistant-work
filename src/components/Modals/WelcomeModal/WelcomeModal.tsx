@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { getCarouselCharacters } from "../../../services/Activity";
-import { CharactersCarousel } from "src/model/Carousels.model";
-import { useGlobalContext } from "../../../contexts/GlobalContext";
+import { getCarouselCharacters } from "../../../firebase/services/Activity";
+import { useUserContext } from "../../../contexts/UserContext/UserContext";
 import Carousel from "../../Carousels/Carousel/Carousel";
 import "./WelcomeModal.css";
 
 const WelcomeModal = () => {
   const [characters, setCharacters] = useState([]);
-  const { currentUser } = useGlobalContext();
+  console.log("🚀 ~ characters", characters)
+  const { currentUser } = useUserContext();
 
   useEffect(() => {
     getCarouselCharacters().then((data) => setCharacters(data))

@@ -2,16 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
 import { BrowserRouter as Router } from "react-router-dom";
-/* import reportWebVitals from "./reportWebVitals" */
-import { AppProvider } from "./contexts/GlobalContext";
+import { UserProvider } from "./contexts/UserContext/UserContext";
+import { SettingsProvider } from "./contexts/SettingsContext/SettingsContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppProvider>
-      <Router>
-        <App />
-      </Router>
-    </AppProvider>
+    <UserProvider>
+      <SettingsProvider>
+        <Router>
+          <App />
+        </Router>
+      </SettingsProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

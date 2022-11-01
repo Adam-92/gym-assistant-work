@@ -7,11 +7,10 @@ const days: string[] = [
   "Saturday",
   "Sunday",
 ];
-/* --- Animation --- */
+
 let delayed: boolean;
 
-/* --- Data --- */
-const data = {
+export const initialData = {
   labels: days,
   datasets: [
     {
@@ -22,7 +21,7 @@ const data = {
     {
       label: "Day",
       data: [],
-      borderColor: "rgb(223, 154, 235, 1)",
+      borderColor: "rgb(223, 154, 235)",
       tension: 0.3,
       fill: true,
       backgroundColor: "rgba(103,76,175,0.3)",
@@ -33,42 +32,38 @@ const data = {
     },
   ],
 };
-/* --- Config --- */
-export const config = {
-  type: "line",
-  data: data,
-  options: {
-    radius: 0,
-    hitRadius: 30,
-    animation: {
-      onComplete: () => {
-        delayed = true;
-      },
-      delay: (context: any) => {
-        let delay = 0;
-        if (context.type === "data" && context.mode === "default" && !delayed) {
-          delay = context.dataIndex * 300 + context.datasetIndex * 100;
-        }
-        return delay;
-      },
+
+export const options = {
+  radius: 0,
+  hitRadius: 30,
+  animation: {
+    onComplete: () => {
+      delayed = true;
     },
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "top",
+    delay: (context: any) => {
+      let delay = 0;
+      if (context.type === "data" && context.mode === "default" && !delayed) {
+        delay = context.dataIndex * 300 + context.datasetIndex * 100;
+      }
+      return delay;
+    },
+  },
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position: "top" as const,
+    },
+    title: {
+      display: true,
+      text: "Caloric balance",
+      font: {
+        size: 22,
+        weight: "bold",
+        family: "'Noto Sans', sans-serif",
       },
-      title: {
-        display: true,
-        text: "Caloric balance",
-        font: {
-          size: 22,
-          weight: "bold",
-          family: "'Noto Sans', sans-serif",
-        },
-        align: "start",
-        color: "rgb(103, 76, 175)",
-      },
+      align: "start" as const,
+      color: "rgb(103, 76, 175)",
     },
   },
 };

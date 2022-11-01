@@ -1,0 +1,52 @@
+.header-dashboard {
+  display: flex;
+  padding: 1rem 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  flex-wrap: wrap;
+  width: 82%;
+}
+
+.statistics-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chart-steps-dashboard {
+  height: calc(50% - 1rem);
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: white;
+  margin-bottom: 1rem;
+  min-height: 251px;
+  max-width: 514px;
+}
+
+.chart-calories-dashboard {
+  position: relative;
+  height: 50%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2rem;
+  padding: 1rem;
+  min-height: 240px;
+}
+
+.next-training-dashboard {
+  flex: 1;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2rem;
+  margin-left: 1rem;
+  max-width: 46%;
+}
+
+
+.new-bg-dashboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
