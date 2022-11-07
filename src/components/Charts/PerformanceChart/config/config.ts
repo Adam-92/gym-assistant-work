@@ -1,3 +1,5 @@
+import { ChartData, ChartOptions } from "chart.js";
+
 const dates: string[] = [
   "11.05",
   "15.05",
@@ -10,11 +12,11 @@ const dates: string[] = [
 
 let delayed: boolean;
 
-export const initialData = {
+export const initialData: ChartData<"line"> = {
   labels: dates,
   datasets: [
     {
-      label: "Performance",
+      label: "Best Records From Set",
       data: [],
       borderColor: "rgb(223, 154, 235)",
       tension: 0.3,
@@ -24,13 +26,17 @@ export const initialData = {
       pointBorderColor: "rgb(255,255,255)",
       pointBorderWidth: 2,
       pointBackgroundColor: "rgb(234, 130, 169)",
-    },
+    }
   ],
 };
 
-export const options = {
-  radius: 0,
-  hitRadius: 30,
+export const options: ChartOptions<"line"> = {
+  elements: {
+    point: {
+      radius: 0,
+      hitRadius: 30,
+    },
+  },
   animation: {
     onComplete: () => {
       delayed = true;

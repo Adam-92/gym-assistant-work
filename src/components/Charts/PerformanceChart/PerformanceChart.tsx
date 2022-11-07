@@ -8,10 +8,10 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import { options, initialData } from "./config/config";
 import { Line } from "react-chartjs-2";
-import useLibraryChart from "../../../hooks/useLibraryChart";
-import { getCaloriesChartData } from "src/firebase/services/Activity";
+import useNoRequestDataChart from "../../../hooks/useNoRequestDataChart";
 
 ChartJS.register(
   CategoryScale,
@@ -22,9 +22,9 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
-const PerformanceChart = () => {
-  const { updatedData } = useLibraryChart(initialData, getCaloriesChartData);
+//Z tym typem problem tutaj też
+const PerformanceChart = ({ results }: any) => {
+  const { updatedData } = useNoRequestDataChart(initialData, results);
 
   return <Line options={options} data={updatedData} />;
 };

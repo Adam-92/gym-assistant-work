@@ -2,7 +2,7 @@ import {
   getAllUsersDataSelectedExercise,
   getUserDataSelectedExercise,
 } from "src/firebase/services/Activity";
-import { useUserContext } from "src/contexts/UserContext/UserContext";
+import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import { useParams } from "react-router";
 import { NewExercise } from "src/model/model";
 import { iconsDescription } from "src/pages/selectedExercise-page/iconsDescription";

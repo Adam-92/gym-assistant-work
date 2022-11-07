@@ -1,5 +1,13 @@
+import { ResultsExercise, ResultSets } from "src/model/model";
 import "./ExercisePerformanceTable.css";
-const ExercisePerformanceTable = () => {
+
+//Destruktyryzacja tutaj tyczy się props, więc nie do końca rozumiem to co pisałeś w GitLab ? ;d
+//Ostatecznie "results" jest arrayem więc powinno to być ok
+
+//W każdym razię korzystając z importu modeli powyzej nie działa tutaj przypisanie typu do props ;/
+//Help ;d
+
+const ExercisePerformanceTable = ({ results }: any) => {
   return (
     <div className="container-ex-table">
       <ul className="responsive-table">
@@ -7,48 +15,25 @@ const ExercisePerformanceTable = () => {
           <div className="col col-1">Nr</div>
           <div className="col col-2">Date</div>
           <div className="col col-3">Series</div>
-          <div className="col col-4">Payment Status</div>
         </li>
-        <li className="table-row">
-          <div className="col col-1">1.</div>
-          <div className="col col-2">12.05</div>
-          <div className="col col-3">
-            <p>90 x 5</p>
-            <p>110 x 5</p>
-            <p>115 x 5</p>
-          </div>
-          <div className="col col-4">Pending</div>
-        </li>
-        <li className="table-row">
-          <div className="col col-1">2.</div>
-          <div className="col col-2">12.07</div>
-          <div className="col col-3">
-            <p>120 x 5</p>
-            <p>125 x 5</p>
-            <p>130 x 3</p>
-          </div>
-          <div className="col col-4">Pending</div>
-        </li>
-        <li className="table-row">
-          <div className="col col-1">3.</div>
-          <div className="col col-2">08.09</div>
-          <div className="col col-3">
-            <p>120 x 5</p>
-            <p>125 x 5</p>
-            <p>130 x 3</p>
-          </div>
-          <div className="col col-4">Pending</div>
-        </li>
-        <li className="table-row">
-          <div className="col col-1">4.</div>
-          <div className="col col-2">12.11</div>
-          <div className="col col-3">
-            <p>120 x 5</p>
-            <p>125 x 5</p>
-            <p>130 x 3</p>
-          </div>
-          <div className="col col-4">Pending</div>
-        </li>
+        {results &&
+          results.map((result: ResultsExercise, index: number) => {
+            return (
+              <li key={result.label} className="table-row">
+                <div className="col col-1">{index + 1}.</div>
+                <div className="col col-2">{result.label}</div>
+                <div className="col col-3">
+                  {result.sets.map((set: ResultSets, index: number) => {
+                    return (
+                      <p key={index}>
+                        {set.weight} x {set.reps}
+                      </p>
+                    );
+                  })}
+                </div>
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

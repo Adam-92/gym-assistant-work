@@ -1,3 +1,5 @@
+import { ChartData, ChartOptions } from "chart.js";
+
 const days: string[] = [
   "Monday",
   "Tuesday",
@@ -10,7 +12,7 @@ const days: string[] = [
 
 let delayed: boolean;
 
-export const initialData = {
+export const initialData: ChartData<"line"> = {
   labels: days,
   datasets: [
     {
@@ -33,9 +35,13 @@ export const initialData = {
   ],
 };
 
-export const options = {
-  radius: 0,
-  hitRadius: 30,
+export const options: ChartOptions<"line"> = {
+  elements: {
+    point: {
+      radius: 0,
+      hitRadius: 30,
+    },
+  },
   animation: {
     onComplete: () => {
       delayed = true;

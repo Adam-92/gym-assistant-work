@@ -4,12 +4,12 @@ import {
   getExercisesForAllUsers,
 } from "../../firebase/services/Activity";
 import { useParams, useLocation, useOutlet, Outlet } from "react-router-dom";
-import { useUserContext } from "src/contexts/UserContext/UserContext";
+import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
 import CarouselRoute from "src/components/Carousels/CarouselRoute/CarouselRoute";
 import { NewExercise } from "src/model/model";
-import { useSettingsContext } from "src/contexts/SettingsContext/SettingsContext";
+import { useSettingsContext } from "src/contexts/settings/hooks/useSettingsContext";
 import "./Exercises.css";
 
 const Exercises = () => {

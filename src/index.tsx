@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
 import { BrowserRouter as Router } from "react-router-dom";
-import { UserProvider } from "./contexts/UserContext/UserContext";
-import { SettingsProvider } from "./contexts/SettingsContext/SettingsContext";
+import { UserProvider } from "./contexts/user/provider/UserProvider";
+import { SettingsProvider } from "./contexts/settings/provider/SettingsProvider";
 
 ReactDOM.render(
   <React.StrictMode>

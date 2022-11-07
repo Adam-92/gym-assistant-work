@@ -21,6 +21,64 @@ const Plan = () => {
               "https://www.bodybuilding.com/images/2016/june/leg-workouts-for-men-7-best-workouts-for-quads-glutes-hams-header-v2-960x540.jpg",
             part: `${bodyPart}`,
             allUsers: true,
+            results: [
+              {
+                label: "12.05",
+                sets: [
+                  { weight: 95, reps: 5 },
+                  { weight: 95, reps: 3 },
+                  { weight: 97.5, reps: 1 },
+                ],
+              },
+              {
+                label: "17.05",
+                sets: [
+                  { weight: 100, reps: 3 },
+                  { weight: 102, reps: 3 },
+                  { weight: 105, reps: 3 },
+                  { weight: 107, reps: 3 },
+                ],
+              },
+              {
+                label: "19.05",
+                sets: [
+                  { weight: 102, reps: 2 },
+                  { weight: 100, reps: 2 },
+                ],
+              },
+              {
+                label: "21.05",
+                sets: [
+                  { weight: 105, reps: 2 },
+                  { weight: 103, reps: 2 },
+                  { weight: 103, reps: 2 },
+                ],
+              },
+              {
+                label: "27.05",
+                sets: [
+                  { weight: 125, reps: 2 },
+                  { weight: 113, reps: 2 },
+                  { weight: 103, reps: 2 },
+                ],
+              },
+              {
+                label: "30.05",
+                sets: [
+                  { weight: 105, reps: 2 },
+                  { weight: 103, reps: 2 },
+                  { weight: 130, reps: 2 },
+                ],
+              },
+              {
+                label: "05.07",
+                sets: [
+                  { weight: 105, reps: 2 },
+                  { weight: 103, reps: 2 },
+                  { weight: 140, reps: 2 },
+                ],
+              },
+            ],
           },
         ],
       });

@@ -4,7 +4,7 @@ import PerformanceChart from "src/components/Charts/PerformanceChart/Performance
 import ExercisePerformanceTable from "src/components/ExercisePerformanceTable/ExercisePerformanceTable";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import useSelectedExercise from "../../hooks/useSelectedExercise";
+import useSelectedExercise from "src/hooks/useSelectedExercise";
 import { upperCaseAllWords } from "src/utils/Utils";
 import "./SelectedExercise.css";
 
@@ -50,10 +50,10 @@ const SelectedExercise = () => {
               </div>
             </div>
             <div className="stats-selected-exercise">
-              <PerformanceChart />
+              <PerformanceChart results={data.results} />
             </div>
             <div className="table-selected-exercise">
-              <ExercisePerformanceTable />
+              <ExercisePerformanceTable results={data.results} />
             </div>
           </article>
         </article>

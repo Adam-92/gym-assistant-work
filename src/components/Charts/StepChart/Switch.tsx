@@ -1,10 +1,6 @@
 import { SwitchInterface } from "src/components/Charts/Charts.model";
 
-const Switch: React.FC<SwitchInterface> = ({
-  period,
-  monthlyPeriod,
-  weeklyPeriod
-}) => {
+const Switch = ({ period, monthlyPeriod, weeklyPeriod }: SwitchInterface) => {
   return (
     <div className="switch-step-chart">
       <button

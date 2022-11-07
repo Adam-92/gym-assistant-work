@@ -21,7 +21,7 @@
     top: 0;
     color: white;
     background-color: #95A5A6;
-    font-size: 0.95rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     font-weight: bold;
@@ -30,7 +30,7 @@
 .table-row {
     background-color: #ffffff;
     box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
 }
 .col{
     display: flex;

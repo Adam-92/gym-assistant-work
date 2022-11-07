@@ -11,7 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { options, initialData } from "./config/config";
 import { getCaloriesChartData } from "src/firebase/services/Activity";
-import useLibraryChart from "../../../hooks/useLibraryChart";
+import useRequestDataChart from "../../../hooks/useRequestDataChart";
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +24,10 @@ ChartJS.register(
 );
 
 const CaloriesChart = () => {
-  const { updatedData } = useLibraryChart(initialData, getCaloriesChartData);
+  const { updatedData } = useRequestDataChart(
+    initialData,
+    getCaloriesChartData
+  );
 
   return <Line options={options} data={updatedData} />;
 };

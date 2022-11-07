@@ -1,3 +1,5 @@
+import { ChartData, ChartDataset } from "chart.js";
+
 export const changeToPercent = (steps: number, target: number): number => {
   const calculate = Math.round((steps * 100) / target);
   return calculate > 100 ? 100 : calculate;
@@ -10,11 +12,12 @@ export const minToHours = (min: any): string => {
   const rminutes = Math.round(minutes);
   return `${rhours}h : ${rminutes}m`;
 };
+//InitialData to typ ChartData import u góry
 
 export const updateChartData = (apiData: any, initialData: any): any => {
   const updatedDatasets = initialData.datasets.map(
-    (chartData: any, index: number) => {
-      chartData.data = [...apiData[index]];
+    (chartData: ChartDataset<"line">, index: number) => {
+      chartData.data.push(...apiData[index]);
       return chartData;
     }
   );

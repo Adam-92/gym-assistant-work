@@ -12,3 +12,8 @@ export interface SwitchInterface {
   monthlyPeriod: () => void;
   weeklyPeriod: () => void;
 }
+
+export interface CaloriesData {
+  0: number[];
+  1: number[];
+}

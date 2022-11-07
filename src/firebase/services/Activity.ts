@@ -247,6 +247,7 @@ const updateNewExercise = async (
       exampleImage: data.exampleImage ?? "",
       urlImage: data.urlImage,
       part: data.part,
+      results: [{ label: "", sets: [{ weight: 0, reps: 0 }] }],
     }),
   });
 };
@@ -265,6 +266,7 @@ const addNewExercise = async (
         urlImage: data.urlImage,
         part: data.part,
         allUsers: false,
+        results: [{ label: "", sets: [{ weight: 0, reps: 0 }] }],
       },
     ],
   });
