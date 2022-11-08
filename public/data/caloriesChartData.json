@@ -1,4 +1,39 @@
-{
-  "0": [2000, 2000, 2000, 2000, 2000, 2000, 2000],
-  "1": [1500, 3200, 2000, 1200, 3500, 800, 2900]
-}
+[
+  {
+    "label": "Monday",
+    "dailyCalories": 1500,
+    "caloriesMax": 2000
+  },
+  {
+    "label": "Tuesday",
+    "dailyCalories": 3200,
+    "caloriesMax": 2000
+  },
+  {
+    "label": "Wednesday",
+    "dailyCalories": 2000,
+    "caloriesMax": 2000
+  },
+  {
+    "label": "Thursday",
+    "dailyCalories": 1200,
+    "caloriesMax": 2000
+  },
+  {
+    "label": "Friday",
+    "dailyCalories": 3500,
+    "caloriesMax": 2000
+  },
+  {
+    "label": "Saturday",
+    "dailyCalories": 800,
+    "caloriesMax": 2000
+  },
+  {
+    "label": "Sunday",
+    "dailyCalories": 2900,
+    "caloriesMax": 2000
+  }
+]
+
+

@@ -11,7 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 import { options, initialData } from "./config/config";
 import { getCaloriesChartData } from "src/firebase/services/Activity";
-import useRequestDataChart from "../../../hooks/useRequestDataChart";
+import useRequestDataChart from "../../../hooks/useCaloriesChartData";
 
 ChartJS.register(
   CategoryScale,

@@ -11,7 +11,7 @@ import {
 
 import { options, initialData } from "./config/config";
 import { Line } from "react-chartjs-2";
-import useNoRequestDataChart from "../../../hooks/useNoRequestDataChart";
+import usePerformanceChartData from "../../../hooks/usePerformanceChartData";
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +24,7 @@ ChartJS.register(
 );
 //Z tym typem problem tutaj też
 const PerformanceChart = ({ results }: any) => {
-  const { updatedData } = useNoRequestDataChart(initialData, results);
+  const { updatedData } = usePerformanceChartData(initialData, results);
 
   return <Line options={options} data={updatedData} />;
 };

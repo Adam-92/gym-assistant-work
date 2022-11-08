@@ -1,19 +1,9 @@
 import { ChartData, ChartOptions } from "chart.js";
 
-const days: string[] = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
 let delayed: boolean;
 
 export const initialData: ChartData<"line"> = {
-  labels: days,
+  labels: [],
   datasets: [
     {
       label: "Limit",
@@ -27,7 +17,7 @@ export const initialData: ChartData<"line"> = {
       tension: 0.3,
       fill: true,
       backgroundColor: "rgba(103,76,175,0.3)",
-      pointRadius: 6,
+      pointRadius: 5,
       pointBorderColor: "rgb(255,255,255)",
       pointBorderWidth: 3,
       pointBackgroundColor: "rgb(234, 130, 169)",

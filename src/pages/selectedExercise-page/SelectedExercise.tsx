@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import useSelectedExercise from "src/hooks/useSelectedExercise";
 import { upperCaseAllWords } from "src/utils/Utils";
+import NoPerformanceData from "src/components/NoPerformanceData/NoPerformanceData";
 import "./SelectedExercise.css";
 
 const SelectedExercise = () => {
@@ -50,10 +51,18 @@ const SelectedExercise = () => {
               </div>
             </div>
             <div className="stats-selected-exercise">
-              <PerformanceChart results={data.results} />
+              {data.results.length > 1 ? (
+                <PerformanceChart results={data.results} />
+              ) : (
+                <NoPerformanceData />
+              )}
             </div>
             <div className="table-selected-exercise">
-              <ExercisePerformanceTable results={data.results} />
+              {data.results.length > 1 ? (
+                <ExercisePerformanceTable results={data.results} />
+              ) : (
+                <NoPerformanceData />
+              )}
             </div>
           </article>
         </article>

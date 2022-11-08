@@ -1,19 +1,9 @@
 import { ChartData, ChartOptions } from "chart.js";
 
-const dates: string[] = [
-  "11.05",
-  "15.05",
-  "21.05",
-  "30.05",
-  "02.06",
-  "10.06",
-  "12.06",
-];
-
 let delayed: boolean;
 
 export const initialData: ChartData<"line"> = {
-  labels: dates,
+  labels: [],
   datasets: [
     {
       label: "Best Records From Set",
@@ -26,7 +16,7 @@ export const initialData: ChartData<"line"> = {
       pointBorderColor: "rgb(255,255,255)",
       pointBorderWidth: 2,
       pointBackgroundColor: "rgb(234, 130, 169)",
-    }
+    },
   ],
 };
 

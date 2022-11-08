@@ -6,76 +6,76 @@ const Plan = () => {
 
   const registerNewExercise = async () => {
     //Musi iśc duża litera
-    const bodyPart = "Legs";
+    const bodyPart = "Triceps";
     try {
       const ref = doc(db, `forAllUsersExercises/${bodyPart}`);
 
       await setDoc(ref, {
         exercises: [
           {
-            name: `back legs muscles`,
-            exerciseDescription: `"Leg day"—the very phrase conjures up images of nausea, days of hobbling, and legs that feel like jello. The feelings may be universal, but bodybuilders looking to annihilate`,
-            secondaryMuscle: ["Abs", "Traps"],
+            name: `triceps primer`,
+            exerciseDescription: `Bring the barbell to chest level then return it back to the starting position. Keep your elbows tucked in close to your sides and don't use momentum to raise the weight.`,
+            secondaryMuscle: ["Triceps, Abs, Front delts"],
             exampleImage: "",
             urlImage:
-              "https://www.bodybuilding.com/images/2016/june/leg-workouts-for-men-7-best-workouts-for-quads-glutes-hams-header-v2-960x540.jpg",
+              "https://cdn.muscleandstrength.com/sites/default/files/field/feature-wide-image/workout/triple-header-tricep-workout-wide.jpg",
             part: `${bodyPart}`,
             allUsers: true,
             results: [
               {
                 label: "12.05",
                 sets: [
-                  { weight: 95, reps: 5 },
-                  { weight: 95, reps: 3 },
-                  { weight: 97.5, reps: 1 },
+                  { weight: 8, reps: 10 },
+                  { weight: 12, reps: 8 },
+                  { weight: 20, reps: 8 },
                 ],
               },
               {
                 label: "17.05",
                 sets: [
-                  { weight: 100, reps: 3 },
-                  { weight: 102, reps: 3 },
-                  { weight: 105, reps: 3 },
-                  { weight: 107, reps: 3 },
+                  { weight: 12, reps: 10 },
+                  { weight: 15, reps: 8 },
+                  { weight: 17, reps: 5 },
                 ],
               },
               {
                 label: "19.05",
                 sets: [
-                  { weight: 102, reps: 2 },
-                  { weight: 100, reps: 2 },
+                  { weight: 12, reps: 10 },
+                  { weight: 15, reps: 8 },
+                  { weight: 20, reps: 4 },
                 ],
               },
               {
                 label: "21.05",
                 sets: [
-                  { weight: 105, reps: 2 },
-                  { weight: 103, reps: 2 },
-                  { weight: 103, reps: 2 },
+                  { weight: 15, reps: 8 },
+                  { weight: 15, reps: 6 },
+                  { weight: 25, reps: 5 },
                 ],
               },
               {
                 label: "27.05",
                 sets: [
-                  { weight: 125, reps: 2 },
-                  { weight: 113, reps: 2 },
-                  { weight: 103, reps: 2 },
+                  { weight: 25, reps: 8 },
+                  { weight: 25, reps: 6 },
+                  { weight: 40, reps: 5 },
                 ],
               },
               {
                 label: "30.05",
                 sets: [
-                  { weight: 105, reps: 2 },
-                  { weight: 103, reps: 2 },
-                  { weight: 130, reps: 2 },
+                  { weight: 25, reps: 8 },
+                  { weight: 25, reps: 6 },
+                  { weight: 42, reps: 5 },
                 ],
               },
               {
                 label: "05.07",
                 sets: [
-                  { weight: 105, reps: 2 },
-                  { weight: 103, reps: 2 },
-                  { weight: 140, reps: 2 },
+                  { weight: 25, reps: 8 },
+                  { weight: 25, reps: 6 },
+                  { weight: 47, reps: 5 },
                 ],
               },
             ],

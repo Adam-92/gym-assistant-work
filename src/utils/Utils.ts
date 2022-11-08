@@ -1,4 +1,6 @@
 import { ChartData, ChartDataset } from "chart.js";
+import { CaloriesData } from "src/components/Charts/Charts.model";
+import { ResultsExercise, ResultSets } from "src/model/model";
 
 export const changeToPercent = (steps: number, target: number): number => {
   const calculate = Math.round((steps * 100) / target);
@@ -12,18 +14,62 @@ export const minToHours = (min: any): string => {
   const rminutes = Math.round(minutes);
   return `${rhours}h : ${rminutes}m`;
 };
-//InitialData to typ ChartData import u góry
 
-export const updateChartData = (apiData: any, initialData: any): any => {
+export const updateCaloriesChartData = (
+  apiData: CaloriesData[],
+  initialData: ChartData<"line">
+) => {
+  const labels = apiData.map((calories: CaloriesData) => calories.label);
+
+  const dailyCalories = apiData.map(
+    (calories: CaloriesData) => calories.dailyCalories
+  );
+
+  const caloriesMax = apiData.map(
+    (calories: CaloriesData) => calories.caloriesMax
+  );
+
   const updatedDatasets = initialData.datasets.map(
     (chartData: ChartDataset<"line">, index: number) => {
-      chartData.data.push(...apiData[index]);
+      if (index === 0) {
+        chartData.data.push(...caloriesMax);
+      } else {
+        chartData.data.push(...dailyCalories);
+      }
       return chartData;
     }
   );
   return {
     ...initialData,
+    labels: labels,
     datasets: updatedDatasets,
+  };
+};
+
+export const updatePerformanceChartData = (
+  apiData: ResultsExercise[],
+  initialData: ChartData<"line">
+) => {
+  const labels = apiData.map((result: ResultsExercise) => result.label);
+
+  const bestRecords = apiData.map((result: ResultsExercise) =>
+    Math.max(...result.sets.map(({ weight }: ResultSets) => weight))
+  );
+
+  const newDataset = initialData.datasets.map((chartData) => {
+    if (chartData.data.length === 0) {
+      chartData.data.push(...bestRecords);
+    } else {
+      chartData.data = [...bestRecords];
+    }
+
+    return chartData;
+  });
+
+  return {
+    ...initialData,
+    labels: labels,
+    datasets: newDataset,
   };
 };
 
