@@ -1,5 +1,5 @@
 import { useUserContext } from "src/contexts/user/hooks/useUserContext";
-import { useLocation, Navigate } from "react-router";
+import { useLocation, Navigate} from "react-router";
 
 const ProtectedRoute = ({
   children,

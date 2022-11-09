@@ -42,6 +42,7 @@ body {
     font-family: var(--dash-font-family);
 }
 
+
 .flex-justify-center {
     display: flex;
     align-items: center;
