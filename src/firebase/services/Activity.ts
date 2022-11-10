@@ -25,11 +25,10 @@ export const getCaloriesChartData = async () => {
       caloriesChartData
     );
     const request = await getDoc(ref);
-    if (request.exists()) {
-      return request.data();
-    }
-    return [];
+
+    return request.exists() ? request.data().data : [];
   } catch (error) {
+    console.log(error);
     return [];
   }
 };
