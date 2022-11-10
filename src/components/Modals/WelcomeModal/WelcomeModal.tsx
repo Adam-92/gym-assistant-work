@@ -6,7 +6,6 @@ import "./WelcomeModal.css";
 
 const WelcomeModal = () => {
   const [characters, setCharacters] = useState([]);
-  console.log("🚀 ~ characters", characters)
   const { currentUser } = useUserContext();
 
   useEffect(() => {

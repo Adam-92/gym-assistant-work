@@ -1,3 +1,3 @@
 export interface NoPerformanceDataProps {
-    type: string
+    isChart: boolean
 }

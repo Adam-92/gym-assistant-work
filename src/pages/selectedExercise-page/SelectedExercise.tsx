@@ -54,14 +54,14 @@ const SelectedExercise = () => {
               {data.results.length > 1 ? (
                 <PerformanceChart results={data.results} />
               ) : (
-                <NoPerformanceData type="chart" />
+                <NoPerformanceData isChart={true} />
               )}
             </div>
             <div className="table-selected-exercise">
               {data.results.length > 1 ? (
                 <ExercisePerformanceTable results={data.results} />
               ) : (
-                <NoPerformanceData type="table" />
+                <NoPerformanceData isChart={false} />
               )}
             </div>
           </article>

@@ -18,3 +18,8 @@ export interface ResultSets {
   weight: number;
   reps: number;
 }
+
+
+export interface PerformanceProps {
+  results: ResultsExercise[];
+}

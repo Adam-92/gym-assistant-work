@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faTable } from "@fortawesome/free-solid-svg-icons";
 import { NoPerformanceDataProps } from "./NoPerformanceData.model";
 
-const NoPerformanceData = ({ type }: NoPerformanceDataProps) => {
+const NoPerformanceData = ({ isChart }: NoPerformanceDataProps) => {
   const style = {
     height: 90,
     width: 70,
   };
 
-  if (type === "chart") {
+  if (isChart) {
     style.width = 72;
     style.height = 90;
   }
@@ -21,7 +21,7 @@ const NoPerformanceData = ({ type }: NoPerformanceDataProps) => {
         style={{ height: `${style.height}%`, width: `${style.width}%` }}
       >
         <div>
-          {type === "chart" ? (
+          {isChart ? (
             <FontAwesomeIcon
               icon={faChartLine}
               className="no-performance-icon"
@@ -31,7 +31,7 @@ const NoPerformanceData = ({ type }: NoPerformanceDataProps) => {
           )}
         </div>
         <div className="no-performance-underline">
-          {type === "chart" ? (
+          {isChart ? (
             <>
               <h2>Chart Statistics</h2>
               <p>Make your first trainings to see the chart statistics</p>

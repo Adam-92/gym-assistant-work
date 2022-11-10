@@ -17,14 +17,20 @@ import { arrayNewExercises } from "./converters";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 import { firstBigLetter } from "src/utils/Utils";
 import { NewExercise } from "src/model/model";
+import { caloriesChartData } from "./converters";
 
 export const getCaloriesChartData = async () => {
   try {
-    return await (
-      await personalUserData.get(`caloriesChartData.json`)
-    ).data;
+    const ref = doc(db, "exampleDashboardData/caloriesChart").withConverter(
+      caloriesChartData
+    );
+    const request = await getDoc(ref);
+    if (request.exists()) {
+      return request.data();
+    }
+    return [];
   } catch (error) {
-    console.log(error);
+    return [];
   }
 };
 
