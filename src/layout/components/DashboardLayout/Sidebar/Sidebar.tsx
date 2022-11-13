@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { tabs } from "../Tabs/Tabs";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { TabInterface } from "src/components/Tabs/Tabs.model";
-import Tab from "../Tabs/Tab/Tab";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { tabs } from "./tabs";
+import SidebarTab from "./SidebarTab/SidebarTab";
+import ChildTab from "./ChildTab/ChildTab";
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -30,16 +30,13 @@ const Sidebar = () => {
         </header>
         <nav className="nav-sidebar">
           <ul className="parent-sidebar">
-            {tabs.map(({ to, id, name, icon, nestedTab }: TabInterface) => {
+            {tabs.map(({ to, name, icon, childTabs }) => {
               return (
-                <Tab
-                  name={name}
-                  to={to}
-                  id={id}
-                  icon={icon}
-                  nestedTab={nestedTab}
-                  key={id}
-                />
+                <SidebarTab name={name} to={to} icon={icon} key={to + name}>
+                  {childTabs?.map((tab) => (
+                    <ChildTab name={tab.name} to={tab.to} key={tab.name} />
+                  ))}
+                </SidebarTab>
               );
             })}
           </ul>
@@ -48,4 +45,5 @@ const Sidebar = () => {
     </aside>
   );
 };
+
 export default Sidebar;

@@ -9,7 +9,7 @@ import {
   Legend,
 } from "chart.js";
 
-import { options, initialData } from "./config/config";
+import { options } from "./config/config";
 import { Line } from "react-chartjs-2";
 import usePerformanceChartData from "../../../hooks/usePerformanceChartData";
 import { PerformanceProps } from "../../../model/model";
@@ -25,7 +25,7 @@ ChartJS.register(
 );
 
 const PerformanceChart = ({ results }: PerformanceProps) => {
-  const { updatedData } = usePerformanceChartData(initialData, results);
+  const { updatedData } = usePerformanceChartData(results);
 
   return <Line options={options} data={updatedData} />;
 };

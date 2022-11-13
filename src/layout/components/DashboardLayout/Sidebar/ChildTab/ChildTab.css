@@ -1,10 +1,10 @@
-.link-nested-tab {
+.link-child-tab {
     color: rgb(73, 73, 204);
     text-decoration: none;
 }
 
 
-.active-nested-tab {
+.active-child-tab {
     border-bottom: 1px solid rgb(73, 73, 204);
     width: 60%;
 }

@@ -1,4 +1,4 @@
-.link-tab {
+.link-sidebar-tab {
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -7,28 +7,28 @@
 }
 
 
-.margin-tab {
+.margin-sidebar-tab {
     margin-left: 5px;
 }
 
 
-.children-tab li {
+.children-sidebar-tab li {
     list-style: circle !important;
     padding: 20px 8px 8px 10px !important;
     margin-left: 2.2rem !important;
 }
 
-.children-tab {
+.children-sidebar-tab {
     height: 0;
     overflow: hidden;
     transition: all ease 1s;
 }
 
-.show-tab {
+.show-sidebar-tab {
     height: auto;
 }
 
-.active-tab {
+.active-sidebar-tab {
     position: relative;
     background: linear-gradient(145deg,
             rgb(248, 247, 247) 0%,
@@ -38,7 +38,7 @@
     color: rgb(73, 73, 204);
 }
 
-.children-active-tab {
+.children-active-sidebar-tab {
     position: relative;
     background: linear-gradient(145deg,
             rgb(248, 247, 247) 0%,
@@ -48,7 +48,7 @@
     color: rgb(73, 73, 204);
 }
 
-.active-tab::after {
+.active-sidebar-tab::after {
     content: '';
     position: absolute;
     top: 100%;
@@ -63,7 +63,7 @@
     pointer-events: none;
 }
 
-.active-tab::before {
+.active-sidebar-tab::before {
     content: '';
     position: absolute;
     top: -54px;
@@ -78,10 +78,10 @@
     pointer-events: none;
 }
 
-.focus-tab {
+.focus-sidebar-tab {
     color: rgb(73, 73, 204);
 }
 
-.icon-tab {
+.icon-sidebar-tab {
     width: 25%
 }

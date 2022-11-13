@@ -1,6 +1,8 @@
-import { ChartData, ChartDataset } from "chart.js";
+import { ChartDataset } from "chart.js";
 import { CaloriesData } from "src/components/Charts/Charts.model";
 import { ResultsExercise, ResultSets } from "src/model/model";
+import { initialData as caloriesData } from "src/components/Charts/CaloriesChart/config/config";
+import { initialData as performanceData } from "src/components/Charts/PerformanceChart/config/config";
 
 export const changeToPercent = (steps: number, target: number): number => {
   const calculate = Math.round((steps * 100) / target);
@@ -15,10 +17,7 @@ export const minToHours = (min: any): string => {
   return `${rhours}h : ${rminutes}m`;
 };
 
-export const updateCaloriesChartData = (
-  apiData: CaloriesData[],
-  initialData: ChartData<"line">
-) => {
+export const updateCaloriesChartData = (apiData: CaloriesData[]) => {
   const labels = apiData.map((calories: CaloriesData) => calories.label);
 
   const dailyCalories = apiData.map(
@@ -29,7 +28,7 @@ export const updateCaloriesChartData = (
     (calories: CaloriesData) => calories.caloriesMax
   );
 
-  const updatedDatasets = initialData.datasets.map(
+  const updatedDatasets = caloriesData.datasets.map(
     (chartData: ChartDataset<"line">, index: number) => {
       if (index === 0) {
         chartData.data.push(...caloriesMax);
@@ -40,23 +39,20 @@ export const updateCaloriesChartData = (
     }
   );
   return {
-    ...initialData,
+    ...caloriesData,
     labels: labels,
     datasets: updatedDatasets,
   };
 };
 
-export const updatePerformanceChartData = (
-  apiData: ResultsExercise[],
-  initialData: ChartData<"line">
-) => {
+export const updatePerformanceChartData = (apiData: ResultsExercise[]) => {
   const labels = apiData.map((result: ResultsExercise) => result.label);
 
   const bestRecords = apiData.map((result: ResultsExercise) =>
     Math.max(...result.sets.map(({ weight }: ResultSets) => weight))
   );
 
-  const newDataset = initialData.datasets.map((chartData) => {
+  const newDataset = performanceData.datasets.map((chartData) => {
     if (chartData.data.length === 0) {
       chartData.data.push(...bestRecords);
     } else {
@@ -67,7 +63,7 @@ export const updatePerformanceChartData = (
   });
 
   return {
-    ...initialData,
+    ...performanceData,
     labels: labels,
     datasets: newDataset,
   };

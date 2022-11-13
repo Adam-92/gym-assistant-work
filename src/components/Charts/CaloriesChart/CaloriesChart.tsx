@@ -9,7 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { options, initialData } from "./config/config";
+import { options} from "./config/config";
 import useCaloriesChartData from "../../../hooks/useCaloriesChartData";
 
 ChartJS.register(
@@ -23,7 +23,7 @@ ChartJS.register(
 );
 
 const CaloriesChart = () => {
-  const { updatedData } = useCaloriesChartData(initialData);
+  const { updatedData } = useCaloriesChartData();
 
   return <Line options={options} data={updatedData} />;
 };

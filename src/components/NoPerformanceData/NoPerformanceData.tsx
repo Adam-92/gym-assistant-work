@@ -4,21 +4,12 @@ import { faChartLine, faTable } from "@fortawesome/free-solid-svg-icons";
 import { NoPerformanceDataProps } from "./NoPerformanceData.model";
 
 const NoPerformanceData = ({ isChart }: NoPerformanceDataProps) => {
-  const style = {
-    height: 90,
-    width: 70,
-  };
-
-  if (isChart) {
-    style.width = 72;
-    style.height = 90;
-  }
-
   return (
     <article className="no-performance-container">
       <section
-        className="no-performance-content flex-justify-center flex-direction-column"
-        style={{ height: `${style.height}%`, width: `${style.width}%` }}
+        className={`no-performance-content flex-justify-center flex-direction-column ${
+          isChart && "no-performance-chart"
+        }`}
       >
         <div>
           {isChart ? (

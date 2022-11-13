@@ -17,22 +17,18 @@ export const protectedRoutes: RouteInterface[] = [
   {
     path: "/catalogue",
     element: Catalogue,
-    children: [
-      {
-        path: "/catalogue/:selectedBodyPart",
-        element: Exercises,
-        children: [
-          {
-            path: "/catalogue/:selectedBodyPart/:selectedExercise",
-            element: SelectedExercise
-          }
-        ]
-      },
-      {
-        path: "add-new",
-        element: AddNew,
-      },
-    ],
+  },
+  {
+    path: "/catalogue/:selectedBodyPart",
+    element: Exercises,
+  },
+  {
+    path: "/catalogue/:selectedBodyPart/:selectedExercise",
+    element: SelectedExercise,
+  },
+  {
+    path: "/add-new",
+    element: AddNew,
   },
   {
     path: "/plan",
@@ -58,3 +54,8 @@ export const unprotectedRoutes: RouteInterface[] = [
     element: Register,
   },
 ];
+
+export const routes = {
+  unprotectedRoutes: unprotectedRoutes,
+  protectedRoutes: protectedRoutes,
+};

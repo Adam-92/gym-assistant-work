@@ -1,17 +1,17 @@
-.container {
+.dashboard-layout {
   position: relative;
   height: 100vh;
   background: linear-gradient(to right, #fff, #076585);
 }
 
-.center-container {
+.center-dashboard-layout {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
 }
 
-.dimensions-container {
+.dimensions-dashboard-layout {
   display: flex;
   margin: 0 auto;
   height: 85vh;
@@ -23,7 +23,7 @@
   max-width: 1750px;
 }
 
-.content-container {
+.content-dashboard-layout {
   background: linear-gradient(145deg,
       rgb(248, 247, 247) 0%,
       rgb(241, 241, 243) 120%);

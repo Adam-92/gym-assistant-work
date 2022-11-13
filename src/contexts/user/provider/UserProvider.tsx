@@ -3,24 +3,29 @@ import { UserContextValue } from "../context/UserContext.model";
 import { UserProviderProps } from "./UserProvider.model";
 import { User } from "firebase/auth";
 import { auth } from "src/firebase/config/firebase";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export const UserProvider = ({ children }: UserProviderProps) => {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [pending, setPending] = useState(true);
+  //Tutaj wszystko ok z typami? User -> User | undefined
+  const [currentUser, setCurrentUser] = useState<User>();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    //Tutaj wszystko ok z typami? User -> User | null
     const unsubscribe = auth.onAuthStateChanged((user: User | null) => {
-      setPending(false);
-      setCurrentUser(user);
+      setCurrentUser(user ?? undefined);
+      setIsLoading(false);
     });
     return unsubscribe;
   }, []);
 
-  const value: UserContextValue = {
-    currentUser,
-    pending,
-  };
+  const value: UserContextValue = useMemo(
+    () => ({
+      currentUser,
+      pending: isLoading,
+    }),
+    [currentUser, isLoading]
+  );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

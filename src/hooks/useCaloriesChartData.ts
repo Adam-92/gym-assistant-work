@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { updateCaloriesChartData } from "src/utils/Utils";
 import { getCaloriesChartData } from "src/firebase/services/Activity";
 import { CaloriesChartData } from "../firebase/Firebase.model";
-import { ChartData } from "chart.js";
 
-const useCaloriesChartData = (initialData: ChartData<"line">) => {
+const useCaloriesChartData = () => {
   const [data, setData] = useState<CaloriesChartData["data"]>([]);
-  console.log("🚀 ~ data", data)
 
   useEffect(() => {
     getCaloriesChartData().then((data: CaloriesChartData["data"]) =>
@@ -14,7 +12,7 @@ const useCaloriesChartData = (initialData: ChartData<"line">) => {
     );
   }, []);
 
-  const updatedData = updateCaloriesChartData(data, initialData);
+  const updatedData = updateCaloriesChartData(data);
 
   return { updatedData };
 };

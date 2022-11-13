@@ -1,51 +1,46 @@
 import { faWindows } from "@fortawesome/free-brands-svg-icons";
 import {
+  faCalendarDays,
   faDumbbell,
   faGear,
   faRightFromBracket,
-  faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
-import { TabInterface } from "src/components/Tabs/Tabs.model";
+import { Tab } from "./Sidebar.model";
 
-export const tabs: TabInterface[] = [
+export const tabs: Tab[] = [
   {
-    id: 1,
     name: "Dashboard",
     icon: faWindows,
-    to: "/dashboard"
+    to: "/dashboard",
   },
   {
-    id: 2,
     name: "Catalogue",
     icon: faDumbbell,
     to: "/catalogue",
-    nestedTab: [
+    childTabs: [
       {
         name: "Exercises",
-        to: "../catalogue"
+        to: "../catalogue",
       },
       {
         name: "Add New",
-        to: "add-new"
-      }
+        to: "/add-new",
+      },
     ],
   },
   {
-    id: 3,
     name: "Plan",
     icon: faCalendarDays,
-    to: "/plan"
+    to: "/plan",
   },
   {
-    id: 4,
     name: "Settings",
     icon: faGear,
-    to: "/settings"
+    to: "/settings",
   },
   {
-    id: 5,
     name: "Logout",
     icon: faRightFromBracket,
-    to: "/logout"
-  }
+    to: "/logout",
+  },
 ];
