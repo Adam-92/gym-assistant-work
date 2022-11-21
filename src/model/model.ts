@@ -19,7 +19,6 @@ export interface ResultSets {
   reps: number;
 }
 
-
 export interface PerformanceProps {
   results: ResultsExercise[];
 }

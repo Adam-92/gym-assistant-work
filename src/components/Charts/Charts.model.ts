@@ -14,7 +14,7 @@ export interface SwitchInterface {
 }
 
 export interface CaloriesData {
-  label: string,
-  dailyCalories: number,
-  caloriesMax: number
+  label: string;
+  dailyCalories: number;
+  caloriesMax: number;
 }

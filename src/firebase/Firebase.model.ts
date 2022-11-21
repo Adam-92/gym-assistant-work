@@ -8,3 +8,4 @@ export interface CreateNewArrayExercises {
 export interface CaloriesChartData {
   data: CaloriesData[];
 }
+

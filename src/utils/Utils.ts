@@ -1,8 +1,19 @@
-import { ChartDataset } from "chart.js";
-import { CaloriesData } from "src/components/Charts/Charts.model";
-import { ResultsExercise, ResultSets } from "src/model/model";
+import { ResultsExercise } from "src/model/model";
 import { initialData as caloriesData } from "src/components/Charts/CaloriesChart/config/config";
 import { initialData as performanceData } from "src/components/Charts/PerformanceChart/config/config";
+import { CaloriesChartData } from "src/firebase/Firebase.model";
+import { ChartDataset } from "chart.js";
+
+interface CaloriesChartReducer {
+  labels: string[];
+  caloriesMax: number[];
+  dailyCalories: number[];
+}
+
+interface PerformanceChartReducer {
+  labels: string[];
+  bestRecord: number[];
+}
 
 export const changeToPercent = (steps: number, target: number): number => {
   const calculate = Math.round((steps * 100) / target);
@@ -17,56 +28,74 @@ export const minToHours = (min: any): string => {
   return `${rhours}h : ${rminutes}m`;
 };
 
-export const updateCaloriesChartData = (apiData: CaloriesData[]) => {
-  const labels = apiData.map((calories: CaloriesData) => calories.label);
+export const updateCaloriesChartData = (
+  apiData: CaloriesChartData["data"] | undefined
+) => {
+  if (apiData) {
+    const data = apiData.reduce<CaloriesChartReducer>(
+      (accumulator, calories) => ({
+        labels: [...accumulator.labels, calories.label],
+        caloriesMax: [...accumulator.caloriesMax, calories.caloriesMax],
+        dailyCalories: [...accumulator.dailyCalories, calories.dailyCalories],
+      }),
+      { labels: [], caloriesMax: [], dailyCalories: [] }
+    );
 
-  const dailyCalories = apiData.map(
-    (calories: CaloriesData) => calories.dailyCalories
-  );
-
-  const caloriesMax = apiData.map(
-    (calories: CaloriesData) => calories.caloriesMax
-  );
-
-  const updatedDatasets = caloriesData.datasets.map(
-    (chartData: ChartDataset<"line">, index: number) => {
-      if (index === 0) {
-        chartData.data.push(...caloriesMax);
-      } else {
-        chartData.data.push(...dailyCalories);
+    const updatedDataset = caloriesData.datasets.map(
+      (chartData: ChartDataset<"line">, index) => {
+        if (index === 0) {
+          chartData.data.push(...data.caloriesMax);
+        } else {
+          chartData.data.push(...data.dailyCalories);
+        }
+        return chartData;
       }
-      return chartData;
-    }
-  );
-  return {
-    ...caloriesData,
-    labels: labels,
-    datasets: updatedDatasets,
-  };
+    );
+
+    return {
+      ...caloriesData,
+      labels: data.labels,
+      datasets: updatedDataset,
+    };
+  }
+
+  return caloriesData;
 };
 
 export const updatePerformanceChartData = (apiData: ResultsExercise[]) => {
-  const labels = apiData.map((result: ResultsExercise) => result.label);
+  if (apiData) {
+    const data = apiData.reduce<PerformanceChartReducer>(
+      (accumulator, results) => ({
+        labels: [...accumulator.labels, results.label],
+        bestRecord: [
+          ...accumulator.bestRecord,
+          Math.max(...results.sets.map(({ weight }) => weight)),
+        ],
+      }),
+      {
+        labels: [],
+        bestRecord: [],
+      }
+    );
 
-  const bestRecords = apiData.map((result: ResultsExercise) =>
-    Math.max(...result.sets.map(({ weight }: ResultSets) => weight))
-  );
+    const updatedDataset = performanceData.datasets.map((chartData) => {
+      if (chartData.data.length === 0) {
+        chartData.data.push(...data.bestRecord);
+      } else {
+        chartData.data = [...data.bestRecord];
+      }
 
-  const newDataset = performanceData.datasets.map((chartData) => {
-    if (chartData.data.length === 0) {
-      chartData.data.push(...bestRecords);
-    } else {
-      chartData.data = [...bestRecords];
-    }
+      return chartData;
+    });
 
-    return chartData;
-  });
+    return {
+      ...performanceData,
+      labels: data.labels,
+      datasets: updatedDataset,
+    };
+  }
 
-  return {
-    ...performanceData,
-    labels: labels,
-    datasets: newDataset,
-  };
+  return performanceData;
 };
 
 /* ---START---DO PRZEMEBLOWANIA WRAZ Z KOMPONENTAMI----- */
