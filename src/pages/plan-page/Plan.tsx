@@ -35,10 +35,58 @@ const Plan = () => {
     }
   };
 
+  const addNewDataToDashboard = async () => {
+    const ref = doc(db, `exampleDashboardData/stepsChart`);
+
+    try {
+      await setDoc(
+        ref,
+        {
+          weeklyData: [
+            {
+              day: "Mon",
+              steps: 6400,
+            },
+            {
+              day: "Tue",
+              steps: 5300,
+            },
+            {
+              day: "Wed",
+              steps: 12400,
+            },
+            {
+              day: "Thu",
+              steps: 8845,
+            },
+            {
+              day: "Fri",
+              steps: 9400,
+            },
+            {
+              day: "Sat",
+              steps: 1200,
+            },
+            {
+              day: "Sun",
+              steps: 400,
+            },
+          ],
+        },
+        { merge: true }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
-      <h1>Add new exercise: </h1>
+      <h2>Add new exercise: </h2>
       <button onClick={registerNewExercise}>Click</button>
+
+      <h2>Add new data to dashboard</h2>
+      <button onClick={addNewDataToDashboard}>Click</button>
     </>
   );
 };
