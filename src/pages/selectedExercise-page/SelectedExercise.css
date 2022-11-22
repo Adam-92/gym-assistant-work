@@ -23,7 +23,7 @@
     grid-area: description;
 }
 .desc-selected-exercise p{
-    width: 70%;
+    width: 65%;
 }
 .desc-img-selected-exercise{
     position: absolute;

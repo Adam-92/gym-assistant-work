@@ -16,66 +16,42 @@ import { User } from "firebase/auth";
 import { arrayNewExercises } from "./converters";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 import { firstBigLetter } from "src/utils/Utils";
-import { NewExercise } from "src/model/model";
+import { caloriesChartData } from "./converters";
 
+/* 
+  Pytanie - 
+  Czy przerobić wszystkie funkcje i komponenty, tak by zostały obsłużone przez 
+  DataStatusHandler?
+  
+  Raczej powinniśmy, tak zrobić.
+
+  */
 export const getCaloriesChartData = async () => {
-  try {
-    return await (
-      await personalUserData.get(`caloriesChartData.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+  const ref = doc(db, "exampleDashboardData/caloriesChart").withConverter(
+    caloriesChartData
+  );
+  return await getDoc(ref);
 };
 
 export const getAllUsersDataSelectedExercise = async (
-  name: string,
   bodyPart: string
-) => {
-  try {
-    const request = await getDoc(
-      doc(
-        db,
-        `/forAllUsersExercises/${firstBigLetter(bodyPart)}`
-      ).withConverter(arrayNewExercises)
-    );
-
-    if (request.exists()) {
-      const data = request.data();
-      const selectedExercise = data.exercises.find(
-        (exercise: NewExercise) => exercise.name === name
-      );
-      return selectedExercise;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+) =>
+  await getDoc(
+    doc(db, `/forAllUsersExercises/${firstBigLetter(bodyPart)}`).withConverter(
+      arrayNewExercises
+    )
+  );
 
 export const getUserDataSelectedExercise = async (
-  name: string,
   bodyPart: string,
   userId: string
-) => {
-  try {
-    const request = await getDoc(
-      doc(
-        db,
-        `/userExercises/${userId}/${firstBigLetter(bodyPart)}/exercises`
-      ).withConverter(arrayNewExercises)
-    );
-
-    if (request.exists()) {
-      const data = request.data();
-      const selectedExercise = data.exercises.find(
-        (exercise: NewExercise) => exercise.name === name
-      );
-      return selectedExercise;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+) =>
+  await getDoc(
+    doc(
+      db,
+      `/userExercises/${userId}/${firstBigLetter(bodyPart)}/exercises`
+    ).withConverter(arrayNewExercises)
+  );
 
 export const getDailySteps = async (): Promise<StepsValues[] | undefined> => {
   try {
@@ -247,6 +223,7 @@ const updateNewExercise = async (
       exampleImage: data.exampleImage ?? "",
       urlImage: data.urlImage,
       part: data.part,
+      results: [{ label: "", sets: [{ weight: 0, reps: 0 }] }],
     }),
   });
 };
@@ -265,6 +242,7 @@ const addNewExercise = async (
         urlImage: data.urlImage,
         part: data.part,
         allUsers: false,
+        results: [{ label: "", sets: [{ weight: 0, reps: 0 }] }],
       },
     ],
   });

@@ -8,10 +8,11 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { options, initialData } from "./config/config";
+
+import { options } from "./config/config";
 import { Line } from "react-chartjs-2";
-import useLibraryChart from "../../../hooks/useLibraryChart";
-import { getCaloriesChartData } from "src/firebase/services/Activity";
+import usePerformanceChartData from "../../../hooks/usePerformanceChartData";
+import { PerformanceProps } from "../../../model/model";
 
 ChartJS.register(
   CategoryScale,
@@ -23,8 +24,8 @@ ChartJS.register(
   Legend
 );
 
-const PerformanceChart = () => {
-  const { updatedData } = useLibraryChart(initialData, getCaloriesChartData);
+const PerformanceChart = ({ results }: PerformanceProps) => {
+  const { updatedData } = usePerformanceChartData(results);
 
   return <Line options={options} data={updatedData} />;
 };

@@ -15,7 +15,7 @@ const StepChart = () => {
   ) => {
     return getData().then((res: StepsValues[] | undefined) => setData(res));
   };
-
+  
   useEffect(() => {
     if (period) {
       requestData(getDailySteps);

@@ -3,13 +3,13 @@ import {
   getUserExerciseCards,
   getExercisesForAllUsers,
 } from "../../firebase/services/Activity";
-import { useParams, useLocation, useOutlet, Outlet } from "react-router-dom";
-import { useUserContext } from "src/contexts/UserContext/UserContext";
+import { useParams, useLocation } from "react-router-dom";
+import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
 import CarouselRoute from "src/components/Carousels/CarouselRoute/CarouselRoute";
 import { NewExercise } from "src/model/model";
-import { useSettingsContext } from "src/contexts/SettingsContext/SettingsContext";
+import { useSettingsContext } from "src/contexts/settings/hooks/useSettingsContext";
 import "./Exercises.css";
 
 const Exercises = () => {
@@ -18,7 +18,6 @@ const Exercises = () => {
   const { selectedBodyPart } = useParams();
 
   const location = useLocation();
-  const outlet = useOutlet();
 
   const { showCatalogueExercises } = useSettingsContext();
 
@@ -55,25 +54,19 @@ const Exercises = () => {
   ]);
 
   return (
-    <>
-      {outlet ? (
-        <Outlet />
-      ) : (
-        <div className="container-exercises">
-          <div className="content-exercises">
-            <CarouselRoute />
-            <div className="cards-exercises">
-              {data.map((exercise: NewExercise) => {
-                return <ExerciseCard key={exercise.name} exercise={exercise} />;
-              })}
-            </div>
-            {data.length === 0 && (
-              <NoDataMessage text={"No Exercises in the Database"} />
-            )}
-          </div>
+    <div className="container-exercises">
+      <div className="content-exercises">
+        <CarouselRoute />
+        <div className="cards-exercises">
+          {data.map((exercise: NewExercise) => (
+            <ExerciseCard key={exercise.name} exercise={exercise} />
+          ))}
         </div>
-      )}
-    </>
+        {data.length === 0 && (
+          <NoDataMessage text={"No Exercises in the Database"} />
+        )}
+      </div>
+    </div>
   );
 };
 export default Exercises;

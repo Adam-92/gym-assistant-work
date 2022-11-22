@@ -2,15 +2,19 @@ import {
   getAllUsersDataSelectedExercise,
   getUserDataSelectedExercise,
 } from "src/firebase/services/Activity";
-import { useUserContext } from "src/contexts/UserContext/UserContext";
+import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import { useParams } from "react-router";
 import { NewExercise } from "src/model/model";
 import { iconsDescription } from "src/pages/selectedExercise-page/iconsDescription";
 import { IconsDescription } from "src/pages/selectedExercise-page/SelectedExercise.model";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { parseError } from "src/errors/parseError";
 
 const useSelectedExercise = () => {
-  const [data, setData] = useState<NewExercise | undefined>(undefined);
+  const [data, setData] = useState<NewExercise>();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState("");
+
   const { currentUser } = useUserContext();
   const { selectedBodyPart, selectedExercise } = useParams();
 
@@ -18,29 +22,49 @@ const useSelectedExercise = () => {
     ({ name }: IconsDescription) => name === selectedBodyPart
   );
 
-  useEffect(() => {
-    if (selectedExercise && currentUser && selectedBodyPart) {
-      getUserDataSelectedExercise(
-        selectedExercise,
-        selectedBodyPart,
-        currentUser.uid
-      ).then((data) => {
-        if (!data) {
-          getAllUsersDataSelectedExercise(
-            selectedExercise,
-            selectedBodyPart
-          ).then((data) => setData(data));
+  const fetchData = useCallback(async () => {
+    try {
+      if (currentUser && selectedBodyPart && selectedExercise) {
+        const request = await getUserDataSelectedExercise(
+          selectedBodyPart,
+          currentUser.uid
+        );
+
+        const data = request.data();
+        const selectedExerciseData = data?.exercises.find(
+          (exercise: NewExercise) => exercise.name === selectedExercise
+        );
+
+        if (selectedExerciseData) {
+          setData(selectedExerciseData);
         } else {
-          setData(data);
+          const request = await getAllUsersDataSelectedExercise(
+            selectedBodyPart
+          );
+
+          const data = request.data();
+          const selectedExerciseData = data?.exercises.find(
+            (exercise: NewExercise) => exercise.name === selectedExercise
+          );
+          setData(selectedExerciseData);
         }
-      });
+      }
+    } catch (error) {
+      setIsError(parseError(error));
+    } finally {
+      setIsLoading(false);
     }
-  }, [selectedExercise, selectedBodyPart, currentUser]);
+  }, [currentUser, selectedBodyPart, selectedExercise]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return {
     data,
     rightDescriptionIcon,
+    isLoading,
+    isError,
   };
 };
-
 export default useSelectedExercise;

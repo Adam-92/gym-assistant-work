@@ -4,16 +4,21 @@ import PerformanceChart from "src/components/Charts/PerformanceChart/Performance
 import ExercisePerformanceTable from "src/components/ExercisePerformanceTable/ExercisePerformanceTable";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import useSelectedExercise from "../../hooks/useSelectedExercise";
+import useSelectedExercise from "src/hooks/useSelectedExercise";
 import { upperCaseAllWords } from "src/utils/Utils";
+import NoPerformanceData from "src/components/NoPerformanceData/NoPerformanceData";
+import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";
+import DataDisplayWrapper from "src/components/DataDisplayWrapper/DataDisplayWrapper";
 import "./SelectedExercise.css";
 
 const SelectedExercise = () => {
   const navigate = useNavigate();
-  const { data, rightDescriptionIcon } = useSelectedExercise();
+
+  const { data, isLoading, isError, rightDescriptionIcon } =
+    useSelectedExercise();
 
   return (
-    <>
+    <DataStatusHandler data={data} isLoading={isLoading} isError={isError}>
       {data && (
         <article className="content-selected-exercises">
           <article className="grid-selected-exercise">
@@ -50,15 +55,23 @@ const SelectedExercise = () => {
               </div>
             </div>
             <div className="stats-selected-exercise">
-              <PerformanceChart />
+              <DataDisplayWrapper
+                data={data.results}
+                displayComponent={PerformanceChart}
+                noDataComponent={<NoPerformanceData isChart={true} />}
+              />
             </div>
             <div className="table-selected-exercise">
-              <ExercisePerformanceTable />
+              <DataDisplayWrapper
+                data={data.results}
+                displayComponent={ExercisePerformanceTable}
+                noDataComponent={<NoPerformanceData isChart={false} />}
+              />
             </div>
           </article>
         </article>
       )}
-    </>
+    </DataStatusHandler>
   );
 };
 

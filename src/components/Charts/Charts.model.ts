@@ -12,3 +12,9 @@ export interface SwitchInterface {
   monthlyPeriod: () => void;
   weeklyPeriod: () => void;
 }
+
+export interface CaloriesData {
+  label: string;
+  dailyCalories: number;
+  caloriesMax: number;
+}

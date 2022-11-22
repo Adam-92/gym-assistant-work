@@ -9,9 +9,9 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { options, initialData } from "./config/config";
-import { getCaloriesChartData } from "src/firebase/services/Activity";
-import useLibraryChart from "../../../hooks/useLibraryChart";
+import { options } from "./config/config";
+import useCaloriesChartData from "../../../hooks/useCaloriesChartData";
+import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";
 
 ChartJS.register(
   CategoryScale,
@@ -24,8 +24,12 @@ ChartJS.register(
 );
 
 const CaloriesChart = () => {
-  const { updatedData } = useLibraryChart(initialData, getCaloriesChartData);
-
-  return <Line options={options} data={updatedData} />;
+  const { updatedData, data, isLoading, isError } = useCaloriesChartData();
+  return (
+    <DataStatusHandler data={data} isLoading={isLoading} isError={isError}>
+      <Line options={options} data={updatedData} />
+    </DataStatusHandler>
+  );
 };
+
 export default CaloriesChart;

@@ -1,29 +1,28 @@
-import { useState, useCallback } from "react";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+import { useLocation } from "react-router";
 
-const useRouteCarousel = (selectedBodyPart: string | undefined) => {
-  const [routeIndex, setRouteIndex] = useState(
-    selectedBodyPart ? availableBodyParts.indexOf(selectedBodyPart) : 0
+const useRouteCarousel = (selectedBodyPart: string) => {
+  const { pathname } = useLocation();
+
+  const currentRouteIndex = availableBodyParts.indexOf(selectedBodyPart);
+
+  const previousBodyPartIndex =
+    currentRouteIndex === 0 ? 6 : currentRouteIndex - 1;
+
+  const nextBodyPartIndex = currentRouteIndex === 6 ? 0 : currentRouteIndex + 1;
+
+  const previousBodyPart = availableBodyParts[previousBodyPartIndex];
+  const nextBodyPart = availableBodyParts[nextBodyPartIndex];
+
+  const previousBodyPartUrl = pathname.replace(
+    selectedBodyPart,
+    previousBodyPart
   );
-
-  const bodyPart = availableBodyParts[routeIndex];
-
-  const goLeftRoute = useCallback(() => {
-    setRouteIndex((prev: number) => {
-      return prev === 0 ? 6 : prev - 1;
-    });
-  }, []);
-
-  const goRightRoute = useCallback(() => {
-    setRouteIndex((prev: number) => {
-      return prev === 6 ? 0 : prev + 1;
-    });
-  }, []);
+  const nextBodyPartUrl = pathname.replace(selectedBodyPart, nextBodyPart);
 
   return {
-    bodyPart,
-    goLeftRoute,
-    goRightRoute,
+    previousBodyPartUrl,
+    nextBodyPartUrl,
   };
 };
 

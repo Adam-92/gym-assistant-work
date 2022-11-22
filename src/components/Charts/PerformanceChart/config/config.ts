@@ -1,20 +1,12 @@
-const dates: string[] = [
-  "11.05",
-  "15.05",
-  "21.05",
-  "30.05",
-  "02.06",
-  "10.06",
-  "12.06",
-];
+import { ChartData, ChartOptions } from "chart.js";
 
 let delayed: boolean;
 
-export const initialData = {
-  labels: dates,
+export const initialData: ChartData<"line"> = {
+  labels: [],
   datasets: [
     {
-      label: "Performance",
+      label: "Best Records From Set",
       data: [],
       borderColor: "rgb(223, 154, 235)",
       tension: 0.3,
@@ -28,9 +20,13 @@ export const initialData = {
   ],
 };
 
-export const options = {
-  radius: 0,
-  hitRadius: 30,
+export const options: ChartOptions<"line"> = {
+  elements: {
+    point: {
+      radius: 0,
+      hitRadius: 30,
+    },
+  },
   animation: {
     onComplete: () => {
       delayed = true;

@@ -1,17 +1,9 @@
-const days: string[] = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
+import { ChartData, ChartOptions } from "chart.js";
 
 let delayed: boolean;
 
-export const initialData = {
-  labels: days,
+export const initialData: ChartData<"line"> = {
+  labels: [],
   datasets: [
     {
       label: "Limit",
@@ -25,7 +17,7 @@ export const initialData = {
       tension: 0.3,
       fill: true,
       backgroundColor: "rgba(103,76,175,0.3)",
-      pointRadius: 6,
+      pointRadius: 5,
       pointBorderColor: "rgb(255,255,255)",
       pointBorderWidth: 3,
       pointBackgroundColor: "rgb(234, 130, 169)",
@@ -33,9 +25,13 @@ export const initialData = {
   ],
 };
 
-export const options = {
-  radius: 0,
-  hitRadius: 30,
+export const options: ChartOptions<"line"> = {
+  elements: {
+    point: {
+      radius: 0,
+      hitRadius: 30,
+    },
+  },
   animation: {
     onComplete: () => {
       delayed = true;

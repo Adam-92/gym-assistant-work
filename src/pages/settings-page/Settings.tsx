@@ -1,4 +1,4 @@
-import { useSettingsContext } from "src/contexts/SettingsContext/SettingsContext";
+import { useSettingsContext } from "src/contexts/settings/hooks/useSettingsContext";
 import ControlledSwitch from "src/components/ControlledSwitch/ControlledSwitch";
 
 const Settings = () => {

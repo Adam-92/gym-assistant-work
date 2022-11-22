@@ -6,21 +6,79 @@ const Plan = () => {
 
   const registerNewExercise = async () => {
     //Musi iśc duża litera
-    const bodyPart = "Legs";
+    const bodyPart = "Triceps";
     try {
       const ref = doc(db, `forAllUsersExercises/${bodyPart}`);
 
       await setDoc(ref, {
         exercises: [
           {
-            name: `back legs muscles`,
-            exerciseDescription: `"Leg day"—the very phrase conjures up images of nausea, days of hobbling, and legs that feel like jello. The feelings may be universal, but bodybuilders looking to annihilate`,
-            secondaryMuscle: ["Abs", "Traps"],
+            name: `triceps primer`,
+            exerciseDescription: `Bring the barbell to chest level then return it back to the starting position. Keep your elbows tucked in close to your sides and don't use momentum to raise the weight.`,
+            secondaryMuscle: ["Triceps, Abs, Front delts"],
             exampleImage: "",
             urlImage:
-              "https://www.bodybuilding.com/images/2016/june/leg-workouts-for-men-7-best-workouts-for-quads-glutes-hams-header-v2-960x540.jpg",
+              "https://cdn.muscleandstrength.com/sites/default/files/field/feature-wide-image/workout/triple-header-tricep-workout-wide.jpg",
             part: `${bodyPart}`,
             allUsers: true,
+            results: [
+              {
+                label: "12.05",
+                sets: [
+                  { weight: 8, reps: 10 },
+                  { weight: 12, reps: 8 },
+                  { weight: 20, reps: 8 },
+                ],
+              },
+              {
+                label: "17.05",
+                sets: [
+                  { weight: 12, reps: 10 },
+                  { weight: 15, reps: 8 },
+                  { weight: 17, reps: 5 },
+                ],
+              },
+              {
+                label: "19.05",
+                sets: [
+                  { weight: 12, reps: 10 },
+                  { weight: 15, reps: 8 },
+                  { weight: 20, reps: 4 },
+                ],
+              },
+              {
+                label: "21.05",
+                sets: [
+                  { weight: 15, reps: 8 },
+                  { weight: 15, reps: 6 },
+                  { weight: 25, reps: 5 },
+                ],
+              },
+              {
+                label: "27.05",
+                sets: [
+                  { weight: 25, reps: 8 },
+                  { weight: 25, reps: 6 },
+                  { weight: 40, reps: 5 },
+                ],
+              },
+              {
+                label: "30.05",
+                sets: [
+                  { weight: 25, reps: 8 },
+                  { weight: 25, reps: 6 },
+                  { weight: 42, reps: 5 },
+                ],
+              },
+              {
+                label: "05.07",
+                sets: [
+                  { weight: 25, reps: 8 },
+                  { weight: 25, reps: 6 },
+                  { weight: 47, reps: 5 },
+                ],
+              },
+            ],
           },
         ],
       });
@@ -35,10 +93,61 @@ const Plan = () => {
     }
   };
 
+  const addCaloriesData = async () => {
+    try {
+      const ref = doc(db, "exampleDashboardData/caloriesChart");
+      const document = await setDoc(ref, {
+        data: [
+          {
+            label: "Monday",
+            dailyCalories: 1500,
+            caloriesMax: 2000,
+          },
+          {
+            label: "Tuesday",
+            dailyCalories: 3200,
+            caloriesMax: 2000,
+          },
+          {
+            label: "Wednesday",
+            dailyCalories: 2000,
+            caloriesMax: 2000,
+          },
+          {
+            label: "Thursday",
+            dailyCalories: 1200,
+            caloriesMax: 2000,
+          },
+          {
+            label: "Friday",
+            dailyCalories: 3500,
+            caloriesMax: 2000,
+          },
+          {
+            label: "Saturday",
+            dailyCalories: 800,
+            caloriesMax: 2000,
+          },
+          {
+            label: "Sunday",
+            dailyCalories: 2900,
+            caloriesMax: 2000,
+          },
+        ],
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
-      <h1>Add new exercise: </h1>
+      <h2>Add new exercise: </h2>
       <button onClick={registerNewExercise}>Click</button>
+
+      <h2>Add Data: </h2>
+
+      <button onClick={addCaloriesData}>ADD CALORIES DATA</button>
     </>
   );
 };
