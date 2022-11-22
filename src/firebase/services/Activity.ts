@@ -9,11 +9,11 @@ import {
   arrayUnion,
   DocumentReference,
   DocumentData,
+  DocumentSnapshot,
 } from "firebase/firestore";
 import { db } from "src/firebase/config/firebase";
-import { StepsValues } from "src/components/Charts/Charts.model";
 import { User } from "firebase/auth";
-import { arrayNewExercises } from "./converters";
+import { arrayNewExercises, stepChartData } from "./converters";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 import { firstBigLetter } from "src/utils/Utils";
 import { caloriesChartData } from "./converters";
@@ -33,9 +33,7 @@ export const getCaloriesChartData = async () => {
   return await getDoc(ref);
 };
 
-export const getAllUsersDataSelectedExercise = async (
-  bodyPart: string
-) =>
+export const getAllUsersDataSelectedExercise = async (bodyPart: string) =>
   await getDoc(
     doc(db, `/forAllUsersExercises/${firstBigLetter(bodyPart)}`).withConverter(
       arrayNewExercises
@@ -53,24 +51,23 @@ export const getUserDataSelectedExercise = async (
     ).withConverter(arrayNewExercises)
   );
 
-export const getDailySteps = async (): Promise<StepsValues[] | undefined> => {
-  try {
-    return await (
-      await personalUserData.get(`dailySteps.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+export const getWeeklySteps = async (): Promise<
+  DocumentSnapshot<DocumentData>
+> => {
+  const request = await getDoc(
+    doc(db, "exampleDashboardData/stepsChart").withConverter(stepChartData)
+  );
+  return request;
 };
-export const getMonthlySteps = async (): Promise<StepsValues[] | undefined> => {
-  try {
-    return await (
-      await personalUserData.get(`monthlySteps.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+export const getMonthlySteps = async (): Promise<
+  DocumentSnapshot<DocumentData>
+> => {
+  const request = await getDoc(
+    doc(db, "exampleDashboardData/stepsChart").withConverter(stepChartData)
+  );
+  return request;
 };
+
 export const getCarouselCharacters = async () => {
   try {
     return await (

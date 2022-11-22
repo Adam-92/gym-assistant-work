@@ -1,6 +1,6 @@
-import { SwitchInterface } from "src/components/Charts/Charts.model";
+import { SwitchProps } from "src/components/Charts/Charts.model";
 
-const Switch = ({ period, monthlyPeriod, weeklyPeriod }: SwitchInterface) => {
+const Switch = ({ period, monthlyPeriod, weeklyPeriod }: SwitchProps) => {
   return (
     <div className="switch-step-chart">
       <button

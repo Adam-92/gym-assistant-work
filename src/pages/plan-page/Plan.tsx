@@ -93,50 +93,48 @@ const Plan = () => {
     }
   };
 
-  const addCaloriesData = async () => {
+  const addNewDataToDashboard = async () => {
+    const ref = doc(db, `exampleDashboardData/stepsChart`);
+
     try {
-      const ref = doc(db, "exampleDashboardData/caloriesChart");
-      const document = await setDoc(ref, {
-        data: [
-          {
-            label: "Monday",
-            dailyCalories: 1500,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Tuesday",
-            dailyCalories: 3200,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Wednesday",
-            dailyCalories: 2000,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Thursday",
-            dailyCalories: 1200,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Friday",
-            dailyCalories: 3500,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Saturday",
-            dailyCalories: 800,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Sunday",
-            dailyCalories: 2900,
-            caloriesMax: 2000,
-          },
-        ],
-      });
-    } catch (e) {
-      console.log(e);
+      await setDoc(
+        ref,
+        {
+          weeklyData: [
+            {
+              day: "Mon",
+              steps: 6400,
+            },
+            {
+              day: "Tue",
+              steps: 5300,
+            },
+            {
+              day: "Wed",
+              steps: 12400,
+            },
+            {
+              day: "Thu",
+              steps: 8845,
+            },
+            {
+              day: "Fri",
+              steps: 9400,
+            },
+            {
+              day: "Sat",
+              steps: 1200,
+            },
+            {
+              day: "Sun",
+              steps: 400,
+            },
+          ],
+        },
+        { merge: true }
+      );
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -145,9 +143,8 @@ const Plan = () => {
       <h2>Add new exercise: </h2>
       <button onClick={registerNewExercise}>Click</button>
 
-      <h2>Add Data: </h2>
-
-      <button onClick={addCaloriesData}>ADD CALORIES DATA</button>
+      <h2>Add new data to dashboard</h2>
+      <button onClick={addNewDataToDashboard}>Click</button>
     </>
   );
 };

@@ -2,12 +2,13 @@ export interface StepsValues {
   day: string;
   steps: number;
 }
-export interface BarStepsValues {
+
+export interface BarStepsProps {
   day: string;
   steps: number;
   target: number;
 }
-export interface SwitchInterface {
+export interface SwitchProps {
   period: boolean;
   monthlyPeriod: () => void;
   weeklyPeriod: () => void;
