@@ -2,7 +2,7 @@ import { ResultsExercise } from "src/model/model";
 import { initialData as caloriesData } from "src/components/Charts/CaloriesChart/config/config";
 import { initialData as performanceData } from "src/components/Charts/PerformanceChart/config/config";
 import { CaloriesChartData } from "src/firebase/Firebase.model";
-import { ChartDataset } from "chart.js";
+import { ChartDataset, ChartData } from "chart.js";
 
 interface CaloriesChartReducer {
   labels: string[];
@@ -28,6 +28,39 @@ export const minToHours = (min: any): string => {
   return `${rhours}h : ${rminutes}m`;
 };
 
+const updateDatasetCalories = (
+  chartData: ChartData<"line">,
+  data: CaloriesChartReducer
+) => {
+  const updatedDataset = chartData.datasets.map(
+    (chartData: ChartDataset<"line">, index) => {
+      if (index === 0) {
+        chartData.data.push(...data.caloriesMax);
+      } else {
+        chartData.data.push(...data.dailyCalories);
+      }
+      return chartData;
+    }
+  );
+  return updatedDataset;
+};
+
+const updateDatasetPerformance = (
+  chartData: ChartData<"line">,
+  data: PerformanceChartReducer
+) => {
+  const updatedDataset = chartData.datasets.map((chartData) => {
+    if (chartData.data.length === 0) {
+      chartData.data.push(...data.bestRecord);
+    } else {
+      chartData.data = [...data.bestRecord];
+    }
+
+    return chartData;
+  });
+  return updatedDataset;
+};
+
 export const updateCaloriesChartData = (
   apiData: CaloriesChartData["data"] | undefined
 ) => {
@@ -41,16 +74,7 @@ export const updateCaloriesChartData = (
       { labels: [], caloriesMax: [], dailyCalories: [] }
     );
 
-    const updatedDataset = caloriesData.datasets.map(
-      (chartData: ChartDataset<"line">, index) => {
-        if (index === 0) {
-          chartData.data.push(...data.caloriesMax);
-        } else {
-          chartData.data.push(...data.dailyCalories);
-        }
-        return chartData;
-      }
-    );
+    const updatedDataset = updateDatasetCalories(caloriesData, data);
 
     return {
       ...caloriesData,
@@ -78,15 +102,7 @@ export const updatePerformanceChartData = (apiData: ResultsExercise[]) => {
       }
     );
 
-    const updatedDataset = performanceData.datasets.map((chartData) => {
-      if (chartData.data.length === 0) {
-        chartData.data.push(...data.bestRecord);
-      } else {
-        chartData.data = [...data.bestRecord];
-      }
-
-      return chartData;
-    });
+    const updatedDataset = updateDatasetPerformance(performanceData, data);
 
     return {
       ...performanceData,

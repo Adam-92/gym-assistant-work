@@ -11,7 +11,7 @@ import { useState, useEffect, useCallback } from "react";
 import { parseError } from "src/errors/parseError";
 
 const useSelectedExercise = () => {
-  const [data, setData] = useState<NewExercise | undefined>(undefined);
+  const [data, setData] = useState<NewExercise>();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
 
