@@ -9,7 +9,7 @@ import {
 const useStepChart = () => {
   const [period, setPeriod] = useState(true);
   const [target, setTarget] = useState(12000);
-  const [data, setData] = useState<StepsValues[] | undefined>(undefined);
+  const [data, setData] = useState<StepsValues[]>();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
 
