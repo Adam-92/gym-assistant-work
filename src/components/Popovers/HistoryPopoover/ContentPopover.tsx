@@ -1,14 +1,15 @@
-import { TrainingSet } from "src/components/Popovers/Popovers.model";
+import { ContentPopoverProps } from "../Popovers.model";
+import { Set } from "src/components/NextTraining/NextTraining.model";
 
-const ContentPopover = ({ lastTraining }: any) => {
-  const { exerciseName, training } = lastTraining;
-  const { date } = training;
-
+const ContentPopover = ({
+  lastTraining,
+  selectedExercise,
+}: ContentPopoverProps) => {
   return (
     <ul className="header-history-popover">
-      {exerciseName}
-      <li> Date: {date} </li>
-      {training.sets.map((set: TrainingSet, index: number) => {
+      {selectedExercise?.name}
+      <li> Date: {lastTraining?.date} </li>
+      {lastTraining?.sets.map((set: Set, index: number) => {
         return (
           <li key={index}>
             {index + 1} set - {set.weight}kg x {set.reps}

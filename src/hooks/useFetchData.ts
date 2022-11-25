@@ -1,17 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
-import { updateCaloriesChartData } from "src/utils/Utils";
-import { getCaloriesChartData } from "src/firebase/services/Activity";
-import { CaloriesChartData } from "../firebase/Firebase.model";
+import { DocumentData, DocumentSnapshot } from "firebase/firestore";
 import { parseError } from "src/errors/parseError";
 
-const useCaloriesChartData = () => {
-  const [data, setData] = useState<CaloriesChartData["data"] | undefined>();
+const useFetchData = (
+  asyncRequest: () => Promise<DocumentSnapshot<DocumentData>>
+) => {
+  const [data, setData] = useState<DocumentData>();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
 
   const fetchData = useCallback(async () => {
     try {
-      const request = await getCaloriesChartData();
+      const request = await asyncRequest();
 
       if (request.exists()) {
         setData(request.data().data);
@@ -21,15 +21,13 @@ const useCaloriesChartData = () => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [asyncRequest]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  const updatedData = updateCaloriesChartData(data);
-
-  return { updatedData, data, isLoading, isError };
+  return { data, isLoading, isError };
 };
 
-export default useCaloriesChartData;
+export default useFetchData;

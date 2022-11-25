@@ -1,10 +1,10 @@
 import { calculateProgress } from "../../utils/Utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBullseye, faTurnUp } from "@fortawesome/free-solid-svg-icons";
-import { GuageInterface } from "src/components/Guage/Guage.model";
+import { GuageProps } from "src/components/Guage/Guage.model";
 import "./Guage.css";
 
-const Guage: React.FC<GuageInterface> = ({ target, current, units }) => {
+const Guage = ({ target, current, units }: GuageProps) => {
   const angle = calculateProgress(current, target);
 
   return (

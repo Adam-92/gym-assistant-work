@@ -1,49 +1,37 @@
-import BodyPart from "./BodyPartContainer";
+import BodyPartContainer from "./BodyPartContainer";
+import DataStatusHandler from "../DataStatusHandler/DataStatusHandler";
+import { BodyPart } from "./NextTraining.model";
+import { useNextTraining } from "src/contexts/nextTraining/hooks/useNextTraining";
 import HistoryPopover from "../Popovers/HistoryPopoover/HistoryPopover";
-import { useEffect, useState } from "react";
-import { getNextTraining } from "../../firebase/services/Activity";
 import "./NextTraining.css";
 
 const NextTraining = () => {
-  const [data, setData] = useState([]);
-  const [lastTraining, setLastTraining] = useState({});
-  const [coordinatesDOM, setCoordinatesDOM] = useState({});
-  const [showHistoryPopover, setShowHistoryPopover] = useState(false);
-
-  useEffect(() => {
-    getNextTraining().then((res) => setData(res));
-  }, []);
+  const { hookVariables, handleRequest } = useNextTraining();
 
   return (
-    <article
-      className="container-next-training"
-      onMouseLeave={() => setShowHistoryPopover(false)}
+    <DataStatusHandler
+      isLoading={handleRequest.isLoading}
+      isError={handleRequest.isError}
+      data={handleRequest.data}
     >
-      <header>
-        <h2>Next Training:</h2>
-      </header>
-      <section>
-        {data?.map((body: any, index: number) => {
-          return (
-            <BodyPart
-              part={body!.part}
-              exercises={body.exercises}
-              setShowHistoryPopover={setShowHistoryPopover}
-              setCoordinatesDOM={setCoordinatesDOM}
-              setLastTraining={setLastTraining}
-              data={data}
-              key={index}
-            />
-          );
-        })}
-      </section>
-      {showHistoryPopover ? (
-        <HistoryPopover
-          lastTraining={lastTraining}
-          coordinatesDOM={coordinatesDOM}
-        />
-      ) : null}
-    </article>
+      <article className="container-next-training">
+        <header>
+          <h2>Next Training:</h2>
+        </header>
+        <section>
+          {handleRequest.data?.map((body: BodyPart) => {
+            return (
+              <BodyPartContainer
+                bodyPart={body.part}
+                exercises={body.exercises}
+                key={body.part}
+              />
+            );
+          })}
+        </section>
+        {hookVariables.selectedExercise ? <HistoryPopover /> : <></>}
+      </article>
+    </DataStatusHandler>
   );
 };
 export default NextTraining;

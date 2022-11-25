@@ -1,6 +1,11 @@
 import { QueryDocumentSnapshot } from "firebase/firestore";
-import { CreateNewArrayExercises } from "src/firebase/Firebase.model";
-import { CaloriesChartData, StepChartData } from "src/firebase/Firebase.model";
+import {
+  CaloriesChartData,
+  StepChartData,
+  TileData,
+  CreateNewArrayExercises,
+  GuageData,
+} from "src/firebase/Firebase.model";
 
 export const arrayNewExercises = {
   toFirestore: (data: CreateNewArrayExercises) => data,
@@ -17,4 +22,14 @@ export const caloriesChartData = {
 export const stepChartData = {
   toFirestore: (data: StepChartData) => data,
   fromFirestore: (snap: QueryDocumentSnapshot) => snap.data() as StepChartData,
+};
+
+export const tileData = {
+  toFirestore: (data: TileData) => data,
+  fromFirestore: (snap: QueryDocumentSnapshot) => snap.data() as TileData,
+};
+
+export const guagesData = {
+  toFirestore: (data: GuageData) => data,
+  fromFirestore: (snap: QueryDocumentSnapshot) => snap.data() as GuageData,
 };

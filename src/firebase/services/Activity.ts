@@ -9,23 +9,14 @@ import {
   arrayUnion,
   DocumentReference,
   DocumentData,
-  DocumentSnapshot,
 } from "firebase/firestore";
 import { db } from "src/firebase/config/firebase";
 import { User } from "firebase/auth";
-import { arrayNewExercises, stepChartData } from "./converters";
+import { arrayNewExercises, stepChartData, tileData } from "./converters";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 import { firstBigLetter } from "src/utils/Utils";
 import { caloriesChartData } from "./converters";
 
-/* 
-  Pytanie - 
-  Czy przerobić wszystkie funkcje i komponenty, tak by zostały obsłużone przez 
-  DataStatusHandler?
-  
-  Raczej powinniśmy, tak zrobić.
-
-  */
 export const getCaloriesChartData = async () => {
   const ref = doc(db, "exampleDashboardData/caloriesChart").withConverter(
     caloriesChartData
@@ -51,17 +42,13 @@ export const getUserDataSelectedExercise = async (
     ).withConverter(arrayNewExercises)
   );
 
-export const getWeeklySteps = async (): Promise<
-  DocumentSnapshot<DocumentData>
-> => {
+export const getWeeklySteps = async () => {
   const request = await getDoc(
     doc(db, "exampleDashboardData/stepsChart").withConverter(stepChartData)
   );
   return request;
 };
-export const getMonthlySteps = async (): Promise<
-  DocumentSnapshot<DocumentData>
-> => {
+export const getMonthlySteps = async () => {
   const request = await getDoc(
     doc(db, "exampleDashboardData/stepsChart").withConverter(stepChartData)
   );
@@ -78,31 +65,20 @@ export const getCarouselCharacters = async () => {
   }
 };
 export const getTilesData = async () => {
-  try {
-    return await (
-      await personalUserData.get(`tiles.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+  const request = await getDoc(
+    doc(db, `exampleDashboardData/activityTiles`).withConverter(tileData)
+  );
+  return request;
 };
 export const getNextTraining = async () => {
-  try {
-    return await (
-      await personalUserData.get(`nextTraining.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+  const request = await getDoc(doc(db, `exampleDashboardData/nextTraining`));
+  return request;
 };
 export const getGauges = async () => {
-  try {
-    return await (
-      await personalUserData.get(`guages.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+  const request = await getDoc(
+    doc(db, `exampleDashboardData/activityGuages`).withConverter(tileData)
+  );
+  return request;
 };
 
 export const getUserExerciseCards = async (userId: string) => {

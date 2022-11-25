@@ -1,38 +1,24 @@
 import Exercise from "./Exercise";
-import { viewHistory, getItemCoordinates } from "../../utils/Utils";
+import {
+  BodyPartContainerProps,
+  ExerciseInformation,
+} from "./NextTraining.model";
 
 const BodyPartContainer = ({
-  part,
-  exercises,
-  data,
-  setLastTraining,
-  setCoordinatesDOM,
-  setShowHistoryPopover,
-}: any) => {
+  bodyPart,
+  exercises
+}: BodyPartContainerProps) => {
 
   return (
     <div className="part-next-training">
-      <h3>{part}</h3>
-      <div
-        className="exercises-next-training"
-        onClick={(e) => {
-          viewHistory(e, data, setLastTraining);
-          getItemCoordinates(e, setCoordinatesDOM);
-          setShowHistoryPopover(true);
-        }}
-      >
-        {exercises.map((exercise: any, index: number) => {
-          const { id, name, reps, sets } = exercise;
-          const { repsMax, weightMax } = exercise.maximum;
+      <h3>{bodyPart}</h3>
+      <div className="exercises-next-training">
+        {exercises.map((exercise: ExerciseInformation, index) => {
           return (
             <Exercise
-              id={id}
-              name={name}
-              reps={reps}
-              sets={sets}
-              repsMax={repsMax}
-              weightMax={weightMax}
-              key={index}
+              bodyPart={bodyPart}
+              exercise={exercise}
+              key={bodyPart + index}
             />
           );
         })}

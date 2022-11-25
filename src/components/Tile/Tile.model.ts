@@ -1,8 +1,8 @@
-export interface TileInterface {
+export interface TileProps {
   icon: JSX.Element;
   name: string;
-  target: number | string;
-  current: number | string;
+  target: number;
+  current: number;
   style: StyleTile;
 }
 export interface StyleTile {
@@ -13,10 +13,7 @@ export interface StyleTile {
 }
 
 export interface StatisticsTile {
-    target: number | string;
-    current: number | string;
-    name: string;
-  }
-  
-  
-  
+  target: number | string;
+  current: number | string;
+  name: string;
+}

@@ -3,10 +3,10 @@ import StepChart from "../../components/Charts/StepChart/StepChart";
 import ContainerGuages from "../../components/Guage/ContainerGuages";
 import NextTraining from "../../components/NextTraining/NextTraining";
 import ContainerTiles from "../../components/Tile/ContainerTiles";
+import { NextTrainingProvider } from "src/contexts/nextTraining/provider/NextTrainingProvider";
 import "./Dashboard.css";
 
 const Dashboard = () => {
-  
   return (
     <>
       <header className="header-dashboard">
@@ -23,7 +23,9 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="next-training-dashboard">
-          <NextTraining />
+          <NextTrainingProvider>
+            <NextTraining />
+          </NextTrainingProvider>
         </div>
       </section>
     </>
