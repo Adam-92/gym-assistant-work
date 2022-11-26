@@ -2,7 +2,6 @@ import { changeToPercent } from "../../../utils/Utils";
 import { BarStepsProps } from "src/components/Charts/Charts.model";
 
 const Bar = ({ day, steps, target }: BarStepsProps) => {
-const Bar = ({ day, steps, target }: BarStepsValues) => {
   const ratio = changeToPercent(steps, target);
 
   let height;

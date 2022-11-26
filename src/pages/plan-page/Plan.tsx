@@ -178,7 +178,7 @@ const Plan = () => {
                   reps: 5,
                   sets: 3,
                   repsMax: 0,
-                  weightMax: 0
+                  weightMax: 0,
                 },
                 {
                   id: 2,
@@ -186,7 +186,7 @@ const Plan = () => {
                   reps: 8,
                   sets: 3,
                   repsMax: 0,
-                  weightMax: 0
+                  weightMax: 0,
                 },
                 {
                   id: 3,
@@ -298,11 +298,7 @@ const Plan = () => {
   return (
     <>
       <h2>Add new exercise: </h2>
-      <h2>Add new exercise: </h2>
       <button onClick={registerNewExercise}>Click</button>
-
-      <h2>Add new data to dashboard</h2>
-      <button onClick={addNewDataToDashboard}>Click</button>
 
       <h2>Add new data to dashboard</h2>
       <button onClick={addNewDataToDashboard}>Click</button>
