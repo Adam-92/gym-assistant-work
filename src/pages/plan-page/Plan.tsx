@@ -298,7 +298,11 @@ const Plan = () => {
   return (
     <>
       <h2>Add new exercise: </h2>
+      <h2>Add new exercise: </h2>
       <button onClick={registerNewExercise}>Click</button>
+
+      <h2>Add new data to dashboard</h2>
+      <button onClick={addNewDataToDashboard}>Click</button>
 
       <h2>Add new data to dashboard</h2>
       <button onClick={addNewDataToDashboard}>Click</button>

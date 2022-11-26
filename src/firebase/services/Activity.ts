@@ -9,6 +9,7 @@ import {
   arrayUnion,
   DocumentReference,
   DocumentData,
+  DocumentSnapshot,
 } from "firebase/firestore";
 import { db } from "src/firebase/config/firebase";
 import { User } from "firebase/auth";
@@ -48,10 +49,12 @@ export const getWeeklySteps = async () => {
   );
   return request;
 };
-export const getMonthlySteps = async () => {
-  const request = await getDoc(
-    doc(db, "exampleDashboardData/stepsChart").withConverter(stepChartData)
-  );
+
+
+export const getMonthlySteps = async (): Promise<
+  DocumentSnapshot<DocumentData>
+> => {
+  const request = await getDoc(doc(db, "exampleDashboardData/stepsChart"));
   return request;
 };
 

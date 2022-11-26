@@ -2,6 +2,13 @@ export interface StepsValues {
   day: string;
   steps: number;
 }
+export interface WeeklySteps {
+  weeklyData: StepsValues[];
+}
+
+export interface MonthlySteps {
+  monthlyData: StepsValues[];
+}
 
 export interface BarStepsProps {
   day: string;
