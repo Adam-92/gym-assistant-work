@@ -41,12 +41,15 @@ const useStepChart = () => {
     weeklyPeriod: weeklyPeriod,
     period: period,
     target: target,
+  };
+
+  const handleRequest = {
     data: data,
     isLoading: isLoading,
     isError: isError,
   };
 
-  return hookVariables;
+  return { hookVariables, handleRequest };
 };
 
 export default useStepChart;
