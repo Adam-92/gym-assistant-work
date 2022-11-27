@@ -13,8 +13,8 @@ const useStepChart = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
 
-  const monthlyPeriod = useCallback(() => setPeriod(false), []);
-  const weeklyPeriod = useCallback(() => setPeriod(true), []);
+  const setMonthlyPeriod = useCallback(() => setPeriod(false), []);
+  const setWeeklyPeriod = useCallback(() => setPeriod(true), []);
 
   const fetchData = useCallback(async () => {
     try {
@@ -36,20 +36,15 @@ const useStepChart = () => {
     fetchData();
   }, [fetchData]);
 
-  const hookVariables = {
-    monthlyPeriod: monthlyPeriod,
-    weeklyPeriod: weeklyPeriod,
-    period: period,
-    target: target,
+  return {
+    setMonthlyPeriod,
+    setWeeklyPeriod,
+    period,
+    target,
+    data,
+    isError,
+    isLoading,
   };
-
-  const handleRequest = {
-    data: data,
-    isLoading: isLoading,
-    isError: isError,
-  };
-
-  return { hookVariables, handleRequest };
 };
 
 export default useStepChart;

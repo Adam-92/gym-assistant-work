@@ -6,39 +6,34 @@ import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandle
 import "./StepChart.css";
 
 const StepChart = () => {
-  const { hookVariables, handleRequest } = useStepsChart();
+  const {
+    setMonthlyPeriod,
+    setWeeklyPeriod,
+    period,
+    target,
+    data,
+    isError,
+    isLoading,
+  } = useStepsChart();
 
   return (
-    <DataStatusHandler
-      isLoading={handleRequest.isLoading}
-      isError={handleRequest.isError}
-      data={handleRequest.data}
-    >
-      {handleRequest.data && (
+    <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
+      {(data) => (
         <article className="container-step-chart">
           <header className="header-step-chart">
-            <h2>Steps: {hookVariables.target} / day</h2>
+            <h2>Steps: {target} / day</h2>
             <Switch
-              period={hookVariables.period}
-              monthlyPeriod={hookVariables.monthlyPeriod}
-              weeklyPeriod={hookVariables.weeklyPeriod}
+              period={period}
+              monthlyPeriod={setMonthlyPeriod}
+              weeklyPeriod={setWeeklyPeriod}
             />
           </header>
           <div
-            className={`content-step-chart ${
-              !hookVariables.period && "padding-step-chart"
-            }`}
+            className={`content-step-chart ${!period && "padding-step-chart"}`}
           >
-            {handleRequest.data?.map(({ day, steps }: StepsValues) => {
-              return (
-                <Bar
-                  key={day}
-                  day={day}
-                  steps={steps}
-                  target={hookVariables.target}
-                />
-              );
-            })}
+            {data.map(({ day, steps }: StepsValues) => (
+              <Bar key={day} day={day} steps={steps} target={target} />
+            ))}
           </div>
         </article>
       )}
