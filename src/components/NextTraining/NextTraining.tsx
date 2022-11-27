@@ -6,30 +6,24 @@ import HistoryPopover from "../Popovers/HistoryPopoover/HistoryPopover";
 import "./NextTraining.css";
 
 const NextTraining = () => {
-  const { hookVariables, handleRequest } = useNextTraining();
+  const { isLoading, isError, data, selectedExercise } = useNextTraining();
 
   return (
-    <DataStatusHandler
-      isLoading={handleRequest.isLoading}
-      isError={handleRequest.isError}
-      data={handleRequest.data}
-    >
+    <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
       <article className="container-next-training">
         <header>
           <h2>Next Training:</h2>
         </header>
         <section>
-          {handleRequest.data?.map((body: BodyPart) => {
-            return (
-              <BodyPartContainer
-                bodyPart={body.part}
-                exercises={body.exercises}
-                key={body.part}
-              />
-            );
-          })}
+          {data?.map((body: BodyPart) => (
+            <BodyPartContainer
+              bodyPart={body.part}
+              exercises={body.exercises}
+              key={body.part}
+            />
+          ))}
         </section>
-        {hookVariables.selectedExercise ? <HistoryPopover /> : <></>}
+        {selectedExercise && <HistoryPopover />}
       </article>
     </DataStatusHandler>
   );

@@ -1,5 +1,7 @@
+import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+
 export interface BodyPartContainerProps {
-  bodyPart: string;
+  bodyPart: AvailableBodyParts;
   exercises: ExerciseInformation[];
 }
 
@@ -19,7 +21,7 @@ export interface ExerciseInformation {
 }
 
 export interface BodyPart {
-  part: string;
+  part: AvailableBodyParts;
   exercises: ExerciseInformation[];
 }
 

@@ -6,7 +6,17 @@ import {
 import { useParams, Link } from "react-router-dom";
 import { firstBigLetter } from "src/utils/Utils";
 import useRouteCarousel from "../../../hooks/useRouteCarousel";
+import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 import "./CarouselRoute.css";
+
+//Tak można wyciągnąć, ponad funkcję główną(komponent)?
+function assertBodyPartFromParamsIsValid(
+  param: string
+): asserts param is typeof availableBodyParts[number] {
+  if (!availableBodyParts.some((bodyPart) => bodyPart === param)) {
+    throw new Error("Body part recived in param is invalid");
+  }
+}
 
 const CarouselRoute = () => {
   let { selectedBodyPart } = useParams();
@@ -14,6 +24,10 @@ const CarouselRoute = () => {
   if (!selectedBodyPart) {
     throw new Error("expected selectedBodyPart");
   }
+
+  const initialBodyPart = selectedBodyPart ?? availableBodyParts[0];
+
+  assertBodyPartFromParamsIsValid(initialBodyPart);
 
   const { previousBodyPartUrl, nextBodyPartUrl } =
     useRouteCarousel(selectedBodyPart);

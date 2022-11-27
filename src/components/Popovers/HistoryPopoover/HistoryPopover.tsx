@@ -5,14 +5,14 @@ import { useNextTraining } from "src/contexts/nextTraining/hooks/useNextTraining
 import "./HistoryPopover.css";
 
 const HistoryPopover = () => {
-  const { hookVariables } = useNextTraining();
+  const { lastTraining, selectedExercise } = useNextTraining();
 
   return (
     <article className="container-history-popover">
-      {hookVariables.lastTraining ? (
+      {lastTraining ? (
         <ContentPopover
-          lastTraining={hookVariables.lastTraining}
-          selectedExercise={hookVariables.selectedExercise}
+          lastTraining={lastTraining}
+          selectedExercise={selectedExercise}
         />
       ) : (
         <span>Make Your First Training!</span>

@@ -38,19 +38,14 @@ export const NextTrainingProvider = ({
 
   const lastTraining = getRightExercise()?.lastTraining;
 
-  const hookVariables = {
+  const value: NextTrainingContextValue = {
+    isLoading,
+    isError,
+    data,
     selectedExercise,
     selectExercise,
     lastTraining,
   };
-
-  const handleRequest = {
-    isLoading: isLoading,
-    isError: isError,
-    data: data,
-  };
-
-  const value: NextTrainingContextValue = { hookVariables, handleRequest };
 
   return (
     <NextTrainingContext.Provider value={value}>

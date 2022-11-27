@@ -19,7 +19,7 @@ const SelectedExercise = () => {
 
   return (
     <DataStatusHandler data={data} isLoading={isLoading} isError={isError}>
-      {(data) => (
+      {data && (
         <article className="content-selected-exercises">
           <article className="grid-selected-exercise">
             <header className="back-selected-exercise">

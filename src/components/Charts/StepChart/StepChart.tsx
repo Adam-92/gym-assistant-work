@@ -18,7 +18,7 @@ const StepChart = () => {
 
   return (
     <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
-      {(data) => (
+      {data && (
         <article className="container-step-chart">
           <header className="header-step-chart">
             <h2>Steps: {target} / day</h2>

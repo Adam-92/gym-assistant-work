@@ -1,14 +1,22 @@
 import { ExerciseProps } from "./NextTraining.model";
 import { useNextTraining } from "src/contexts/nextTraining/hooks/useNextTraining";
+import { ExerciseInformation } from "./NextTraining.model";
 
 const Exercise = ({ bodyPart, exercise }: ExerciseProps) => {
-  const { hookVariables } = useNextTraining();
+  const { selectExercise } = useNextTraining();
+
+  const getRepsPerSetText = (exercise: ExerciseInformation) => {
+    return `${exercise.reps} x ${exercise.sets}`;
+  };
+  const getBestRecordRepsPerSetText = (exercise: ExerciseInformation) => {
+    return `BEST RECORD: ${exercise.repsMax} x ${exercise.weightMax}`;
+  };
 
   return (
     <div
       className="exercise-next-training"
       onClick={() =>
-        hookVariables.selectExercise({
+        selectExercise({
           name: exercise.name,
           bodyPart: bodyPart,
         })
@@ -17,15 +25,11 @@ const Exercise = ({ bodyPart, exercise }: ExerciseProps) => {
       <span>{exercise.id}</span>
       <div>
         <span>{exercise.name}</span>
-        <span>
-          {exercise.reps} x {exercise.sets}
-        </span>
+        <span>{getRepsPerSetText(exercise)}</span>
       </div>
       <div>
         {exercise.lastTraining ? (
-          <span>
-            BEST RECORD: {exercise.repsMax} x {exercise.weightMax}
-          </span>
+          <span>{getBestRecordRepsPerSetText(exercise)}</span>
         ) : (
           <span>NOT REGISTERED</span>
         )}
