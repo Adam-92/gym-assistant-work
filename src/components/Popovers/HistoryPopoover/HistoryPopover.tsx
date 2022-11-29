@@ -9,7 +9,7 @@ const HistoryPopover = () => {
 
   return (
     <article className="container-history-popover">
-      {lastTraining ? (
+      {lastTraining && selectedExercise ? (
         <ContentPopover
           lastTraining={lastTraining}
           selectedExercise={selectedExercise}

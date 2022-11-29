@@ -18,14 +18,14 @@ const StepChart = () => {
 
   return (
     <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
-      {data && (
+      {(data) => (
         <article className="container-step-chart">
           <header className="header-step-chart">
             <h2>Steps: {target} / day</h2>
             <Switch
               period={period}
-              monthlyPeriod={setMonthlyPeriod}
-              weeklyPeriod={setWeeklyPeriod}
+              setMonthlyPeriod={setMonthlyPeriod}
+              setWeeklyPeriod={setWeeklyPeriod}
             />
           </header>
           <div

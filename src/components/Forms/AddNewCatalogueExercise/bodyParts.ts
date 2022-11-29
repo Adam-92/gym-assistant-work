@@ -4,36 +4,36 @@ export const bodyParts: BodyParts[] = [
   {
     id: 1,
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    name: "Chest",
+    name: "chest",
   },
   {
     id: 2,
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    name: "Legs",
+    name: "legs",
   },
   {
     id: 3,
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    name: "Shoulders",
+    name: "shoulders",
   },
   {
     id: 4,
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    name: "Abs",
+    name: "abs",
   },
   {
     id: 5,
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    name: "Biceps",
+    name: "biceps",
   },
   {
     id: 6,
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    name: "Triceps",
+    name: "triceps",
   },
   {
     id: 7,
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHAjsuX1eVRWzn9AzfZEUOQh-ykV2KwDiHA&usqp=CAU",
-    name: "Back",
+    name: "back",
   },
 ];

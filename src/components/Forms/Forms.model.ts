@@ -1,6 +1,8 @@
+import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+
 export type CatalogueNewExerciseFormValues = {
   name: string;
-  part: string;
+  part: AvailableBodyParts;
   secondaryMuscle: string[];
   exerciseDescription: string;
   exampleImage: undefined | string;
@@ -10,7 +12,7 @@ export type CatalogueNewExerciseFormValues = {
 export interface BodyParts {
   id: number;
   icon: string;
-  name: string;
+  name: AvailableBodyParts;
 }
 
 export interface SecondaryMuscles {

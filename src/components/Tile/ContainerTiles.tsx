@@ -23,20 +23,22 @@ const ContainerTiles = () => {
 
   return (
     <DataStatusHandler isLoading={isLoading} data={data} isError={isError}>
-      <div className="tile">
-        {data?.map((tile: TileProps, index: number) => {
-          return (
-            <Tile
-              key={tile.name}
-              icon={tileIcons[index]}
-              name={tile.name}
-              target={tile.target}
-              current={tile.current}
-              style={tile.style}
-            />
-          );
-        })}
-      </div>
+      {(data) => (
+        <div className="tile">
+          {data.map((tile: TileProps, index: number) => {
+            return (
+              <Tile
+                key={tile.name}
+                icon={tileIcons[index]}
+                name={tile.name}
+                target={tile.target}
+                current={tile.current}
+                style={tile.style}
+              />
+            );
+          })}
+        </div>
+      )}
     </DataStatusHandler>
   );
 };

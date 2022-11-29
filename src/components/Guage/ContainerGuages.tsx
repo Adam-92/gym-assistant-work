@@ -7,21 +7,21 @@ import DataStatusHandler from "../DataStatusHandler/DataStatusHandler";
 
 const ContainerGuages = () => {
   const { isLoading, isError, data } = useFetchData(getGauges);
-
+  
   return (
     <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
-      <article className="container-guages">
-        {data?.map(({ target, current, units }: GuageProps) => {
-          return (
+      {(data) => (
+        <article className="container-guages">
+          {data.map(({ target, current, units }: GuageProps) => (
             <Guage
               target={target}
               current={current}
               units={units}
               key={units}
             />
-          );
-        })}
-      </article>
+          ))}
+        </article>
+      )}
     </DataStatusHandler>
   );
 };

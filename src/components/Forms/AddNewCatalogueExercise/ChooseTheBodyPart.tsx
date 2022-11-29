@@ -1,6 +1,7 @@
 import { bodyParts } from "./bodyParts";
 import { useFormContext } from "react-hook-form";
 import { BodyParts } from "../Forms.model";
+import { firstBigLetter } from "src/utils/Utils";
 
 const ChooseTheBodyPart = () => {
   const {
@@ -17,7 +18,7 @@ const ChooseTheBodyPart = () => {
             <div className="icon-add-new-catalogue" key={id}>
               <label htmlFor={name} className="noSelect">
                 <img src={icon} alt={name} />
-                {name}
+                {firstBigLetter(name)}
                 <input
                   id={name}
                   type="radio"

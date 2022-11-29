@@ -9,6 +9,8 @@ import { iconsDescription } from "src/pages/selectedExercise-page/iconsDescripti
 import { IconsDescription } from "src/pages/selectedExercise-page/SelectedExercise.model";
 import { useState, useEffect, useCallback } from "react";
 import { parseError } from "src/errors/parseError";
+import { assertBodyPartFromParamsIsValid } from "src/components/Carousels/CarouselRoute/assertBodyPartFromParamsIsValid";
+import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 
 const useSelectedExercise = () => {
   const [data, setData] = useState<NewExercise>();
@@ -18,15 +20,21 @@ const useSelectedExercise = () => {
   const { currentUser } = useUserContext();
   const { selectedBodyPart, selectedExercise } = useParams();
 
+
+  const initialBodyPart = selectedBodyPart ?? availableBodyParts[0];
+
+  assertBodyPartFromParamsIsValid(initialBodyPart);
+
+
   const rightDescriptionIcon = iconsDescription.find(
-    ({ name }: IconsDescription) => name === selectedBodyPart
+    ({ name }: IconsDescription) => name === initialBodyPart
   );
 
   const fetchData = useCallback(async () => {
     try {
       if (currentUser && selectedBodyPart && selectedExercise) {
         const request = await getUserDataSelectedExercise(
-          selectedBodyPart,
+          initialBodyPart,
           currentUser.uid
         );
 
@@ -39,7 +47,7 @@ const useSelectedExercise = () => {
           setData(selectedExerciseData);
         } else {
           const request = await getAllUsersDataSelectedExercise(
-            selectedBodyPart
+            initialBodyPart
           );
 
           const data = request.data();
@@ -54,7 +62,7 @@ const useSelectedExercise = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [currentUser, selectedBodyPart, selectedExercise]);
+  }, [currentUser, selectedBodyPart, selectedExercise, initialBodyPart]);
 
   useEffect(() => {
     fetchData();

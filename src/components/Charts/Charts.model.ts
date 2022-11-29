@@ -17,8 +17,8 @@ export interface BarStepsProps {
 }
 export interface SwitchProps {
   period: boolean;
-  monthlyPeriod: () => void;
-  weeklyPeriod: () => void;
+  setMonthlyPeriod: () => void;
+  setWeeklyPeriod: () => void;
 }
 
 export interface CaloriesData {

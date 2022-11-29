@@ -7,16 +7,8 @@ import { useParams, Link } from "react-router-dom";
 import { firstBigLetter } from "src/utils/Utils";
 import useRouteCarousel from "../../../hooks/useRouteCarousel";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+import { assertBodyPartFromParamsIsValid } from "./assertBodyPartFromParamsIsValid";
 import "./CarouselRoute.css";
-
-//Tak można wyciągnąć, ponad funkcję główną(komponent)?
-function assertBodyPartFromParamsIsValid(
-  param: string
-): asserts param is typeof availableBodyParts[number] {
-  if (!availableBodyParts.some((bodyPart) => bodyPart === param)) {
-    throw new Error("Body part recived in param is invalid");
-  }
-}
 
 const CarouselRoute = () => {
   let { selectedBodyPart } = useParams();
@@ -30,7 +22,7 @@ const CarouselRoute = () => {
   assertBodyPartFromParamsIsValid(initialBodyPart);
 
   const { previousBodyPartUrl, nextBodyPartUrl } =
-    useRouteCarousel(selectedBodyPart);
+    useRouteCarousel(initialBodyPart);
 
   return (
     <header className="header-carousel-route noSelect">
@@ -40,7 +32,7 @@ const CarouselRoute = () => {
           className="icon-carousel-route"
         />
       </Link>
-      <h1>{selectedBodyPart && firstBigLetter(selectedBodyPart)}</h1>
+      <h1>{selectedBodyPart && firstBigLetter(initialBodyPart)}</h1>
       <Link to={nextBodyPartUrl}>
         <FontAwesomeIcon
           icon={faCircleArrowRight}

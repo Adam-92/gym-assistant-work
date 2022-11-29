@@ -6,7 +6,7 @@ export interface BodyPartContainerProps {
 }
 
 export interface ExerciseProps {
-  bodyPart: string;
+  bodyPart: AvailableBodyParts;
   exercise: ExerciseInformation;
 }
 

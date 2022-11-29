@@ -9,7 +9,6 @@ import {
   arrayUnion,
   DocumentReference,
   DocumentData,
-  DocumentSnapshot,
 } from "firebase/firestore";
 import { db } from "src/firebase/config/firebase";
 import { User } from "firebase/auth";
@@ -17,6 +16,7 @@ import { arrayNewExercises, stepChartData, tileData } from "./converters";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 import { firstBigLetter } from "src/utils/Utils";
 import { caloriesChartData } from "./converters";
+import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 
 export const getCaloriesChartData = async () => {
   const ref = doc(db, "exampleDashboardData/caloriesChart").withConverter(
@@ -25,7 +25,9 @@ export const getCaloriesChartData = async () => {
   return await getDoc(ref);
 };
 
-export const getAllUsersDataSelectedExercise = async (bodyPart: string) =>
+export const getAllUsersDataSelectedExercise = async (
+  bodyPart: AvailableBodyParts
+) =>
   await getDoc(
     doc(db, `/forAllUsersExercises/${firstBigLetter(bodyPart)}`).withConverter(
       arrayNewExercises
@@ -33,7 +35,7 @@ export const getAllUsersDataSelectedExercise = async (bodyPart: string) =>
   );
 
 export const getUserDataSelectedExercise = async (
-  bodyPart: string,
+  bodyPart: AvailableBodyParts,
   userId: string
 ) =>
   await getDoc(
@@ -50,10 +52,7 @@ export const getWeeklySteps = async () => {
   return request;
 };
 
-
-export const getMonthlySteps = async (): Promise<
-  DocumentSnapshot<DocumentData>
-> => {
+export const getMonthlySteps = async () => {
   const request = await getDoc(doc(db, "exampleDashboardData/stepsChart"));
   return request;
 };

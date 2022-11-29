@@ -10,21 +10,23 @@ const NextTraining = () => {
 
   return (
     <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
-      <article className="container-next-training">
-        <header>
-          <h2>Next Training:</h2>
-        </header>
-        <section>
-          {data?.map((body: BodyPart) => (
-            <BodyPartContainer
-              bodyPart={body.part}
-              exercises={body.exercises}
-              key={body.part}
-            />
-          ))}
-        </section>
-        {selectedExercise && <HistoryPopover />}
-      </article>
+      {(data) => (
+        <article className="container-next-training">
+          <header>
+            <h2>Next Training:</h2>
+          </header>
+          <section>
+            {data.map((bodyParts: BodyPart) => (
+              <BodyPartContainer
+                bodyPart={bodyParts.part}
+                exercises={bodyParts.exercises}
+                key={bodyParts.part}
+              />
+            ))}
+          </section>
+          {selectedExercise && <HistoryPopover />}
+        </article>
+      )}
     </DataStatusHandler>
   );
 };

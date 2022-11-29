@@ -27,7 +27,7 @@ const CaloriesChart = () => {
   const { updatedData, data, isLoading, isError } = useCaloriesChartData();
   return (
     <DataStatusHandler data={data} isLoading={isLoading} isError={isError}>
-      <Line options={options} data={updatedData} />
+      {() => <Line options={options} data={updatedData} />}
     </DataStatusHandler>
   );
 };
