@@ -10,8 +10,8 @@ export const changeToPercent = (steps: number, target: number): number => {
   return calculate > 100 ? 100 : calculate;
 };
 
-export const minToHours = (min: number | string) => {
-  const hours = typeof min === "number" ? min / 60 : 0;
+export const minToHours = (min: number) => {
+  const hours = min / 60;
   const rhours = Math.floor(hours);
   const minutes = (hours - rhours) * 60;
   const rminutes = Math.round(minutes);

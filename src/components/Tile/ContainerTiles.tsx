@@ -10,16 +10,20 @@ import {
   faWeightHanging,
   faDumbbell,
 } from "@fortawesome/free-solid-svg-icons";
+import { useMemo } from "react";
 
 const ContainerTiles = () => {
   const { data, isLoading, isError } = useFetchData(getTilesData);
 
-  const tileIcons = [
-    <FontAwesomeIcon icon={faShoePrints} className="fa-rotate-270" />,
-    <FontAwesomeIcon icon={faBurger} />,
-    <FontAwesomeIcon icon={faDumbbell} />,
-    <FontAwesomeIcon icon={faWeightHanging} />,
-  ];
+  const tileIcons = useMemo(
+    () => [
+      <FontAwesomeIcon icon={faShoePrints} className="fa-rotate-270" />,
+      <FontAwesomeIcon icon={faBurger} />,
+      <FontAwesomeIcon icon={faDumbbell} />,
+      <FontAwesomeIcon icon={faWeightHanging} />,
+    ],
+    []
+  );
 
   return (
     <DataStatusHandler isLoading={isLoading} data={data} isError={isError}>

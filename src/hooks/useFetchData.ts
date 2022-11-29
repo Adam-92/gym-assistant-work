@@ -3,7 +3,7 @@ import { DocumentData, DocumentSnapshot } from "firebase/firestore";
 import { parseError } from "src/errors/parseError";
 
 const useFetchData = (
-  asyncRequest: () => Promise<DocumentSnapshot<DocumentData>>
+  firebaseRequest: () => Promise<DocumentSnapshot<DocumentData>>
 ) => {
   const [data, setData] = useState<DocumentData>();
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +11,7 @@ const useFetchData = (
 
   const fetchData = useCallback(async () => {
     try {
-      const request = await asyncRequest();
+      const request = await firebaseRequest();
 
       if (request.exists()) {
         setData(request.data().data);
@@ -21,7 +21,7 @@ const useFetchData = (
     } finally {
       setIsLoading(false);
     }
-  }, [asyncRequest]);
+  }, [firebaseRequest]);
 
   useEffect(() => {
     fetchData();

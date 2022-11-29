@@ -13,7 +13,7 @@ export interface StyleTile {
 }
 
 export interface StatisticsTile {
-  target: number | string;
-  current: number | string;
+  target: number;
+  current: number;
   name: string;
 }

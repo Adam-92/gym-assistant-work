@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { NextTrainingContext } from "../context/NextTrainingContext";
 import {
   NextTrainingProviderProps,
@@ -18,34 +18,40 @@ export const NextTrainingProvider = ({
   const { isLoading, isError, data } = useFetchData(getNextTraining);
   const [selectedExercise, setSelectedExercise] = useState<SelectedExercise>();
 
-  const selectExercise = (selectedExercise: SelectedExercise) =>
-    setSelectedExercise(selectedExercise);
+  const selectExercise = useCallback(
+    (selectedExercise: SelectedExercise) =>
+      setSelectedExercise(selectedExercise),
+    []
+  );
 
-  const getRightBodyPart = (): BodyPart | undefined => {
+  const getRightBodyPart = useCallback((): BodyPart | undefined => {
     return data?.find(
       (bodyPart: BodyPart) => bodyPart.part === selectedExercise?.bodyPart
     );
-  };
+  }, [data, selectedExercise]);
 
-  const getRightExercise = () => {
+  const getRightExercise = useCallback(() => {
     const bodyPart = getRightBodyPart();
     const exercise = bodyPart?.exercises.find(
       (exercise: ExerciseInformation) =>
         exercise.name === selectedExercise?.name
     );
     return exercise;
-  };
+  }, [getRightBodyPart, selectedExercise]);
 
   const lastTraining = getRightExercise()?.lastTraining;
 
-  const value: NextTrainingContextValue = {
-    isLoading,
-    isError,
-    data,
-    selectedExercise,
-    selectExercise,
-    lastTraining,
-  };
+  const value: NextTrainingContextValue = useMemo(
+    () => ({
+      isLoading,
+      isError,
+      data,
+      selectedExercise,
+      selectExercise,
+      lastTraining,
+    }),
+    [data, isLoading, isError, lastTraining, selectExercise, selectedExercise]
+  );
 
   return (
     <NextTrainingContext.Provider value={value}>
