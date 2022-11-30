@@ -12,7 +12,13 @@ import {
 } from "firebase/firestore";
 import { db } from "src/firebase/config/firebase";
 import { User } from "firebase/auth";
-import { arrayNewExercises, stepChartData, tileData } from "./converters";
+import {
+  arrayNewExercises,
+  nextTrainingData,
+  stepChartData,
+  tileData,
+  guagesData,
+} from "./converters";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 import { firstBigLetter } from "src/utils/Utils";
 import { caloriesChartData } from "./converters";
@@ -73,12 +79,14 @@ export const getTilesData = async () => {
   return request;
 };
 export const getNextTraining = async () => {
-  const request = await getDoc(doc(db, `exampleDashboardData/nextTraining`));
+  const request = await getDoc(
+    doc(db, `exampleDashboardData/nextTraining`).withConverter(nextTrainingData)
+  );
   return request;
 };
 export const getGauges = async () => {
   const request = await getDoc(
-    doc(db, `exampleDashboardData/activityGuages`).withConverter(tileData)
+    doc(db, `exampleDashboardData/activityGuages`).withConverter(guagesData)
   );
   return request;
 };

@@ -1,0 +1,39 @@
+.catalogue {
+    height: 100%;
+    background-color: white;
+}
+
+.catalogue a {
+    text-decoration: none;
+}
+
+.catalogue ul {
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.catalogue ul li {
+    position: relative;
+    list-style: none;
+    border: 1px solid red;
+    width: 330px;
+    height: 230px;
+}
+
+
+.catalogue ul li img {
+    position: absolute;
+    top: 0%;
+    left: 30%;
+    width: 66%;
+    opacity: 0.8;
+}
+
+.legs-resize {
+    left: 55% !important;
+    width: 35% !important
+}

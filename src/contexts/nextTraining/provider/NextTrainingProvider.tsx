@@ -19,27 +19,24 @@ export const NextTrainingProvider = ({
   const [selectedExercise, setSelectedExercise] = useState<SelectedExercise>();
 
   const selectExercise = useCallback(
-    (selectedExercise: SelectedExercise) =>
-      setSelectedExercise(selectedExercise),
+    (newSelectedExercise: SelectedExercise) =>
+      setSelectedExercise(newSelectedExercise),
     []
   );
 
-  const getRightBodyPart = useCallback((): BodyPart | undefined => {
-    return data?.find(
-      (bodyPart: BodyPart) => bodyPart.part === selectedExercise?.bodyPart
-    );
-  }, [data, selectedExercise]);
+  const lastTraining = useMemo(() => {
+    if (!data || !selectedExercise) return undefined;
 
-  const getRightExercise = useCallback(() => {
-    const bodyPart = getRightBodyPart();
+    const bodyPart: BodyPart | undefined = data.find(
+      ({ bodyPart }) => bodyPart === selectedExercise.bodyPart
+    );
+
     const exercise = bodyPart?.exercises.find(
       (exercise: ExerciseInformation) =>
         exercise.name === selectedExercise?.name
     );
-    return exercise;
-  }, [getRightBodyPart, selectedExercise]);
-
-  const lastTraining = getRightExercise()?.lastTraining;
+    return exercise?.lastTraining;
+  }, [data, selectedExercise]);
 
   const value: NextTrainingContextValue = useMemo(
     () => ({

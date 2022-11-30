@@ -21,7 +21,7 @@ export interface ExerciseInformation {
 }
 
 export interface BodyPart {
-  part: AvailableBodyParts;
+  bodyPart: AvailableBodyParts;
   exercises: ExerciseInformation[];
 }
 

@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-import { DocumentData, DocumentSnapshot } from "firebase/firestore";
+import { DocumentSnapshot } from "firebase/firestore";
 import { parseError } from "src/errors/parseError";
 
-const useFetchData = (
-  firebaseRequest: () => Promise<DocumentSnapshot<DocumentData>>
+const useFetchData = <T>(
+  firebaseRequest: () => Promise<DocumentSnapshot<{ data: T }>>
 ) => {
-  const [data, setData] = useState<DocumentData>();
+  const [data, setData] = useState<T>();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
 

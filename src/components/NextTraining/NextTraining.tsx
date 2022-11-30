@@ -18,9 +18,9 @@ const NextTraining = () => {
           <section>
             {data.map((bodyParts: BodyPart) => (
               <BodyPartContainer
-                bodyPart={bodyParts.part}
+                bodyPart={bodyParts.bodyPart}
                 exercises={bodyParts.exercises}
-                key={bodyParts.part}
+                key={bodyParts.bodyPart}
               />
             ))}
           </section>
