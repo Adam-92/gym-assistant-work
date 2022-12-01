@@ -5,5 +5,8 @@ export const availableBodyParts = [
   "back",
   "abs",
   "legs",
-  "shoulders",
-];
+  "shoulders"
+] as const;
+
+export type AvailableBodyParts = typeof availableBodyParts[number];
+

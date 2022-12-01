@@ -1,25 +1,35 @@
-const Exercise = ({
-  id,
-  name,
-  reps,
-  sets,
-  repsMax,
-  weightMax,
-}: any) => {
+import { ExerciseProps } from "./NextTraining.model";
+import { useNextTraining } from "src/contexts/nextTraining/hooks/useNextTraining";
+import { ExerciseInformation } from "./NextTraining.model";
+
+const Exercise = ({ bodyPart, exercise }: ExerciseProps) => {
+  const { selectExercise } = useNextTraining();
+
+  const getRepsPerSetText = (exercise: ExerciseInformation) => {
+    return `${exercise.reps} x ${exercise.sets}`;
+  };
+  const getBestRecordRepsPerSetText = (exercise: ExerciseInformation) => {
+    return `BEST RECORD: ${exercise.repsMax} x ${exercise.weightMax}`;
+  };
+
   return (
-    <div className="exercise-next-training">
-      <span>{id}</span>
+    <div
+      className="exercise-next-training"
+      onClick={() =>
+        selectExercise({
+          name: exercise.name,
+          bodyPart: bodyPart,
+        })
+      }
+    >
+      <span>{exercise.id}</span>
       <div>
-        <span>{name}</span>
-        <span>
-          {reps} x {sets}
-        </span>
+        <span>{exercise.name}</span>
+        <span>{getRepsPerSetText(exercise)}</span>
       </div>
       <div>
-        {repsMax && weightMax ? (
-          <span>
-            BEST RECORD: {repsMax} x {weightMax}
-          </span>
+        {exercise.lastTraining ? (
+          <span>{getBestRecordRepsPerSetText(exercise)}</span>
         ) : (
           <span>NOT REGISTERED</span>
         )}

@@ -1,9 +1,9 @@
-import { TileInterface } from "src/components/Tile/Tile.model";
+import { TileProps } from "src/components/Tile/Tile.model";
 import Statistics from "./Statistics";
 
-const Tile = ({ icon, name, target, current, style }: TileInterface) => {
+const Tile = (tile: TileProps) => {
   const { backgroundIcon, backgroundHeader, backgroundContainer, borderColor } =
-    style;
+    tile.style;
 
   return (
     <article
@@ -18,13 +18,17 @@ const Tile = ({ icon, name, target, current, style }: TileInterface) => {
           className="icon-tile"
           style={{ backgroundColor: backgroundIcon, borderColor: borderColor }}
         >
-          {icon}
+          {tile.icon}
         </div>
         <div className="name-tile">
-          <span>{name}</span>
+          <span>{tile.name}</span>
         </div>
       </div>
-      <Statistics target={target} current={current} name={name} />
+      <Statistics
+        target={tile.target}
+        current={tile.current}
+        name={tile.name}
+      />
     </article>
   );
 };

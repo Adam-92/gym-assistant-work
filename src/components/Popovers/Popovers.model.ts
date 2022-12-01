@@ -1,5 +1,7 @@
-export interface TrainingSet {
-    reps: number;
-    weight: number;
-  }
-  
+import { LastTraining } from "../NextTraining/NextTraining.model";
+import { SelectedExercise } from "src/contexts/nextTraining/provider/NextTrainingProvider.model";
+
+export interface ContentPopoverProps {
+  lastTraining: LastTraining;
+  selectedExercise: SelectedExercise;
+}

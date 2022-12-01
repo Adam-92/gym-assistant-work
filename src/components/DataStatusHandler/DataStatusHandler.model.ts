@@ -1,8 +1,6 @@
-import { ReactNode } from "react";
-
-export interface DataStatusHandlerProps {
+export interface DataStatusHandlerProps<T> {
   isLoading: boolean;
   isError: string;
-  data: any;
-  children: ReactNode;
+  data?: T;
+  children: (data: T) => JSX.Element;
 }

@@ -1,32 +1,28 @@
-import { useEffect, useState } from "react";
-import { GuageInterface } from "src/components/Guage/Guage.model";
+import { GuageProps } from "src/components/Guage/Guage.model";
 import { getGauges } from "../../firebase/services/Activity";
+import useFetchData from "src/hooks/useFetchData";
 import Guage from "./Guage";
 import "./Guage.css";
+import DataStatusHandler from "../DataStatusHandler/DataStatusHandler";
 
 const ContainerGuages = () => {
-  const [data, setData] = useState<GuageInterface[]>([]);
-
-  useEffect(() => {
-    getGauges().then((res) => setData(res));
-  }, []);
-
+  const { isLoading, isError, data } = useFetchData(getGauges);
+  
   return (
-    <article className="container-guages">
-      {data &&
-        data.map(
-          ({ target, current, units }: GuageInterface, index: number) => {
-            return (
-              <Guage
-                target={target}
-                current={current}
-                units={units}
-                key={index}
-              />
-            );
-          }
-        )}
-    </article>
+    <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
+      {(data) => (
+        <article className="container-guages">
+          {data.map(({ target, current, units }: GuageProps) => (
+            <Guage
+              target={target}
+              current={current}
+              units={units}
+              key={units}
+            />
+          ))}
+        </article>
+      )}
+    </DataStatusHandler>
   );
 };
 export default ContainerGuages;

@@ -1,7 +1,8 @@
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 import { useLocation } from "react-router";
 
-const useRouteCarousel = (selectedBodyPart: string) => {
+const useRouteCarousel = (selectedBodyPart: AvailableBodyParts) => {
   const { pathname } = useLocation();
 
   const currentRouteIndex = availableBodyParts.indexOf(selectedBodyPart);

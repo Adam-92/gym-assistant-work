@@ -93,50 +93,205 @@ const Plan = () => {
     }
   };
 
-  const addCaloriesData = async () => {
+  const addNewDataToDashboard = async () => {
+    const ref = doc(db, `exampleDashboardData/nextTraining`);
+
     try {
-      const ref = doc(db, "exampleDashboardData/caloriesChart");
-      const document = await setDoc(ref, {
-        data: [
-          {
-            label: "Monday",
-            dailyCalories: 1500,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Tuesday",
-            dailyCalories: 3200,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Wednesday",
-            dailyCalories: 2000,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Thursday",
-            dailyCalories: 1200,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Friday",
-            dailyCalories: 3500,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Saturday",
-            dailyCalories: 800,
-            caloriesMax: 2000,
-          },
-          {
-            label: "Sunday",
-            dailyCalories: 2900,
-            caloriesMax: 2000,
-          },
-        ],
-      });
-    } catch (e) {
-      console.log(e);
+      await setDoc(
+        ref,
+        {
+          data: [
+            {
+              part: "Chest",
+              exercises: [
+                {
+                  id: 1,
+                  name: "Flat Bench Press",
+                  reps: 5,
+                  sets: 5,
+                  repsMax: 8,
+                  weightMax: 105,
+                  lastTraining: {
+                    date: "18.05.22",
+                    sets: [
+                      {
+                        reps: 10,
+                        weight: 101,
+                      },
+                      {
+                        reps: 8,
+                        weight: 105,
+                      },
+                    ],
+                  },
+                },
+                {
+                  id: 2,
+                  name: "Declined Press",
+                  reps: 5,
+                  sets: 5,
+                  repsMax: 5,
+                  weightMax: 110,
+                  lastTraining: {
+                    date: "10.05.22",
+                    sets: [
+                      {
+                        reps: 5,
+                        weight: 110,
+                      },
+                    ],
+                  },
+                },
+                {
+                  id: 3,
+                  name: "Chest Dipps",
+                  reps: 10,
+                  sets: 3,
+                  repsMax: 5,
+                  weightMax: 22,
+                  lastTraining: {
+                    date: "17.05.22",
+                    sets: [
+                      {
+                        reps: 8,
+                        weight: 10,
+                      },
+                      {
+                        reps: 6,
+                        weight: 15,
+                      },
+                      {
+                        reps: 5,
+                        weight: 22,
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+            {
+              part: "Legs",
+              exercises: [
+                {
+                  id: 1,
+                  name: "Squats",
+                  reps: 5,
+                  sets: 3,
+                  repsMax: 0,
+                  weightMax: 0,
+                },
+                {
+                  id: 2,
+                  name: "Romanian Deadlifts",
+                  reps: 8,
+                  sets: 3,
+                  repsMax: 0,
+                  weightMax: 0,
+                },
+                {
+                  id: 3,
+                  name: "Front Squats",
+                  reps: 10,
+                  sets: 4,
+                  repsMax: 6,
+                  weightMax: 110,
+                  lastTraining: {
+                    date: "18.05.22",
+                    sets: [
+                      {
+                        reps: 10,
+                        weight: 101,
+                      },
+                      {
+                        reps: 8,
+                        weight: 105,
+                      },
+                      {
+                        reps: 6,
+                        weight: 110,
+                      },
+                    ],
+                  },
+                },
+                {
+                  id: 4,
+                  name: "Leg Curls",
+                  reps: 10,
+                  sets: 4,
+                  repsMax: 5,
+                  weightMax: 22,
+                  lastTraining: {
+                    date: "17.05.22",
+                    sets: [
+                      {
+                        reps: 8,
+                        weight: 10,
+                      },
+                      {
+                        reps: 6,
+                        weight: 15,
+                      },
+                      {
+                        reps: 5,
+                        weight: 22,
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+            {
+              part: "Biceps",
+              exercises: [
+                {
+                  id: 1,
+                  name: "Incline Dumbell Curl",
+                  reps: 10,
+                  sets: 4,
+                  repsMax: 0,
+                  weightMax: 0,
+                },
+                {
+                  id: 2,
+                  name: "Dumbell Hammer Curl",
+                  reps: 12,
+                  sets: 3,
+                  repsMax: 0,
+                  weightMax: 0,
+                },
+                {
+                  id: 3,
+                  name: "Barbell Curl",
+                  reps: 8,
+                  sets: 4,
+                  repsMax: 5,
+                  weightMax: 22,
+                  lastTraining: {
+                    date: "17.05.22",
+                    sets: [
+                      {
+                        reps: 8,
+                        weight: 10,
+                      },
+                      {
+                        reps: 6,
+                        weight: 15,
+                      },
+                      {
+                        reps: 5,
+                        weight: 22,
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        { merge: true }
+      );
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -145,9 +300,8 @@ const Plan = () => {
       <h2>Add new exercise: </h2>
       <button onClick={registerNewExercise}>Click</button>
 
-      <h2>Add Data: </h2>
-
-      <button onClick={addCaloriesData}>ADD CALORIES DATA</button>
+      <h2>Add new data to dashboard</h2>
+      <button onClick={addNewDataToDashboard}>Click</button>
     </>
   );
 };

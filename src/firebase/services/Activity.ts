@@ -11,21 +11,19 @@ import {
   DocumentData,
 } from "firebase/firestore";
 import { db } from "src/firebase/config/firebase";
-import { StepsValues } from "src/components/Charts/Charts.model";
 import { User } from "firebase/auth";
-import { arrayNewExercises } from "./converters";
+import {
+  arrayNewExercises,
+  nextTrainingData,
+  stepChartData,
+  tileData,
+  guagesData,
+} from "./converters";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 import { firstBigLetter } from "src/utils/Utils";
 import { caloriesChartData } from "./converters";
+import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 
-/* 
-  Pytanie - 
-  Czy przerobić wszystkie funkcje i komponenty, tak by zostały obsłużone przez 
-  DataStatusHandler?
-  
-  Raczej powinniśmy, tak zrobić.
-
-  */
 export const getCaloriesChartData = async () => {
   const ref = doc(db, "exampleDashboardData/caloriesChart").withConverter(
     caloriesChartData
@@ -34,7 +32,7 @@ export const getCaloriesChartData = async () => {
 };
 
 export const getAllUsersDataSelectedExercise = async (
-  bodyPart: string
+  bodyPart: AvailableBodyParts
 ) =>
   await getDoc(
     doc(db, `/forAllUsersExercises/${firstBigLetter(bodyPart)}`).withConverter(
@@ -43,7 +41,7 @@ export const getAllUsersDataSelectedExercise = async (
   );
 
 export const getUserDataSelectedExercise = async (
-  bodyPart: string,
+  bodyPart: AvailableBodyParts,
   userId: string
 ) =>
   await getDoc(
@@ -53,24 +51,18 @@ export const getUserDataSelectedExercise = async (
     ).withConverter(arrayNewExercises)
   );
 
-export const getDailySteps = async (): Promise<StepsValues[] | undefined> => {
-  try {
-    return await (
-      await personalUserData.get(`dailySteps.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+export const getWeeklySteps = async () => {
+  const request = await getDoc(
+    doc(db, "exampleDashboardData/stepsChart").withConverter(stepChartData)
+  );
+  return request;
 };
-export const getMonthlySteps = async (): Promise<StepsValues[] | undefined> => {
-  try {
-    return await (
-      await personalUserData.get(`monthlySteps.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+
+export const getMonthlySteps = async () => {
+  const request = await getDoc(doc(db, "exampleDashboardData/stepsChart"));
+  return request;
 };
+
 export const getCarouselCharacters = async () => {
   try {
     return await (
@@ -81,31 +73,22 @@ export const getCarouselCharacters = async () => {
   }
 };
 export const getTilesData = async () => {
-  try {
-    return await (
-      await personalUserData.get(`tiles.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+  const request = await getDoc(
+    doc(db, `exampleDashboardData/activityTiles`).withConverter(tileData)
+  );
+  return request;
 };
 export const getNextTraining = async () => {
-  try {
-    return await (
-      await personalUserData.get(`nextTraining.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+  const request = await getDoc(
+    doc(db, `exampleDashboardData/nextTraining`).withConverter(nextTrainingData)
+  );
+  return request;
 };
 export const getGauges = async () => {
-  try {
-    return await (
-      await personalUserData.get(`guages.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
+  const request = await getDoc(
+    doc(db, `exampleDashboardData/activityGuages`).withConverter(guagesData)
+  );
+  return request;
 };
 
 export const getUserExerciseCards = async (userId: string) => {

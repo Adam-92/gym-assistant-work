@@ -1,6 +1,6 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { tabs } from "./tabs";
 import SidebarTab from "./SidebarTab/SidebarTab";
 import ChildTab from "./ChildTab/ChildTab";
@@ -8,9 +8,7 @@ import "./Sidebar.css";
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const toggleSidebar = () => {
-    setShowSidebar((prev) => !prev);
-  };
+  const toggleSidebar = useCallback(() => setShowSidebar((prev) => !prev),[]);
 
   return (
     <aside className={`container-sidebar ${showSidebar && "show-sidebar"}`}>

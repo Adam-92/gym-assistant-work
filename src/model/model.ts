@@ -1,10 +1,12 @@
+import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+
 export interface NewExercise {
   name: string;
   exerciseDescription: string;
   secondaryMuscle: string[];
   exampleImage: string;
   urlImage: string;
-  part: string;
+  part: AvailableBodyParts;
   allUsers: boolean;
   results: ResultsExercise[];
 }

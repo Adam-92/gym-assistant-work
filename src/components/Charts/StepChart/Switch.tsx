@@ -1,17 +1,17 @@
-import { SwitchInterface } from "src/components/Charts/Charts.model";
+import { SwitchProps } from "src/components/Charts/Charts.model";
 
-const Switch = ({ period, monthlyPeriod, weeklyPeriod }: SwitchInterface) => {
+const Switch = ({ period, setMonthlyPeriod, setWeeklyPeriod }: SwitchProps) => {
   return (
     <div className="switch-step-chart">
       <button
         className={`${period && "active-step-chart"}`}
-        onClick={weeklyPeriod}
+        onClick={setWeeklyPeriod}
       >
         Daily
       </button>
       <button
         className={`${!period && "active-step-chart"}`}
-        onClick={monthlyPeriod}
+        onClick={setMonthlyPeriod}
       >
         Monthly
       </button>

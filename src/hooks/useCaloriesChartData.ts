@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { updateCaloriesChartData } from "src/utils/Utils";
 import { getCaloriesChartData } from "src/firebase/services/Activity";
 import { CaloriesChartData } from "../firebase/Firebase.model";
@@ -9,7 +9,7 @@ const useCaloriesChartData = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const request = await getCaloriesChartData();
 
@@ -21,11 +21,11 @@ const useCaloriesChartData = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const updatedData = updateCaloriesChartData(data);
 

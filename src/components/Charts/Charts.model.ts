@@ -2,15 +2,23 @@ export interface StepsValues {
   day: string;
   steps: number;
 }
-export interface BarStepsValues {
+export interface WeeklySteps {
+  weeklyData: StepsValues[];
+}
+
+export interface MonthlySteps {
+  monthlyData: StepsValues[];
+}
+
+export interface BarStepsProps {
   day: string;
   steps: number;
   target: number;
 }
-export interface SwitchInterface {
+export interface SwitchProps {
   period: boolean;
-  monthlyPeriod: () => void;
-  weeklyPeriod: () => void;
+  setMonthlyPeriod: () => void;
+  setWeeklyPeriod: () => void;
 }
 
 export interface CaloriesData {

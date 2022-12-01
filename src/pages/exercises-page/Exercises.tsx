@@ -10,6 +10,8 @@ import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
 import CarouselRoute from "src/components/Carousels/CarouselRoute/CarouselRoute";
 import { NewExercise } from "src/model/model";
 import { useSettingsContext } from "src/contexts/settings/hooks/useSettingsContext";
+import { assertBodyPartFromParamsIsValid } from "src/components/Carousels/CarouselRoute/assertBodyPartFromParamsIsValid";
+import { availableBodyParts } from "../catalogue-page/availableBodyParts";
 import "./Exercises.css";
 
 const Exercises = () => {
@@ -21,18 +23,21 @@ const Exercises = () => {
 
   const { showCatalogueExercises } = useSettingsContext();
 
+  const initialBodyPart = selectedBodyPart ?? availableBodyParts[0];
+  assertBodyPartFromParamsIsValid(initialBodyPart);
+
   useEffect(() => {
     if (currentUser) {
       getUserExerciseCards(currentUser.uid).then((res) => {
         setData(
           res.filter(
             (exercise: NewExercise) =>
-              exercise.part.toLowerCase() === selectedBodyPart
+              exercise.part.toLowerCase() === initialBodyPart
           )
         );
       });
     }
-  }, [location.pathname, selectedBodyPart, currentUser]);
+  }, [location.pathname, currentUser, initialBodyPart]);
 
   useEffect(() => {
     if (currentUser && showCatalogueExercises) {
@@ -41,17 +46,12 @@ const Exercises = () => {
           ...prev,
           ...res.filter(
             (exercise: NewExercise) =>
-              exercise.part.toLowerCase() === selectedBodyPart
+              exercise.part.toLowerCase() === initialBodyPart
           ),
         ]);
       });
     }
-  }, [
-    location.pathname,
-    selectedBodyPart,
-    currentUser,
-    showCatalogueExercises,
-  ]);
+  }, [location.pathname, currentUser, showCatalogueExercises, initialBodyPart]);
 
   return (
     <div className="container-exercises">
