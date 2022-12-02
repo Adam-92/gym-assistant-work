@@ -15,12 +15,14 @@ Variables
   --dash-letter-spacing: 1px;
   --dash-color-secondary: #6562629c;
   --dash-main-color: rgb(113, 99, 186);
-  --dash-margin-components: 1rem;
+  --dash-margin-components: var(--margin);
   --dash-margin-headers: 0.5rem;
   --red-btn: rgb(231, 17, 85);
   --green-btn: #45e945;
   --performance-table: rgba(238, 174, 194, 0.5);
   --box-shadow: 0px 8px 37px -4px rgba(66, 68, 90, 1);
+  --padding: 1rem;
+  --margin: 1rem;
 }
 
 
@@ -71,7 +73,7 @@ body {
 }
 
 .noSelect {
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tam-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -91,4 +93,52 @@ body {
 
 .hover-label:hover {
   transform: scale(1.05)
+}
+
+.p-l {
+  padding-left: var(--padding);
+}
+
+.p-r {
+  padding-right: var(--padding);
+}
+
+.p-t {
+  padding-top: var(--padding);
+}
+
+.p-b {
+  padding-bottom: var(--padding);
+}
+
+.p-y {
+  padding: var(--padding) 0;
+}
+
+.p-x {
+  padding: 0 var(--padding);
+}
+
+.m-l {
+  margin-left: var(--margin);
+}
+
+.m-r {
+  margin-right: var(--margin);
+}
+
+.m-t {
+  margin-top: var(--margin);
+}
+
+.m-b {
+  margin-bottom: var(--margin);
+}
+
+.m-y {
+  margin: var(--margin) 0;
+}
+
+.m-x {
+  margin: 0 var(--margin);
 }

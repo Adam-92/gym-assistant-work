@@ -1,52 +1,62 @@
-.header-dashboard {
-  display: flex;
-  padding: 1rem 1rem;
-  border-radius: 2rem;
-  margin-bottom: 1rem;
-  background-color: white;
-  flex-wrap: wrap;
-  width: 82%;
+.grid-dashboard {
+  min-height: 100%;
+  display: grid;
+  grid-template-areas:
+    "header header todo"
+    "steps-chart next-training todo"
+    "calories-chart next-training todo";
+  grid-template-columns: 35% 50% 15%;
+  grid-template-rows: auto auto 36%;
 }
 
-.statistics-dashboard {
+.header-dashboard {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 2rem;
+  background-color: white;
+  grid-area: header;
+}
+
+.todo-dashboard {
+  grid-area: todo;
+  padding: 1rem;
+  border-radius: 2rem;
+  background: linear-gradient(135deg, white, var(--dash-main-color))
 }
 
 .chart-steps-dashboard {
-  height: calc(50% - 1rem);
   border-radius: 2rem;
   padding: 1rem;
   background-color: white;
-  margin-bottom: 1rem;
-  min-height: 251px;
   max-width: 514px;
+  grid-area: steps-chart;
 }
 
 .chart-calories-dashboard {
-  position: relative;
-  height: 50%;
   background-color: rgb(255, 255, 255);
   border-radius: 2rem;
   padding: 1rem;
-  min-height: 240px;
+  grid-area: calories-chart;
+  max-width: 514px;
+  max-height: 280px;
 }
 
 .next-training-dashboard {
-  flex: 1;
   background-color: rgb(255, 255, 255);
   border-radius: 2rem;
-  margin-left: 1rem;
-  max-width: 46%;
+  grid-area: next-training;
+  max-height: 668px;
 }
 
+@media screen and (max-width: 1650px) {
+  .todo-dashboard {
+    display: none
+  }
 
-.new-bg-dashboard {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.85);
-  height: 100%;
-  width: 100%;
-  z-index: 2;
+  .grid-dashboard {
+    grid-template-columns: 50% 50% 0%;
+    grid-template-rows: 26% auto 36%;
+  }
 }

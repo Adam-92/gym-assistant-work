@@ -16,11 +16,11 @@ const NextTraining = () => {
             <h2>Next Training:</h2>
           </header>
           <section>
-            {data.map((bodyParts: BodyPart) => (
+            {data.map(({ bodyPart, exercises }: BodyPart, index: number) => (
               <BodyPartContainer
-                bodyPart={bodyParts.bodyPart}
-                exercises={bodyParts.exercises}
-                key={bodyParts.bodyPart}
+                bodyPart={bodyPart}
+                exercises={exercises}
+                key={index}
               />
             ))}
           </section>

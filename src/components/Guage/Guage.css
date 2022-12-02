@@ -1,6 +1,9 @@
 .container-guages{
+    height: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 .box-guage{
     position: relative;

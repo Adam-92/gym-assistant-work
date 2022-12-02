@@ -4,7 +4,7 @@
     justify-content: space-around;
     height: 100%;
     font-family: var(--dash-font-family);
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .container-tile {

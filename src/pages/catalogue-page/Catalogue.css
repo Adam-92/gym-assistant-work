@@ -24,16 +24,17 @@
     height: 230px;
 }
 
+.catalogue ul li h2 {
+    font-size: 1.8rem;
+}
 
 .catalogue ul li img {
-    position: absolute;
-    top: 0%;
-    left: 30%;
+    margin-left: 30%;
     width: 66%;
     opacity: 0.8;
 }
 
 .legs-resize {
-    left: 55% !important;
-    width: 35% !important
+    max-width: 35%;
 }
+

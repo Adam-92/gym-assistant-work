@@ -1,0 +1,70 @@
+.container-bars {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.bars2 {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-200%);
+    height: 50px;
+    width: 50px;
+}
+
+.bars2 span {
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    width: 25px;
+    height: 5px;
+    background: rgba(240, 71, 71, 0.9);
+    animation: bars2 2.5s infinite ease-in-out;
+}
+
+
+.bars2 span:nth-child(2) {
+    left: 40px;
+    animation-delay: 0.2s;
+}
+
+.bars2 span:nth-child(3) {
+    left: 80px;
+    animation-delay: 0.3s;
+}
+
+.bars2 span:nth-child(4) {
+    left: 120px;
+    animation-delay: 0.4s;
+}
+
+.bars2 span:nth-child(5) {
+    left: 160px;
+    animation-delay: 0.5s;
+}
+
+@keyframes bars2 {
+    0% {
+        height: 5px;
+        background: rgba(240, 71, 71, 0.2);
+    }
+
+    25% {
+        height: 70px;
+        background: rgba(240, 71, 71, 0.4);
+    }
+
+    50% {
+        height: 5px;
+        background: rgba(240, 71, 71, 0.7);
+    }
+
+    100% {
+        height: 5px;
+        background: rgba(240, 71, 71, 0.9);
+    }
+}

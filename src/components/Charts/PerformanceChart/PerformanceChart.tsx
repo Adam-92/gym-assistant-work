@@ -8,11 +8,10 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
 import { options } from "./config/config";
 import { Line } from "react-chartjs-2";
-import usePerformanceChartData from "../../../hooks/usePerformanceChartData";
 import { PerformanceProps } from "../../../model/model";
+import { updatePerformanceChartData } from "../../../utils/Utils";
 
 ChartJS.register(
   CategoryScale,
@@ -25,7 +24,7 @@ ChartJS.register(
 );
 
 const PerformanceChart = ({ results }: PerformanceProps) => {
-  const { updatedData } = usePerformanceChartData(results);
+  const updatedData = updatePerformanceChartData(results);
 
   return <Line options={options} data={updatedData} />;
 };
