@@ -29,7 +29,7 @@ const StepChart = () => {
             />
           </header>
           <div
-            className={`content-step-chart ${!period && "padding-step-chart"}`}
+            className={`content-step-chart ${!period && "gap-step-chart"}`}
           >
             {data.map(({ day, steps }: StepsValues) => (
               <Bar key={day} day={day} steps={steps} target={target} />

@@ -8,7 +8,8 @@
 }
 
 .container-tile {
-    height: 100%;
+    height: auto;
+    max-height: 160px;
     min-width: 200px;
     width: 20%;
     background-color: rgb(82, 69, 147);

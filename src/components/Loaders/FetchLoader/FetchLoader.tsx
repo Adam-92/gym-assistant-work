@@ -1,5 +1,5 @@
-import "./Loader.css";
-const Loader = () => {
+import "./FetchLoader.css";
+const FetchLoader = () => {
   return (
     <div className="container-bars">
       <div className="bars2">
@@ -13,4 +13,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default FetchLoader;

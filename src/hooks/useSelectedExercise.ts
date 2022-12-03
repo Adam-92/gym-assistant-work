@@ -9,7 +9,7 @@ import { iconsDescription } from "src/pages/selectedExercise-page/iconsDescripti
 import { IconsDescription } from "src/pages/selectedExercise-page/SelectedExercise.model";
 import { useState, useEffect, useCallback } from "react";
 import { parseError } from "src/errors/parseError";
-import { assertBodyPartFromParamsIsValid } from "src/components/Carousels/CarouselRoute/assertBodyPartFromParamsIsValid";
+import { assertBodyPartFromParamsIsValid } from "src/components/CarouselRoute/assertBodyPartFromParamsIsValid";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 
 const useSelectedExercise = () => {
@@ -20,11 +20,9 @@ const useSelectedExercise = () => {
   const { currentUser } = useUserContext();
   const { selectedBodyPart, selectedExercise } = useParams();
 
-
   const initialBodyPart = selectedBodyPart ?? availableBodyParts[0];
 
   assertBodyPartFromParamsIsValid(initialBodyPart);
-
 
   const rightDescriptionIcon = iconsDescription.find(
     ({ name }: IconsDescription) => name === initialBodyPart

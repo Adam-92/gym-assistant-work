@@ -16,9 +16,7 @@ const SidebarTab = ({ name, to, icon, children }: SidebarTabProps) => {
       <Link
         to={to}
         className="link-sidebar-tab "
-        onClick={() => {
-          return name === "Logout" ? makeRequest() : null;
-        }}
+        onClick={() => (name === "Logout" ? makeRequest() : null)}
       >
         <FontAwesomeIcon
           icon={icon}

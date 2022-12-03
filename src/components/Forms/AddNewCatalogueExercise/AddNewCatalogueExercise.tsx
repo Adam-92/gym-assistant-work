@@ -8,7 +8,7 @@ import ExerciseDescription from "./ExerciseDescription";
 import SecondaryArrangeMuscles from "./SecondaryArrangeMuscles";
 import SelectPicture from "./SelectPicture";
 import ExerciseName from "./ExerciseName";
-import SuccesfullyAddedNewCatalogueExercise from "src/components/Modals/SuccesfullyAddedNewCatalogueExercise/SuccesfullyAddedNewCatalogueExercise";
+import SuccesfullyAddedNewCatalogueExercise from "src/components/SuccesfullyAddedNewCatalogueExercise/SuccesfullyAddedNewCatalogueExercise";
 import "./AddNewCatalogueExercise.css";
 
 const AddNewCatalogueExercise = () => {

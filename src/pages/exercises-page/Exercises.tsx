@@ -7,10 +7,10 @@ import { useParams, useLocation } from "react-router-dom";
 import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
-import CarouselRoute from "src/components/Carousels/CarouselRoute/CarouselRoute";
+import CarouselRoute from "src/components/CarouselRoute/CarouselRoute";
 import { NewExercise } from "src/model/model";
 import { useSettingsContext } from "src/contexts/settings/hooks/useSettingsContext";
-import { assertBodyPartFromParamsIsValid } from "src/components/Carousels/CarouselRoute/assertBodyPartFromParamsIsValid";
+import { assertBodyPartFromParamsIsValid } from "src/components/CarouselRoute/assertBodyPartFromParamsIsValid";
 import { availableBodyParts } from "../catalogue-page/availableBodyParts";
 import "./Exercises.css";
 

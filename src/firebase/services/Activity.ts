@@ -1,4 +1,3 @@
-import { personalUserData } from "./AxiosInstances";
 import { CatalogueNewExerciseFormValues } from "src/components/Forms/Forms.model";
 import {
   doc,
@@ -25,31 +24,37 @@ import { caloriesChartData } from "./converters";
 import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 
 export const getCaloriesChartData = async () => {
-  const ref = doc(db, "exampleDashboardData/caloriesChart").withConverter(
-    caloriesChartData
+  const request = await getDoc(
+    doc(db, "exampleDashboardData/caloriesChart").withConverter(
+      caloriesChartData
+    )
   );
-  return await getDoc(ref);
+  return request;
 };
 
 export const getAllUsersDataSelectedExercise = async (
   bodyPart: AvailableBodyParts
-) =>
-  await getDoc(
+) => {
+  const request = await getDoc(
     doc(db, `/forAllUsersExercises/${firstBigLetter(bodyPart)}`).withConverter(
       arrayNewExercises
     )
   );
+  return request;
+};
 
 export const getUserDataSelectedExercise = async (
   bodyPart: AvailableBodyParts,
   userId: string
-) =>
-  await getDoc(
+) => {
+  const request = await getDoc(
     doc(
       db,
       `/userExercises/${userId}/${firstBigLetter(bodyPart)}/exercises`
     ).withConverter(arrayNewExercises)
   );
+  return request;
+};
 
 export const getWeeklySteps = async () => {
   const request = await getDoc(
@@ -63,15 +68,6 @@ export const getMonthlySteps = async () => {
   return request;
 };
 
-export const getCarouselCharacters = async () => {
-  try {
-    return await (
-      await personalUserData.get(`charactersCaroussel.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
-};
 export const getTilesData = async () => {
   const request = await getDoc(
     doc(db, `exampleDashboardData/activityTiles`).withConverter(tileData)
@@ -93,7 +89,7 @@ export const getGauges = async () => {
 
 export const getUserExerciseCards = async (userId: string) => {
   try {
-    const exerciseRequests = availableBodyParts.map((name: string) =>
+    const exerciseRequests = availableBodyParts.map((name) =>
       getDoc(
         doc(
           db,
@@ -142,25 +138,6 @@ export const getExercisesForAllUsers = async () => {
     return allExercises.flat();
   } catch {
     return [];
-  }
-};
-
-export const getSecondaryArrangeMuscles = async () => {
-  try {
-    return await (
-      await personalUserData.get(`secondaryArrangeMuscles.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getExamplePicturesAddNew = async () => {
-  try {
-    return (await personalUserData.get(`examplePicturesAddCatalogue.json`))
-      .data;
-  } catch (error) {
-    console.log(error);
   }
 };
 

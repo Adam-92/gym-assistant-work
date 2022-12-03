@@ -1,7 +1,6 @@
 import { PartNameSuccesfullyAdded } from "./SuccesfullyAddedNewCatalogueExercise.model";
 import { Link } from "react-router-dom";
 import "./SuccesfullyAddedNewCatalogueExercise.css";
-import "../WelcomeModal/WelcomeModal.css";
 
 const SuccesfullyAddedNewCatalogueExercise = ({
   partName,
