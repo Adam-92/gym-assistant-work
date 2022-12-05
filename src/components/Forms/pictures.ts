@@ -1,4 +1,5 @@
-export const pictures = [
+import { ExamplePicturesAddCatalogue } from "./Forms.model";
+export const pictures: ExamplePicturesAddCatalogue[] = [
   {
     id: 1,
     img: "../assets/example1.jpg",

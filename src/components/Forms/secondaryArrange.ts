@@ -61,5 +61,4 @@ export const secondaryArrange = [
   },
 ] as const;
 
-/*  hmm.. pomoc! .. by również określić wybór, jak w availableBodyParts */
 export type SecondaryArrange = typeof secondaryArrange[number];

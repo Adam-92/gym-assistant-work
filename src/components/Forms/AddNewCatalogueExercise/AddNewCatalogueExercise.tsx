@@ -25,7 +25,7 @@ const AddNewCatalogueExercise = () => {
   });
 
   const onSubmit: SubmitHandler<CatalogueNewExerciseFormValues> = (data) => {
-    /* Wtedy tutaj też zmieniam, po prostu na User */
+    /* Wtedy tutaj też zmieniam, po prostu na U */
     setNewExercise(data, currentUser, setSubmittedForm);
   };
 
