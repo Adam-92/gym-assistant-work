@@ -146,25 +146,32 @@ export const setNewExercise = async (
   currentUser: User | null,
   onSuccess: React.Dispatch<React.SetStateAction<string>>
 ) => {
-  console.log("🚀  currentUser", currentUser?.uid);
-  console.log("🚀  data", data);
   try {
     const ref = doc(
       db,
-      `userExercises/${currentUser?.uid}/${data.part}/exercises/`
+      `userExercises/${currentUser?.uid}/${firstBigLetter(
+        data.part
+      )}/exercises/`
     );
 
     const exerciseDoc = await getDoc(ref);
 
     if (exerciseDoc.exists()) {
-      await updateNewExercise(ref, data);
+      await addExercise(ref, data);
     } else {
-      await addNewExercise(ref, data);
+      await createArrayOfExercises(ref, data);
     }
 
     onSnapshot(
-      doc(db, `userExercises/${currentUser?.uid}/${data.part}/exercises`),
-      () => {
+      doc(
+        db,
+        `userExercises/${currentUser?.uid}/${firstBigLetter(
+          data.part
+        )}/exercises`
+      ),
+      (snap) => {
+        console.log(snap.data());
+
         onSuccess(data.part.toLowerCase());
       }
     );
@@ -173,7 +180,7 @@ export const setNewExercise = async (
   }
 };
 
-const updateNewExercise = async (
+const addExercise = async (
   ref: DocumentReference<DocumentData>,
   data: CatalogueNewExerciseFormValues
 ) =>
@@ -190,7 +197,7 @@ const updateNewExercise = async (
     }),
   });
 
-const addNewExercise = async (
+const createArrayOfExercises = async (
   ref: DocumentReference<DocumentData>,
   data: CatalogueNewExerciseFormValues
 ) =>

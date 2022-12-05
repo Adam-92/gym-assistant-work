@@ -6,12 +6,13 @@ import { auth } from "src/firebase/config/firebase";
 import { useState, useEffect, useMemo } from "react";
 
 export const UserProvider = ({ children }: UserProviderProps) => {
-  const [currentUser, setCurrentUser] = useState<User>();
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    /* Nie mogę dać bez null'a, bo tutaj firebase wymusza go na mnie */
     const unsubscribe = auth.onAuthStateChanged((user: User | null) => {
-      setCurrentUser(user ?? undefined);
+      setCurrentUser(user);
       setIsLoading(false);
     });
     return unsubscribe;
