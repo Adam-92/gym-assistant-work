@@ -146,6 +146,8 @@ export const setNewExercise = async (
   currentUser: User | null,
   onSuccess: React.Dispatch<React.SetStateAction<string>>
 ) => {
+  console.log("🚀  currentUser", currentUser?.uid);
+  console.log("🚀  data", data);
   try {
     const ref = doc(
       db,
@@ -174,7 +176,7 @@ export const setNewExercise = async (
 const updateNewExercise = async (
   ref: DocumentReference<DocumentData>,
   data: CatalogueNewExerciseFormValues
-) => {
+) =>
   updateDoc(ref.withConverter(arrayNewExercises), {
     exercises: arrayUnion({
       name: data.name.toLowerCase(),
@@ -183,15 +185,15 @@ const updateNewExercise = async (
       exampleImage: data.exampleImage ?? "",
       urlImage: data.urlImage,
       part: data.part,
+      allUsers: false,
       results: [{ label: "", sets: [{ weight: 0, reps: 0 }] }],
     }),
   });
-};
 
 const addNewExercise = async (
   ref: DocumentReference<DocumentData>,
   data: CatalogueNewExerciseFormValues
-) => {
+) =>
   setDoc(ref.withConverter(arrayNewExercises), {
     exercises: [
       {
@@ -206,4 +208,3 @@ const addNewExercise = async (
       },
     ],
   });
-};
