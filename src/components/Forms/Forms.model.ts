@@ -4,7 +4,8 @@ import { SecondaryArrange } from "./secondaryArrange";
 export type CatalogueNewExerciseFormValues = {
   name: string;
   part: AvailableBodyParts;
-  secondaryMuscle: SecondaryArrange["name"];
+  /* Czy ok, tak? W defaultValue mam [], stad dolejam pustą tablicę*/
+  secondaryMuscle: SecondaryArrange["name"] | [];
   exerciseDescription: string;
   exampleImage: undefined | string;
   urlImage: string;

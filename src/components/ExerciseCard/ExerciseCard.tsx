@@ -17,7 +17,7 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
       </div>
       <div className="information-exercise-card">
         <div className="parts-exercise-card">
-          {exercise.secondaryMuscle.map((muscle: string) => {
+          {exercise.secondaryMuscle.map((muscle) => {
             return (
               <span className="part-exercise-card" key={muscle}>
                 {muscle}

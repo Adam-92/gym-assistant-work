@@ -4,7 +4,8 @@ import { SecondaryArrange } from "src/components/Forms/secondaryArrange";
 export interface NewExercise {
   name: string;
   exerciseDescription: string;
-  secondaryMuscle: SecondaryArrange["name"];
+  /* Czy tak, może być?  W takiej formie, jak poniżej? */
+  secondaryMuscle: SecondaryArrange["name"][];
   exampleImage: string;
   urlImage: string;
   part: AvailableBodyParts;
