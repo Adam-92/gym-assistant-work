@@ -1,6 +1,5 @@
 import BodyPartContainer from "./BodyPartContainer";
 import DataStatusHandler from "../DataStatusHandler/DataStatusHandler";
-import { BodyPart } from "./NextTraining.model";
 import { useNextTraining } from "src/contexts/nextTraining/hooks/useNextTraining";
 import HistoryPopover from "../Popovers/HistoryPopoover/HistoryPopover";
 import "./NextTraining.css";
@@ -16,7 +15,7 @@ const NextTraining = () => {
             <h2>Next Training:</h2>
           </header>
           <section>
-            {data.map(({ bodyPart, exercises }: BodyPart, index: number) => (
+            {data.map(({ bodyPart, exercises }, index) => (
               <BodyPartContainer
                 bodyPart={bodyPart}
                 exercises={exercises}

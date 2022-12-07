@@ -206,8 +206,7 @@ const createArrayOfExercises = async (
       {
         name: data.name.toLowerCase(),
         exerciseDescription: data.exerciseDescription,
-        /* Zabetonowałem , bo mam błąd tutaj, jak podam data.secondaryMuscle */
-        secondaryMuscle: ["Upper pecs"],
+        secondaryMuscle: data.secondaryMuscle,
         exampleImage: data.exampleImage ?? "",
         urlImage: data.urlImage,
         part: data.part,

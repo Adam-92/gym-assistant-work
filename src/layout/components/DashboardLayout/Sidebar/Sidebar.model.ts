@@ -8,7 +8,8 @@ export type SidebarTabProps = {
   name: string;
   icon: any;
   to: string;
-  children: ReactNode;
+  children?: ReactNode;
+  onClick?: () => void;
 };
 
 export type ChildTabProps = {

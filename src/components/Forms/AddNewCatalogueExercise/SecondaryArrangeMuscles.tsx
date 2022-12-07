@@ -1,4 +1,4 @@
-import { SecondaryArrange, secondaryArrange } from "../secondaryArrange";
+import { secondaryArrange } from "../secondaryArrange";
 import { useFormContext } from "react-hook-form";
 
 const SecondaryArrangeMuscles = () => {
@@ -11,7 +11,7 @@ const SecondaryArrangeMuscles = () => {
     <div className="field-add-new-catalogue">
       <h2>Secondary arrange muscles - optional:</h2>
       <div className="secondary-add-new-catalogue">
-        {secondaryArrange.map(({ id, name }: SecondaryArrange) => {
+        {secondaryArrange.map(({ id, name }) => {
           return (
             <div key={id}>
               <label htmlFor={id + name} className="noSelect hover-label">

@@ -7,11 +7,11 @@ import { useState, useEffect, useMemo } from "react";
 
 export const UserProvider = ({ children }: UserProviderProps) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  console.log("🚀  currentUser", currentUser)
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    /* Nie mogę dać bez null'a, bo tutaj firebase wymusza go na mnie */
-    const unsubscribe = auth.onAuthStateChanged((user: User | null) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setIsLoading(false);
     });

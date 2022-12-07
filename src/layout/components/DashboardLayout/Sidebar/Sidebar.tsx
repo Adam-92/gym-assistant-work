@@ -1,15 +1,18 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useState } from "react";
 import { tabs } from "./tabs";
 import SidebarTab from "./SidebarTab/SidebarTab";
 import ChildTab from "./ChildTab/ChildTab";
+import useSignOut from "src/auth/hooks/useSignOut";
 import "./Sidebar.css";
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const toggleSidebar = useCallback(() => setShowSidebar((prev) => !prev),[]);
+  const toggleSidebar = useCallback(() => setShowSidebar((prev) => !prev), []);
 
+  const { makeRequest } = useSignOut();
   return (
     <aside className={`container-sidebar ${showSidebar && "show-sidebar"}`}>
       <FontAwesomeIcon
@@ -28,15 +31,19 @@ const Sidebar = () => {
         </header>
         <nav className="nav-sidebar">
           <ul className="parent-sidebar">
-            {tabs.map(({ to, name, icon, childTabs }) => {
-              return (
-                <SidebarTab name={name} to={to} icon={icon} key={to + name}>
-                  {childTabs?.map((tab) => (
-                    <ChildTab name={tab.name} to={tab.to} key={tab.name} />
-                  ))}
-                </SidebarTab>
-              );
-            })}
+            {tabs.map(({ to, name, icon, childTabs }) => (
+              <SidebarTab name={name} to={to} icon={icon} key={to + name}>
+                {childTabs?.map((tab) => (
+                  <ChildTab name={tab.name} to={tab.to} key={tab.name} />
+                ))}
+              </SidebarTab>
+            ))}
+            <SidebarTab
+              name="Logout"
+              to="/logout"
+              icon={faRightFromBracket}
+              onClick={() => makeRequest()}
+            />
           </ul>
         </nav>
       </div>

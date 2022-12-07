@@ -11,7 +11,7 @@ import {
 import { options } from "./config/config";
 import { Line } from "react-chartjs-2";
 import { PerformanceProps } from "../../../model/model";
-import { updatePerformanceChartData } from "../../../utils/Utils";
+import useUpdatedPerformanceChart from "src/hooks/useUpdatedPerformanceChart";
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +24,7 @@ ChartJS.register(
 );
 
 const PerformanceChart = ({ results }: PerformanceProps) => {
-  const updatedData = updatePerformanceChartData(results);
+  const { updatedData } = useUpdatedPerformanceChart(results);
 
   return <Line options={options} data={updatedData} />;
 };
