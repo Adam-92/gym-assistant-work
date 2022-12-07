@@ -87,58 +87,28 @@ export const getGauges = async () => {
   return request;
 };
 
-export const getUserExerciseCards = async (userId: string) => {
-  try {
-    const exerciseRequests = availableBodyParts.map((name) =>
-      getDoc(
-        doc(
-          db,
-          `userExercises/${userId}/${firstBigLetter(name)}/exercises`
-        ).withConverter(arrayNewExercises)
-      )
-    );
+export const getUserExerciseCards = async (currentUser: User | null) => {
+  const exerciseRequests = availableBodyParts.map((name) =>
+    getDoc(
+      doc(
+        db,
+        `userExercises/${currentUser?.uid}/${firstBigLetter(name)}/exercises`
+      ).withConverter(arrayNewExercises)
+    )
+  );
 
-    const exerciseResponses = await Promise.all(exerciseRequests);
-    const allExercises = exerciseResponses
-      .filter((response) => (response.exists() ? response : false))
-      .map((snap) => {
-        const exercisesObject = snap.data();
-        if (exercisesObject) {
-          return exercisesObject.exercises;
-        }
-        return [];
-      });
-
-    return allExercises.flat();
-  } catch {
-    return [];
-  }
+  return await Promise.all(exerciseRequests);
 };
 
 export const getExercisesForAllUsers = async () => {
-  try {
-    const exerciseRequests = availableBodyParts.map((name: string) =>
-      getDoc(
-        doc(db, `forAllUsersExercises/${firstBigLetter(name)}`).withConverter(
-          arrayNewExercises
-        )
+  const exerciseRequests = availableBodyParts.map((name) =>
+    getDoc(
+      doc(db, `forAllUsersExercises/${firstBigLetter(name)}`).withConverter(
+        arrayNewExercises
       )
-    );
-    const exerciseResponses = await Promise.all(exerciseRequests);
-    const allExercises = exerciseResponses
-      .filter((response) => (response.exists() ? response : false))
-      .map((snap) => {
-        const exercisesObject = snap.data();
-        if (exercisesObject) {
-          return exercisesObject.exercises;
-        }
-        return [];
-      });
-
-    return allExercises.flat();
-  } catch {
-    return [];
-  }
+    )
+  );
+  return await Promise.all(exerciseRequests);
 };
 
 export const setNewExercise = async (
@@ -169,11 +139,7 @@ export const setNewExercise = async (
           data.part
         )}/exercises`
       ),
-      (snap) => {
-        console.log(snap.data());
-
-        onSuccess(data.part.toLowerCase());
-      }
+      () => onSuccess(data.part.toLowerCase())
     );
   } catch (error) {
     console.log(error);
