@@ -7,7 +7,7 @@ import DataStatusHandler from "../DataStatusHandler/DataStatusHandler";
 
 const ContainerGuages = () => {
   const { isLoading, isError, data } = useFetchData(getGauges);
-  
+
   return (
     <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
       {(data) => (

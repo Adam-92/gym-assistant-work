@@ -3,10 +3,10 @@ import { LastTraining } from "src/components/NextTraining/NextTraining.model";
 import { BodyPartContainerProps } from "src/components/NextTraining/NextTraining.model";
 
 export interface NextTrainingContextValue {
-  data: BodyPartContainerProps[] | undefined;
+  data?: BodyPartContainerProps[];
   isLoading: boolean;
   isError: string;
-  selectedExercise: SelectedExercise | undefined;
+  selectedExercise?: SelectedExercise;
   selectExercise: (selectedExercise: SelectedExercise) => void;
   lastTraining: LastTraining | undefined;
 }

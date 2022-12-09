@@ -9,7 +9,7 @@ export type SidebarTabProps = {
   icon: any;
   to: string;
   children?: ReactNode;
-  onClick?: () => void;
+  onClick?: () => Promise<void>;
 };
 
 export type ChildTabProps = {

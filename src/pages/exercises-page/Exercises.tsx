@@ -2,7 +2,6 @@ import ExerciseCard from "../../components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "../../components/NoDataMessage/NoDataMessage";
 import CarouselRoute from "src/components/CarouselRoute/CarouselRoute";
 import useExercises from "src/hooks/useExercises";
-import { NewExercise } from "src/model/model";
 import "./Exercises.css";
 import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";
 
@@ -16,7 +15,7 @@ const Exercises = () => {
           <div className="content-exercises">
             <CarouselRoute />
             <div className="cards-exercises">
-              {data.map((exercise: NewExercise) => (
+              {data.map((exercise) => (
                 <ExerciseCard key={exercise.name} exercise={exercise} />
               ))}
             </div>

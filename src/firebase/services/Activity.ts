@@ -87,7 +87,7 @@ export const getGauges = async () => {
   return request;
 };
 
-export const getUserExerciseCards = async (currentUser: User | null) => {
+export const getExercisesForUser = async (currentUser: User | null) => {
   const exerciseRequests = availableBodyParts.map((name) =>
     getDoc(
       doc(
@@ -97,7 +97,7 @@ export const getUserExerciseCards = async (currentUser: User | null) => {
     )
   );
 
-  return await Promise.all(exerciseRequests);
+  return Promise.all(exerciseRequests);
 };
 
 export const getExercisesForAllUsers = async () => {
@@ -108,7 +108,7 @@ export const getExercisesForAllUsers = async () => {
       )
     )
   );
-  return await Promise.all(exerciseRequests);
+  return Promise.all(exerciseRequests);
 };
 
 export const setNewExercise = async (
@@ -150,7 +150,7 @@ const addExercise = async (
   ref: DocumentReference<DocumentData>,
   data: CatalogueNewExerciseFormValues
 ) =>
-  updateDoc(ref.withConverter(arrayNewExercises), {
+  await updateDoc(ref.withConverter(arrayNewExercises), {
     exercises: arrayUnion({
       name: data.name.toLowerCase(),
       exerciseDescription: data.exerciseDescription,
@@ -167,7 +167,7 @@ const createArrayOfExercises = async (
   ref: DocumentReference<DocumentData>,
   data: CatalogueNewExerciseFormValues
 ) =>
-  setDoc(ref.withConverter(arrayNewExercises), {
+  await setDoc(ref.withConverter(arrayNewExercises), {
     exercises: [
       {
         name: data.name.toLowerCase(),
