@@ -24,6 +24,7 @@
 }
 
 .content-dashboard-layout {
+  position: relative;
   background: linear-gradient(145deg,
       rgb(248, 247, 247) 0%,
       rgb(241, 241, 243) 120%);
