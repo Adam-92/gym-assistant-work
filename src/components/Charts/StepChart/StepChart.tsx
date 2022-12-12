@@ -12,12 +12,12 @@ const StepChart = () => {
     period,
     target,
     data,
-    isError,
+    error,
     isLoading,
   } = useStepsChart();
 
   return (
-    <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
+    <DataStatusHandler isLoading={isLoading} error={error} data={data}>
       {(data) => (
         <article className="container-step-chart">
           <header className="header-step-chart">

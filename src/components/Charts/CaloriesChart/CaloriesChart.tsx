@@ -23,11 +23,11 @@ ChartJS.register(
 );
 
 const CaloriesChart = () => {
-  const { updatedData, isLoading, isError, data } =
+  const { updatedData, isLoading, error, data } =
     useUpdatedCaloriesChartData();
 
   return (
-    <DataStatusHandler data={data} isLoading={isLoading} isError={isError}>
+    <DataStatusHandler data={data} isLoading={isLoading} error={error}>
       {() => <Line options={options} data={updatedData} />}
     </DataStatusHandler>
   );

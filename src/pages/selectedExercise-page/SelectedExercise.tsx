@@ -14,11 +14,11 @@ import "./SelectedExercise.css";
 const SelectedExercise = () => {
   const navigate = useNavigate();
 
-  const { data, isLoading, isError, rightDescriptionIcon } =
+  const { data, isLoading, error, rightDescriptionIcon } =
     useSelectedExercise();
 
   return (
-    <DataStatusHandler data={data} isLoading={isLoading} isError={isError}>
+    <DataStatusHandler data={data} isLoading={isLoading} error={error}>
       {(data) => (
         <article className="content-selected-exercises">
           <article className="grid-selected-exercise">

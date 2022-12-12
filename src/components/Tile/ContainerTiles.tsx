@@ -13,7 +13,7 @@ import {
 import { useMemo } from "react";
 
 const ContainerTiles = () => {
-  const { data, isLoading, isError } = useFetchData(getTilesData);
+  const { data, isLoading, error } = useFetchData(getTilesData);
 
   const tileIcons = useMemo(
     () => [
@@ -26,7 +26,7 @@ const ContainerTiles = () => {
   );
 
   return (
-    <DataStatusHandler isLoading={isLoading} data={data} isError={isError}>
+    <DataStatusHandler isLoading={isLoading} data={data} error={error}>
       {(data) => (
         <div className="tile">
           {data.map((tile: TileProps, index: number) => {

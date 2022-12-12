@@ -14,7 +14,7 @@ import { DocumentSnapshot } from "firebase/firestore";
 import { CreateNewArrayExercises } from "src/firebase/Firebase.model";
 
 const useExercises = () => {
-  const [isError, setIsError] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<NewExercise[]>([]);
   const { currentUser } = useUserContext();
@@ -26,9 +26,9 @@ const useExercises = () => {
   assertBodyPartFromParamsIsValid(initialBodyPart);
 
   const handleResponse = (
-    response: DocumentSnapshot<CreateNewArrayExercises>[]
+    responses: DocumentSnapshot<CreateNewArrayExercises>[]
   ) => {
-    const checkResponses = response.filter((response) =>
+    const checkResponses = responses.filter((response) =>
       response.exists() ? response : null
     );
     const exercises = checkResponses.map((exercise) =>
@@ -70,13 +70,13 @@ const useExercises = () => {
     try {
       getAllExercisesToDisplay();
     } catch (error) {
-      setIsError(parseError(error));
+      setError(parseError(error));
     } finally {
       setIsLoading(false);
     }
   }, [getAllExercisesToDisplay]);
 
-  return { data, isLoading, isError };
+  return { data, isLoading, error };
 };
 
 export default useExercises;

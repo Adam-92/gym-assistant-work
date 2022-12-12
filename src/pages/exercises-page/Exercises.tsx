@@ -6,10 +6,10 @@ import "./Exercises.css";
 import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";
 
 const Exercises = () => {
-  const { data, isLoading, isError } = useExercises();
+  const { data, isLoading, error} = useExercises();
 
   return (
-    <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
+    <DataStatusHandler isLoading={isLoading} error={error} data={data}>
       {(data) => (
         <div className="container-exercises">
           <div className="content-exercises">

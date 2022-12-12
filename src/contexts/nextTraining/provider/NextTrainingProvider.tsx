@@ -15,7 +15,7 @@ import { NextTrainingContextValue } from "../context/NextTrainingContext.model";
 export const NextTrainingProvider = ({
   children,
 }: NextTrainingProviderProps) => {
-  const { isLoading, isError, data } = useFetchData(getNextTraining);
+  const { isLoading, error, data } = useFetchData(getNextTraining);
   const [selectedExercise, setSelectedExercise] = useState<SelectedExercise>();
 
   const selectExercise = useCallback(
@@ -41,13 +41,13 @@ export const NextTrainingProvider = ({
   const value: NextTrainingContextValue = useMemo(
     () => ({
       isLoading,
-      isError,
+      error,
       data,
       selectedExercise,
       selectExercise,
       lastTraining,
     }),
-    [data, isLoading, isError, lastTraining, selectExercise, selectedExercise]
+    [data, isLoading, error, lastTraining, selectExercise, selectedExercise]
   );
 
   return (

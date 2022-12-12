@@ -87,7 +87,7 @@ export const getGauges = async () => {
   return request;
 };
 
-export const getExercisesForUser = async (currentUser: User | null) => {
+export const getExercisesForUser = (currentUser: User | null) => {
   const exerciseRequests = availableBodyParts.map((name) =>
     getDoc(
       doc(
@@ -100,7 +100,7 @@ export const getExercisesForUser = async (currentUser: User | null) => {
   return Promise.all(exerciseRequests);
 };
 
-export const getExercisesForAllUsers = async () => {
+export const getExercisesForAllUsers = () => {
   const exerciseRequests = availableBodyParts.map((name) =>
     getDoc(
       doc(db, `forAllUsersExercises/${firstBigLetter(name)}`).withConverter(

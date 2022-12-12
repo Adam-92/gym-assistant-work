@@ -5,8 +5,8 @@ import { BodyPartContainerProps } from "src/components/NextTraining/NextTraining
 export interface NextTrainingContextValue {
   data?: BodyPartContainerProps[];
   isLoading: boolean;
-  isError: string;
+  error: string;
   selectedExercise?: SelectedExercise;
   selectExercise: (selectedExercise: SelectedExercise) => void;
-  lastTraining: LastTraining | undefined;
+  lastTraining?: LastTraining;
 }

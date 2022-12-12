@@ -11,7 +11,7 @@ const useStepChart = () => {
   const [target, setTarget] = useState(12000);
   const [data, setData] = useState<StepsValues[]>();
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState("");
+  const [error, setError] = useState("");
 
   const setMonthlyPeriod = useCallback(() => setPeriod(false), []);
   const setWeeklyPeriod = useCallback(() => setPeriod(true), []);
@@ -26,7 +26,7 @@ const useStepChart = () => {
         setData(data?.monthlyData);
       }
     } catch (error) {
-      setIsError(parseError(error));
+      setError(parseError(error));
     } finally {
       setIsLoading(false);
     }
@@ -42,7 +42,7 @@ const useStepChart = () => {
     period,
     target,
     data,
-    isError,
+    error,
     isLoading,
   };
 };

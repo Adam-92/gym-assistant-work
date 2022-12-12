@@ -15,7 +15,7 @@ import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts"
 const useSelectedExercise = () => {
   const [data, setData] = useState<NewExercise>();
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState("");
+  const [error, setError] = useState("");
 
   const { currentUser } = useUserContext();
   const { selectedBodyPart, selectedExercise } = useParams();
@@ -56,7 +56,7 @@ const useSelectedExercise = () => {
         }
       }
     } catch (error) {
-      setIsError(parseError(error));
+      setError(parseError(error));
     } finally {
       setIsLoading(false);
     }
@@ -70,7 +70,7 @@ const useSelectedExercise = () => {
     data,
     rightDescriptionIcon,
     isLoading,
-    isError,
+    error,
   };
 };
 export default useSelectedExercise;

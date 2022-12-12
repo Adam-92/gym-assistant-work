@@ -6,10 +6,10 @@ import "./Guage.css";
 import DataStatusHandler from "../DataStatusHandler/DataStatusHandler";
 
 const ContainerGuages = () => {
-  const { isLoading, isError, data } = useFetchData(getGauges);
+  const { isLoading, error, data } = useFetchData(getGauges);
 
   return (
-    <DataStatusHandler isLoading={isLoading} isError={isError} data={data}>
+    <DataStatusHandler isLoading={isLoading} error={error} data={data}>
       {(data) => (
         <article className="container-guages">
           {data.map(({ target, current, units }: GuageProps) => (
