@@ -5,12 +5,13 @@ import HistoryPopover from "../Popovers/HistoryPopoover/HistoryPopover";
 import "./NextTraining.css";
 
 const NextTraining = () => {
-  const { isLoading, error, data, selectedExercise } = useNextTraining();
+  const { isLoading, error, data, hidePopover, selectedExercise } =
+    useNextTraining();
 
   return (
     <DataStatusHandler isLoading={isLoading} error={error} data={data}>
       {(data) => (
-        <article className="container-next-training">
+        <article className="container-next-training" onMouseLeave={hidePopover}>
           <header>
             <h2>Next Training:</h2>
           </header>

@@ -102,7 +102,7 @@ const Plan = () => {
         {
           data: [
             {
-              part: "Chest",
+              bodyPart: "Chest",
               exercises: [
                 {
                   id: 1,
@@ -170,7 +170,7 @@ const Plan = () => {
               ],
             },
             {
-              part: "Legs",
+              bodyPart: "Legs",
               exercises: [
                 {
                   id: 1,
@@ -241,7 +241,7 @@ const Plan = () => {
               ],
             },
             {
-              part: "Biceps",
+              bodyPart: "Biceps",
               exercises: [
                 {
                   id: 1,

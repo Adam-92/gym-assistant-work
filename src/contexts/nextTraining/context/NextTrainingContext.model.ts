@@ -9,4 +9,5 @@ export interface NextTrainingContextValue {
   selectedExercise?: SelectedExercise;
   selectExercise: (selectedExercise: SelectedExercise) => void;
   lastTraining?: LastTraining;
+  hidePopover: () => void;
 }

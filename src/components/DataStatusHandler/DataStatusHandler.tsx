@@ -13,7 +13,7 @@ const DataStatusHandler = <T,>({
   if (error) return <Error error={error} />;
   if (!data) return <h2>Sorry, but we haven't found any data</h2>;
 
-  return <Transition style={{ height: "100%" }}>{children(data)}</Transition>;
+  return <Transition>{children(data)}</Transition>;
 };
 
 export default DataStatusHandler;

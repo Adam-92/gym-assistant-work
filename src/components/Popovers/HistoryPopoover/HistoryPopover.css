@@ -1,7 +1,7 @@
 .container-history-popover{
     position: absolute;
     left: 64%;
-    top: 50%;
+    top: 55%;
     padding: 1rem;
     background-color: var(--dash-main-color);
     color: rgb(255,255,255);
@@ -15,14 +15,4 @@
 ul.header-history-popover li{
     margin: 5px 0;
     font-size: 1rem;
-}
-.arrow-history-popover{
-    position: relative;
-}
-.position-arrow{
-    position: absolute;
-    top: 50%;
-    left: -10px;
-    transform: translateY(-50%);
-    color: var(--dash-main-color);
 }
