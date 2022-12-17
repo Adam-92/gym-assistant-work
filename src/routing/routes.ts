@@ -27,7 +27,7 @@ export const protectedRoutes: Route[] = [
     element: SelectedExercise,
   },
   {
-    path: "/add-new",
+    path: "/catalogue/add-new",
     element: AddNew,
   },
   {

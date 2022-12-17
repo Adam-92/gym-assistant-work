@@ -11,7 +11,7 @@ const NextTraining = () => {
   return (
     <DataStatusHandler isLoading={isLoading} error={error} data={data}>
       {(data) => (
-        <article className="container-next-training" onMouseLeave={hidePopover}>
+        <article className="container-next-training" onMouseLeave={()=>{}}>
           <header>
             <h2>Next Training:</h2>
           </header>

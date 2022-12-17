@@ -6,7 +6,7 @@ const Transition = ({ children }: TransitionProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      style={{ height: "inherit" }}
+      style={{height: "100%"}}
     >
       {children}
     </motion.div>

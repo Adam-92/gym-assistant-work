@@ -4,7 +4,7 @@ import { parseError } from "src/errors/parseError";
 import {
   getWeeklySteps,
   getMonthlySteps,
-} from "src/firebase/services/Activity";
+} from "src/firebase/services/activity";
 
 const useStepChart = () => {
   const [period, setPeriod] = useState(true);

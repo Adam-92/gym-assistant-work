@@ -1,7 +1,7 @@
 import {
   getAllUsersDataSelectedExercise,
   getUserDataSelectedExercise,
-} from "src/firebase/services/Activity";
+} from "src/firebase/services/activity";
 import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import { useParams } from "react-router";
 import { NewExercise } from "src/model/model";

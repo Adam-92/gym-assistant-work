@@ -3,7 +3,7 @@ import useFetchData from "../../hooks/useFetchData";
 import Tile from "./Tile";
 import DataStatusHandler from "../DataStatusHandler/DataStatusHandler";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getTilesData } from "src/firebase/services/Activity";
+import { getTilesData } from "src/firebase/services/activity";
 import {
   faShoePrints,
   faBurger,

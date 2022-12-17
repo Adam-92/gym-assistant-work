@@ -2,7 +2,7 @@ import { useState } from "react";
 import { CatalogueNewExerciseFormValues } from "src/components/Forms/Forms.model";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { useUserContext } from "src/contexts/user/hooks/useUserContext";
-import { setNewExercise } from "src/firebase/services/Activity";
+import { setNewExercise } from "src/firebase/services/activity";
 import ChooseTheBodyPart from "src/components/Forms/AddNewCatalogueExercise/ChooseTheBodyPart";
 import ExerciseDescription from "./ExerciseDescription";
 import SecondaryArrangeMuscles from "./SecondaryArrangeMuscles";

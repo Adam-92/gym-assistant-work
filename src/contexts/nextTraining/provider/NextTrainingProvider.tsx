@@ -4,7 +4,7 @@ import {
   NextTrainingProviderProps,
   SelectedExercise,
 } from "./NextTrainingProvider.model";
-import { getNextTraining } from "src/firebase/services/Activity";
+import { getNextTraining } from "src/firebase/services/activity";
 import useFetchData from "src/hooks/useFetchData";
 import {
   BodyPart,

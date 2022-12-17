@@ -2,7 +2,7 @@ import { useCallback, useState, useEffect } from "react";
 import {
   getExercisesForUser,
   getExercisesForAllUsers,
-} from "src/firebase/services/Activity";
+} from "src/firebase/services/activity";
 import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import { useParams } from "react-router";
 import { useSettingsContext } from "src/contexts/settings/hooks/useSettingsContext";

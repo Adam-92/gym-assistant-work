@@ -2,15 +2,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMatch, useResolvedPath } from "react-router";
 import { Link } from "react-router-dom";
 import { SidebarTabProps } from "src/layout/components/DashboardLayout/Sidebar/Sidebar.model";
+import ChildTab from "../ChildTab/ChildTab";
 import "./SidebarTab.css";
 
-const SidebarTab = ({ name, to, icon, children, onClick }: SidebarTabProps) => {
+const SidebarTab = ({
+  name,
+  to,
+  icon,
+  childTabs,
+  onClick,
+}: SidebarTabProps) => {
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: false });
 
   return (
     <li className={`${match && "active-sidebar-tab focus-sidebar-tab "}`}>
-      <Link to={to} className="link-sidebar-tab" onClick={onClick}>
+      <Link
+        to={to}
+        className="link-sidebar-tab"
+        onClick={() => childTabs ?? onClick()}
+      >
         <FontAwesomeIcon
           icon={icon}
           color="white"
@@ -26,7 +37,9 @@ const SidebarTab = ({ name, to, icon, children, onClick }: SidebarTabProps) => {
           match && "show-sidebar-tab children-active-sidebar-tab  "
         }`}
       >
-        {children}
+        {childTabs?.map(({ to, name }) => (
+          <ChildTab to={to} name={name} key={name} />
+        ))}
       </ul>
     </li>
   );

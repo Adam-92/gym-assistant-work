@@ -31,4 +31,18 @@
   padding: 1rem;
   width: 100%;
   overflow: auto;
+  z-index: 2;
+}
+
+@media screen and (max-width: 992px) {
+  .dark {
+    position: absolute;
+    padding: 0;
+    height: 100%;
+    width: 90%;
+    background-color: black;
+    border-radius: 2rem;
+    opacity: 0.75;
+    z-index: 3;
+  }
 }

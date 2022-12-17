@@ -30,9 +30,7 @@
 
 .active-sidebar-tab {
     position: relative;
-    background: linear-gradient(145deg,
-            rgb(248, 247, 247) 0%,
-            rgb(241, 241, 243) 120%);
+    background-color: white;
     border-top-left-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
     color: rgb(73, 73, 204);
@@ -40,9 +38,7 @@
 
 .children-active-sidebar-tab {
     position: relative;
-    background: linear-gradient(145deg,
-            rgb(248, 247, 247) 0%,
-            rgb(241, 241, 243) 120%);
+    background-color: white;
     border-top-left-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
     color: rgb(73, 73, 204);
@@ -58,8 +54,7 @@
     height: 54px;
     border-radius: 50%;
     background-color: transparent;
-    -webkit-box-shadow: 14px -14px 0px -5px rgb(248, 247, 247);
-    box-shadow: 14px -14px 0px -8px rgb(248, 247, 247);
+    box-shadow: 14px -14px 0px -8px white;
     pointer-events: none;
 }
 
@@ -73,8 +68,7 @@
     height: 54px;
     border-radius: 50%;
     background-color: transparent;
-    -webkit-box-shadow: 14px -14px 0px -8px rgb(248, 247, 247);
-    box-shadow: 14px 14px 0px -8px rgb(248, 247, 247);
+    box-shadow: 14px 14px 0px -8px white;
     pointer-events: none;
 }
 
