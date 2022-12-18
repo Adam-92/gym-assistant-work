@@ -9,14 +9,14 @@ import "./Dashboard.css";
 const Dashboard = () => {
   return (
     <article className="grid-dashboard">
-      <header className="header-dashboard m-b">
+      <header className="header-dashboard">
         <ContainerGuages />
         <ContainerTiles />
       </header>
-      <div className="chart-steps-dashboard m-b m-r">
+      <div className="chart-steps-dashboard">
         <StepChart />
       </div>
-      <div className="chart-calories-dashboard m-r">
+      <div className="chart-calories-dashboard">
         <CaloriesChart />
       </div>
       <div className="next-training-dashboard">
@@ -24,7 +24,7 @@ const Dashboard = () => {
           <NextTraining />
         </NextTrainingProvider>
       </div>
-      <section className="todo-dashboard m-l"></section>
+      <section className="todo-dashboard"></section>
     </article>
   );
 };

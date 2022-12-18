@@ -1,7 +1,7 @@
-.container-guages {
+.container-guage{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: center
 }
 
 .box-guage {
@@ -10,7 +10,11 @@
     min-width: 300px;
     height: 150px;
     overflow: hidden;
-    margin-right: 3rem;
+    margin: 1rem 0;
+}
+
+.width-guage {
+    width: 632px;
 }
 
 .score-guage {
@@ -72,4 +76,19 @@
     border-color: var(--dash-main-color) var(--dash-main-color) rgba(113, 99, 186, 0.1) rgba(113, 99, 186, 0.1);
     border-radius: 50%;
     transform: rotate(315deg);
+}
+
+@media screen and (max-width : 992px) {
+    .width-guage {
+        width: auto;
+    }
+    .box-guage{
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container-guage{
+        justify-content: center;
+    }
 }

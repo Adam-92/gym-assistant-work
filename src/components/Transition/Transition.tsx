@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { TransitionProps } from "./Transition.model";
-const Transition = ({ children }: TransitionProps) => {
+
+const Transition = ({ children, style }: TransitionProps) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      style={{height: "100%"}}
+      style={style}
     >
       {children}
     </motion.div>

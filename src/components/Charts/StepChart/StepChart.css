@@ -54,6 +54,7 @@
     border-radius: 1.5rem;
     flex-wrap: wrap;
     gap: 5px 17px;
+    overflow: hidden;
 }
 
 .bar-container-step-chart {
@@ -129,4 +130,57 @@
 
 .gap-step-chart {
     gap: 5px 20px
+}
+
+@media screen and (max-width: 1600px) {
+    .gap-step-chart {
+        gap: 5px 33px
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .content-step-chart {
+        padding: 1rem 15%;
+    }
+
+    .gap-step-chart {
+        gap: 5px 58px
+    }
+
+    .bar-container-step-chart {
+        min-width: 50px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .gap-step-chart {
+        gap: 5px 7%
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .content-step-chart {
+        padding: 1rem 13%;
+    }
+}
+
+@media screen and (max-width: 772px) {
+    .content-step-chart {
+        padding: 1rem 2%;
+    }
+    .gap-step-chart {
+        gap: 5px 7%
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .content-step-chart {
+        padding: 1rem 4%;
+    }
+    .content-step-chart{
+        overflow: auto;
+    }
+    .gap-step-chart {
+        gap: 5px 12%
+    }
 }

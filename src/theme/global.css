@@ -72,6 +72,10 @@ body {
   flex-direction: column;
 }
 
+.wrap {
+  flex-wrap: wrap;
+}
+
 .noSelect {
   -webkit-tam-highlight-color: transparent;
   -webkit-touch-callout: none;

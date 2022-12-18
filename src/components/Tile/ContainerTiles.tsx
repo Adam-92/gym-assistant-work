@@ -11,6 +11,7 @@ import {
   faDumbbell,
 } from "@fortawesome/free-solid-svg-icons";
 import { useMemo } from "react";
+import Transition from "../Transition/Transition";
 
 const ContainerTiles = () => {
   const { data, isLoading, error } = useFetchData(getTilesData);
@@ -28,20 +29,22 @@ const ContainerTiles = () => {
   return (
     <DataStatusHandler isLoading={isLoading} data={data} error={error}>
       {(data) => (
-        <div className="tile">
-          {data.map((tile: TileProps, index: number) => {
-            return (
-              <Tile
-                key={tile.name}
-                icon={tileIcons[index]}
-                name={tile.name}
-                target={tile.target}
-                current={tile.current}
-                style={tile.style}
-              />
-            );
-          })}
-        </div>
+        <Transition>
+          <div className="container-tiles wrap">
+            {data.map((tile: TileProps, index: number) => {
+              return (
+                <Tile
+                  key={tile.name}
+                  icon={tileIcons[index]}
+                  name={tile.name}
+                  target={tile.target}
+                  current={tile.current}
+                  style={tile.style}
+                />
+              );
+            })}
+          </div>
+        </Transition>
       )}
     </DataStatusHandler>
   );

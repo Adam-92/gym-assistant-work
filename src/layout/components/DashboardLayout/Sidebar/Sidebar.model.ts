@@ -1,6 +1,4 @@
-export type Tab = Omit<SidebarTabProps, "children" | "onClick"> & {
-  childTabs?: ChildTabProps[];
-};
+export type Tab = Omit<SidebarTabProps, "onClick">;
 
 export interface SidebarTabProps {
   name: string;

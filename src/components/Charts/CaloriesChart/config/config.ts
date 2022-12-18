@@ -50,9 +50,9 @@ export const options: ChartOptions<"line"> = {
     legend: {
       position: "top" as const,
     },
-    title: {
+/*     title: {
       display: true,
-      text: "Caloric balance",
+      text: "Calorific balance",
       font: {
         size: 22,
         weight: "bold",
@@ -60,6 +60,6 @@ export const options: ChartOptions<"line"> = {
       },
       align: "start" as const,
       color: "rgb(103, 76, 175)",
-    },
+    }, */
   },
 };

@@ -24,7 +24,7 @@ export const NextTrainingProvider = ({
     []
   );
 
-  const hidePopover = useCallback(() => setSelectedExercise(undefined), []);
+  const closePopover = useCallback(() => setSelectedExercise(undefined), []);
 
   const lastTraining = useMemo(() => {
     if (!data || !selectedExercise) return undefined;
@@ -47,7 +47,7 @@ export const NextTrainingProvider = ({
       data,
       selectedExercise,
       selectExercise,
-      hidePopover,
+      closePopover,
       lastTraining,
     }),
     [
@@ -57,7 +57,7 @@ export const NextTrainingProvider = ({
       lastTraining,
       selectExercise,
       selectedExercise,
-      hidePopover,
+      closePopover,
     ]
   );
 
