@@ -9,22 +9,22 @@ import "./Dashboard.css";
 const Dashboard = () => {
   return (
     <article className="grid-dashboard">
-      <header className="header-dashboard">
+      <header className="header-dashboard shadow-inset">
         <ContainerGuages />
         <ContainerTiles />
       </header>
-      <div className="chart-steps-dashboard">
+      <div className="chart-steps-dashboard shadow-inset">
         <StepChart />
       </div>
-      <div className="chart-calories-dashboard">
+      <div className="chart-calories-dashboard shadow-inset">
         <CaloriesChart />
       </div>
-      <div className="next-training-dashboard">
+      <div className="next-training-dashboard shadow-inset">
         <NextTrainingProvider>
           <NextTraining />
         </NextTrainingProvider>
       </div>
-      <section className="todo-dashboard"></section>
+      <section className="todo-dashboard shadow-inset"></section>
     </article>
   );
 };

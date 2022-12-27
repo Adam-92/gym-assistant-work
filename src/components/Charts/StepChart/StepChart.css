@@ -49,12 +49,12 @@
     justify-content: space-between;
     height: 80%;
     min-height: 80%;
-    padding: 1rem;
+    padding: 0.5rem;
     border: 1px solid rgb(204 204 210);
     border-radius: 1.5rem;
     flex-wrap: wrap;
     gap: 5px 17px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .bar-container-step-chart {
@@ -177,10 +177,19 @@
     .content-step-chart {
         padding: 1rem 4%;
     }
-    .content-step-chart{
-        overflow: auto;
+    .gap-step-chart {
+        gap: 5px 10%
+    }
+}
+
+@media screen and (min-width: 370px) and (max-width: 576px) {
+    .content-step-chart {
+        padding: 1rem 9%;
     }
     .gap-step-chart {
-        gap: 5px 12%
+        gap: 5px 10%
+    }
+    .bar-container-step-chart {
+        min-width: 47px;
     }
 }

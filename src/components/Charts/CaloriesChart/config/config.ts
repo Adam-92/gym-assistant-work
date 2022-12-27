@@ -48,18 +48,7 @@ export const options: ChartOptions<"line"> = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      position: "top" as const,
+      position: "top",
     },
-/*     title: {
-      display: true,
-      text: "Calorific balance",
-      font: {
-        size: 22,
-        weight: "bold",
-        family: "'Noto Sans', sans-serif",
-      },
-      align: "start" as const,
-      color: "rgb(103, 76, 175)",
-    }, */
   },
 };

@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Heebo:wght@500&display=swap');
+
 .container-register {
    background: rgba(0, 0, 0, 0) url(http://localhost:3000/assets/hero.jpg) no-repeat center / cover;
+   min-height: 100vh;
    height: 100vh;
    box-shadow: 0 0 20px 3px;
+   min-width: 300px;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Heebo:wght@500&display=swap');
 
 .center-register-panel {
    height: 100%;
@@ -92,4 +94,14 @@
 
 .link-register-panel:hover {
    color: rgb(109, 225, 233);
+}
+
+@media screen and (max-width: 375px) {
+   .relative-register-panel input {
+      padding: 1rem 0 1rem 3.8rem;
+   }
+
+   .submit-register-panel {
+      padding: 0.7rem 5rem
+   }
 }

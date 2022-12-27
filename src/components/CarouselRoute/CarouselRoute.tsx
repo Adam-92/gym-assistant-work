@@ -1,8 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleArrowLeft,
-  faCircleArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { useParams, Link } from "react-router-dom";
 import { firstBigLetter } from "src/utils/Utils";
 import useRouteCarousel from "../../hooks/useRouteCarousel";
@@ -28,14 +25,15 @@ const CarouselRoute = () => {
     <header className="header-carousel-route noSelect">
       <Link to={previousBodyPartUrl}>
         <FontAwesomeIcon
-          icon={faCircleArrowLeft}
+          icon={faCaretLeft}
           className="icon-carousel-route"
+          rotate={270}
         />
       </Link>
-      <h1>{selectedBodyPart && firstBigLetter(initialBodyPart)}</h1>
+      <h5>{selectedBodyPart && firstBigLetter(initialBodyPart)}</h5>
       <Link to={nextBodyPartUrl}>
         <FontAwesomeIcon
-          icon={faCircleArrowRight}
+          icon={faCaretRight}
           className="icon-carousel-route"
         />
       </Link>

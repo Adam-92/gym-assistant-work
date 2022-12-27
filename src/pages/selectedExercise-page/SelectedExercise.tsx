@@ -21,9 +21,9 @@ const SelectedExercise = () => {
   return (
     <DataStatusHandler data={data} isLoading={isLoading} error={error}>
       {(data) => (
-        <Transition>
+        <Transition style={{ height: "100%" }}>
           <article className="content-selected-exercises">
-            <article className="grid-selected-exercise">
+            <article className="responsive-selected-exercise">
               <header className="back-selected-exercise">
                 <Link to="" onClick={() => navigate(-1)}>
                   <FontAwesomeIcon

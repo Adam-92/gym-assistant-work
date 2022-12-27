@@ -12,7 +12,7 @@ const Exercises = () => {
   return (
     <DataStatusHandler isLoading={isLoading} error={error} data={data}>
       {(data) => (
-        <Transition>
+        <Transition style={{ height: "100%" }}>
           <div className="container-exercises">
             <div className="content-exercises">
               <CarouselRoute />

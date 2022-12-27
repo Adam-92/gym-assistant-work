@@ -1,6 +1,5 @@
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { tabs } from "./tabs";
 import SidebarTab from "./SidebarTab/SidebarTab";
 import useSignOut from "src/auth/hooks/useSignOut";
@@ -9,16 +8,11 @@ import "./Sidebar.css";
 
 const Sidebar = () => {
   const { makeRequest } = useSignOut();
-  const { isOpenSidebar, openSidebar, closeSidebar } = useSidebar();
+  const { isOpenSidebar, closeSidebar, handleTogglerVisibilty } = useSidebar();
 
   return (
     <aside className={`container-sidebar ${isOpenSidebar && "show-sidebar"}`}>
-      <FontAwesomeIcon
-        icon={faBars}
-        onClick={openSidebar}
-        size="2x"
-        className={`${isOpenSidebar && "off-toggler"} toggler-sidebar`}
-      />
+      {handleTogglerVisibilty()}
       <div className="content-sidebar">
         <header>
           <div className="img-container-sidebar">

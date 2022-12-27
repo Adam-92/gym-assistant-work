@@ -70,10 +70,7 @@ const Login = () => {
           </section>
           <section className="links-login-panel">
             <Link to="/register" className="link-login-panel">
-              Create new account
-            </Link>
-            <Link to="" className="link-login-panel">
-              Forgot your password ?
+              Create new account !
             </Link>
           </section>
         </div>

@@ -14,7 +14,7 @@ const ContainerGuages = () => {
       {(data) => (
         <Transition>
           <article className="container-guage wrap width-guage">
-            {data.map(({ target, current, units }: GuageProps) => (
+            {data.map(({ target, current, units }) => (
               <Guage
                 target={target}
                 current={current}

@@ -5,7 +5,7 @@ export interface SidebarTabProps {
   icon: any;
   to: string;
   childTabs?: ChildTabProps[];
-  onClick: (() => Promise<void>) | (() => void);
+  onClick: () => Promise<void> | void;
 }
 
 export interface ChildTabProps {

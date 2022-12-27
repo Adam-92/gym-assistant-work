@@ -4,7 +4,7 @@
     border-bottom-left-radius: 2em;
     font-family: var(--dash-font-family);
     color: white;
-    min-width: 180px;
+    width: 180px;
     transition: 0.5s ease all;
     background-color: var(--dash-main-color);
     z-index: 4;
@@ -42,23 +42,30 @@ nav.nav-sidebar ul li:nth-child(4) {
     margin-top: 90%;
 }
 
+.container-toggler-sidebar {
+    padding: 2rem
+}
+
 .toggler-sidebar {
+    margin: 1.9rem;
+    padding: 0.4rem;
+    border-radius: 6px;
+    background-color: aliceblue;
+    position: relative;
     display: none;
-    padding: 18px;
     cursor: pointer;
     color: var(--dash-main-color);
 }
 
 .off-toggler {
     pointer-events: none;
+    background-color: transparent;
 }
 
 .show-sidebar {
     position: relative;
     min-width: 180px !important;
 }
-
-
 
 .content-sidebar {
     overflow: hidden;
@@ -84,6 +91,11 @@ nav.nav-sidebar ul li:nth-child(4) {
         width: 10px;
         background-color: white;
     }
+
+    .off-toggler {
+        pointer-events: none;
+        display: none;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -94,5 +106,12 @@ nav.nav-sidebar ul li:nth-child(4) {
     .off-toggler {
         pointer-events: none;
         display: none;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 360px) {
+    .toggler-sidebar {
+        margin: 1.2rem;
+        padding: 0.4rem;
     }
 }

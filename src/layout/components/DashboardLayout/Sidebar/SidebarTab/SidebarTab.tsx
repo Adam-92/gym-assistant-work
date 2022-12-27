@@ -20,7 +20,7 @@ const SidebarTab = ({
       <Link
         to={to}
         className="link-sidebar-tab"
-        onClick={() => childTabs ?? onClick()}
+        onClick={()=>onClick()}
       >
         <FontAwesomeIcon
           icon={icon}

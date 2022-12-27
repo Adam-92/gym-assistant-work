@@ -5,7 +5,7 @@ import "./ChildTab.css";
 
 const ChildTab = ({ name, to }: ChildTabProps) => {
   const params = useParams();
-  const endMatch = Object.keys(params).length === 0 ?? false;
+  const endMatch = Object.keys(params).length === 0 || false;
 
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: endMatch });

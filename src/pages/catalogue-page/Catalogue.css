@@ -1,12 +1,15 @@
 .catalogue {
     height: 100%;
+    overflow: auto;
     background-color: white;
+    border-radius: 2rem;
+    padding: 1rem;
 }
 
 .catalogue a {
     position: relative;
     text-decoration: none;
-    width: 330px;
+    width: 275px;
     height: 230px;
     z-index: 1;
     box-shadow: 0 0 5px 0px;
@@ -15,7 +18,7 @@
 }
 
 .catalogue ul {
-    height: 100%;
+    margin: 3rem 0;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -25,12 +28,11 @@
 
 
 .catalogue ul li {
-    height: 100%;
     list-style: none;
 }
 
 .catalogue ul li h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--dash-main-color);
     padding-left: 1rem;
     margin-top: 0.2rem;
@@ -38,14 +40,14 @@
 }
 
 .catalogue ul li img {
-    width: 68%;
+    width: 92%;
     opacity: 1;
     margin-left: auto;
 }
 
 .legs-resize {
-    max-width: 35%;
-    transform: translateX(-10%);
+    max-width: 50%;
+    transform: translateX(-37%);
 }
 
 .wave-catalogue {
@@ -65,4 +67,14 @@
     height: 100%;
     z-index: -1;
     opacity: 0.4;
+}
+
+@media screen and (min-width: 1600px) {
+    .catalogue {
+        display: flex;
+    }
+
+    .catalogue ul {
+        gap: 4rem
+    }
 }

@@ -1,4 +1,4 @@
-.container-guage{
+.container-guage {
     display: flex;
     justify-content: space-between;
     align-items: center
@@ -82,13 +82,48 @@
     .width-guage {
         width: auto;
     }
-    .box-guage{
+
+    .box-guage {
         margin-right: 1rem;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .container-guage{
+    .container-guage {
         justify-content: center;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 460px) {
+    .box-guage {
+        width: 225px;
+        min-width: 225px;
+        height: 112px;
+        margin-right: 0;
+    }
+
+    .score-guage {
+        border-width: 22px;
+    }
+
+    .progress-guage {
+        border-width: 22px;
+    }
+
+    .target-gauge {
+        margin-top: 0.4rem;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .fa-turn-up {
+        font-size: 1.7rem;
+    }
+    .current-gauge {
+        margin-top: 2px;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .icon-current-gauge{
+        left: 28%;
     }
 }

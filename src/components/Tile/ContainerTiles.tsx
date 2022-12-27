@@ -1,4 +1,3 @@
-import { TileProps } from "./Tile.model";
 import useFetchData from "../../hooks/useFetchData";
 import Tile from "./Tile";
 import DataStatusHandler from "../DataStatusHandler/DataStatusHandler";
@@ -6,32 +5,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getTilesData } from "src/firebase/services/activity";
 import {
   faShoePrints,
-  faBurger,
   faWeightHanging,
-  faDumbbell,
 } from "@fortawesome/free-solid-svg-icons";
-import { useMemo } from "react";
 import Transition from "../Transition/Transition";
+
+const tileIcons = [
+  <FontAwesomeIcon icon={faShoePrints} className="fa-rotate-270" />,
+  <FontAwesomeIcon icon={faWeightHanging} />
+];
 
 const ContainerTiles = () => {
   const { data, isLoading, error } = useFetchData(getTilesData);
-
-  const tileIcons = useMemo(
-    () => [
-      <FontAwesomeIcon icon={faShoePrints} className="fa-rotate-270" />,
-      <FontAwesomeIcon icon={faBurger} />,
-      <FontAwesomeIcon icon={faDumbbell} />,
-      <FontAwesomeIcon icon={faWeightHanging} />,
-    ],
-    []
-  );
-
+  
   return (
     <DataStatusHandler isLoading={isLoading} data={data} error={error}>
       {(data) => (
         <Transition>
           <div className="container-tiles wrap">
-            {data.map((tile: TileProps, index: number) => {
+            {data.map((tile, index) => {
               return (
                 <Tile
                   key={tile.name}

@@ -32,3 +32,10 @@ ul.header-history-popover li {
         left: 45%;
     }
 }
+
+@media screen and (min-width: 0px) and (max-width: 320px){
+    .container-history-popover {
+        padding: 0.7rem;
+        left: 32%;
+    }
+}

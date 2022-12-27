@@ -16,7 +16,7 @@ const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
         <img src={imgUrl} alt="exercise" />
       </div>
       <div className="information-exercise-card">
-        <div className="parts-exercise-card">
+        <div className="flex-justify-start">
           {exercise.secondaryMuscle.map((muscle) => {
             return (
               <span className="part-exercise-card" key={muscle}>

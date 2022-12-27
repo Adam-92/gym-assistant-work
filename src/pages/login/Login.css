@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Heebo:wght@500&display=swap');
+
 .container-login {
    background: rgba(0, 0, 0, 0) url(http://localhost:3000/assets/hero.jpg) no-repeat center / cover;
+   min-height: 100vh;
    height: 100vh;
    box-shadow: 0 0 20px 3px;
+   min-width: 300px;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Heebo:wght@500&display=swap');
 
 .center-login-panel {
    height: 100%;
@@ -96,7 +98,6 @@
 }
 
 .link-login-panel {
-   margin-top: 4px;
    color: white;
    cursor: pointer;
    text-decoration: none;
@@ -112,7 +113,7 @@
    color: rgb(240, 64, 64);
 }
 
-@media (max-width: 576px) {
+@media screen and (max-width: 576px) {
    .input-login-panel {
       font-size: 0.8rem;
    }
@@ -124,5 +125,15 @@
 
    .checkbox-login-panel {
       margin-left: 1rem;
+   }
+}
+
+@media screen and (max-width: 375px) {
+   .relative-login-panel input {
+      padding: 1rem 0 1rem 3.8rem;
+   }
+
+   .submit-login-panel {
+      padding: 0.7rem 5rem
    }
 }

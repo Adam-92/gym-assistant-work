@@ -7,7 +7,6 @@
     "calories-chart next-training todo";
   grid-template-columns: 35% 50% 15%;
   overflow: hidden;
-  min-width: 320px;
 }
 
 .header-dashboard {
@@ -18,7 +17,6 @@
   background-color: white;
   grid-area: header;
   margin-bottom: 1rem;
-
 }
 
 .scale-dashboard {
@@ -101,6 +99,7 @@
   }
 }
 
+
 @media screen and (max-width: 1400px) {
   .grid-dashboard {
     grid-template-areas:
@@ -111,8 +110,8 @@
   }
 
   .chart-calories-dashboard {
-    max-height: 320px;
+    max-height: 330px;
     margin-right: 0;
   }
-
+  
 }

@@ -6,15 +6,19 @@ const Settings = () => {
     useSettingsContext();
 
   return (
-    <>
-      <h4>Catalogue:</h4>
-      <br></br>
-      <h5>I want to see only exercises added by me </h5>
-      <ControlledSwitch
-        checked={!showCatalogueExercises}
-        onChange={toggleShowCatalogueExercises}
-      />
-    </>
+    <div className="in-progress">
+      <section>
+        <h3>Catalogue:</h3>
+        <br></br>
+        <div className="flex-justify-start">
+          <p className="m-r">I want to see only exercises added by me </p>
+          <ControlledSwitch
+            checked={!showCatalogueExercises}
+            onChange={toggleShowCatalogueExercises}
+          />
+        </div>
+      </section>
+    </div>
   );
 };
 

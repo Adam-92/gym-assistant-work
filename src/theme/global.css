@@ -19,6 +19,7 @@ Variables
   --dash-margin-headers: 0.5rem;
   --red-btn: rgb(231, 17, 85);
   --green-btn: #45e945;
+  --secodnary-parts: #7388de;
   --performance-table: rgba(238, 174, 194, 0.5);
   --box-shadow: 0px 8px 37px -4px rgba(66, 68, 90, 1);
   --padding: 1rem;
@@ -43,6 +44,31 @@ body {
   font-family: var(--dash-font-family);
 }
 
+.in-progress {
+  height: 100%;
+  overflow: auto;
+  background-color: white;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.in-progress h2 {
+  font-size: 2.5rem;
+  color: var(--dash-main-color)
+}
+
+.in-progress section {
+  padding: 2rem 1rem;
+}
+
+.in-progress section h3 {
+  font-size: 1.5rem;
+}
+
+.in-progress section p{
+  font-weight: 400;
+  font-size: 1.1rem;
+}
 
 .flex-justify-center {
   display: flex;
@@ -74,6 +100,10 @@ body {
 
 .wrap {
   flex-wrap: wrap;
+}
+
+.shadow-inset {
+  box-shadow: inset 0px 0px 8px -4px;
 }
 
 .noSelect {
@@ -145,4 +175,10 @@ body {
 
 .m-x {
   margin: 0 var(--margin);
+}
+
+@media screen and (max-width: 992px) {
+  .in-progress section {
+    padding: 5rem 0rem;
+  }
 }
