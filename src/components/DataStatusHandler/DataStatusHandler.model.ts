@@ -1,6 +1,6 @@
 export interface DataStatusHandlerProps<T> {
   isLoading: boolean;
-  isError: string;
+  error: string;
   data?: T;
   children: (data: T) => JSX.Element;
 }

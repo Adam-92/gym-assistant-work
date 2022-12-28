@@ -1,58 +1,117 @@
-.container-next-training{
-  top:0;
-  left:0;
+.container-next-training {
+  position: relative;
   height: 100%;
   padding: 1rem;
 }
-.container-next-training header{
+
+.container-next-training header {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(255,255,255);
+  color: rgb(255, 255, 255);
   background-color: var(--dash-main-color);
   border-radius: 1.5rem;
   padding: 1rem;
   font-size: 1.2rem;
 }
-.container-next-training section{
+
+.container-next-training section {
   height: 80%;
   overflow: auto;
 }
-.part-next-training{
-  background-color: rgba(113,99,186,0.1);
+
+.part-next-training {
+  background-color: rgba(113, 99, 186, 0.1);
   border-radius: 1.5rem;
   padding: 0.4rem 0;
   margin: 1rem 0;
 }
-.part-next-training h3{
+
+.part-next-training h3 {
   color: var(--dash-main-color);
   width: 20%;
   text-align: center;
   margin: 0 auto;
 }
-.exercises-next-training{
+
+.exercises-next-training {
   color: var(--dash-main-color);
 }
-.exercise-next-training{
+
+.exercise-next-training {
+  position: relative;
   display: flex;
   cursor: pointer;
   padding-left: 4rem;
   text-align: left;
 }
-.exercise-next-training span{
+
+.exercise-next-training span {
   width: 5%;
   pointer-events: none;
 }
-.exercise-next-training div{
+
+.exercise-next-training div {
   flex: 1;
-  margin: 2px 0;
+  margin: 0.12rem 0;
   pointer-events: none;
 }
-.exercise-next-training div span{
+
+.exercise-next-training div span {
   white-space: nowrap;
   margin-left: 5px;
   pointer-events: none;
 }
-.exercise-next-training:hover{
+
+.exercise-next-training:hover {
   font-weight: bold;
+}
+
+@media screen and (max-width: 1600px) {
+  .exercise-next-training {
+    text-align: center;
+  }
+
+  .exercise-next-training span {
+    width: 29%;
+    pointer-events: none;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container-next-training {
+    padding: 1rem 2rem;
+  }
+
+  .exercise-next-training {
+    padding-left: 3rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .exercise-next-training {
+    text-align: center;
+  }
+
+  .exercise-next-training {
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .self-align-next-training {
+    align-self: flex-start;
+  }
+
+  .exercise-next-training {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  .exercise-next-training div {
+    margin: 0.38rem 0;
+  }
 }

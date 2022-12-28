@@ -1,7 +1,7 @@
 import { availableBodyParts } from "./availableBodyParts";
 import { Link } from "react-router-dom";
-import "./Catalogue.css";
 import { firstBigLetter } from "src/utils/Utils";
+import "./Catalogue.css";
 
 const Catalogue = () => {
   return (
@@ -10,7 +10,7 @@ const Catalogue = () => {
         {availableBodyParts.map((name) => {
           return (
             <Link key={name} to={name}>
-              <li>
+              <li className="wave-catalogue">
                 <img
                   src={`assets/${name}Catalogue.png`}
                   alt="bodyPart"

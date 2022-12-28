@@ -4,7 +4,7 @@ import {
   NextTrainingProviderProps,
   SelectedExercise,
 } from "./NextTrainingProvider.model";
-import { getNextTraining } from "src/firebase/services/Activity";
+import { getNextTraining } from "src/firebase/services/activity";
 import useFetchData from "src/hooks/useFetchData";
 import {
   BodyPart,
@@ -15,7 +15,7 @@ import { NextTrainingContextValue } from "../context/NextTrainingContext.model";
 export const NextTrainingProvider = ({
   children,
 }: NextTrainingProviderProps) => {
-  const { isLoading, isError, data } = useFetchData(getNextTraining);
+  const { isLoading, error, data } = useFetchData(getNextTraining);
   const [selectedExercise, setSelectedExercise] = useState<SelectedExercise>();
 
   const selectExercise = useCallback(
@@ -23,6 +23,8 @@ export const NextTrainingProvider = ({
       setSelectedExercise(newSelectedExercise),
     []
   );
+
+  const closePopover = useCallback(() => setSelectedExercise(undefined), []);
 
   const lastTraining = useMemo(() => {
     if (!data || !selectedExercise) return undefined;
@@ -41,13 +43,22 @@ export const NextTrainingProvider = ({
   const value: NextTrainingContextValue = useMemo(
     () => ({
       isLoading,
-      isError,
+      error,
       data,
       selectedExercise,
       selectExercise,
+      closePopover,
       lastTraining,
     }),
-    [data, isLoading, isError, lastTraining, selectExercise, selectedExercise]
+    [
+      data,
+      isLoading,
+      error,
+      lastTraining,
+      selectExercise,
+      selectedExercise,
+      closePopover,
+    ]
   );
 
   return (

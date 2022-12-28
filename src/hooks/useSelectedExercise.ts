@@ -1,7 +1,7 @@
 import {
   getAllUsersDataSelectedExercise,
   getUserDataSelectedExercise,
-} from "src/firebase/services/Activity";
+} from "src/firebase/services/activity";
 import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import { useParams } from "react-router";
 import { NewExercise } from "src/model/model";
@@ -9,22 +9,20 @@ import { iconsDescription } from "src/pages/selectedExercise-page/iconsDescripti
 import { IconsDescription } from "src/pages/selectedExercise-page/SelectedExercise.model";
 import { useState, useEffect, useCallback } from "react";
 import { parseError } from "src/errors/parseError";
-import { assertBodyPartFromParamsIsValid } from "src/components/Carousels/CarouselRoute/assertBodyPartFromParamsIsValid";
+import { assertBodyPartFromParamsIsValid } from "src/components/CarouselRoute/assertBodyPartFromParamsIsValid";
 import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 
 const useSelectedExercise = () => {
   const [data, setData] = useState<NewExercise>();
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState("");
+  const [error, setError] = useState("");
 
   const { currentUser } = useUserContext();
   const { selectedBodyPart, selectedExercise } = useParams();
 
-
   const initialBodyPart = selectedBodyPart ?? availableBodyParts[0];
 
   assertBodyPartFromParamsIsValid(initialBodyPart);
-
 
   const rightDescriptionIcon = iconsDescription.find(
     ({ name }: IconsDescription) => name === initialBodyPart
@@ -58,7 +56,7 @@ const useSelectedExercise = () => {
         }
       }
     } catch (error) {
-      setIsError(parseError(error));
+      setError(parseError(error));
     } finally {
       setIsLoading(false);
     }
@@ -72,7 +70,7 @@ const useSelectedExercise = () => {
     data,
     rightDescriptionIcon,
     isLoading,
-    isError,
+    error,
   };
 };
 export default useSelectedExercise;

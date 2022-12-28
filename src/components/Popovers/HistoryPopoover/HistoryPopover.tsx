@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import ContentPopover from "./ContentPopover";
 import { useNextTraining } from "src/contexts/nextTraining/hooks/useNextTraining";
 import "./HistoryPopover.css";
@@ -17,11 +15,6 @@ const HistoryPopover = () => {
       ) : (
         <span>Make Your First Training!</span>
       )}
-      <FontAwesomeIcon
-        icon={faCaretLeft}
-        size="2x"
-        className="position-arrow"
-      />
     </article>
   );
 };

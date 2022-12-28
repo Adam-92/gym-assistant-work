@@ -114,7 +114,7 @@ const Register = () => {
           </section>
           <div className="links-register-panel">
             <Link to="/login" className="link-register-panel">
-              Sign in to your account!
+              Sign in to your account !
             </Link>
           </div>
         </div>

@@ -6,10 +6,7 @@ const Tile = (tile: TileProps) => {
     tile.style;
 
   return (
-    <article
-      className="container-tile"
-      style={{ backgroundColor: backgroundContainer }}
-    >
+    <article className="tile" style={{ backgroundColor: backgroundContainer }}>
       <div
         className="header-tile"
         style={{ backgroundColor: backgroundHeader, borderColor: borderColor }}

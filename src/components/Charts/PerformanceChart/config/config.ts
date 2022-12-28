@@ -1,4 +1,4 @@
-import { ChartData, ChartOptions } from "chart.js";
+import { ChartData, ChartOptions, ScriptableContext } from "chart.js";
 
 let delayed: boolean;
 
@@ -8,10 +8,16 @@ export const initialData: ChartData<"line"> = {
     {
       label: "Best Records From Set",
       data: [],
-      borderColor: "rgb(223, 154, 235)",
       tension: 0.3,
       fill: true,
-      backgroundColor: "rgba(103,76,175,0.3)",
+      backgroundColor: (context: ScriptableContext<"line">) => {
+        const ctx = context.chart.ctx;
+        const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+        gradient.addColorStop(1, "rgba(120,11,50,1)");
+        gradient.addColorStop(0, "rgba(250,14,50,0)");
+        return gradient;
+      },
+      borderColor: "rgb(223, 154, 235)",
       pointRadius: 5,
       pointBorderColor: "rgb(255,255,255)",
       pointBorderWidth: 2,

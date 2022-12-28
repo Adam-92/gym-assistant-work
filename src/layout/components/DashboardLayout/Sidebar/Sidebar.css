@@ -4,9 +4,10 @@
     border-bottom-left-radius: 2em;
     font-family: var(--dash-font-family);
     color: white;
-    min-width: 180px;
-    background-color: var(--dash-main-color);
+    width: 180px;
     transition: 0.5s ease all;
+    background-color: var(--dash-main-color);
+    z-index: 4;
 }
 
 .img-container-sidebar {
@@ -21,10 +22,14 @@
 }
 
 nav.nav-sidebar {
-    margin-top: 32px;
+    margin-top: 12%;
 }
 
-.parent-sidebar li{
+.parent-sidebar {
+    overflow: hidden;
+}
+
+.parent-sidebar li {
     position: relative;
     padding: 17px 5px 17px 24px;
     list-style: none;
@@ -33,29 +38,80 @@ nav.nav-sidebar {
     margin-left: 1.5rem;
 }
 
-nav.nav-sidebar ul li:nth-child(4){
+nav.nav-sidebar ul li:nth-child(4) {
     margin-top: 90%;
 }
-.toggler-sidebar{
-    display: none;
-    padding: 18px;
-    cursor: pointer;
+
+.container-toggler-sidebar {
+    padding: 2rem
 }
-.show-sidebar{
+
+.toggler-sidebar {
+    margin: 1.9rem;
+    padding: 0.4rem;
+    border-radius: 6px;
+    background-color: aliceblue;
+    position: relative;
+    display: none;
+    cursor: pointer;
+    color: var(--dash-main-color);
+}
+
+.off-toggler {
+    pointer-events: none;
+    background-color: transparent;
+}
+
+.show-sidebar {
+    position: relative;
     min-width: 180px !important;
 }
-.show-content-sidebar{
-    display: block !important;
+
+.content-sidebar {
+    overflow: hidden;
 }
-@media screen and (max-width: 576px) {
-    .container-sidebar{
-        width: 60px;
-        min-width: 60px;
+
+@media screen and (max-width: 992px) {
+    .container-sidebar {
+        position: absolute;
+        width: 0;
+        min-width: 0;
     }
-    .content-sidebar {
-        display: none;
-    }
-    .toggler-sidebar{
+
+    .toggler-sidebar {
         display: block;
     }
-  }
+
+    .show-sidebar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 100%;
+        height: 100%;
+        width: 10px;
+        background-color: white;
+    }
+
+    .off-toggler {
+        pointer-events: none;
+        display: none;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    nav.nav-sidebar ul li:nth-child(4) {
+        margin-top: 20%;
+    }
+
+    .off-toggler {
+        pointer-events: none;
+        display: none;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 360px) {
+    .toggler-sidebar {
+        margin: 1.2rem;
+        padding: 0.4rem;
+    }
+}

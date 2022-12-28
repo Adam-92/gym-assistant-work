@@ -1,52 +1,117 @@
-.header-dashboard {
-  display: flex;
-  padding: 1rem 1rem;
-  border-radius: 2rem;
-  margin-bottom: 1rem;
-  background-color: white;
-  flex-wrap: wrap;
-  width: 82%;
+.grid-dashboard {
+  min-height: 100%;
+  display: grid;
+  grid-template-areas:
+    "header header todo"
+    "steps-chart next-training todo"
+    "calories-chart next-training todo";
+  grid-template-columns: 35% 50% 15%;
+  overflow: hidden;
 }
 
-.statistics-dashboard {
+.header-dashboard {
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 2rem;
+  background-color: white;
+  grid-area: header;
+  margin-bottom: 1rem;
+}
+
+.scale-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.todo-dashboard {
+  grid-area: todo;
+  padding: 1rem;
+  border-radius: 2rem;
+  background: linear-gradient(135deg, white, var(--dash-main-color));
+  margin-left: 1rem;
 }
 
 .chart-steps-dashboard {
-  height: calc(50% - 1rem);
   border-radius: 2rem;
   padding: 1rem;
   background-color: white;
-  margin-bottom: 1rem;
-  min-height: 251px;
   max-width: 514px;
+  grid-area: steps-chart;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
 }
 
 .chart-calories-dashboard {
-  position: relative;
-  height: 50%;
   background-color: rgb(255, 255, 255);
   border-radius: 2rem;
   padding: 1rem;
-  min-height: 240px;
+  grid-area: calories-chart;
+  max-width: 514px;
+  max-height: 295px;
+  margin-right: 1rem;
 }
 
 .next-training-dashboard {
-  flex: 1;
   background-color: rgb(255, 255, 255);
   border-radius: 2rem;
-  margin-left: 1rem;
-  max-width: 46%;
+  grid-area: next-training;
+  max-height: 668px;
+  overflow: auto;
+}
+
+@media screen and (max-width: 1750px) {
+  .todo-dashboard {
+    display: none
+  }
+
+  .grid-dashboard {
+    grid-template-columns: 41% 59% 0%;
+
+  }
+
+  .header-dashboard {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .grid-dashboard {
+    grid-template-columns: 50% 50% 0%;
+    grid-template-areas:
+      "header header todo"
+      " next-training next-training  todo"
+      "calories-chart steps-chart todo";
+  }
+
+  .chart-calories-dashboard {
+    margin-top: 1rem;
+    max-width: none;
+  }
+
+  .chart-steps-dashboard {
+    margin-top: 1rem;
+    max-width: none;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
 }
 
 
-.new-bg-dashboard {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.85);
-  height: 100%;
-  width: 100%;
-  z-index: 2;
+@media screen and (max-width: 1400px) {
+  .grid-dashboard {
+    grid-template-areas:
+      "header header todo"
+      "next-training next-training todo"
+      "calories-chart calories-chart todo"
+      "steps-chart steps-chart todo";
+  }
+
+  .chart-calories-dashboard {
+    max-height: 330px;
+    margin-right: 0;
+  }
+  
 }

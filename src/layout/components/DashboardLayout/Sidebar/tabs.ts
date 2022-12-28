@@ -3,7 +3,6 @@ import {
   faCalendarDays,
   faDumbbell,
   faGear,
-  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { Tab } from "./Sidebar.model";
 
@@ -24,7 +23,7 @@ export const tabs: Tab[] = [
       },
       {
         name: "Add New",
-        to: "/add-new",
+        to: "catalogue/add-new",
       },
     ],
   },
@@ -37,10 +36,5 @@ export const tabs: Tab[] = [
     name: "Settings",
     icon: faGear,
     to: "/settings",
-  },
-  {
-    name: "Logout",
-    icon: faRightFromBracket,
-    to: "/logout",
   },
 ];

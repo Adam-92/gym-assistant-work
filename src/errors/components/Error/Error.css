@@ -1,0 +1,35 @@
+.error-popover {
+    inset: 0px auto auto 0px;
+    border: 1px solid #c45959;
+    border-radius: 0.5rem;
+    min-width: 220px;
+    top: 10%;
+    width: 20%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.error-header {
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.error-body {
+    padding: 1rem;
+    background-color: white
+}
+.error-reload{
+    margin-bottom: 5%;
+}
+
+.error-reload button {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 5px;
+    background-color: rgb(252, 161, 161);
+    font-weight: bold;
+    cursor: pointer;
+}

@@ -1,7 +1,7 @@
-import { isErrorWithMessage } from "./isErrorWithMessage";
+import { errorWithMessage } from "./errorWithMessage";
 
 export const parseError = (error: unknown) => {
-  if (isErrorWithMessage(error)) {
+  if (errorWithMessage(error)) {
     return error.message;
   }
 

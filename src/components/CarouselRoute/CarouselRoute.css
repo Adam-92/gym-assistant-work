@@ -1,0 +1,46 @@
+.header-carousel-route {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    color: var(--dash-main-color);
+    font-family: var(--dash-font-family);
+    margin: 1.5rem 30% 2rem 30%
+}
+
+.header-carousel-route h5 {
+    font-size: 2.5rem;
+    margin: 0 1rem;
+}
+
+.header-carousel-route a {
+    font-size: 2.5rem;
+}
+
+.icon-carousel-route {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .header-carousel-route h5 {
+        font-size: 2.6rem;
+        margin: 0 2rem;
+    }
+    .header-carousel-route a {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .header-carousel-route {
+        margin: 1.5rem 30% 2.5rem 30%
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .header-carousel-route h5 {
+        font-size: 2rem;
+        margin: 0 1rem;
+    }
+}

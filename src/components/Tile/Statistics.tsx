@@ -11,7 +11,8 @@ const Statistics = ({ target, current, name }: StatisticsTile) => {
   return (
     <div className="stats-tile">
       <div className="total-tile">
-        <h3>Target: {displayTarget} </h3>
+        <h3>Target: </h3>
+        <span>{displayTarget}</span>
       </div>
       <div className="total-tile">
         <h3>Today:</h3>

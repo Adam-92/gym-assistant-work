@@ -1,0 +1,49 @@
+.container-calories-chart {
+    position: relative;
+}
+
+.content-calories-chart {
+    max-height: 295px;
+    padding: 3rem 1rem 1rem 1rem;
+    border: 1px solid rgb(204 204 210);
+    border-radius: 1.5rem;
+}
+
+.header-calories-chart h2 {
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    font-weight: var(--dash-font-weight);
+    font-family: var(--dash-font-family);
+    font-size: var(--dash-font-size);
+    color: var(--dash-font-color);
+}
+.container-calories-chart canvas{
+    height: 200px;
+}
+
+@media screen and (min-width: 1400px) {
+    .content-calories-chart{
+        max-height: 265px;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .container-calories-chart canvas {
+        height: 235px !important;
+        padding: 0 4rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .container-calories-chart canvas {
+        height: 235px !important;
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container-calories-chart canvas {
+        height: 235px !important;
+        padding: 0rem;
+    }
+}

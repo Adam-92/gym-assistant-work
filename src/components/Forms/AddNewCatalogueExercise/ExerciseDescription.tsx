@@ -15,17 +15,13 @@ const ExerciseDescription = () => {
           <textarea
             className={`${
               errors.exerciseDescription?.message && "error-add-new-catalogue"
-            }  area-exercise-description`}
+            }`}
             id="exerciseDescription"
             {...register(
               "exerciseDescription",
-              validationWithWhiteSpaces(10, 150)
+              validationWithWhiteSpaces(10, 250)
             )}
-            placeholder="For Example:
-            Set machine seat on 4 height, departure 6.
-            Remember to straight arms while ending repetition."
-            rows={5}
-            cols={60}
+            placeholder="The bench press is a compound exercise that targets the muscles of the upper body. It involves lying on a bench and pressing weight upward using either a barbell or a pair of dumbbells"
           />
         </label>
       </div>

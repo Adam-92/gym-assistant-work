@@ -1,4 +1,3 @@
-import { personalUserData } from "./AxiosInstances";
 import { CatalogueNewExerciseFormValues } from "src/components/Forms/Forms.model";
 import {
   doc,
@@ -25,31 +24,37 @@ import { caloriesChartData } from "./converters";
 import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
 
 export const getCaloriesChartData = async () => {
-  const ref = doc(db, "exampleDashboardData/caloriesChart").withConverter(
-    caloriesChartData
+  const request = await getDoc(
+    doc(db, "exampleDashboardData/caloriesChart").withConverter(
+      caloriesChartData
+    )
   );
-  return await getDoc(ref);
+  return request;
 };
 
 export const getAllUsersDataSelectedExercise = async (
   bodyPart: AvailableBodyParts
-) =>
-  await getDoc(
+) => {
+  const request = await getDoc(
     doc(db, `/forAllUsersExercises/${firstBigLetter(bodyPart)}`).withConverter(
       arrayNewExercises
     )
   );
+  return request;
+};
 
 export const getUserDataSelectedExercise = async (
   bodyPart: AvailableBodyParts,
   userId: string
-) =>
-  await getDoc(
+) => {
+  const request = await getDoc(
     doc(
       db,
       `/userExercises/${userId}/${firstBigLetter(bodyPart)}/exercises`
     ).withConverter(arrayNewExercises)
   );
+  return request;
+};
 
 export const getWeeklySteps = async () => {
   const request = await getDoc(
@@ -63,15 +68,6 @@ export const getMonthlySteps = async () => {
   return request;
 };
 
-export const getCarouselCharacters = async () => {
-  try {
-    return await (
-      await personalUserData.get(`charactersCaroussel.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
-};
 export const getTilesData = async () => {
   const request = await getDoc(
     doc(db, `exampleDashboardData/activityTiles`).withConverter(tileData)
@@ -91,77 +87,28 @@ export const getGauges = async () => {
   return request;
 };
 
-export const getUserExerciseCards = async (userId: string) => {
-  try {
-    const exerciseRequests = availableBodyParts.map((name: string) =>
-      getDoc(
-        doc(
-          db,
-          `userExercises/${userId}/${firstBigLetter(name)}/exercises`
-        ).withConverter(arrayNewExercises)
+export const getExercisesForUser = (currentUser: User | null) => {
+  const exerciseRequests = availableBodyParts.map((name) =>
+    getDoc(
+      doc(
+        db,
+        `userExercises/${currentUser?.uid}/${firstBigLetter(name)}/exercises`
+      ).withConverter(arrayNewExercises)
+    )
+  );
+
+  return Promise.all(exerciseRequests);
+};
+
+export const getExercisesForAllUsers = () => {
+  const exerciseRequests = availableBodyParts.map((name) =>
+    getDoc(
+      doc(db, `forAllUsersExercises/${firstBigLetter(name)}`).withConverter(
+        arrayNewExercises
       )
-    );
-
-    const exerciseResponses = await Promise.all(exerciseRequests);
-    const allExercises = exerciseResponses
-      .filter((response) => (response.exists() ? response : false))
-      .map((snap) => {
-        const exercisesObject = snap.data();
-        if (exercisesObject) {
-          return exercisesObject.exercises;
-        }
-        return [];
-      });
-
-    return allExercises.flat();
-  } catch {
-    return [];
-  }
-};
-
-export const getExercisesForAllUsers = async () => {
-  try {
-    const exerciseRequests = availableBodyParts.map((name: string) =>
-      getDoc(
-        doc(db, `forAllUsersExercises/${firstBigLetter(name)}`).withConverter(
-          arrayNewExercises
-        )
-      )
-    );
-    const exerciseResponses = await Promise.all(exerciseRequests);
-    const allExercises = exerciseResponses
-      .filter((response) => (response.exists() ? response : false))
-      .map((snap) => {
-        const exercisesObject = snap.data();
-        if (exercisesObject) {
-          return exercisesObject.exercises;
-        }
-        return [];
-      });
-
-    return allExercises.flat();
-  } catch {
-    return [];
-  }
-};
-
-export const getSecondaryArrangeMuscles = async () => {
-  try {
-    return await (
-      await personalUserData.get(`secondaryArrangeMuscles.json`)
-    ).data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getExamplePicturesAddNew = async () => {
-  try {
-    return (await personalUserData.get(`examplePicturesAddCatalogue.json`))
-      .data;
-  } catch (error) {
-    console.log(error);
-  }
+    )
+  );
+  return Promise.all(exerciseRequests);
 };
 
 export const setNewExercise = async (
@@ -172,33 +119,38 @@ export const setNewExercise = async (
   try {
     const ref = doc(
       db,
-      `userExercises/${currentUser?.uid}/${data.part}/exercises/`
+      `userExercises/${currentUser?.uid}/${firstBigLetter(
+        data.part
+      )}/exercises/`
     );
 
     const exerciseDoc = await getDoc(ref);
 
     if (exerciseDoc.exists()) {
-      await updateNewExercise(ref, data);
+      await addExercise(ref, data);
     } else {
-      await addNewExercise(ref, data);
+      await createArrayOfExercises(ref, data);
     }
 
     onSnapshot(
-      doc(db, `userExercises/${currentUser?.uid}/${data.part}/exercises`),
-      () => {
-        onSuccess(data.part.toLowerCase());
-      }
+      doc(
+        db,
+        `userExercises/${currentUser?.uid}/${firstBigLetter(
+          data.part
+        )}/exercises`
+      ),
+      () => onSuccess(data.part.toLowerCase())
     );
   } catch (error) {
     console.log(error);
   }
 };
 
-const updateNewExercise = async (
+const addExercise = async (
   ref: DocumentReference<DocumentData>,
   data: CatalogueNewExerciseFormValues
-) => {
-  updateDoc(ref.withConverter(arrayNewExercises), {
+) =>
+  await updateDoc(ref.withConverter(arrayNewExercises), {
     exercises: arrayUnion({
       name: data.name.toLowerCase(),
       exerciseDescription: data.exerciseDescription,
@@ -206,16 +158,16 @@ const updateNewExercise = async (
       exampleImage: data.exampleImage ?? "",
       urlImage: data.urlImage,
       part: data.part,
+      allUsers: false,
       results: [{ label: "", sets: [{ weight: 0, reps: 0 }] }],
     }),
   });
-};
 
-const addNewExercise = async (
+const createArrayOfExercises = async (
   ref: DocumentReference<DocumentData>,
   data: CatalogueNewExerciseFormValues
-) => {
-  setDoc(ref.withConverter(arrayNewExercises), {
+) =>
+  await setDoc(ref.withConverter(arrayNewExercises), {
     exercises: [
       {
         name: data.name.toLowerCase(),
@@ -229,4 +181,3 @@ const addNewExercise = async (
       },
     ],
   });
-};

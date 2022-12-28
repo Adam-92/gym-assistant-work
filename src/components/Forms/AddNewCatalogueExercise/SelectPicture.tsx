@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
 import { ExamplePicturesAddCatalogue } from "src/components/Forms/Forms.model";
-import { getExamplePicturesAddNew } from "../../../firebase/services/Activity";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { useFormContext } from "react-hook-form";
@@ -8,16 +6,9 @@ import {
   isValidImageUrl,
   validateProposalImage,
 } from "../../../validation/validationRules";
+import { pictures } from "../pictures";
 
 const SelectPicture = () => {
-  const [data, setData] = useState<ExamplePicturesAddCatalogue[]>([]);
-
-  useEffect(() => {
-    getExamplePicturesAddNew().then((pictures: ExamplePicturesAddCatalogue[]) =>
-      setData(pictures)
-    );
-  }, []);
-
   const {
     register,
     formState: { errors },
@@ -58,7 +49,7 @@ const SelectPicture = () => {
           Or use one from our example pictures
         </p>
         <section className="upload-files-add-new-catalogue">
-          {data?.map(({ id, img, name }: ExamplePicturesAddCatalogue) => {
+          {pictures.map(({ id, img, name }: ExamplePicturesAddCatalogue) => {
             return (
               <label
                 htmlFor={id + name}

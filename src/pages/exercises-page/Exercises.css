@@ -2,16 +2,26 @@
     height: 100%;
 }
 
-.content-exercises{
+.content-exercises {
     background-color: white;
     border-radius: 2rem;
     padding: 2rem;
     min-height: 100%;
 }
-.pointer-none{
+
+.pointer-none {
     pointer-events: none;
 }
+
 .cards-exercises {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 420px));
+    grid-template-columns: repeat(auto-fit, minmax(253px, 340px));
+}
+
+@media screen and (min-width: 576px) {
+    .cards-exercises {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(253px, 405px));
+    }
+
 }

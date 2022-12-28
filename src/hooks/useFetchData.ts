@@ -7,7 +7,7 @@ const useFetchData = <T>(
 ) => {
   const [data, setData] = useState<T>();
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState("");
+  const [error, setError] = useState("");
 
   const fetchData = useCallback(async () => {
     try {
@@ -17,7 +17,7 @@ const useFetchData = <T>(
         setData(request.data().data);
       } else setData(undefined);
     } catch (error) {
-      setIsError(parseError(error));
+      setError(parseError(error));
     } finally {
       setIsLoading(false);
     }
@@ -27,7 +27,7 @@ const useFetchData = <T>(
     fetchData();
   }, [fetchData]);
 
-  return { data, isLoading, isError };
+  return { data, isLoading, error };
 };
 
 export default useFetchData;

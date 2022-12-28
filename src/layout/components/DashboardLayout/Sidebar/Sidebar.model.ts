@@ -1,17 +1,14 @@
-import { ReactNode } from "react";
+export type Tab = Omit<SidebarTabProps, "onClick">;
 
-export type Tab = Omit<SidebarTabProps, "children"> & {
-  childTabs?: ChildTabProps[];
-};
-
-export type SidebarTabProps = {
+export interface SidebarTabProps {
   name: string;
   icon: any;
   to: string;
-  children: ReactNode;
-};
+  childTabs?: ChildTabProps[];
+  onClick: () => Promise<void> | void;
+}
 
-export type ChildTabProps = {
+export interface ChildTabProps {
   name: string;
   to: string;
-};
+}

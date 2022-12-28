@@ -1,4 +1,4 @@
-import { bodyParts } from "./bodyParts";
+import { bodyParts } from "../bodyParts";
 import { useFormContext } from "react-hook-form";
 import { BodyParts } from "../Forms.model";
 import { firstBigLetter } from "src/utils/Utils";

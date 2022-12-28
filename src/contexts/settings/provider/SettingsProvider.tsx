@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { SettingsContextValue } from "../context/SettingsContext.model";
 import { SettingsProviderProps } from "./SettingsProvider.model";
 import { SettingsContext } from "../context/SettingsContext";
@@ -6,13 +6,18 @@ import { SettingsContext } from "../context/SettingsContext";
 export const SettingsProvider = ({ children }: SettingsProviderProps) => {
   const [showCatalogueExercises, setShowCatalogueExercises] = useState(true);
 
-  const toggleShowCatalogueExercises = () =>
-    setShowCatalogueExercises((prev: boolean) => !prev);
+  const toggleShowCatalogueExercises = useCallback(
+    () => setShowCatalogueExercises((prev: boolean) => !prev),
+    []
+  );
 
-  const value: SettingsContextValue = {
-    showCatalogueExercises,
-    toggleShowCatalogueExercises,
-  };
+  const value: SettingsContextValue = useMemo(
+    () => ({
+      showCatalogueExercises,
+      toggleShowCatalogueExercises,
+    }),
+    [showCatalogueExercises, toggleShowCatalogueExercises]
+  );
 
   return (
     <SettingsContext.Provider value={value}>

@@ -1,42 +1,36 @@
 .content-selected-exercises {
-    height: 100%;
     background-color: white;
     border-radius: 2rem;
-    padding: 1.7rem 3rem;
+    padding: 1rem 0rem;
 }
 
-.grid-selected-exercise {
-    height: 100%;
-    display: grid;
-    row-gap: 4%;
-    column-gap: 3%;
-    grid-template-areas:
-        "back ."
-        "img  table "
-        "description  stats";
-    grid-template-columns: 40% 57%;
-    grid-template-rows: 4% 50% 42%;
+.responsive-selected-exercise {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 1rem;
+
 }
 
 .desc-selected-exercise {
     position: relative;
     grid-area: description;
 }
-.desc-selected-exercise p{
-    width: 65%;
-}
-.desc-img-selected-exercise{
+
+.desc-img-selected-exercise {
+    display: none;
     position: absolute;
-    left: 77%;
-    top: 3%;
-    width: 150px;
 }
-.desc-img-selected-exercise img{
+
+.desc-img-selected-exercise img {
     width: 100%;
 }
 
 .img-selected-exercise {
     grid-area: img;
+    height: 190px;
+    width: 100%;
 }
 
 .img-selected-exercise img {
@@ -48,12 +42,18 @@
 
 .stats-selected-exercise {
     grid-area: stats;
-    border-radius: 2rem;
-    padding: 1rem;
-    min-height: 100%;
+    height: 23vh;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.stats-selected-exercise canvas {
+    height: 100%;
 }
 
 .back-selected-exercise {
+    margin-left: 1rem;
+    align-self: flex-start;
     grid-area: back;
 }
 
@@ -65,4 +65,84 @@
 .table-selected-exercise {
     grid-area: table;
     overflow: auto;
+    width: 100%;
+    padding: 0.6rem 0;
+
+}
+
+
+@media screen and (min-width: 1600px) {
+    .desc-img-selected-exercise {
+        display: block;
+    }
+
+    .desc-selected-exercise {
+        width: 70%;
+    }
+    .stats-selected-exercise{
+        width: 92%;
+        justify-self: center;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .content-selected-exercises {
+        height: 100%;
+    }
+
+    .responsive-selected-exercise {
+        height: 100%;
+        display: grid;
+        row-gap: 3%;
+        column-gap: 0%;
+        grid-template-areas:
+            "back ."
+            "img  table "
+            "description  stats";
+        grid-template-columns: 40% 57%;
+        grid-template-rows: 4% 50% 42%;
+    }
+
+    .img-selected-exercise {
+        max-height: 325px;
+    }
+
+    .table-selected-exercise {
+        grid-area: table;
+        overflow: auto;
+        justify-self: center;
+        width: 93%;
+        height: 100%;
+        padding: 0.6rem 0;
+    }
+
+    .stats-selected-exercise {
+        justify-self: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .flex-selected-exercise {
+        row-gap: 2.1rem;
+    }
+
+    .stats-selected-exercise {
+        height: 30vh;
+    }
+
+    .img-selected-exercise {
+        height: 405px;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .stats-selected-exercise {
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .content-selected-exercises {
+        padding: 1rem 1rem;
+    }
 }

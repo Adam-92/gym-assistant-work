@@ -1,24 +1,26 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMatch, useResolvedPath } from "react-router";
 import { Link } from "react-router-dom";
-import useSignOut from "src/auth/hooks/useSignOut";
 import { SidebarTabProps } from "src/layout/components/DashboardLayout/Sidebar/Sidebar.model";
+import ChildTab from "../ChildTab/ChildTab";
 import "./SidebarTab.css";
 
-const SidebarTab = ({ name, to, icon, children }: SidebarTabProps) => {
+const SidebarTab = ({
+  name,
+  to,
+  icon,
+  childTabs,
+  onClick,
+}: SidebarTabProps) => {
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: false });
-
-  const { makeRequest } = useSignOut();
 
   return (
     <li className={`${match && "active-sidebar-tab focus-sidebar-tab "}`}>
       <Link
         to={to}
-        className="link-sidebar-tab "
-        onClick={() => {
-          return name === "Logout" ? makeRequest() : null;
-        }}
+        className="link-sidebar-tab"
+        onClick={()=>onClick()}
       >
         <FontAwesomeIcon
           icon={icon}
@@ -35,7 +37,9 @@ const SidebarTab = ({ name, to, icon, children }: SidebarTabProps) => {
           match && "show-sidebar-tab children-active-sidebar-tab  "
         }`}
       >
-        {children}
+        {childTabs?.map(({ to, name }) => (
+          <ChildTab to={to} name={name} key={name} />
+        ))}
       </ul>
     </li>
   );

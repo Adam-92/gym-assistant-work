@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { NewExercise } from "src/model/model";
+import { ExerciseCardProps } from "./ExerciseCards.model";
 import { upperCaseAllWords } from "src/utils/Utils";
 import "./ExerciseCard.css";
 
-const ExerciseCard = ({ exercise }: { exercise: NewExercise }) => {
+const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
   const imgUrl = exercise.exampleImage
     ? exercise.exampleImage
     : exercise.urlImage;
@@ -16,8 +16,8 @@ const ExerciseCard = ({ exercise }: { exercise: NewExercise }) => {
         <img src={imgUrl} alt="exercise" />
       </div>
       <div className="information-exercise-card">
-        <div className="parts-exercise-card">
-          {exercise.secondaryMuscle.map((muscle: string) => {
+        <div className="flex-justify-start">
+          {exercise.secondaryMuscle.map((muscle) => {
             return (
               <span className="part-exercise-card" key={muscle}>
                 {muscle}

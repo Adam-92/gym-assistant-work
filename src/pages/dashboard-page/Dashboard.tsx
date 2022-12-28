@@ -8,27 +8,24 @@ import "./Dashboard.css";
 
 const Dashboard = () => {
   return (
-    <>
-      <header className="header-dashboard">
+    <article className="grid-dashboard">
+      <header className="header-dashboard shadow-inset">
         <ContainerGuages />
         <ContainerTiles />
       </header>
-      <section className="statistics-dashboard">
-        <div className="charts-container-dashboard">
-          <div className="chart-steps-dashboard">
-            <StepChart />
-          </div>
-          <div className="chart-calories-dashboard">
-            <CaloriesChart />
-          </div>
-        </div>
-        <div className="next-training-dashboard">
-          <NextTrainingProvider>
-            <NextTraining />
-          </NextTrainingProvider>
-        </div>
-      </section>
-    </>
+      <div className="chart-steps-dashboard shadow-inset">
+        <StepChart />
+      </div>
+      <div className="chart-calories-dashboard shadow-inset">
+        <CaloriesChart />
+      </div>
+      <div className="next-training-dashboard shadow-inset">
+        <NextTrainingProvider>
+          <NextTraining />
+        </NextTrainingProvider>
+      </div>
+      <section className="todo-dashboard shadow-inset"></section>
+    </article>
   );
 };
 

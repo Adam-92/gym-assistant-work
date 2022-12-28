@@ -1,4 +1,4 @@
-import { RouteInterface } from "./Routes.model";
+import { Route } from "./Routes.model";
 import Exercises from "src/pages/exercises-page/Exercises";
 import Plan from "../pages/plan-page/Plan";
 import Settings from "../pages/settings-page/Settings";
@@ -9,7 +9,7 @@ import Catalogue from "../pages/catalogue-page/Catalogue";
 import AddNew from "../pages/add-new-page/AddNew";
 import SelectedExercise from "src/pages/selectedExercise-page/SelectedExercise";
 
-export const protectedRoutes: RouteInterface[] = [
+export const protectedRoutes: Route[] = [
   {
     path: "/dashboard",
     element: Dashboard,
@@ -27,7 +27,7 @@ export const protectedRoutes: RouteInterface[] = [
     element: SelectedExercise,
   },
   {
-    path: "/add-new",
+    path: "/catalogue/add-new",
     element: AddNew,
   },
   {
@@ -40,7 +40,7 @@ export const protectedRoutes: RouteInterface[] = [
   },
 ];
 
-export const unprotectedRoutes: RouteInterface[] = [
+export const unprotectedRoutes: Route[] = [
   {
     path: "/",
     element: Login,
