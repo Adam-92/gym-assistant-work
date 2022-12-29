@@ -7,10 +7,13 @@ const SuccesfullyAddedNewCatalogueExercise = ({
 }: PartNameSuccesfullyAdded) => {
   return (
     <article className="container-succesfully-added">
-      <h2>Thanks, you have succesfully added new exercise</h2>
-      <Link to={`/catalogue/${partName}`} state={true}>
-        Go To Catalogue
-      </Link>
+      <div className="content-succesfully-added">
+        <h2>Thanks, </h2>
+        <h2>You have succesfully added new exercise</h2>
+        <Link to={`/catalogue/${partName}`} state={true}>
+          Go To The Catalogue
+        </Link>
+      </div>
     </article>
   );
 };

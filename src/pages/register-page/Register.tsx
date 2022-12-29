@@ -94,7 +94,7 @@ const Register = () => {
                     validate: {
                       matchesPreviousPassword: (value: string) => {
                         const { password } = getValues();
-                        return password === value || "Passwords should match!";
+                        return password === value || "Passwords must match!";
                       },
                     },
                     setValueAs: (value: string) => value.split(" ").join(""),
