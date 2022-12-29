@@ -1,4 +1,3 @@
-import { GuageProps } from "src/components/Guage/Guage.model";
 import { getGauges } from "../../firebase/services/activity";
 import useFetchData from "src/hooks/useFetchData";
 import Guage from "./Guage";

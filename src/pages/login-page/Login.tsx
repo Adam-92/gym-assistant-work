@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormLogin } from "./Login.model";
-import { validationWithoutWhiteSpaces } from "src/validation/validationRules";
+import { validationWithoutWhiteSpaces } from "src/components/Forms/Validation/ValidationRules";
 import useSignIn from "src/auth/hooks/useSignIn";
 
 const Login = () => {
@@ -21,8 +21,8 @@ const Login = () => {
   });
   const { makeRequest, error } = useSignIn();
 
-  const onSubmit: SubmitHandler<FormLogin> = ({ password, email }) =>
-    makeRequest(password, email);
+  const onSubmit: SubmitHandler<FormLogin> = (credentials) =>
+    makeRequest(credentials);
 
   return (
     <main className="container-login">
@@ -79,4 +79,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;

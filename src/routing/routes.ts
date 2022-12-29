@@ -1,10 +1,11 @@
+import Logout  from "src/pages/logout-page/Logout";
 import { Route } from "./Routes.model";
 import Exercises from "src/pages/exercises-page/Exercises";
 import Plan from "../pages/plan-page/Plan";
 import Settings from "../pages/settings-page/Settings";
 import Dashboard from "../pages/dashboard-page/Dashboard";
-import Login from "../pages/login/Login";
-import Register from "../pages/register/Register";
+import Login from "../pages/login-page/Login";
+import Register from "../pages/register-page/Register";
 import Catalogue from "../pages/catalogue-page/Catalogue";
 import AddNew from "../pages/add-new-page/AddNew";
 import SelectedExercise from "src/pages/selectedExercise-page/SelectedExercise";
@@ -37,6 +38,10 @@ export const protectedRoutes: Route[] = [
   {
     path: "/settings",
     element: Settings,
+  },
+  {
+    path: "/logout",
+    element: Logout,
   },
 ];
 

@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormRegister } from "./Register.model";
-import { validationWithoutWhiteSpaces } from "src/validation/validationRules";
+import { validationWithoutWhiteSpaces } from "src/components/Forms/Validation/ValidationRules";
 import useSignUp from "src/auth/hooks/useSignUp";
 import "./Register.css";
 
@@ -24,11 +24,8 @@ const Register = () => {
     mode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<FormRegister> = ({
-    username,
-    password,
-    email,
-  }) => makeRequest(username, password, email);
+  const onSubmit: SubmitHandler<FormRegister> = (credentials) =>
+    makeRequest(credentials);
 
   return (
     <main className="container-register">
@@ -93,7 +90,7 @@ const Register = () => {
                 />
                 <input
                   type="password"
-                  {...register("rePassword", {
+                  {...register("PasswordRepeat", {
                     validate: {
                       matchesPreviousPassword: (value: string) => {
                         const { password } = getValues();
@@ -106,7 +103,7 @@ const Register = () => {
                 ></input>
               </div>
               <h5 className="error-register-panel">
-                {errors.rePassword?.message}
+                {errors.PasswordRepeat?.message}
               </h5>
               {error && <h5 className="error-login-panel">{error}</h5>}
               <button className="submit-register-panel">Register</button>

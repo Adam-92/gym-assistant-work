@@ -1,9 +1,7 @@
-import { ValidationRulesInterface, SelectPicture } from "./validation.model";
-
 export const validationWithoutWhiteSpaces = (
   minLength: number,
   maxLength: number
-): ValidationRulesInterface => {
+) => {
   return {
     required: "Please fill out this field",
     maxLength: {
@@ -21,7 +19,7 @@ export const validationWithoutWhiteSpaces = (
 export const validationWithWhiteSpaces = (
   minLength: number,
   maxLength: number
-): ValidationRulesInterface => {
+) => {
   return {
     required: "Please fill out this field",
     maxLength: {
@@ -44,7 +42,7 @@ export const isValidImageUrl = (value: string) => {
   return "We support only types .jpeg, .jpg, .png";
 };
 
-export const validateProposalImage = (addedImageUrl: string): SelectPicture =>
+export const validateProposalImage = (addedImageUrl: string) =>
   addedImageUrl
     ? { required: false, disabled: true }
     : { required: "Select or leave url link", disabled: false };

@@ -2,11 +2,11 @@ import useFetchData from "../../hooks/useFetchData";
 import Tile from "./Tile";
 import DataStatusHandler from "../DataStatusHandler/DataStatusHandler";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getTilesData } from "src/firebase/services/activity";
 import {
   faShoePrints,
   faWeightHanging,
 } from "@fortawesome/free-solid-svg-icons";
+import { getTilesData } from "src/firebase/services/activity";
 import Transition from "../Transition/Transition";
 
 const tileIcons = [
