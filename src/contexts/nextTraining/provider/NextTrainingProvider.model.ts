@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+import { AvailableBodyParts } from "src/pages/catalogue/availableBodyParts";
 
 export interface NextTrainingProviderProps {
   children: ReactNode;

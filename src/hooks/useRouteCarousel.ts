@@ -1,5 +1,5 @@
-import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
-import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+import { availableBodyParts } from "src/pages/catalogue/availableBodyParts";
+import { AvailableBodyParts } from "src/pages/catalogue/availableBodyParts";
 import { useLocation } from "react-router";
 
 const useRouteCarousel = (selectedBodyPart: AvailableBodyParts) => {

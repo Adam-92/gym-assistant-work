@@ -5,12 +5,12 @@ import {
 import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import { useParams } from "react-router";
 import { NewExercise } from "src/model/model";
-import { iconsDescription } from "src/pages/selectedExercise-page/iconsDescription";
-import { IconsDescription } from "src/pages/selectedExercise-page/SelectedExercise.model";
+import { iconsDescription } from "src/pages/selected-exercise/iconsDescription";
+import { IconsDescription } from "src/pages/selected-exercise/SelectedExercisePage.model";
 import { useState, useEffect, useCallback } from "react";
 import { parseError } from "src/errors/parseError";
-import { assertBodyPartFromParamsIsValid } from "src/components/CarouselRoute/assertBodyPartFromParamsIsValid";
-import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+import { assertBodyPartFromParamsIsValid } from "src/pages/exercises/CarouselRoute/assertBodyPartFromParamsIsValid";
+import { availableBodyParts } from "src/pages/catalogue/availableBodyParts";
 
 const useSelectedExercise = () => {
   const [data, setData] = useState<NewExercise>();

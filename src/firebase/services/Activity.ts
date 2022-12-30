@@ -1,4 +1,4 @@
-import { CatalogueNewExerciseFormValues } from "src/components/Forms/Forms.model";
+import { CatalogueNewExerciseFormValues } from "src/pages/add-new-catalogue-exercise/AddNewCatalogueExercisePage.model";
 import {
   doc,
   setDoc,
@@ -18,10 +18,10 @@ import {
   tileData,
   guagesData,
 } from "./converters";
-import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+import { availableBodyParts } from "src/pages/catalogue/availableBodyParts";
 import { firstBigLetter } from "src/utils/Utils";
 import { caloriesChartData } from "./converters";
-import { AvailableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
+import { AvailableBodyParts } from "src/pages/catalogue/availableBodyParts";
 
 export const getCaloriesChartData = async () => {
   const request = await getDoc(

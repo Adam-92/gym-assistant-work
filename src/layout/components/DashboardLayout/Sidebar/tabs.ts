@@ -23,7 +23,7 @@ export const tabs: Tab[] = [
       },
       {
         name: "Add New",
-        to: "catalogue/add-new",
+        to: "/catalogue/add-new-catalogue-exercise",
       },
     ],
   },
