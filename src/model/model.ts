@@ -1,5 +1,5 @@
 import { AvailableBodyParts } from "src/pages/catalogue/availableBodyParts";
-import { SecondaryArrange } from "src/pages/add-new-catalogue-exercise/secondaryArrange";
+import { SecondaryArrange } from "src/pages/add-new-catalogue-exercise/components/SecondaryArrangeMuscles/secondaryArrange";
 
 export interface NewExercise {
   name: string;

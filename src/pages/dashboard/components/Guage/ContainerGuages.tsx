@@ -1,8 +1,8 @@
-import { getGauges } from "../../../firebase/services/activity";
+import { getGauges } from "src/firebase/services/activity";
 import useFetchData from "src/hooks/useFetchData";
 import Guage from "./Guage";
-import DataStatusHandler from "../../../components/DataStatusHandler/DataStatusHandler";
-import Transition from "../../../components/Transition/Transition";
+import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";
+import Transition from "src/components/Transition/Transition";
 import "./Guage.css";
 
 const ContainerGuages = () => {

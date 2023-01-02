@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import { useParams, Link } from "react-router-dom";
 import { firstBigLetter } from "src/utils/Utils";
-import useRouteCarousel from "../../../hooks/useRouteCarousel";
+import useRouteCarousel from "../../../../hooks/useRouteCarousel";
 import { availableBodyParts } from "src/pages/catalogue/availableBodyParts";
 import { assertBodyPartFromParamsIsValid } from "./assertBodyPartFromParamsIsValid";
 import "./CarouselRoute.css";

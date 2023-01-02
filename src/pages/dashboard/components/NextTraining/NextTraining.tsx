@@ -1,8 +1,8 @@
 import BodyPartContainer from "./BodyPartContainer";
-import DataStatusHandler from "../../../components/DataStatusHandler/DataStatusHandler";
+import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";
 import { useNextTraining } from "src/contexts/nextTraining/hooks/useNextTraining";
 import HistoryPopover from "./HistoryPopover/HistoryPopover";
-import Transition from "../../../components/Transition/Transition";
+import Transition from "src/components/Transition/Transition";
 import "./NextTraining.css";
 
 const NextTraining = () => {

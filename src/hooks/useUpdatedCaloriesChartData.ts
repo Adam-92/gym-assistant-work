@@ -5,6 +5,7 @@ import { getCaloriesChartData } from "src/firebase/services/activity";
 const useUpdatedCaloriesChartData = () => {
   const { data, isLoading, error } = useFetchData(getCaloriesChartData);
   const updatedData = updateCaloriesChartData(data);
+
   return { updatedData, isLoading, error, data };
 };
 

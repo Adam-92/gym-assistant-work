@@ -4,6 +4,7 @@ import { upperCaseAllWords } from "src/utils/Utils";
 import "./ExerciseCard.css";
 
 const ExerciseCard = ({ exercise }: ExerciseCardProps) => {
+
   const imgUrl = exercise.exampleImage
     ? exercise.exampleImage
     : exercise.urlImage;

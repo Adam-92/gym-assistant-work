@@ -2,7 +2,6 @@
     position: relative;
     height: 100%;
     max-height: 290px;
-    margin-bottom: 2rem;
     text-decoration: none;
 }
 
@@ -87,17 +86,16 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    gap: 1rem;
 }
 
-@media screen and (min-width: 992px){
-
-}
 
 @media screen and (min-width: 576px) {
-    .container-exercise-card{
+    .container-exercise-card {
         min-width: 370px;
-        max-height: 400px;
+        max-height: 296px;
     }
+
     .img-exercise-card {
         height: 62%;
     }

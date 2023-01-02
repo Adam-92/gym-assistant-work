@@ -1,5 +1,5 @@
 import { useFormContext } from "react-hook-form";
-import { validationWithWhiteSpaces } from "../../Validation/ValidationRules";
+import { validationWithWhiteSpaces } from "../../../../Validation/ValidationRules";
 
 const ExerciseDescription = () => {
   const {

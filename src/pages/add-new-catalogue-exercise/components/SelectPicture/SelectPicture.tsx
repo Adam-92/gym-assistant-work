@@ -5,7 +5,7 @@ import { useFormContext } from "react-hook-form";
 import {
   isValidImageUrl,
   validateProposalImage,
-} from "../../Validation/ValidationRules";
+} from "../../../../Validation/ValidationRules";
 import { pictures } from "./pictures";
 
 const SelectPicture = () => {

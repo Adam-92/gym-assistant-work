@@ -3,12 +3,12 @@ import { CatalogueNewExerciseFormValues } from "./AddNewCatalogueExercisePage.mo
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import { setNewExercise } from "src/firebase/services/activity";
-import ChooseTheBodyPart from "./ChooseTheBodyPart";
-import ExerciseDescription from "./ExerciseDescription";
-import SecondaryArrangeMuscles from "./SecondaryArrangeMuscles";
-import SelectPicture from "./SelectPicture";
-import ExerciseName from "./ExerciseName";
-import SuccesfullyAddedNewCatalogueExercise from "src/pages/add-new-catalogue-exercise/SuccesfullyAddedNewCatalogueExercise/SuccesfullyAddedNewCatalogueExercise";
+import ChooseTheBodyPart from "./components/ChooseTheBodyPart/ChooseTheBodyPart";
+import ExerciseDescription from "./components/ExerciseDescription/ExerciseDescription";
+import SecondaryArrangeMuscles from "./components/SecondaryArrangeMuscles/SecondaryArrangeMuscles";
+import SelectPicture from "./components/SelectPicture/SelectPicture";
+import ExerciseName from "./components/ExerciseName/ExerciseName";
+import SuccesfullyAddedNewCatalogueExercise from "src/pages/add-new-catalogue-exercise/components/SuccesfullyAddedNewCatalogueExercise/SuccesfullyAddedNewCatalogueExercise";
 import "./AddNewCatalogueExercisePage.css";
 
 const AddNewCatalogueExercisePage = () => {

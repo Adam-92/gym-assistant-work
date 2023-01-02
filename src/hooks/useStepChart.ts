@@ -37,6 +37,7 @@ const useStepChart = () => {
   }, [fetchData]);
 
   return {
+    setTarget,
     setMonthlyPeriod,
     setWeeklyPeriod,
     period,

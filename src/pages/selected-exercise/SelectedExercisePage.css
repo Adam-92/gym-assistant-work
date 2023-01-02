@@ -17,6 +17,9 @@
     position: relative;
     grid-area: description;
 }
+.desc-selected-exercise h2 {
+    margin-bottom: 0.5rem;
+}
 
 .desc-img-selected-exercise {
     display: none;

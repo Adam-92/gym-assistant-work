@@ -1,5 +1,5 @@
 import { AvailableBodyParts } from "src/pages/catalogue/availableBodyParts";
-import { SecondaryArrange } from "./secondaryArrange";
+import { SecondaryArrange } from "./components/SecondaryArrangeMuscles/secondaryArrange";
 
 export type CatalogueNewExerciseFormValues = {
   name: string;

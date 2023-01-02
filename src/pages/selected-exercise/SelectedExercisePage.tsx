@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import PerformanceChart from "src/components/Charts/PerformanceChart/PerformanceChart";
-import ExercisePerformanceTable from "src/pages/selected-exercise/ExercisePerformanceTable/ExercisePerformanceTable";
+import ExercisePerformanceTable from "src/pages/selected-exercise/components/ExercisePerformanceTable/ExercisePerformanceTable";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import useSelectedExercise from "src/hooks/useSelectedExercise";
 import { upperCaseAllWords } from "src/utils/Utils";
-import NoPerformanceData from "src/pages/selected-exercise/NoPerformanceData/NoPerformanceData";
+import NoPerformanceData from "src/pages/selected-exercise/components/NoPerformanceData/NoPerformanceData";
 import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";
 import DataDisplayWrapper from "src/components/DataDisplayWrapper/DataDisplayWrapper";
 import Transition from "src/components/Transition/Transition";

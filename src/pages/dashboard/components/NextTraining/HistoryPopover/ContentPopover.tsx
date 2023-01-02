@@ -1,5 +1,5 @@
 import { ContentPopoverProps } from "./HistoryPopover.model";
-import { Set } from "src/pages/dashboard/NextTraining/NextTraining.model";
+import { Set } from "../NextTraining.model";
 
 const ContentPopover = ({
   lastTraining,

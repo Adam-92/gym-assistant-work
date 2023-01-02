@@ -1,4 +1,4 @@
-import { TileProps } from "src/pages/dashboard/Tile/Tile.model";
+import { TileProps } from "src/pages/dashboard/components/Tile/Tile.model";
 import Statistics from "./Statistics";
 
 const Tile = (tile: TileProps) => {

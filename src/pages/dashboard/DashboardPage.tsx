@@ -1,8 +1,8 @@
 import CaloriesChart from "../../components/Charts/CaloriesChart/CaloriesChart";
 import StepChart from "../../components/Charts/StepChart/StepChart";
-import ContainerGuages from "./Guage/ContainerGuages";
-import NextTraining from "./NextTraining/NextTraining";
-import ContainerTiles from "./Tile/ContainerTiles";
+import ContainerGuages from "./components/Guage/ContainerGuages";
+import NextTraining from "./components/NextTraining/NextTraining";
+import ContainerTiles from "./components/Tile/ContainerTiles";
 import { NextTrainingProvider } from "src/contexts/nextTraining/provider/NextTrainingProvider";
 import "./DashboardPage.css";
 

@@ -1,4 +1,4 @@
-import { ExamplePicturesAddCatalogue } from "./AddNewCatalogueExercisePage.model";
+import { ExamplePicturesAddCatalogue } from "../../AddNewCatalogueExercisePage.model";
 export const pictures: ExamplePicturesAddCatalogue[] = [
   {
     id: 1,

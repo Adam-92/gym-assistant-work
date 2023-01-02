@@ -1,13 +1,13 @@
-import useFetchData from "../../../hooks/useFetchData";
+import useFetchData from "../../../../hooks/useFetchData";
 import Tile from "./Tile";
-import DataStatusHandler from "../../../components/DataStatusHandler/DataStatusHandler";
+import DataStatusHandler from "../../../../components/DataStatusHandler/DataStatusHandler";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoePrints,
   faWeightHanging,
 } from "@fortawesome/free-solid-svg-icons";
 import { getTilesData } from "src/firebase/services/activity";
-import Transition from "../../../components/Transition/Transition";
+import Transition from "../../../../components/Transition/Transition";
 
 const tileIcons = [
   <FontAwesomeIcon icon={faShoePrints} className="fa-rotate-270" />,

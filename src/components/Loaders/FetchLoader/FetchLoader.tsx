@@ -1,4 +1,5 @@
 import "./FetchLoader.css";
+
 const FetchLoader = () => {
   return (
     <div className="container-bars">

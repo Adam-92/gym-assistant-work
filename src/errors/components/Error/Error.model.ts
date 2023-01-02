@@ -1,4 +1,3 @@
-
 export interface ErrorProps {
-    error: string
+  error: string;
 }

@@ -1,9 +1,9 @@
 import { NewExercise } from "src/model/model";
 import { CaloriesData } from "src/components/Charts/Charts.model";
 import { StepsValues } from "src/components/Charts/Charts.model";
-import { TileProps } from "src/pages/dashboard/Tile/Tile.model";
-import { GuageProps } from "src/pages/dashboard/Guage/Guage.model";
-import { BodyPartContainerProps } from "src/pages/dashboard/NextTraining/NextTraining.model";
+import { TileProps } from "src/pages/dashboard/components/Tile/Tile.model";
+import { GuageProps } from "src/pages/dashboard/components/Guage/Guage.model";
+import { BodyPartContainerProps } from "src/pages/dashboard/components/NextTraining/NextTraining.model";
 
 export interface CreateNewArrayExercises {
   exercises: NewExercise[];

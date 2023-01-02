@@ -9,7 +9,7 @@ import { iconsDescription } from "src/pages/selected-exercise/iconsDescription";
 import { IconsDescription } from "src/pages/selected-exercise/SelectedExercisePage.model";
 import { useState, useEffect, useCallback } from "react";
 import { parseError } from "src/errors/parseError";
-import { assertBodyPartFromParamsIsValid } from "src/pages/exercises/CarouselRoute/assertBodyPartFromParamsIsValid";
+import { assertBodyPartFromParamsIsValid } from "src/pages/exercises/components/CarouselRoute/assertBodyPartFromParamsIsValid";
 import { availableBodyParts } from "src/pages/catalogue/availableBodyParts";
 
 const useSelectedExercise = () => {

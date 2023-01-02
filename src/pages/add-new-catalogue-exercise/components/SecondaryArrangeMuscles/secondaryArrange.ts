@@ -17,7 +17,7 @@ export const secondaryArrange = [
   },
   {
     id: 5,
-    name: "Obliques",
+    name: "Biceps",
   },
   {
     id: 6,
