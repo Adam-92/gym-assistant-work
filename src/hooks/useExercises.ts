@@ -1,13 +1,10 @@
 import { useCallback, useState, useEffect } from "react";
-import {
-  getExercisesForUser,
-  getExercisesForAllUsers,
-} from "src/firebase/services/activity";
+import { getExercisesForAllUsers, getExercisesForUser } from "src/firebase/services/activity";
 import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import { useParams } from "react-router";
 import { useSettingsContext } from "src/contexts/settings/hooks/useSettingsContext";
-import { availableBodyParts } from "src/pages/catalogue-page/availableBodyParts";
-import { assertBodyPartFromParamsIsValid } from "src/components/CarouselRoute/assertBodyPartFromParamsIsValid";
+import { availableBodyParts } from "src/pages/catalogue/availableBodyParts";
+import { assertBodyPartFromParamsIsValid } from "src/pages/exercises/components/CarouselRoute/assertBodyPartFromParamsIsValid";
 import { NewExercise } from "src/model/model";
 import { parseError } from "src/errors/parseError";
 import { DocumentSnapshot } from "firebase/firestore";

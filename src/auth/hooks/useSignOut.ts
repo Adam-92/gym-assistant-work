@@ -10,10 +10,8 @@ const useSignOut = () => {
   const makeRequest = async () => {
     try {
       await signOutUser();
-      console.log("logOut");
       navigate("/");
     } catch (error) {
-      console.log(error);
       setError(parseError(error));
     }
   };

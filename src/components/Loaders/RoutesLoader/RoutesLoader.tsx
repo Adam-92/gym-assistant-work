@@ -1,5 +1,6 @@
 import "./RoutesLoader.css";
 import Transition from "src/components/Transition/Transition";
+
 const RoutesLoader = () => {
   return (
     <Transition>

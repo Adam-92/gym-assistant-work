@@ -14,11 +14,6 @@ export const SidebarProvider = ({ children }: SidebarProviderProps) => {
 
   const params = useParams();
 
-  /*  
-    By usunąć toogler na głębiej zagnieżdżonych stronach. Póki co dla stron:
-    catalogue/chest/xxx
-  */
-
   const handleTogglerVisibilty = useCallback(() => {
     if (Object.keys(params).length < 2) {
       return (

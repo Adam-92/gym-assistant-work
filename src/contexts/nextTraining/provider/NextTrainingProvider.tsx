@@ -9,7 +9,7 @@ import useFetchData from "src/hooks/useFetchData";
 import {
   BodyPart,
   ExerciseInformation,
-} from "src/components/NextTraining/NextTraining.model";
+} from "src/pages/dashboard/components/NextTraining/NextTraining.model";
 import { NextTrainingContextValue } from "../context/NextTrainingContext.model";
 
 export const NextTrainingProvider = ({

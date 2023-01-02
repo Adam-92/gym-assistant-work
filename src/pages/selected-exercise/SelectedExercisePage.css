@@ -1,0 +1,151 @@
+.content-selected-exercises {
+    background-color: white;
+    border-radius: 2rem;
+    padding: 1rem 0rem;
+}
+
+.responsive-selected-exercise {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 1rem;
+
+}
+
+.desc-selected-exercise {
+    position: relative;
+    grid-area: description;
+}
+.desc-selected-exercise h2 {
+    margin-bottom: 0.5rem;
+}
+
+.desc-img-selected-exercise {
+    display: none;
+    position: absolute;
+}
+
+.desc-img-selected-exercise img {
+    width: 100%;
+}
+
+.img-selected-exercise {
+    grid-area: img;
+    height: 190px;
+    width: 100%;
+}
+
+.img-selected-exercise img {
+    opacity: 0.8;
+    border-radius: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.stats-selected-exercise {
+    grid-area: stats;
+    height: 23vh;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.stats-selected-exercise canvas {
+    height: 100%;
+}
+
+.back-selected-exercise {
+    margin-left: 1rem;
+    align-self: flex-start;
+    grid-area: back;
+}
+
+.arrow-selected-exercise {
+    cursor: pointer;
+    font-size: 3rem;
+}
+
+.table-selected-exercise {
+    grid-area: table;
+    overflow: auto;
+    width: 100%;
+    padding: 0.6rem 0;
+
+}
+
+
+@media screen and (min-width: 1600px) {
+    .desc-img-selected-exercise {
+        display: block;
+    }
+
+    .desc-selected-exercise {
+        width: 70%;
+    }
+    .stats-selected-exercise{
+        width: 92%;
+        justify-self: center;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .content-selected-exercises {
+        height: 100%;
+    }
+
+    .responsive-selected-exercise {
+        height: 100%;
+        display: grid;
+        row-gap: 3%;
+        column-gap: 0%;
+        grid-template-areas:
+            "back ."
+            "img  table "
+            "description  stats";
+        grid-template-columns: 40% 57%;
+        grid-template-rows: 4% 50% 42%;
+    }
+
+    .img-selected-exercise {
+        max-height: 325px;
+    }
+
+    .table-selected-exercise {
+        grid-area: table;
+        overflow: auto;
+        justify-self: center;
+        width: 93%;
+        height: 100%;
+        padding: 0.6rem 0;
+    }
+
+    .stats-selected-exercise {
+        justify-self: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .flex-selected-exercise {
+        row-gap: 2.1rem;
+    }
+
+    .stats-selected-exercise {
+        height: 30vh;
+    }
+
+    .img-selected-exercise {
+        height: 405px;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .stats-selected-exercise {
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .content-selected-exercises {
+        padding: 1rem 1rem;
+    }
+}

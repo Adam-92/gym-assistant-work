@@ -3,6 +3,7 @@ import { ResultsExercise } from "src/model/model";
 
 const useUpdatedPerformanceChart = (results: ResultsExercise[]) => {
   const updatedData = updatePerformanceChartData(results);
+
   return { updatedData };
 };
 

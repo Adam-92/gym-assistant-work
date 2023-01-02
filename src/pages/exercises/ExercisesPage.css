@@ -1,0 +1,27 @@
+.container-exercises {
+    height: 100%;
+}
+
+.content-exercises {
+    background-color: white;
+    border-radius: 2rem;
+    padding: 1rem;
+    min-height: 100%;
+}
+
+.pointer-none {
+    pointer-events: none;
+}
+
+.cards-exercises {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(253px, 340px));
+}
+
+@media screen and (min-width: 576px) {
+    .cards-exercises {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(253px, 376px));
+    }
+
+}

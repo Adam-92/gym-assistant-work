@@ -1,57 +1,62 @@
+import LogoutPage from "src/pages/logout/LogoutPage";
 import { Route } from "./Routes.model";
-import Exercises from "src/pages/exercises-page/Exercises";
-import Plan from "../pages/plan-page/Plan";
-import Settings from "../pages/settings-page/Settings";
-import Dashboard from "../pages/dashboard-page/Dashboard";
-import Login from "../pages/login/Login";
-import Register from "../pages/register/Register";
-import Catalogue from "../pages/catalogue-page/Catalogue";
-import AddNew from "../pages/add-new-page/AddNew";
-import SelectedExercise from "src/pages/selectedExercise-page/SelectedExercise";
+import ExercisesPage from "src/pages/exercises/ExercisesPage";
+import PlanPage from "../pages/plan/PlanPage";
+import SettingsPage from "../pages/settings/SettingsPage";
+import DashboardPage from "../pages/dashboard/DashboardPage";
+import LoginPage from "../pages/login/LoginPage";
+import RegisterPage from "../pages/register/RegisterPage";
+import CataloguePage from "../pages/catalogue/CataloguePage";
+import AddNewCatalogueExercisePage from "src/pages/add-new-catalogue-exercise/AddNewCatalogueExercisePage";
+import SelectedExercisePage from "src/pages/selected-exercise/SelectedExercisePage";
 
 export const protectedRoutes: Route[] = [
   {
     path: "/dashboard",
-    element: Dashboard,
+    element: DashboardPage,
   },
   {
     path: "/catalogue",
-    element: Catalogue,
+    element: CataloguePage,
   },
   {
     path: "/catalogue/:selectedBodyPart",
-    element: Exercises,
+    element: ExercisesPage,
   },
   {
     path: "/catalogue/:selectedBodyPart/:selectedExercise",
-    element: SelectedExercise,
+    element: SelectedExercisePage,
   },
   {
-    path: "/catalogue/add-new",
-    element: AddNew,
+    path: "/catalogue/add-new-catalogue-exercise",
+    element: AddNewCatalogueExercisePage,
   },
   {
     path: "/plan",
-    element: Plan,
+    element: PlanPage,
   },
   {
     path: "/settings",
-    element: Settings,
+    element: SettingsPage,
+  },
+  {
+    path: "/logout",
+    element: LogoutPage,
   },
 ];
 
 export const unprotectedRoutes: Route[] = [
   {
     path: "/",
-    element: Login,
+    element: LoginPage,
   },
   {
     path: "/login",
-    element: Login,
+    element: LoginPage,
   },
   {
     path: "/register",
-    element: Register,
+    element: RegisterPage,
   },
 ];
 
