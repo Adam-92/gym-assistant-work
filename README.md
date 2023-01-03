@@ -1,7 +1,11 @@
-# Gym Assistant Application - Typescript
+# Gym Assistant Application - React JS, Typescript
 
-This is the sport application which assists you and register your trainings(steps, calories etc.).The application uses external server made on my own in Node JS. Futhermore, the application possess possibilty to create your own user account. 
+- A sports application that supports you in training, recording your best results and collecting data on the steps taken and   
+  calories burned on an ongoing basis. 
+  It allows you to enter and arrange your own set of exercises, as well as a diet.
 
 # Install
-Npm install
-Npm start
+
+- Npm install
+
+- Npm start
