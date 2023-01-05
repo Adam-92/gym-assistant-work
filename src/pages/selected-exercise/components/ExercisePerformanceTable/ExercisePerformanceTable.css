@@ -59,6 +59,10 @@
 }
 
 @media all and (max-width: 767px) {
+    .responsive-table li{
+        margin-bottom: 1.2rem;
+    }
+
     .table-header {
         display: none;
     }

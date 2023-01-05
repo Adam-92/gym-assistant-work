@@ -100,12 +100,15 @@
    .icon-register-panel {
       margin: 10px auto;
    }
+   .icon-register-panel svg{
+      font-size: 7rem;
+   }
 
    .relative-register-panel input {
-      padding: 1rem 0 1rem 3.8rem;
+      padding: 0.7rem 0 0.7rem 3.8rem;
    }
 
    .submit-register-panel {
-      padding: 0.7rem 5rem
+      padding: 0.6rem 5rem
    }
 }
