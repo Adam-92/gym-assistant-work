@@ -16,7 +16,7 @@ const Sidebar = () => {
       <div className="content-sidebar">
         <header>
           <div className="img-container-sidebar">
-            <img src={"http://localhost:3000/assets/logo.png"} alt="logo" />
+            <img src={"assets/logo.png"} alt="logo" />
           </div>
         </header>
         <nav className="nav-sidebar">
