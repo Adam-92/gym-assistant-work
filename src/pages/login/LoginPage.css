@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Heebo:wght@500&display=swap');
 
 .container-login {
-   background: rgba(0, 0, 0, 0) url(http://localhost:3000/assets/hero.jpg) no-repeat center / cover;
+   background: rgba(0, 0, 0, 0) url(https://i.postimg.cc/7YQXsdkN/hero.jpg) no-repeat center / cover;
    min-height: 100vh;
    height: 100vh;
    box-shadow: 0 0 20px 3px;
