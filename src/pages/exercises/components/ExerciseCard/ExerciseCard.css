@@ -30,7 +30,7 @@
 .img-all-user::before {
     content: "";
     position: absolute;
-    background: url("http://localhost:3000/assets/logo.png") no-repeat center center/cover;
+    background: url("https://i.postimg.cc/NjknNbdG/logo.png") no-repeat center center/cover;
     height: 60%;
     width: 45%;
     top: 9px;
