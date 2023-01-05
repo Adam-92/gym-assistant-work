@@ -96,7 +96,11 @@
    color: rgb(109, 225, 233);
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 576px) {
+   .icon-register-panel {
+      margin: 10px auto;
+   }
+
    .relative-register-panel input {
       padding: 1rem 0 1rem 3.8rem;
    }

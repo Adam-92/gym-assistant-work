@@ -126,9 +126,7 @@
    .checkbox-login-panel {
       margin-left: 1rem;
    }
-}
 
-@media screen and (max-width: 375px) {
    .relative-login-panel input {
       padding: 1rem 0 1rem 3.8rem;
    }

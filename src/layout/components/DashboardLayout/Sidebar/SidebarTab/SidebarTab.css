@@ -79,3 +79,32 @@
 .icon-sidebar-tab {
     width: 25%
 }
+
+@media screen and (max-width: 992px) {
+    .update-active::before {
+        content: '';
+        position: absolute;
+        top: -54px;
+        left: 94%;
+        transform: translateX(-100%);
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background-color: transparent;
+        box-shadow: 14px 14px 0px -8px white;
+        pointer-events: none;
+    }
+    .update-active::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 94%;
+        transform: translateX(-100%);
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background-color: transparent;
+        box-shadow: 14px -14px 0px -8px white;
+        pointer-events: none;
+    }
+}

@@ -3,6 +3,7 @@ import { useMatch, useResolvedPath } from "react-router";
 import { Link } from "react-router-dom";
 import { SidebarTabProps } from "src/layout/components/DashboardLayout/Sidebar/Sidebar.model";
 import ChildTab from "../ChildTab/ChildTab";
+import { useSidebar } from "src/contexts/sidebar/hooks/useSidebar";
 import "./SidebarTab.css";
 
 const SidebarTab = ({
@@ -14,14 +15,15 @@ const SidebarTab = ({
 }: SidebarTabProps) => {
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: false });
+  const { isOpenSidebar } = useSidebar();
 
   return (
-    <li className={`${match && "active-sidebar-tab focus-sidebar-tab "}`}>
-      <Link
-        to={to}
-        className="link-sidebar-tab"
-        onClick={()=>onClick()}
-      >
+    <li
+      className={`${match && "active-sidebar-tab focus-sidebar-tab"} ${
+        match && isOpenSidebar && "update-active"
+      }`}
+    >
+      <Link to={to} className="link-sidebar-tab" onClick={() => onClick()}>
         <FontAwesomeIcon
           icon={icon}
           color="white"
