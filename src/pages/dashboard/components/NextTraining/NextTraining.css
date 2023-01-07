@@ -4,7 +4,7 @@
   padding: 1rem;
 }
 
-.container-next-training header {
+.container-next-training header{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,6 +32,7 @@
   width: 20%;
   text-align: center;
   margin: 0 auto;
+  font-size: 1.4rem;
 }
 
 .exercises-next-training {
@@ -42,7 +43,7 @@
   position: relative;
   display: flex;
   cursor: pointer;
-  padding-left: 4rem;
+  padding-left: 3rem;
   text-align: left;
 }
 
@@ -53,7 +54,7 @@
 
 .exercise-next-training div {
   flex: 1;
-  margin: 0.12rem 0;
+  margin: 0.30rem 0;
   pointer-events: none;
 }
 
@@ -65,6 +66,9 @@
 
 .exercise-next-training:hover {
   font-weight: bold;
+}
+.number-next-training{
+  margin: 0.4rem;
 }
 
 @media screen and (max-width: 1600px) {
@@ -84,7 +88,7 @@
   }
 
   .exercise-next-training {
-    padding-left: 3rem;
+    padding-left: 2rem;
   }
 }
 
@@ -98,6 +102,12 @@
   }
 }
 
+@media screen and (max-width: 992px) {
+  .container-next-training header{
+    font-size: 1rem;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .self-align-next-training {
     align-self: flex-start;
@@ -107,11 +117,7 @@
     flex-direction: column;
     align-items: center;
     padding-left: 0;
+    font-size: 1rem;
   }
 }
 
-@media screen and (min-width: 0px) and (max-width: 320px) {
-  .exercise-next-training div {
-    margin: 0.38rem 0;
-  }
-}

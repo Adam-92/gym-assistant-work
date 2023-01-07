@@ -23,6 +23,16 @@
   max-width: 1750px;
 }
 
+.dark-dashboard-layout {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  transform: translateY(-7.5vh);
+  opacity: 0.75;
+  z-index: 5;
+}
+
 .content-dashboard-layout {
   position: relative;
   background: linear-gradient(145deg,
@@ -32,6 +42,11 @@
   width: 100%;
   overflow: auto;
   z-index: 2;
+  border-radius: 2rem;
+}
+
+.content-dashboard-layout::-webkit-scrollbar {
+  width: 0 !important
 }
 
 @media screen and (max-width: 992px) {
@@ -47,12 +62,22 @@
   }
 }
 
-@media screen and (min-width: 0px) and (max-width: 360px) {
+@media screen and (min-width: 0px) and (max-width: 992px) {
+  .dimensions-dashboard-layout {
+    height: 100vh;
+    width: 100vw;
+    border-radius: 2rem;
+    outline: none;
+  }
+
   .dashboard-layout {
     font-size: 13px;
   }
 
   .content-dashboard-layout {
     padding: 0
+  }
+  .dashboard-layout{
+    background: white;
   }
 }

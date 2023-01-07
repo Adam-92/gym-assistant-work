@@ -182,12 +182,12 @@
     }
 }
 
-@media screen and (min-width: 370px) and (max-width: 576px) {
+@media screen and (max-width: 370px){
     .content-step-chart {
         padding: 1rem 9%;
     }
     .gap-step-chart {
-        gap: 5px 10%
+        gap: 6px 10%
     }
     .bar-container-step-chart {
         min-width: 47px;

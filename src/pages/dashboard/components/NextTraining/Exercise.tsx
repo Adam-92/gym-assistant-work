@@ -22,7 +22,9 @@ const Exercise = ({ bodyPart, exercise }: ExerciseProps) => {
         })
       }
     >
-      <span className="self-align-next-training">{exercise.id}</span>
+      <span className="self-align-next-training number-next-training">
+        {exercise.id}
+      </span>
       <div>
         <span>{exercise.name}</span>
         <span>{getRepsPerSetText(exercise)}</span>

@@ -58,7 +58,7 @@
   background-color: rgb(255, 255, 255);
   border-radius: 2rem;
   grid-area: next-training;
-  max-height: 668px;
+  max-height: 552px;
   overflow: auto;
 }
 
@@ -85,7 +85,9 @@
       " next-training next-training  todo"
       "calories-chart steps-chart todo";
   }
-
+  .next-training-dashboard{
+    max-height: 650px;
+  }
   .chart-calories-dashboard {
     margin-top: 1rem;
     max-width: none;
@@ -112,6 +114,11 @@
   .chart-calories-dashboard {
     max-height: 330px;
     margin-right: 0;
+  } 
+}
+
+@media screen and (max-width: 992px) {
+  .chart-steps-dashboard{
+    margin-bottom: 1rem;
   }
-  
 }

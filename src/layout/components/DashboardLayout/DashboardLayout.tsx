@@ -9,6 +9,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <main className="dashboard-layout">
       <article className="center-dashboard-layout">
+        {/* <div className="dark-dashboard-layout"></div> */}
         <div className="dimensions-dashboard-layout">
           <Sidebar />
           <section

@@ -41,7 +41,7 @@
     width: 45%;
     padding: 6px;
     border: 2px solid rgba(176, 169, 217);
-    font-size: 2.7rem;
+    font-size: 2.4rem;
 }
 
 .name-tile {
@@ -90,7 +90,7 @@
 
 @media screen and (max-width: 1400px) {
     .tile {
-        margin: 1rem 2.5rem;
+        margin: 1rem 3.5rem;
     }
 }
 
@@ -104,18 +104,27 @@
     }
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 768px) {
     .tile {
+        margin: 1rem 1.5rem;
         max-height: 150px;
         min-width: 190px;
     }
-    .name-tile{
+
+    .name-tile {
         font-size: 1rem;
     }
     .total-tile{
-        font-size: 0.75rem;
+        font-size: 0.85rem;
     }
-    .total-tile span{
-        font-size: 1rem;
+}
+
+@media screen and (max-width: 320px) {
+    .tile {
+        margin: 0.8rem 1.5rem;
+    }
+
+    .total-tile {
+        font-size: 0.85rem;
     }
 }

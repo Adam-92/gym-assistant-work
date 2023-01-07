@@ -50,7 +50,7 @@ const AddNewCatalogueExercisePage = () => {
           </div>
         </form>
       </FormProvider>
-      {submittedForm && (
+      {!submittedForm && (
         <SuccesfullyAddedNewCatalogueExercise partName={submittedForm} />
       )}
     </article>
