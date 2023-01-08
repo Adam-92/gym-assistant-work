@@ -67,7 +67,8 @@ nav.nav-sidebar ul li:nth-child(4) {
 .content-sidebar {
     overflow: hidden;
 }
-.z-index-sidebar{
+
+.z-index-sidebar {
     z-index: 2;
 }
 
@@ -76,6 +77,8 @@ nav.nav-sidebar ul li:nth-child(4) {
         position: absolute;
         width: 0;
         min-width: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
     }
 
     .toggler-sidebar {
