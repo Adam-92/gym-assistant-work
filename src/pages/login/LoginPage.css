@@ -6,6 +6,7 @@
    height: 100vh;
    box-shadow: 0 0 20px 3px;
    min-width: 300px;
+   overflow: auto;
 }
 
 .center-login-panel {
