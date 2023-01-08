@@ -33,8 +33,8 @@ export const iconsDescription: IconsDescription[] = [
     pathImg: "../../assets/legs.png",
     style: {
       leftPosition: 102,
-      topPosition: -35,
-      width: 170,
+      topPosition: -30,
+      width: 160,
     },
   },
   {

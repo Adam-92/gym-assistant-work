@@ -58,7 +58,7 @@
   background-color: rgb(255, 255, 255);
   border-radius: 2rem;
   grid-area: next-training;
-  max-height: 552px;
+  max-height: none;
   overflow: auto;
 }
 

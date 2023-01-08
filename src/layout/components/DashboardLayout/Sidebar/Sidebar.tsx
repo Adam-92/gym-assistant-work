@@ -1,22 +1,27 @@
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-
 import { tabs } from "./tabs";
 import SidebarTab from "./SidebarTab/SidebarTab";
 import useSignOut from "src/auth/hooks/useSignOut";
+import { useAddedExerciseModal } from "src/contexts/addedExerciseModal/hooks/useAddedExerciseModal";
 import { useSidebar } from "src/contexts/sidebar/hooks/useSidebar";
 import "./Sidebar.css";
 
 const Sidebar = () => {
   const { makeRequest } = useSignOut();
   const { isOpenSidebar, closeSidebar, handleTogglerVisibilty } = useSidebar();
+  const { modalPartName } = useAddedExerciseModal();
 
   return (
-    <aside className={`container-sidebar ${isOpenSidebar && "show-sidebar"}`}>
+    <aside
+      className={`container-sidebar ${isOpenSidebar && "show-sidebar"} ${
+        modalPartName && "z-index-sidebar"
+      }`}
+    >
       {handleTogglerVisibilty()}
       <div className="content-sidebar">
         <header>
           <div className="img-container-sidebar">
-            <img src={"assets/logo.png"} alt="logo" />
+            <img src={"../assets/logo.png"} alt="logo" />
           </div>
         </header>
         <nav className="nav-sidebar">

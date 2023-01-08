@@ -11,7 +11,7 @@ const SettingsPage = () => {
         <h3>Catalogue:</h3>
         <br></br>
         <div className="flex-justify-start">
-          <p className="m-r">I only want to see exercises added by me </p>
+          <p className="m-r">I want to see only exercises added by me</p>
           <ControlledSwitch
             checked={!showCatalogueExercises}
             onChange={toggleShowCatalogueExercises}

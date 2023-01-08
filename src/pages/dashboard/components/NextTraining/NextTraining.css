@@ -4,7 +4,7 @@
   padding: 1rem;
 }
 
-.container-next-training header{
+.container-next-training header {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +32,7 @@
   width: 20%;
   text-align: center;
   margin: 0 auto;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .exercises-next-training {
@@ -50,12 +50,14 @@
 .exercise-next-training span {
   width: 5%;
   pointer-events: none;
+  margin: 0.12rem 0;
 }
 
 .exercise-next-training div {
   flex: 1;
   margin: 0.30rem 0;
   pointer-events: none;
+  margin: 0
 }
 
 .exercise-next-training div span {
@@ -67,7 +69,8 @@
 .exercise-next-training:hover {
   font-weight: bold;
 }
-.number-next-training{
+
+.number-next-training {
   margin: 0.4rem;
 }
 
@@ -103,7 +106,7 @@
 }
 
 @media screen and (max-width: 992px) {
-  .container-next-training header{
+  .container-next-training header {
     font-size: 1rem;
   }
 }
@@ -121,3 +124,8 @@
   }
 }
 
+@media screen and (max-width: 575px) {
+  .exercise-next-training {
+    font-size: 0.8rem;
+  }
+}

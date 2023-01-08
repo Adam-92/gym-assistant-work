@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { CatalogueNewExerciseFormValues } from "./AddNewCatalogueExercisePage.model";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { useUserContext } from "src/contexts/user/hooks/useUserContext";
@@ -9,12 +8,12 @@ import SecondaryArrangeMuscles from "./components/SecondaryArrangeMuscles/Second
 import SelectPicture from "./components/SelectPicture/SelectPicture";
 import ExerciseName from "./components/ExerciseName/ExerciseName";
 import SuccesfullyAddedNewCatalogueExercise from "src/pages/add-new-catalogue-exercise/components/SuccesfullyAddedNewCatalogueExercise/SuccesfullyAddedNewCatalogueExercise";
+import { useAddedExerciseModal } from "src/contexts/addedExerciseModal/hooks/useAddedExerciseModal";
 import "./AddNewCatalogueExercisePage.css";
 
 const AddNewCatalogueExercisePage = () => {
   const { currentUser } = useUserContext();
-
-  const [submittedForm, setSubmittedForm] = useState("");
+  const { modalPartName, setModalPartName } = useAddedExerciseModal();
 
   const methods = useForm<CatalogueNewExerciseFormValues>({
     defaultValues: {
@@ -25,7 +24,7 @@ const AddNewCatalogueExercisePage = () => {
   });
 
   const onSubmit: SubmitHandler<CatalogueNewExerciseFormValues> = (data) => {
-    setNewExercise(data, currentUser, setSubmittedForm);
+    setNewExercise(data, currentUser, setModalPartName);
   };
 
   return (
@@ -50,9 +49,10 @@ const AddNewCatalogueExercisePage = () => {
           </div>
         </form>
       </FormProvider>
-      {!submittedForm && (
-        <SuccesfullyAddedNewCatalogueExercise partName={submittedForm} />
-      )}
+      {modalPartName && <SuccesfullyAddedNewCatalogueExercise />}
+      <div
+        className={`${modalPartName && "modal-dark-add-new-catalogue"}`}
+      ></div>
     </article>
   );
 };

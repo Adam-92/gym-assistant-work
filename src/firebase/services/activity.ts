@@ -141,6 +141,7 @@ export const setNewExercise = async (
       ),
       () => onSuccess(data.part.toLowerCase())
     );
+    
   } catch (error) {
     console.log(error);
   }

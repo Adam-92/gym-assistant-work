@@ -16,7 +16,9 @@
 .desc-selected-exercise {
     position: relative;
     grid-area: description;
+    padding: 0.5rem;
 }
+
 .desc-selected-exercise h2 {
     margin-bottom: 0.5rem;
 }
@@ -82,7 +84,8 @@
     .desc-selected-exercise {
         width: 70%;
     }
-    .stats-selected-exercise{
+
+    .stats-selected-exercise {
         width: 92%;
         justify-self: center;
     }

@@ -46,6 +46,8 @@
 .no-performance-chart {
     width: 92%;
     height: 92%;
+    min-height: 162px;
+    overflow: hidden;
 }
 
 @media screen and (min-width: 1200px) {
