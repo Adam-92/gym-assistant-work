@@ -10,27 +10,10 @@ import {
   DocumentData,
 } from "firebase/firestore";
 import { db } from "src/firebase/config/firebase";
-import { User } from "firebase/auth";
-import {
-  arrayNewExercises,
-  nextTrainingData,
-  stepChartData,
-  tileData,
-  guagesData,
-} from "./converters";
+import { arrayNewExercises } from "../converters";
 import { availableBodyParts } from "src/pages/catalogue/availableBodyParts";
 import { firstBigLetter } from "src/utils/Utils";
-import { caloriesChartData } from "./converters";
 import { AvailableBodyParts } from "src/pages/catalogue/availableBodyParts";
-
-export const getCaloriesChartData = async () => {
-  const request = await getDoc(
-    doc(db, "exampleDashboardData/caloriesChart").withConverter(
-      caloriesChartData
-    )
-  );
-  return request;
-};
 
 export const getAllUsersDataSelectedExercise = async (
   bodyPart: AvailableBodyParts
@@ -56,43 +39,12 @@ export const getUserDataSelectedExercise = async (
   return request;
 };
 
-export const getWeeklySteps = async () => {
-  const request = await getDoc(
-    doc(db, "exampleDashboardData/stepsChart").withConverter(stepChartData)
-  );
-  return request;
-};
-
-export const getMonthlySteps = async () => {
-  const request = await getDoc(doc(db, "exampleDashboardData/stepsChart"));
-  return request;
-};
-
-export const getTilesData = async () => {
-  const request = await getDoc(
-    doc(db, `exampleDashboardData/activityTiles`).withConverter(tileData)
-  );
-  return request;
-};
-export const getNextTraining = async () => {
-  const request = await getDoc(
-    doc(db, `exampleDashboardData/nextTraining`).withConverter(nextTrainingData)
-  );
-  return request;
-};
-export const getGauges = async () => {
-  const request = await getDoc(
-    doc(db, `exampleDashboardData/activityGuages`).withConverter(guagesData)
-  );
-  return request;
-};
-
-export const getExercisesForUser = (currentUser: User | null) => {
+export const getExercisesForUser = (userId: string) => {
   const exerciseRequests = availableBodyParts.map((name) =>
     getDoc(
       doc(
         db,
-        `userExercises/${currentUser?.uid}/${firstBigLetter(name)}/exercises`
+        `userExercises/${userId}/${firstBigLetter(name)}/exercises`
       ).withConverter(arrayNewExercises)
     )
   );
@@ -113,15 +65,13 @@ export const getExercisesForAllUsers = () => {
 
 export const setNewExercise = async (
   data: CatalogueNewExerciseFormValues,
-  currentUser: User | null,
+  userId: string,
   onSuccess: React.Dispatch<React.SetStateAction<string>>
 ) => {
   try {
     const ref = doc(
       db,
-      `userExercises/${currentUser?.uid}/${firstBigLetter(
-        data.part
-      )}/exercises/`
+      `userExercises/${userId}/${firstBigLetter(data.part)}/exercises/`
     );
 
     const exerciseDoc = await getDoc(ref);
@@ -133,15 +83,9 @@ export const setNewExercise = async (
     }
 
     onSnapshot(
-      doc(
-        db,
-        `userExercises/${currentUser?.uid}/${firstBigLetter(
-          data.part
-        )}/exercises`
-      ),
+      doc(db, `userExercises/${userId}/${firstBigLetter(data.part)}/exercises`),
       () => onSuccess(data.part.toLowerCase())
     );
-    
   } catch (error) {
     console.log(error);
   }
@@ -182,3 +126,20 @@ const createArrayOfExercises = async (
       },
     ],
   });
+
+export const updateExerciseName = async (
+  userId: string,
+  data: CatalogueNewExerciseFormValues,
+  name: string
+) => {
+  const ref = doc(
+    db,
+    `userExercises/${userId}/${firstBigLetter(data.part)}/exercises/`
+  );
+
+  await updateDoc(ref.withConverter(arrayNewExercises), {
+    exercises: arrayUnion({
+      name: name.toLowerCase(),
+    }),
+  });
+};

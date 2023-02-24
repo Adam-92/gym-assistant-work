@@ -1,4 +1,4 @@
-import { calculateProgress } from "src/utils/Utils";
+import { calculateProgress } from "../../utils/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBullseye, faTurnUp } from "@fortawesome/free-solid-svg-icons";
 import { GuageProps } from "./Guage.model";

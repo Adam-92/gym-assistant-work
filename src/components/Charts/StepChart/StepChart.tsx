@@ -1,6 +1,6 @@
 import Bar from "./Bar";
 import Switch from "./Switch";
-import useStepsChart from "src/hooks/useStepChart";
+import useStepsChart from "src/pages/dashboard/hooks/useStepChart";
 import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";
 import Transition from "src/components/Transition/Transition";
 import "./StepChart.css";

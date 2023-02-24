@@ -57,6 +57,9 @@
 }
 
 .back-selected-exercise {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-left: 1rem;
     align-self: flex-start;
     grid-area: back;
@@ -74,6 +77,19 @@
     padding: 0.6rem 0;
 
 }
+
+.btn-edit {
+    cursor: pointer;
+    border: none;
+    padding: 0.2rem 1rem;
+    background-color: green;
+    color: white;
+    font-weight: white;
+}
+.btn-active-edit{
+    background-color: red;
+}
+
 
 
 @media screen and (min-width: 1600px) {
@@ -102,8 +118,8 @@
         row-gap: 3%;
         column-gap: 0%;
         grid-template-areas:
-            "back ."
-            "img  table "
+            "back back"
+            "img  table"
             "description  stats";
         grid-template-columns: 40% 57%;
         grid-template-rows: 4% 50% 42%;

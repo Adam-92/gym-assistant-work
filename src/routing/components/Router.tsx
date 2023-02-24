@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NotFound from "src/pages/notFound/NotFoundPage";
-import ProtectedRoute from "src/routing/components/ProtectedRoute";
+import { ProtectedRoute } from "./ProtectedRoute";
 import UnprotectedRoute from "./UnprotectedRoute";
 import { routes } from "../routes";
 import { RouteWithLayout } from "./RouteWithLayout";

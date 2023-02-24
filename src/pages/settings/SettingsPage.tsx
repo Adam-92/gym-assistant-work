@@ -1,9 +1,9 @@
-import { useSettingsContext } from "src/contexts/settings/hooks/useSettingsContext";
+import { useSettings } from "src/contexts/settings/hooks/useSettings";
 import ControlledSwitch from "src/components/ControlledSwitch/ControlledSwitch";
 
 const SettingsPage = () => {
   const { showCatalogueExercises, toggleShowCatalogueExercises } =
-    useSettingsContext();
+    useSettings();
 
   return (
     <div className="in-progress">

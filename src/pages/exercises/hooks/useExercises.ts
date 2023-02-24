@@ -1,41 +1,31 @@
 import { useCallback, useState, useEffect } from "react";
-import { getExercisesForAllUsers, getExercisesForUser } from "src/firebase/services/activity";
-import { useUserContext } from "src/contexts/user/hooks/useUserContext";
+import {
+  getExercisesForAllUsers,
+  getExercisesForUser,
+} from "src/firebase/services/catalogueActivity";
 import { useParams } from "react-router";
-import { useSettingsContext } from "src/contexts/settings/hooks/useSettingsContext";
+import { useSettings } from "src/contexts/settings/hooks/useSettings";
 import { availableBodyParts } from "src/pages/catalogue/availableBodyParts";
 import { assertBodyPartFromParamsIsValid } from "src/pages/exercises/components/CarouselRoute/assertBodyPartFromParamsIsValid";
 import { NewExercise } from "src/model/model";
 import { parseError } from "src/errors/parseError";
-import { DocumentSnapshot } from "firebase/firestore";
-import { CreateNewArrayExercises } from "src/firebase/Firebase.model";
+import { handleResponse } from "../utils/utils";
+import { User } from "firebase/auth";
 
-const useExercises = () => {
+const useExercises = (currentUser: User) => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<NewExercise[]>([]);
-  const { currentUser } = useUserContext();
+
   const { selectedBodyPart } = useParams();
 
-  const { showCatalogueExercises } = useSettingsContext();
+  const { showCatalogueExercises } = useSettings();
 
   const initialBodyPart = selectedBodyPart ?? availableBodyParts[0];
   assertBodyPartFromParamsIsValid(initialBodyPart);
 
-  const handleResponse = (
-    responses: DocumentSnapshot<CreateNewArrayExercises>[]
-  ) => {
-    const checkResponses = responses.filter((response) =>
-      response.exists() ? response : null
-    );
-    const exercises = checkResponses.map((exercise) =>
-      exercise.exists() ? exercise.data().exercises : []
-    );
-    return exercises.flat();
-  };
-
   const fetchUserExercises = useCallback(async () => {
-    const response = await getExercisesForUser(currentUser);
+    const response = await getExercisesForUser(currentUser.uid);
     return handleResponse(response);
   }, [currentUser]);
 

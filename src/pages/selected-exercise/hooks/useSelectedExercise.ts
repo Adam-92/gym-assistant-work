@@ -1,8 +1,7 @@
 import {
   getAllUsersDataSelectedExercise,
   getUserDataSelectedExercise,
-} from "src/firebase/services/activity";
-import { useUserContext } from "src/contexts/user/hooks/useUserContext";
+} from "src/firebase/services/catalogueActivity";
 import { useParams } from "react-router";
 import { NewExercise } from "src/model/model";
 import { iconsDescription } from "src/pages/selected-exercise/iconsDescription";
@@ -11,13 +10,14 @@ import { useState, useEffect, useCallback } from "react";
 import { parseError } from "src/errors/parseError";
 import { assertBodyPartFromParamsIsValid } from "src/pages/exercises/components/CarouselRoute/assertBodyPartFromParamsIsValid";
 import { availableBodyParts } from "src/pages/catalogue/availableBodyParts";
+import { useUser } from "src/contexts/user/hooks/useUser";
 
 const useSelectedExercise = () => {
   const [data, setData] = useState<NewExercise>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const { currentUser } = useUserContext();
+  const { currentUser } = useUser();
   const { selectedBodyPart, selectedExercise } = useParams();
 
   const initialBodyPart = selectedBodyPart ?? availableBodyParts[0];
@@ -30,7 +30,7 @@ const useSelectedExercise = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      if (currentUser && selectedBodyPart && selectedExercise) {
+      if (initialBodyPart && selectedExercise) {
         const request = await getUserDataSelectedExercise(
           initialBodyPart,
           currentUser.uid
@@ -60,7 +60,7 @@ const useSelectedExercise = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [currentUser, selectedBodyPart, selectedExercise, initialBodyPart]);
+  }, [currentUser.uid, selectedExercise, initialBodyPart]);
 
   useEffect(() => {
     fetchData();

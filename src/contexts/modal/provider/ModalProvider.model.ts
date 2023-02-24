@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-export interface AddedExerciseModalProviderProps {
+export interface ModalProviderProps {
   children: ReactNode;
 }

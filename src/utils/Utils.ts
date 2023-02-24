@@ -3,20 +3,18 @@ import { initialData as caloriesData } from "src/components/Charts/CaloriesChart
 import { initialData as performanceData } from "src/components/Charts/PerformanceChart/config/config";
 import { CaloriesChartData } from "src/firebase/Firebase.model";
 import { ChartDataset, ChartData } from "chart.js";
-import { CaloriesChartReducer, PerformanceChartReducer } from "./Utils.model";
 
-export const changeToPercent = (steps: number, target: number): number => {
-  const calculate = Math.round((steps * 100) / target);
-  return calculate > 100 ? 100 : calculate;
-};
 
-export const minToHours = (min: number) => {
-  const hours = min / 60;
-  const rhours = Math.floor(hours);
-  const minutes = (hours - rhours) * 60;
-  const rminutes = Math.round(minutes);
-  return `${rhours}h : ${rminutes}m`;
-};
+interface CaloriesChartReducer {
+  labels: string[];
+  caloriesMax: number[];
+  dailyCalories: number[];
+}
+
+interface PerformanceChartReducer {
+  labels: string[];
+  bestRecord: number[];
+}
 
 const updateDatasetCalories = (
   chartData: ChartData<"line">,
@@ -102,11 +100,6 @@ export const updatePerformanceChartData = (apiData: ResultsExercise[]) => {
   }
 
   return performanceData;
-};
-
-export const calculateProgress = (current: number, target: number) => {
-  const percent = changeToPercent(current, target);
-  return (180 * percent) / 100 + 135;
 };
 
 export const firstBigLetter = (name: string): string => {

@@ -8,7 +8,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import useUpdatedCaloriesChartData from "src/hooks/useUpdatedCaloriesChartData";
+import useUpdatedCaloriesChartData from "src/pages/dashboard/hooks/useUpdatedCaloriesChartData";
 import { Line } from "react-chartjs-2";
 import { options } from "./config/config";
 import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";

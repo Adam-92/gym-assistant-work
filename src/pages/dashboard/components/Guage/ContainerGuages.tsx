@@ -1,4 +1,4 @@
-import { getGauges } from "src/firebase/services/activity";
+import { getGauges } from "src/firebase/services/dashboardActivity";
 import useFetchData from "src/hooks/useFetchData";
 import Guage from "./Guage";
 import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";

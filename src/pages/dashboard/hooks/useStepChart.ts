@@ -4,7 +4,7 @@ import { parseError } from "src/errors/parseError";
 import {
   getWeeklySteps,
   getMonthlySteps,
-} from "src/firebase/services/activity";
+} from "src/firebase/services/dashboardActivity";
 
 const useStepChart = () => {
   const [period, setPeriod] = useState(true);
@@ -19,10 +19,12 @@ const useStepChart = () => {
   const fetchData = useCallback(async () => {
     try {
       if (period) {
-        const data = (await getWeeklySteps()).data();
+        const request = await getWeeklySteps();
+        const data = request.data();
         setData(data?.weeklyData);
       } else {
-        const data = (await getMonthlySteps()).data();
+        const request = await getMonthlySteps();
+        const data = request.data();
         setData(data?.monthlyData);
       }
     } catch (error) {

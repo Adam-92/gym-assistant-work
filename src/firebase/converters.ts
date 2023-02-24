@@ -6,6 +6,7 @@ import {
   CreateNewArrayExercises,
   GuageData,
   NextTrainingData,
+  ProductsArray
 } from "src/firebase/Firebase.model";
 
 export const arrayNewExercises = {
@@ -39,4 +40,9 @@ export const nextTrainingData = {
   toFirestore: (data: NextTrainingData) => data,
   fromFirestore: (snap: QueryDocumentSnapshot) =>
     snap.data() as NextTrainingData,
+};
+
+export const arrayNewProducts = {
+  toFirestore: (data: ProductsArray) => data,
+  fromFirestore: (snap: QueryDocumentSnapshot) => snap.data() as ProductsArray,
 };

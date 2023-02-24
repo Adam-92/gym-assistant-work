@@ -11,7 +11,7 @@ import {
 import { options } from "./config/config";
 import { Line } from "react-chartjs-2";
 import { PerformanceProps } from "../../../model/model";
-import useUpdatedPerformanceChart from "src/hooks/useUpdatedPerformanceChart";
+import useUpdatedPerformanceChart from "src/pages/selected-exercise/hooks/useUpdatedPerformanceChart";
 
 ChartJS.register(
   CategoryScale,

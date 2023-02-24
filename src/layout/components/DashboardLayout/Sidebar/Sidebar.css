@@ -34,7 +34,7 @@ nav.nav-sidebar {
     margin-left: 1.5rem;
 }
 
-nav.nav-sidebar ul li:nth-child(4) {
+nav.nav-sidebar ul li:nth-child(5) {
     margin-top: 90%;
 }
 
@@ -103,7 +103,7 @@ nav.nav-sidebar ul li:nth-child(4) {
 }
 
 @media screen and (max-width: 576px) {
-    nav.nav-sidebar ul li:nth-child(4) {
+    nav.nav-sidebar ul li:nth-child(5) {
         margin-top: 20%;
     }
 

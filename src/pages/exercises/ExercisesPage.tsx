@@ -1,13 +1,15 @@
 import ExerciseCard from "./components/ExerciseCard/ExerciseCard";
 import NoDataMessage from "./components/NoDataMessage/NoDataMessage";
 import CarouselRoute from "src/pages/exercises/components/CarouselRoute/CarouselRoute";
-import useExercises from "src/hooks/useExercises";
+import useExercises from "src/pages/exercises/hooks/useExercises";
 import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";
 import Transition from "src/components/Transition/Transition";
+import { useUser } from "src/contexts/user/hooks/useUser";
 import "./ExercisesPage.css";
 
 const ExercisesPage = () => {
-  const { data, isLoading, error } = useExercises();
+  const { currentUser } = useUser();
+  const { data, isLoading, error } = useExercises(currentUser);
 
   return (
     <DataStatusHandler isLoading={isLoading} error={error} data={data}>

@@ -1,17 +1,18 @@
-import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import { useLocation, Navigate } from "react-router";
 import { Outlet } from "react-router";
 import RoutesLoader from "src/components/Loaders/RoutesLoader/RoutesLoader";
+import { useAuthListener } from "src/auth/hooks/useAuthListener";
 
 const UnprotectedRoute = () => {
-  const { currentUser, pending } = useUserContext();
+  const { currentUser, isLoading } = useAuthListener();
+
   const location = useLocation();
 
-  if (pending) {
+  if (isLoading) {
     return <RoutesLoader />;
   }
 
-  if (currentUser && !pending) {
+  if (currentUser && !isLoading) {
     return <Navigate to="/dashboard" state={{ from: location }} replace />;
   }
   return <Outlet />;

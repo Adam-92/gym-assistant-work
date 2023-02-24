@@ -3,6 +3,7 @@ import {
   faCalendarDays,
   faDumbbell,
   faGear,
+  faBurger
 } from "@fortawesome/free-solid-svg-icons";
 import { Tab } from "./Sidebar.model";
 
@@ -31,6 +32,11 @@ export const tabs: Tab[] = [
     name: "Plan",
     icon: faCalendarDays,
     to: "/plan",
+  },
+  {
+    name: "Nutrition",
+    icon: faBurger,
+    to: "/nutrition"
   },
   {
     name: "Settings",

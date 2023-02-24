@@ -1,4 +1,4 @@
-import { changeToPercent } from "../../../utils/Utils";
+import { changeToPercent } from "src/pages/dashboard/utils/utils";
 import { BarStepsProps } from "src/components/Charts/Charts.model";
 
 const Bar = ({ day, steps, target }: BarStepsProps) => {

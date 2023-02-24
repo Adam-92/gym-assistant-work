@@ -8,11 +8,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormRegister } from "./RegisterPage.model";
-import { validationWithoutWhiteSpaces } from "src/Validation/ValidationRules";
+import { validationWithoutWhiteSpaces } from "src/validation/validation";
 import useSignUp from "src/auth/hooks/useSignUp";
 import "./RegisterPage.css";
 
-const Register = () => {
+const RegisterPage = () => {
   const { makeRequest, error } = useSignUp();
 
   const {
@@ -120,4 +120,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterPage;

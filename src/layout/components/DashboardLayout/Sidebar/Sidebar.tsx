@@ -2,14 +2,14 @@ import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { tabs } from "./tabs";
 import SidebarTab from "./SidebarTab/SidebarTab";
 import useSignOut from "src/auth/hooks/useSignOut";
-import { useAddedExerciseModal } from "src/contexts/addedExerciseModal/hooks/useAddedExerciseModal";
+import { useModal } from "src/contexts/modal/hooks/useModal";
 import { useSidebar } from "src/contexts/sidebar/hooks/useSidebar";
 import "./Sidebar.css";
 
 const Sidebar = () => {
   const { makeRequest } = useSignOut();
   const { isOpenSidebar, closeSidebar, handleTogglerVisibilty } = useSidebar();
-  const { modalPartName } = useAddedExerciseModal();
+  const { modalPartName } = useModal();
 
   return (
     <aside

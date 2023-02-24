@@ -1,13 +1,13 @@
 import { Outlet } from "react-router";
 import { DashboardLayout } from "../../layout/components/DashboardLayout/DashboardLayout";
-import { SidebarProvider } from "src/contexts/sidebar/provider/SidebarProvider";
+import { AppProviders } from "src/routing/AppProviders";
 
 export const RouteWithLayout = () => {
   return (
-    <SidebarProvider>
+    <AppProviders>
       <DashboardLayout>
         <Outlet />
       </DashboardLayout>
-    </SidebarProvider>
+    </AppProviders>
   );
 };

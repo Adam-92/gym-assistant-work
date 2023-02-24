@@ -1,20 +1,20 @@
-import { useUserContext } from "src/contexts/user/hooks/useUserContext";
 import { useLocation, Navigate } from "react-router";
 import { Outlet } from "react-router";
+import { useAuthListener } from "src/auth/hooks/useAuthListener";
 import RoutesLoader from "src/components/Loaders/RoutesLoader/RoutesLoader";
 
-const ProtectedRoute = () => {
-  const { currentUser, pending } = useUserContext();
+export const ProtectedRoute = () => {
+  const { currentUser, isLoading } = useAuthListener();
+
   const location = useLocation();
 
-  if (pending) {
+  if (isLoading) {
     return <RoutesLoader />;
   }
 
-  if (!currentUser && !pending) {
+  if (!currentUser && !isLoading) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
+
   return <Outlet />;
 };
-
-export default ProtectedRoute;

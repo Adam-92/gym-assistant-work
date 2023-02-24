@@ -1,19 +1,20 @@
 import { CatalogueNewExerciseFormValues } from "./AddNewCatalogueExercisePage.model";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
-import { useUserContext } from "src/contexts/user/hooks/useUserContext";
-import { setNewExercise } from "src/firebase/services/activity";
+import { setNewExercise } from "src/firebase/services/catalogueActivity";
 import ChooseTheBodyPart from "./components/ChooseTheBodyPart/ChooseTheBodyPart";
 import ExerciseDescription from "./components/ExerciseDescription/ExerciseDescription";
 import SecondaryArrangeMuscles from "./components/SecondaryArrangeMuscles/SecondaryArrangeMuscles";
 import SelectPicture from "./components/SelectPicture/SelectPicture";
 import ExerciseName from "./components/ExerciseName/ExerciseName";
 import SuccesfullyAddedNewCatalogueExercise from "src/pages/add-new-catalogue-exercise/components/SuccesfullyAddedNewCatalogueExercise/SuccesfullyAddedNewCatalogueExercise";
-import { useAddedExerciseModal } from "src/contexts/addedExerciseModal/hooks/useAddedExerciseModal";
+import { useModal } from "src/contexts/modal/hooks/useModal";
+import { useUser } from "src/contexts/user/hooks/useUser";
 import "./AddNewCatalogueExercisePage.css";
 
 const AddNewCatalogueExercisePage = () => {
-  const { currentUser } = useUserContext();
-  const { modalPartName, setModalPartName } = useAddedExerciseModal();
+  const { currentUser } = useUser();
+
+  const { modalPartName, setModalPartName } = useModal();
 
   const methods = useForm<CatalogueNewExerciseFormValues>({
     defaultValues: {
@@ -24,7 +25,7 @@ const AddNewCatalogueExercisePage = () => {
   });
 
   const onSubmit: SubmitHandler<CatalogueNewExerciseFormValues> = (data) => {
-    setNewExercise(data, currentUser, setModalPartName);
+    setNewExercise(data, currentUser.uid, setModalPartName);
   };
 
   return (

@@ -4,12 +4,13 @@ import PerformanceChart from "src/components/Charts/PerformanceChart/Performance
 import ExercisePerformanceTable from "src/pages/selected-exercise/components/ExercisePerformanceTable/ExercisePerformanceTable";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import useSelectedExercise from "src/hooks/useSelectedExercise";
+import useSelectedExercise from "src/pages/selected-exercise/hooks/useSelectedExercise";
 import { upperCaseAllWords } from "src/utils/Utils";
 import NoPerformanceData from "src/pages/selected-exercise/components/NoPerformanceData/NoPerformanceData";
 import DataStatusHandler from "src/components/DataStatusHandler/DataStatusHandler";
 import DataDisplayWrapper from "src/components/DataDisplayWrapper/DataDisplayWrapper";
 import Transition from "src/components/Transition/Transition";
+import { useEditExercise } from "./hooks/useEditExercise";
 import "./SelectedExercisePage.css";
 
 const SelectedExercisePage = () => {
@@ -17,6 +18,8 @@ const SelectedExercisePage = () => {
 
   const { data, isLoading, error, rightDescriptionIcon } =
     useSelectedExercise();
+
+  const { isActiveMode, setIsActiveMode } = useEditExercise(data);
 
   return (
     <DataStatusHandler data={data} isLoading={isLoading} error={error}>
@@ -31,8 +34,17 @@ const SelectedExercisePage = () => {
                     className="arrow-selected-exercise"
                   />
                 </Link>
+                <button
+                  onClick={() => setIsActiveMode((prev) => !prev)}
+                  className={`btn-edit ${isActiveMode && "btn-active-edit"}`}
+                >
+                  EDIT
+                </button>
               </header>
               <div className="img-selected-exercise">
+                {isActiveMode && (
+                  <button className="btn-active-edit">Change Picture</button>
+                )}
                 {data.exampleImage ? (
                   <img src={`../${data.exampleImage}`} alt="picked exercise" />
                 ) : (
@@ -40,7 +52,13 @@ const SelectedExercisePage = () => {
                 )}
               </div>
               <div className="desc-selected-exercise">
+                {isActiveMode && (
+                  <button className="btn-active-edit">Change Name</button>
+                )}
                 <h2>{upperCaseAllWords(data.name)}</h2>
+                {isActiveMode && (
+                  <button className="btn-active-edit">Change Description</button>
+                )}
                 <p>{data.exerciseDescription}</p>
                 <div
                   className="desc-img-selected-exercise"

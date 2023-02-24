@@ -1,12 +1,12 @@
 import Sidebar from "./Sidebar/Sidebar";
 import { DashboardLayoutProps } from "./DashboardLayout.model";
 import { useSidebar } from "src/contexts/sidebar/hooks/useSidebar";
-import { useAddedExerciseModal } from "src/contexts/addedExerciseModal/hooks/useAddedExerciseModal";
+import { useModal } from "src/contexts/modal/hooks/useModal";
 import "./DashboardLayout.css";
 
 export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const { isOpenSidebar, closeSidebar } = useSidebar();
-  const { modalPartName } = useAddedExerciseModal();
+  const { modalPartName } = useModal();
 
   return (
     <main className="dashboard-layout">

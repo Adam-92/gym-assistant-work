@@ -1,6 +1,6 @@
-import useFetchData from "./useFetchData";
+import useFetchData from "../../../hooks/useFetchData";
 import { updateCaloriesChartData } from "src/utils/Utils";
-import { getCaloriesChartData } from "src/firebase/services/activity";
+import { getCaloriesChartData } from "src/firebase/services/dashboardActivity";
 
 const useUpdatedCaloriesChartData = () => {
   const { data, isLoading, error } = useFetchData(getCaloriesChartData);

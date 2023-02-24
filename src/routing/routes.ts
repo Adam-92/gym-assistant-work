@@ -9,6 +9,7 @@ import RegisterPage from "../pages/register/RegisterPage";
 import CataloguePage from "../pages/catalogue/CataloguePage";
 import AddNewCatalogueExercisePage from "src/pages/add-new-catalogue-exercise/AddNewCatalogueExercisePage";
 import SelectedExercisePage from "src/pages/selected-exercise/SelectedExercisePage";
+import { NutritionPage } from "src/pages/nutrition/NutritionPage"; 
 
 export const protectedRoutes: Route[] = [
   {
@@ -34,6 +35,10 @@ export const protectedRoutes: Route[] = [
   {
     path: "/plan",
     element: PlanPage,
+  },
+  {
+    path: "/nutrition",
+    element: NutritionPage,
   },
   {
     path: "/settings",

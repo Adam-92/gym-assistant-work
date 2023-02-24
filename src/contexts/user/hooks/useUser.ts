@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 
-export const useUserContext = () => {
+export const useUser = () => {
   const ctx = useContext(UserContext);
   if (!ctx) {
-    throw Error("useUserContext can only be used inside UserProvider");
+    throw Error("useUser can only be used inside UserProvider");
   }
   return ctx;
 };

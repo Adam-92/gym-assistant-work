@@ -6,7 +6,7 @@ import {
   faShoePrints,
   faWeightHanging,
 } from "@fortawesome/free-solid-svg-icons";
-import { getTilesData } from "src/firebase/services/activity";
+import { getTilesData } from "src/firebase/services/dashboardActivity";
 import Transition from "../../../../components/Transition/Transition";
 
 const tileIcons = [

@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import Transition from "src/components/Transition/Transition";
-import { useAddedExerciseModal } from "src/contexts/addedExerciseModal/hooks/useAddedExerciseModal";
+import { useModal } from "src/contexts/modal/hooks/useModal";
 import "./SuccesfullyAddedNewCatalogueExercise.css";
 
 const SuccesfullyAddedNewCatalogueExercise = () => {
-  const { modalPartName, closeModal } = useAddedExerciseModal();
+  const { modalPartName, closeModal } = useModal();
+  
   return (
     <Transition duration={0.5}>
       <article className="container-succesfully-added">

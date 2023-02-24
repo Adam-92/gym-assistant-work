@@ -1,4 +1,4 @@
-import { minToHours } from "../../../../utils/Utils";
+import { minToHours } from "../../utils/utils";
 import { StatisticsTile } from "src/pages/dashboard/components/Tile/Tile.model";
 import "./Tile.css";
 
